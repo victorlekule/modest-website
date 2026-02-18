@@ -1,0 +1,53 @@
+/* styles.css */
+
+/* Modern Font Settings */
+:root {
+    --brand-navy: #003358;
+    --brand-orange: #FF8A5B;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--brand-navy);
+    overflow-x: hidden; /* Prevents horizontal scrollbar during 3D tilts */
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* =========================================
+   ANIMATION PREPARATION
+   This hides elements initially so GSAP can 
+   fade them in smoothly.
+   ========================================= */
+section:not(:first-child) h2, 
+section:not(:first-child) p, 
+section:not(:first-child) .grid > *,
+section:not(:first-child) span.block,
+section:not(:first-child) .group {
+    opacity: 0;
+    visibility: hidden; 
+}
+
+/* =========================================
+   3D & INTERACTIVITY
+   ========================================= */
+.group.relative, .rounded-2xl {
+    transform-style: preserve-3d;
+    will-change: transform;
+    perspective: 1000px; /* Adds depth */
+}
+
+/* =========================================
+   HERO ANIMATION (Ken Burns Effect)
+   ========================================= */
+.animate-kenburns {
+    animation: kenburns 20s infinite alternate ease-in-out;
+    transform-origin: center;
+}
+
+@keyframes kenburns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
+}
