@@ -132,3 +132,128 @@ document.addEventListener("DOMContentLoaded", (event) => {
     initParallax();
     initTilt();
 });
+
+//about us page//
+// Register GSAP Plugin
+gsap.registerPlugin(ScrollTrigger);
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. LOADING ANIMATION
+    // Fades out the white loader overlay
+    const loaderTl = gsap.timeline();
+    loaderTl.to("#loader", {
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.5,
+        onComplete: () => {
+            // Remove from DOM to allow clicking elements underneath
+            document.querySelector("#loader").style.display = "none";
+        }
+    });
+
+    // 2. PARALLAX ANIMATION (SCROLLING UP/DOWN)
+    // Moves the hero image slightly slower than scroll speed to create depth
+    if (document.querySelector('.parallax-img')) {
+        gsap.to(".parallax-img", {
+            yPercent: 20, // Moves down 20% while scrolling
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".parallax-wrapper",
+                start: "top bottom", // Start when top of section hits bottom of viewport
+                end: "bottom top",
+                scrub: true // Smoothly scrubs with scrollbar
+            }
+        });
+    }
+
+    // 3. FADE UP ANIMATION (Text elements)
+    // Uses 'batch' to efficiently animate groups of items
+    ScrollTrigger.batch(".fade-up", {
+        onEnter: batch => gsap.to(batch, {
+            opacity: 1, 
+            y: 0, 
+            stagger: 0.15, 
+            overwrite: true, 
+            duration: 1, 
+            ease: "power2.out"
+        }),
+        start: "top 85%" // Triggers when element is 85% down the screen
+    });
+    
+    // Set initial state for fade-up items (Hidden & moved down)
+    gsap.set(".fade-up", { opacity: 0, y: 50 });
+
+
+    // 4. SCALE ANIMATION (Cards & Images)
+    // Zooms in slightly
+    ScrollTrigger.batch(".scale-in", {
+        onEnter: batch => gsap.to(batch, {
+            opacity: 1, 
+            scale: 1, 
+            stagger: 0.15, 
+            overwrite: true, 
+            duration: 0.8, 
+            ease: "back.out(1.2)" // Slight bounce effect
+        }),
+        start: "top 85%"
+    });
+
+    // Set initial state for scale-in items (Hidden & smaller)
+    gsap.set(".scale-in", { opacity: 0, scale: 0.9 });
+});
+
+//why choose us //
+gsap.registerPlugin(ScrollTrigger);
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. HERO PARALLAX (Subtle movement)
+    gsap.to(".parallax-img", {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".parallax-wrapper",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+        }
+    });
+
+    // 2. FADE UP ANIMATION (General Text)
+    // Moves up from 50px and fades in
+    ScrollTrigger.batch(".fade-up", {
+        onEnter: batch => gsap.to(batch, {
+            opacity: 1, 
+            y: 0, 
+            stagger: 0.15, 
+            overwrite: true, 
+            duration: 1, 
+            ease: "power2.out"
+        }),
+        start: "top 85%"
+    });
+    
+    // Set initial state for fade-up
+    gsap.set(".fade-up", { opacity: 0, y: 50 });
+
+    // 3. SCALE IN ANIMATION (Cards & CTA)
+    // Scales up from 90% size with a bounce
+    ScrollTrigger.batch(".scale-in", {
+        onEnter: batch => gsap.to(batch, {
+            opacity: 1, 
+            scale: 1, 
+            stagger: 0.15, 
+            overwrite: true, 
+            duration: 0.8, 
+            ease: "back.out(1.2)"
+        }),
+        start: "top 85%"
+    });
+
+    // Set initial state for scale-in
+    gsap.set(".scale-in", { opacity: 0, scale: 0.9 });
+});
+
+// zanzibar//
+ 

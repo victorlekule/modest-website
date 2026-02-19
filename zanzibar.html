@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morix Beyond | Beyond Zanzibar Experiences</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="header.js" defer></script>
+</head>
+
+<body class="bg-[#F8FAFC] font-sans text-slate-800 antialiased selection:bg-[#F27D57] selection:text-white">
+
+    <header id="main-header" class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm h-20 transition-all duration-300"></header>
+
+<section class="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#003C63]">
+        <div class="absolute inset-0 z-0 parallax-wrapper">
+            <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=2000&auto=format&fit=crop" 
+                 alt="Zanzibar Ocean" 
+                 class="w-full h-full object-cover parallax-img opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/30 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center text-white">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-8 fade-up">
+                <i class="fi fi-rr-gem text-[#F27D57]"></i>
+                <span class="text-xs font-bold tracking-[0.2em] uppercase text-gray-200">Morix Curated Collection</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-8xl font-bold mb-8 leading-tight fade-up">
+                Zanzibar <span class="italic font-serif text-[#F27D57]">Experiences</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed fade-up mb-12">
+                Discover the best of Zanzibar through curated Kendwa beach experiences, island cruises, navigator tours, botanist adventures, and romantic moments.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up">
+                <a href="#experiences-grid" class="bg-[#F27D57] hover:bg-[#e06943] text-white px-10 py-5 rounded-full font-bold shadow-lg shadow-orange-900/20 transition-transform hover:scale-105 flex items-center justify-center gap-3">
+                    <i class="fi fi-rr-ticket"></i> Book an Experience
+                </a>
+                <a href="https://wa.me/255746319059" target="_blank" class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white hover:text-[#003C63] text-white px-10 py-5 rounded-full font-bold transition-transform hover:scale-105 flex items-center justify-center gap-3">
+                    <i class="fi fi-brands-whatsapp text-xl"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16 items-center mb-12">
+                <div class="lg:w-1/2 fade-up">
+                    <h2 class="text-4xl font-bold text-[#003C63] mb-6 leading-tight">
+                        A world of turquoise waters, rich culture, and <span class="text-[#F27D57] underline decoration-4 decoration-[#F27D57]/20">unforgettable moments.</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                        Morix Beyond Zanzibar offers handpicked experiences designed for couples, honeymooners, explorers, and content creators seeking authentic and premium adventures.
+                    </p>
+                </div>
+                
+                <div class="lg:w-1/2 w-full fade-up delay-100">
+                    <div class="bg-[#F8FAFC] p-8 rounded-3xl border border-gray-100">
+                        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Curate Your Trip</h3>
+                        <div class="flex flex-wrap gap-3" id="filter-container">
+                            <button class="filter-btn active px-6 py-3 rounded-full bg-[#003C63] text-white font-bold shadow-lg shadow-[#003C63]/20 transition-all hover:scale-105" data-filter="all">All Experiences</button>
+                            <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors" data-filter="water">🌊 Water & Beach</button>
+                            <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors" data-filter="culture">🧭 Culture</button>
+                            <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors" data-filter="nature">🌿 Nature</button>
+                            <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors" data-filter="couples">💍 Couples</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="experiences-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[500px]">
+
+                <div class="exp-card group relative h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer fade-up" data-category="water">
+                    <img src="https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-transparent to-transparent opacity-80 group-hover:opacity-90"></div>
+                    <div class="absolute top-6 left-6 flex gap-2">
+                        <span class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">🌊 Water</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 class="text-3xl font-bold text-white mb-2">Kendwa Beach</h3>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-2">Enjoy Zanzibar’s most famous beach with exciting water activities.</p>
+                        
+                        <button class="view-details-btn w-full bg-white text-[#003C63] font-bold py-3 rounded-xl hover:bg-[#F27D57] hover:text-white transition-colors flex items-center justify-center gap-2"
+                            data-title="Kendwa Beach Experience"
+                            data-image="https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop"
+                            data-time="Full Day"
+                            data-price="$80 / person"
+                            data-desc="Experience the vibrant energy of Kendwa Rocks. This full-day experience includes jet skiing opportunities, a private beach setup, a fresh seafood platter for lunch, and a dedicated photographer to capture your golden hour moments."
+                            data-whatsapp="Hi Morix, I want to book Kendwa Beach Experience">
+                            View Details <i class="fi fi-rr-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="exp-card group relative h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer fade-up" data-category="water">
+                    <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-transparent to-transparent opacity-80 group-hover:opacity-90"></div>
+                    <div class="absolute top-6 left-6 flex gap-2">
+                        <span class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">🏝️ Cruise</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 class="text-3xl font-bold text-white mb-2">Safari Blue</h3>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-2">Cruise across turquoise waters to hidden sandbanks.</p>
+                        
+                        <button class="view-details-btn w-full bg-white text-[#003C63] font-bold py-3 rounded-xl hover:bg-[#F27D57] hover:text-white transition-colors flex items-center justify-center gap-2"
+                            data-title="Safari Blue Experience"
+                            data-image="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop"
+                            data-time="7 Hours"
+                            data-price="$65 / person"
+                            data-desc="Set sail on a traditional dhow to the Menai Bay Conservation Area. Swim in a natural mangrove lagoon, snorkel in crystal clear waters, relax on a vanishing sandbank, and enjoy a massive Swahili seafood BBQ lunch with unlimited drinks."
+                            data-whatsapp="Hi Morix, I want to book Safari Blue">
+                            View Details <i class="fi fi-rr-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="exp-card group relative h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer fade-up" data-category="culture">
+                    <img src="https://images.unsplash.com/photo-1576487248805-cf45f6bcc67f?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-transparent to-transparent opacity-80 group-hover:opacity-90"></div>
+                    <div class="absolute top-6 left-6 flex gap-2">
+                        <span class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">🧭 Culture</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 class="text-3xl font-bold text-white mb-2">The Navigator</h3>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-2">Explore Zanzibar’s history, iconic landmarks, and vibrant markets.</p>
+                        
+                        <button class="view-details-btn w-full bg-white text-[#003C63] font-bold py-3 rounded-xl hover:bg-[#F27D57] hover:text-white transition-colors flex items-center justify-center gap-2"
+                            data-title="The Navigator (Stone Town)"
+                            data-image="https://images.unsplash.com/photo-1576487248805-cf45f6bcc67f?q=80&w=800&auto=format&fit=crop"
+                            data-time="3 Hours"
+                            data-price="$40 / person"
+                            data-desc="Get lost in the magic of Stone Town. Visit the Slave Market, the House of Wonders, and the Freddie Mercury Museum. We end the tour with a sunset coffee at a rooftop looking over the city."
+                            data-whatsapp="Hi Morix, I want to book The Navigator">
+                            View Details <i class="fi fi-rr-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="exp-card group relative h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer fade-up" data-category="nature">
+                    <img src="image/1 (13).jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-transparent to-transparent opacity-80 group-hover:opacity-90"></div>
+                    <div class="absolute top-6 left-6 flex gap-2">
+                        <span class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">🌿 Nature</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 class="text-3xl font-bold text-white mb-2">The Botanist</h3>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-2">Discover spice farms, tropical forests, and unique swimming caves.</p>
+                        
+                        <button class="view-details-btn w-full bg-white text-[#003C63] font-bold py-3 rounded-xl hover:bg-[#F27D57] hover:text-white transition-colors flex items-center justify-center gap-2"
+                            data-title="The Botanist (Spice & Cave)"
+                            data-image="https://images.unsplash.com/photo-1596378453476-b7f9435b6c23?q=80&w=800&auto=format&fit=crop"
+                            data-time="4 Hours"
+                            data-price="$50 / person"
+                            data-desc="Smell, taste, and feel the spices of Zanzibar on a private farm tour. Afterwards, we take you to a hidden natural swimming cave (Kuza Cave or Maalum) for a refreshing dip in crystal clear mineral water."
+                            data-whatsapp="Hi Morix, I want to book The Botanist">
+                            View Details <i class="fi fi-rr-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="exp-card group relative h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer fade-up" data-category="water">
+                    <img src="image/1 (11).jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-transparent to-transparent opacity-80 group-hover:opacity-90"></div>
+                    <div class="absolute top-6 left-6 flex gap-2">
+                        <span class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">🐬 Wildlife</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 class="text-3xl font-bold text-white mb-2">The Mariner</h3>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-2">Set sail with dolphin encounters and turtle swimming experiences.</p>
+                        
+                        <button class="view-details-btn w-full bg-white text-[#003C63] font-bold py-3 rounded-xl hover:bg-[#F27D57] hover:text-white transition-colors flex items-center justify-center gap-2"
+                            data-title="The Mariner (Ocean Safari)"
+                            data-image="https://images.unsplash.com/photo-1569420078234-93574187b99c?q=80&w=800&auto=format&fit=crop"
+                            data-time="3 Hours"
+                            data-price="$70 / person"
+                            data-desc="Swim with wild dolphins in Mnemba Atoll or feed giant sea turtles at Nungwi Aquarium. This tour is perfect for ocean lovers and families. Includes snorkeling gear and fruit snacks."
+                            data-whatsapp="Hi Morix, I want to book The Mariner">
+                            View Details <i class="fi fi-rr-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="exp-card group relative h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer fade-up" data-category="couples">
+                    <img src="image/1 (10).jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-transparent to-transparent opacity-80 group-hover:opacity-90"></div>
+                    <div class="absolute top-6 left-6 flex gap-2">
+                        <span class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">💍 Love</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 class="text-3xl font-bold text-white mb-2">Romantic</h3>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-2">Celebrate love with cinematic photoshoots and private sunset dinners.</p>
+                        
+                        <button class="view-details-btn w-full bg-white text-[#003C63] font-bold py-3 rounded-xl hover:bg-[#F27D57] hover:text-white transition-colors flex items-center justify-center gap-2"
+                            data-title="Romantic Couple Experience"
+                            data-image="image/1(1).jpg"
+                            data-time="Custom"
+                            data-price="On Request"
+                            data-desc="Whether it's a surprise proposal on a sandbank, a honeymoon photoshoot, or a private candlelit dinner by the ocean, we handle every detail. Includes a professional videographer to capture your love story."
+                            data-whatsapp="Hi Morix, I want to book a Romantic Experience">
+                            View Details <i class="fi fi-rr-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="experience-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        
+        <div class="absolute inset-0 bg-[#001E33]/90 backdrop-blur-md transition-opacity" id="modal-backdrop"></div>
+
+        <div class="bg-white w-full max-w-3xl rounded-[2.5rem] shadow-2xl relative overflow-hidden transform scale-90 opacity-0 transition-all flex flex-col md:flex-row h-auto max-h-[90vh]" id="modal-card">
+            
+            <button id="close-modal" class="absolute top-4 right-4 z-50 bg-white/30 backdrop-blur-md text-white hover:bg-white hover:text-[#003C63] w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300">
+                <i class="fi fi-rr-cross text-xl"></i>
+            </button>
+
+            <div class="w-full md:w-2/5 h-64 md:h-auto relative shrink-0">
+                <img id="modal-img" src="" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] to-transparent opacity-50"></div>
+                <div class="absolute bottom-4 left-4 text-white md:hidden">
+                    <h3 id="modal-title-mobile" class="text-2xl font-bold">Experience</h3>
+                </div>
+            </div>
+
+            <div class="w-full md:w-3/5 p-8 md:p-10 flex flex-col h-full overflow-y-auto">
+                
+                <div>
+                    <h3 id="modal-title" class="text-3xl font-bold text-[#003C63] mb-3 hidden md:block">Experience Title</h3>
+                    
+                    <div class="flex items-center gap-4 text-sm text-gray-500 font-medium mb-6">
+                        <div class="flex items-center gap-2">
+                            <i class="fi fi-rr-clock text-[#F27D57]"></i> <span id="modal-time">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-auto">
+                    <h4 class="text-[#003C63] font-bold uppercase text-xs tracking-widest mb-3">About this experience</h4>
+                    <p id="modal-desc" class="text-gray-600 text-lg leading-relaxed mb-8">
+                        Description goes here...
+                    </p>
+                </div>
+
+                <div class="mt-6 pt-6 border-t border-gray-100">
+                    
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-gray-500 font-medium">Price:</span>
+                        <span id="modal-price" class="text-2xl font-bold text-[#003C63]">$00</span>
+                    </div>
+
+                    <div class="grid gap-3">
+                        <div class="flex gap-3">
+                            <a id="modal-whatsapp" href="#" target="_blank" class="flex-1 bg-[#25D366] hover:bg-[#20b858] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] shadow-sm">
+                                <i class="fi fi-brands-whatsapp text-xl"></i> Chat
+                            </a>
+                            <a href="#contact" class="flex-1 bg-[#003C63] hover:bg-[#002a45] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] shadow-sm">
+                                <i class="fi fi-rr-ticket text-xl"></i> Book Now
+                            </a>
+                        </div>
+                        
+                        <button id="close-modal-bottom" class="w-full py-3 rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-100 transition-colors font-medium text-sm flex items-center justify-center gap-2">
+                            Close Details
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <section class="py-24 bg-[#003C63] relative overflow-hidden text-center text-white mb-10">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F27D57] opacity-10 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 scale-in">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to create your story?</h2>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#experiences-grid" class="bg-[#F27D57] hover:bg-[#e06943] text-white px-10 py-5 rounded-full font-bold shadow-xl transition-transform hover:scale-105">
+                    Book an Experience
+                </a>
+                <a href="https://wa.me/255746319059" class="bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-[#003C63] px-10 py-5 rounded-full font-bold shadow-xl transition-transform hover:scale-105">
+                    Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+   
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="animations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
