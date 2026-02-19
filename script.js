@@ -27,10 +27,11 @@ style.textContent = `
     .nav-link-top {
         color: var(--morix-navy);
         font-family: ${branding.fonts.body};
-        font-size: 0.85rem;
+        font-size: 1rem;
         text-transform: uppercase;
         transition: 0.3s;
         position: relative;
+        text-weight:400;
     }
     .nav-link-top:hover { color: var(--morix-orange); }
 
@@ -49,14 +50,17 @@ style.textContent = `
     /* BOOKING BUTTON STYLE (Desktop) */
     .btn-booking {
         background-color: var(--morix-orange);
-        color: white !important;
+        color: white ;
         padding: 8px 24px;
-        border-radius: 4px;
+        border-radius: 30px;
         font-weight: bold;
         font-style: italic;
         transition: transform 0.3s;
     }
-    .btn-booking:hover { transform: scale(1.05); }
+    .btn-booking:hover { 
+        transform: scale(1.05);
+        background-color:white;
+        color: var(--morix-orange); }
 
     /* MOBILE MENU STYLES */
     #mobile-menu {
@@ -134,7 +138,7 @@ const headerTemplate = `
     <div class="container mx-auto px-4 relative">
         <div class="flex justify-between items-center py-4">
             <div class="flex items-center">
-            <img src="/image/MORIX WEB-01.png" 
+            <img src="/image/MORIX WEB SECOND-01.png.png" 
             alt="Morix Beyond" 
             class="h-10 md:h-14 logo-img" 
             style="display: block !important; opacity: 1 !important; visibility: visible !important;"
@@ -142,7 +146,7 @@ const headerTemplate = `
             </div>
 
             <div class="hidden lg:flex space-x-6 items-center">
-                <a href="index.html" class="nav-link-top">Home</a>
+                <a href="index.html" class="nav-link-top ">Home</a>
                 <a href="about us.html" class="nav-link-top">About Us</a>
                 <a href="why us.html" class="nav-link-top">Why Us</a>
                 <a href="contact.html" class="nav-link-top">Contact</a>
