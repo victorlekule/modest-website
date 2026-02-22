@@ -25,7 +25,7 @@
 
     <body class="bg-gray-50 font-sans text-slate-800">
 
-    <header id="main-header" class="fixed w-full z-50 bg-white shadow-sm h-20"></header>
+    <header id="main-header" class="fixed w-full z-50  shadow-sm h-20"></header>
 
 <section class="relative h-[60vh] flex items-center justify-center overflow-hidden mt-24">
     <div class="absolute inset-0 z-0">
@@ -57,8 +57,8 @@
                 </div>
                 <h3 class="text-xl font-bold text-[#0E415E] mb-2 font-serif">Chat on WhatsApp</h3>
                 <p class="text-gray-500 text-sm mb-6">Fastest response (24/7)</p>
-                <a href="https://wa.me/255000000000" class="text-[#0E415E] font-bold border-b-2 border-[#F28E64] hover:text-[#F28E64] transition-colors pb-1">
-                    +255 700 000 000
+                <a href="https://wa.me/+255 746 319 059" class="text-[#0E415E] font-bold border-b-2 border-[#F28E64] hover:text-[#F28E64] transition-colors pb-1">
+                    +255 746 319 059
                 </a>
             </div>
 
@@ -88,84 +88,98 @@
     </div>
 </section>
 
-<section class="py-24 bg-morix-blue mb-8">
-    <div class="container mx-auto px-6 md:px-12">
-        <div class="flex flex-col lg:flex-row gap-16">
+
+<section class="py-16 bg-[#0E415E] relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-[#F28E64] opacity-10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#F28E64] opacity-5 rounded-full blur-[120px]"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-3xl mx-auto">
             
-            <div class="lg:w-2/3 service-pop-up">
-                <h2 class="text-3xl font-serif font-bold text-white mb-8">Send a Message</h2>
-                
-                <form id="contact-form" class="space-y-6">
+            <div class="text-center mb-10 fade-up">
+                <div class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[#F28E64] text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
+                    Direct Inquiry
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Start Your Journey</h2>
+                <p class="text-blue-100/70 font-light max-w-lg mx-auto">Complete the form below. Our experts are ready to craft your personalized itinerary.</p>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 p-8 md:p-12 rounded-[3rem] backdrop-blur-xl shadow-2xl shadow-black/20 fade-up" style="animation-delay: 100ms;">
+                <form id="contact-form" class="space-y-8">
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold text-white uppercase tracking-wide">Full Name</label>
-                            <input type="text" placeholder="John Doe" class="contact-input">
+                        <div class="group space-y-2">
+                            <label class="text-[10px] font-bold text-blue-200 uppercase tracking-widest ml-3">Full Name</label>
+                            <input type="text" placeholder="e.g. John Doe" 
+                                class="w-full px-6 py-4 rounded-2xl bg-white border-2 border-[#F28E64] text-[#0E415E] placeholder-gray-400 font-medium outline-none focus:ring-4 focus:ring-[#F28E64]/30 transition-all duration-300 shadow-sm">
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold text-white uppercase tracking-wide">Email Address</label>
-                            <input type="email" placeholder="john@example.com" class="contact-input">
+                        <div class="group space-y-2">
+                            <label class="text-[10px] font-bold text-blue-200 uppercase tracking-widest ml-3">Email Address</label>
+                            <input type="email" placeholder="email@example.com" 
+                                class="w-full px-6 py-4 rounded-2xl bg-white border-2 border-[#F28E64] text-[#0E415E] placeholder-gray-400 font-medium outline-none focus:ring-4 focus:ring-[#F28E64]/30 transition-all duration-300 shadow-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="group space-y-2">
+                            <label class="text-[10px] font-bold text-blue-200 uppercase tracking-widest ml-3">Mobile Number</label>
+                            <input type="tel" placeholder="+1 (555) 000-0000" 
+                                class="w-full px-6 py-4 rounded-2xl bg-white border-2 border-[#F28E64] text-[#0E415E] placeholder-gray-400 font-medium outline-none focus:ring-4 focus:ring-[#F28E64]/30 transition-all duration-300 shadow-sm">
+                        </div>
+                        <div class="group space-y-2">
+                            <label class="text-[10px] font-bold text-blue-200 uppercase tracking-widest ml-3">Country of Origin</label>
+                            <input type="text" placeholder="e.g. United Kingdom" 
+                                class="w-full px-6 py-4 rounded-2xl bg-white border-2 border-[#F28E64] text-[#0E415E] placeholder-gray-400 font-medium outline-none focus:ring-4 focus:ring-[#F28E64]/30 transition-all duration-300 shadow-sm">
                         </div>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-sm font-bold text-white uppercase tracking-wide">Interested In</label>
+                        <label class="text-[10px] font-bold text-blue-200 uppercase tracking-widest ml-3">I am interested in...</label>
                         <div class="relative">
-                            <select class="contact-input appearance-none cursor-pointer">
-                                <option>Safari Packages</option>
-                                <option>Beach Holidays</option>
-                                <option>Wedding / Honeymoon</option>
-                                <option>Photography / Media</option>
-                                <option>Other Inquiry</option>
+                            <select class="w-full px-6 py-4 rounded-2xl bg-white border-2 border-[#F28E64] text-[#0E415E] font-medium outline-none appearance-none cursor-pointer focus:ring-4 focus:ring-[#F28E64]/30 transition-all duration-300 shadow-sm">
+                                <option value="" disabled selected class="text-gray-400">Select a journey type...</option>
+                                <option>Exclusive Zanzibar Beach Package</option>
+                                <option>Tanzania Luxury Safari</option>
+                                <option>Kilimanjaro Trekking Expedition</option>
+                                <option>Honeymoon & Romantic Getaway</option>
+                                <option>Professional Photography/Drone Session</option>
+                                <option>General Inquiry</option>
                             </select>
-                            <i class="ri-arrow-down-s-line absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                            <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#F28E64]">
+                                <i class="fi fi-rr-angle-small-down text-3xl"></i>
+                            </div>
                         </div>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-sm font-bold text-white uppercase tracking-wide">Your Message</label>
-                        <textarea rows="5" placeholder="Tell us about your dream trip..." class="contact-input"></textarea>
+                        <label class="text-[10px] font-bold text-blue-200 uppercase tracking-widest ml-3">Your Message</label>
+                        <textarea rows="4" placeholder="Tell us about your dream trip..." 
+                            class="w-full px-6 py-4 rounded-2xl bg-white border-2 border-[#F28E64] text-[#0E415E] placeholder-gray-400 font-medium outline-none focus:ring-4 focus:ring-[#F28E64]/30 transition-all duration-300 shadow-sm resize-none"></textarea>
                     </div>
 
-                    <button type="submit" class="inline-flex items-center justify-center px-8 py-4 bg-white text-morix-blue font-bold rounded-lg hover:bg-[#F28E64]  hover:text-white duration-300 w-full md:w-auto shadow-xl shadow-[#0E415E]/20">
-                        <span>Send Message</span>
-                        <i class="ri-send-plane-fill ml-3"></i>
-                    </button>
+                    <div class="text-center pt-6">
+                        <button type="submit" 
+                            class="group relative inline-flex items-center justify-center px-12 py-5 bg-[#F28E64] text-white font-bold rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_10px_40px_rgba(242,125,87,0.5)] hover:-translate-y-1 active:scale-95 w-full md:w-auto">
+                            <span class="relative z-10 flex items-center gap-3 text-lg">
+                                Send Inquiry
+                                <i class="fi fi-rr-paper-plane transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                            </span>
+                        </button>
+                    </div>
                 </form>
             </div>
 
-            <div class="lg:w-1/3 space-y-8 service-pop-up" style="transition-delay: 200ms;">
-                
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                    <h3 class="text-xl font-serif font-bold text-[#0E415E] mb-3">Response Time</h3>
-                    <p class="text-gray-500 leading-relaxed text-sm">
-                        We aim to respond to all inquiries within <strong>24 hours</strong>. For urgent matters, please use WhatsApp.
-                    </p>
-                </div>
-
-                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                    <h3 class="text-xl font-serif font-bold text-[#0E415E] mb-3">Office Hours</h3>
-                    <ul class="space-y-3 text-sm text-gray-500">
-                        <li class="flex justify-between border-b border-gray-200 pb-2">
-                            <span>Monday - Friday</span>
-                            <span class="font-bold text-[#0E415E]">08:00 - 18:00</span>
-                        </li>
-                        <li class="flex justify-between border-b border-gray-200 pb-2">
-                            <span>Saturday</span>
-                            <span class="font-bold text-[#0E415E]">09:00 - 15:00</span>
-                        </li>
-                        <li class="flex justify-between">
-                            <span>Sunday</span>
-                            <span class="font-bold text-[#0E415E]">Closed</span>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
+            <p class="text-center mt-10 text-blue-200/50 text-[10px] uppercase tracking-[0.4em] fade-up">
+                Your privacy is our priority. No spam. Only Adventure.
+            </p>
         </div>
     </div>
 </section>
 
-<section id="map-section" class="relative w-full h-[500px] service-pop-up mb-24">
+
+
+<section id="map-section" class="relative w-full h-[500px] service-pop-up  pt-12  mb-24">
     <iframe 
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126907.05869682705!2d39.19965077467332!3d-6.165077053535238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185cd067272216e3%3A0xb69c118c4c7989b5!2sZanzibar!5e0!3m2!1sen!2stz!4v1700000000000!5m2!1sen!2stz" 
         width="100%" 

@@ -52,6 +52,9 @@ section:not(:first-child) .group {
     100% { transform: scale(1.15); }
 }
 
+
+
+
 /* about us page*/
 /* Custom Scroll Behavior */
 html { 
@@ -96,6 +99,10 @@ body {
 }
 
 /* why chhose */
+
+
+
+
 
 
 /*fqs*?
@@ -170,6 +177,9 @@ html {
     color: #F27D57;
 }
 
+
+
+
 /*zanzibar*/
 /* Base */
 html {
@@ -196,9 +206,46 @@ img {
     -webkit-font-smoothing: antialiased;
 }
 
-/* media */
 
 
 
+/* Booking */
+/* --- MORIX BOOKING ENGINE STYLES --- */
+
+/* Hide number input arrows cleanly */
+.booking-engine .hide-arrows::-webkit-inner-spin-button, 
+.booking-engine .hide-arrows::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+/* Smooth drop-down reveal for payment section */
+.booking-engine .reveal-section { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: all 0.5s ease-in-out; 
+    opacity: 0; 
+}
+
+.booking-engine .reveal-section.active { 
+    max-height: 1200px; 
+    opacity: 1; 
+    margin-top: 1.5rem; 
+}
+
+/* Payment Option Active States */
+.booking-engine .payment-tab.active { 
+    border-color: #003C63; 
+    color: #003C63; 
+    background-color: #f0f7ff; 
+}
+
+.booking-engine .card-type-btn.active, 
+.booking-engine .mobile-type-btn.active { 
+    border-color: #F27D57; 
+    background-color: #fff5f2; 
+    color: #F27D57; 
+}
 
 
+/*guest*/

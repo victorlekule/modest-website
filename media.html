@@ -39,7 +39,7 @@
                 Professional drone footage and visual storytelling for travelers, couples, hotels, and tourism brands.
             </p>
             <div class="flex flex-col sm:flex-row gap-5 justify-center fade-up">
-                <a href="#packages" class="bg-[#F27D57] hover:bg-white hover:text-[#001E33] text-white px-10 py-5 rounded-full font-bold shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-3">
+                <a href="booking.html" class="bg-[#F27D57] hover:bg-white hover:text-[#001E33] text-white px-10 py-5 rounded-full font-bold shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-3">
                     <i class="fi fi-rr-camera-retro"></i> Book a Shoot
                 </a>
                 <a href="https://wa.me/255746319059" target="_blank" class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white hover:text-[#001E33] text-white px-10 py-5 rounded-full font-bold transition-all transform hover:scale-105 flex items-center justify-center gap-3">
@@ -107,10 +107,20 @@
             <h2 class="text-4xl font-bold mb-6 fade-up">PORTFOLIO SECTION</h2>
             <p class="text-gray-400 mb-16 fade-up font-light tracking-widest uppercase">Every frame is crafted to tell a story and inspire travel.</p>
             
-            <div class="p-20 border border-white/10 border-dashed rounded-3xl bg-white/5 flex flex-col items-center justify-center scale-in">
-                <i class="fi fi-rr-picture text-5xl text-gray-500 mb-4"></i>
-                <p class="text-gray-500">(Embed the best Instagram reels / YouTube videos / image gallery)</p>
+            <div class="flex justify-center py-10">
+            <div class="w-full max-w-md group relative rounded-3xl overflow-hidden shadow-xl border border-white/10 bg-black">
+                
+                <video autoplay muted loop playsinline class="w-full aspect-video object-cover opacity-90 group-hover:opacity-100 transition-opacity">
+                    <source src="image/video.mp4" type="video/mp4">
+                </video>
+
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 text-white">
+                        <i class="fi fi-rr-play text-xs"></i>
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -224,16 +234,22 @@
     </section>
 
     <section class="py-24 bg-white text-center">
-        <div class="container mx-auto px-6 max-w-4xl fade-up">
-            <h2 class="text-sm font-bold text-gray-400 tracking-widest uppercase mb-8">TESTIMONIALS</h2>
-            <h3 class="text-3xl md:text-4xl italic font-light text-[#003C63] leading-relaxed mb-6">
-                “The drone video of our Zanzibar trip was absolutely stunning. Highly professional service.”
-            </h3>
-            <div class="flex justify-center gap-2 text-[#F27D57] text-2xl">
-                ⭐⭐⭐⭐⭐
-            </div>
+    <div class="container mx-auto px-6 max-w-4xl fade-up">
+        <h2 class="text-sm font-bold text-gray-400 tracking-widest uppercase mb-8">TESTIMONIALS</h2>
+        
+        <h3 class="text-3xl md:text-4xl italic font-light text-[#003C63] leading-relaxed mb-10">
+            “The drone video of our Zanzibar trip was absolutely stunning. Highly professional service.”
+        </h3>
+
+        <div class="flex justify-center gap-1.5 text-[#F27D57] text-xl">
+            <i class="fi fi-sr-star"></i>
+            <i class="fi fi-sr-star"></i>
+            <i class="fi fi-sr-star"></i>
+            <i class="fi fi-sr-star"></i>
+            <i class="fi fi-sr-star"></i>
         </div>
-    </section>
+    </div>
+</section>
 
 
 

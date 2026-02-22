@@ -150,8 +150,9 @@ const headerTemplate = `
                 <a href="about us.html" class="nav-link-top">About Us</a>
                 <a href="why us.html" class="nav-link-top">Why Us</a>
                 <a href="contact.html" class="nav-link-top">Contact</a>
+                <a href="blog.html" class="nav-link-top">BLOG</a>
                 <a href="FQS.html" class="nav-link-top">FAQ</a>
-                <button id="login-btn" class="nav-link-top border border-morix-navy px-4 py-1 rounded hover:bg-morix-navy hover:text-white transition">Log in</button>
+
             </div>
 
             <button id="menu-btn" class="lg:hidden text-morix-navy focus:outline-none">
@@ -165,14 +166,14 @@ const headerTemplate = `
                 <a href="about.html">About Us</a>
                 <a href="contact.html">Contact</a>
                 <a href="faq.html">FAQ</a>
-                <button id="mobile-login-btn" style="color: var(--morix-navy); font-weight: 700;">Log in / Sign up</button>
+                <button id="mobile-login-btn" style="color: var(--morix-navy); font-weight: 700;">Guest Handover</button>
             </div>
             <div class="mobile-group-2">
                 <a href="zanzibar.html">Zanzibar Experiences</a>
                 <a href="tanzania.html">Tanzania Safaris</a>
                 <a href="media.html">Media Services</a>
                 <a href="gallery.html">Gallery</a>
-                <a href="book.html" class="mobile-btn-book">Book Now</a>
+                <a href="booking.html" class="mobile-btn-book">Book Now</a>
             </div>
         </div>
     </div>
@@ -183,7 +184,7 @@ const headerTemplate = `
             <a href="tanzania.html" class="nav-link-main">Tanzania Safaris</a>
             <a href="media.html" class="nav-link-main">Media Services</a>
             <a href="gallery.html" class="nav-link-main">Gallery</a>
-            <a href="book.html" class="btn-booking">Book Now</a>
+            <a href="booking.html" class="btn-booking">Book Now</a>
         </div>
     </div>
 </nav>
@@ -522,133 +523,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-//media page//
-/* =========================================
-   PART 5: MEDIA PAGE INTERACTIONS
-   ========================================= */
-
-// --- 1. VIDEO PLAYLIST LOGIC ---
-const videoPlaylist = [
-    "https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4", // Beach/Nature
-    "https://assets.mixkit.co/videos/preview/mixkit-girl-in-neon-sign-1232-large.mp4",       // Urban/Fashion
-    "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-11-large.mp4" // Drone/City
-];
-
-function initVideoPlaylist() {
-    const video = document.getElementById('main-reel');
-    const wrapper = document.getElementById('video-wrapper');
-    const icon = document.getElementById('play-icon');
-    const badge = document.getElementById('video-badge');
-    
-    let currentVideoIndex = 0;
-    let isSoundOn = false;
-
-    if (!video) return;
-
-    // Set initial source
-    video.src = videoPlaylist[0];
-
-    // Click to Toggle Sound & Playlist Mode
-    wrapper.addEventListener('click', () => {
-        isSoundOn = !isSoundOn;
-        video.muted = !isSoundOn;
-        
-        if (isSoundOn) {
-            // Unmuted State
-            icon.className = "fa-solid fa-volume-high text-white text-xl pl-1";
-            badge.textContent = "Now Playing";
-            badge.className = "absolute top-4 left-4 bg-[#25D366] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider animate-pulse";
-            document.getElementById('video-overlay').style.opacity = '0'; // Hide overlay when playing with sound
-            video.play();
-        } else {
-            // Muted State
-            icon.className = "fa-solid fa-volume-xmark text-white text-xl pl-1";
-            badge.textContent = "Click to Unmute";
-            badge.className = "absolute top-4 left-4 bg-[#F28E64] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider";
-            document.getElementById('video-overlay').style.opacity = '1';
-        }
-    });
-
-    // When video ends, play next
-    video.addEventListener('ended', () => {
-        currentVideoIndex = (currentVideoIndex + 1) % videoPlaylist.length;
-        video.src = videoPlaylist[currentVideoIndex];
-        video.play();
-    });
-}
-
-
-// --- 2. BEFORE/AFTER SLIDER LOGIC (WITH AUTO ROTATION) ---
-const comparisonImages = [
-    "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=800&auto=format&fit=crop", // Portrait
-    "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=800&auto=format&fit=crop", // Landscape
-    "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop"  // Camera
-];
-
-function initComparisonSlider() {
-    const sliderInput = document.getElementById('slider-input');
-    const beforeWrapper = document.getElementById('before-image-wrapper');
-    const imgBefore = document.getElementById('img-before');
-    const imgAfter = document.getElementById('img-after');
-    const sliderHandle = document.getElementById('slider-handle');
-
-    if (!sliderInput) return;
-
-    // A. Slider Drag Logic
-    sliderInput.addEventListener('input', (e) => {
-        const val = e.target.value;
-        beforeWrapper.style.width = `${val}%`;
-        sliderHandle.style.left = `${val}%`;
-        
-        const containerWidth = sliderInput.offsetWidth;
-        if(imgBefore) imgBefore.style.width = `${containerWidth}px`;
-    });
-
-    // Resize Fix
-    window.addEventListener('resize', () => {
-         const newWidth = sliderInput.offsetWidth;
-         if(imgBefore) imgBefore.style.width = `${newWidth}px`;
-    });
-    // Initial Fix
-    setTimeout(() => {
-        if(imgBefore) imgBefore.style.width = `${sliderInput.offsetWidth}px`;
-    }, 100);
-
-
-    // B. Auto-Rotate Images Logic
-    let imgIndex = 0;
-    
-    // Set Initial
-    imgAfter.src = comparisonImages[0];
-    imgBefore.src = comparisonImages[0];
-
-    setInterval(() => {
-        imgIndex = (imgIndex + 1) % comparisonImages.length;
-        
-        // 1. Fade Out
-        imgAfter.style.opacity = '0.5';
-        imgBefore.style.opacity = '0.5';
-
-        setTimeout(() => {
-            // 2. Change Source
-            imgAfter.src = comparisonImages[imgIndex];
-            imgBefore.src = comparisonImages[imgIndex];
-            
-            // 3. Fade In
-            imgAfter.style.opacity = '1';
-            imgBefore.style.opacity = '1';
-        }, 500);
-
-    }, 5000); // Change every 5 seconds
-}
-
-// Initialize on Load
-document.addEventListener('DOMContentLoaded', () => {
-    initVideoPlaylist();
-    initComparisonSlider();
-});
-
-
 //GALLERY PAGE//
 /* =========================================
    GALLERY PAGE LOGIC
@@ -657,29 +531,29 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- 1. PHOTO DATA (Images Only) ---
 const photoData = [
     // Safari
-    { src: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800", cat: "safari", title: "Lion King" },
-    { src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800", cat: "safari", title: "Ngorongoro Crater" },
-    { src: "https://images.unsplash.com/photo-1534438062562-5813589c37ce?q=80&w=800", cat: "safari", title: "The Great Migration" },
-    { src: "https://images.unsplash.com/photo-1551009175-8a68da93d5f9?q=80&w=800", cat: "safari", title: "Elephants at Sunset" },
+    { src: "image/1 (13).jpg", cat: "safari", title: "Lion King" },
+    { src: "image/1 (10).jpg", cat: "safari", title: "Ngorongoro Crater" },
+    { src: "image/1 (15).jpg", cat: "safari", title: "The Great Migration" },
+    { src: "image/1 (19).jpg", cat: "safari", title: "Elephants at Sunset" },
     
     // Beach
-    { src: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c78?q=80&w=800", cat: "beach", title: "Nungwi Turquoise" },
-    { src: "https://images.unsplash.com/photo-1586861635167-e5223aeb4227?q=80&w=800", cat: "beach", title: "Sandbank Relax" },
-    { src: "https://images.unsplash.com/photo-1576487248805-cf45f6bcc67f?q=80&w=800", cat: "beach", title: "Traditional Dhow" },
+    { src: "image/1 (1).jpg", cat: "beach", title: "Nungwi Turquoise" },
+    { src: "image/1 (2).jpg", cat: "beach", title: "Sandbank Relax" },
+    { src: "image/1 (9).jpg", cat: "beach", title: "Traditional Dhow" },
 
     // Culture
-    { src: "https://images.unsplash.com/photo-1534764878233-1466795f543e?q=80&w=800", cat: "culture", title: "Stone Town Alleys" },
-    { src: "https://images.unsplash.com/photo-1623164282064-071c3682979e?q=80&w=800", cat: "culture", title: "Spice Farm Colors" }
+    { src: "image/1 (7).jpg", cat: "culture", title: "Stone Town Alleys" },
+    { src: "image/1 (6).jpg", cat: "culture", title: "Spice Farm Colors" }
 ];
 
 // --- 2. VIDEO DATA (Videos Only) ---
 const videoData = [
-    { src: "https://assets.mixkit.co/videos/preview/mixkit-lion-walking-in-the-savannah-4061-large.mp4", title: "Safari Adventure" },
-    { src: "https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4", title: "Nungwi Vibes" },
-    { src: "https://assets.mixkit.co/videos/preview/mixkit-girl-in-neon-sign-1232-large.mp4", title: "Nightlife & Music" },
-    { src: "https://assets.mixkit.co/videos/preview/mixkit-couple-walking-by-the-beach-at-sunset-4020-large.mp4", title: "Romantic Getaway" },
-    { src: "https://assets.mixkit.co/videos/preview/mixkit-top-aerial-shot-of-seashore-with-rocks-1090-large.mp4", title: "Aerial Drone View" },
-    { src: "https://assets.mixkit.co/videos/preview/mixkit-pool-at-a-luxury-hotel-resort-4171-large.mp4", title: "Luxury Resort Tour" }
+    { src: "image/video.mp4", title: "Safari Adventure" },
+    { src: "image/video.mp4", title: "Nungwi Vibes" },
+    { src: "image/video.mp4", title: "Nightlife & Music" },
+    { src: "image/video.mp4", title: "Romantic Getaway" },
+    { src: "image/video.mp4", title: "Aerial Drone View" },
+    { src: "image/video.mp4", title: "Luxury Resort Tour" }
 ];
 
 // STATE TRACKING
@@ -973,3 +847,192 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(siteFooter);
 
 });
+
+
+
+//booking now//
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('reservationForm');
+    
+    // Safety check in case the script runs on a page without the booking form
+    if(!form) return; 
+
+    const servicePackage = document.getElementById('servicePackage');
+    const paymentRadios = document.querySelectorAll('input[name="paymentType"]');
+    const amountDisplay = document.getElementById('amountDisplay');
+    const calculationDetails = document.getElementById('calculationDetails');
+    const btnAmount = document.getElementById('btnAmount');
+    
+    const proceedBtn = document.getElementById('proceedBtn');
+    const proceedBtnContainer = document.getElementById('proceedBtnContainer');
+    const paymentSection = document.getElementById('paymentSection');
+
+    // Elements for Guest Logic
+    const guestCounterWrapper = document.getElementById('guestCounterWrapper');
+    const guestCountInput = document.getElementById('guestCount');
+    const btnMinus = document.getElementById('btnMinus');
+    const btnPlus = document.getElementById('btnPlus');
+    const guestNotice = document.getElementById('guestNotice');
+
+    // Set Minimum Date to Today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('bookingDate').setAttribute('min', today);
+
+    // --- 1. UNLOCK GUEST COUNTER WHEN PACKAGE IS SELECTED ---
+    servicePackage.addEventListener('change', () => {
+        if(servicePackage.value !== "0") {
+            guestCounterWrapper.classList.remove('opacity-60', 'cursor-not-allowed', 'bg-gray-100');
+            guestCounterWrapper.classList.add('bg-gray-50');
+            
+            btnMinus.removeAttribute('disabled');
+            btnPlus.removeAttribute('disabled');
+            
+            btnMinus.classList.add('hover:bg-gray-200', 'hover:text-[#F27D57]', 'text-gray-500');
+            btnPlus.classList.add('hover:bg-gray-200', 'hover:text-[#F27D57]', 'text-gray-500');
+            
+            guestNotice.classList.add('hidden'); 
+            updatePricing(); 
+        }
+    });
+
+    // --- 2. +/- GUEST COUNTER MATH ---
+    btnMinus.addEventListener('click', () => {
+        let currentVal = parseInt(guestCountInput.value);
+        if (currentVal > 1) {
+            guestCountInput.value = currentVal - 1;
+            updatePricing();
+        }
+    });
+
+    btnPlus.addEventListener('click', () => {
+        let currentVal = parseInt(guestCountInput.value);
+        if (currentVal < 10) { 
+            guestCountInput.value = currentVal + 1;
+            updatePricing();
+        }
+    });
+
+    // --- 3. DYNAMIC PRICING ENGINE ---
+    const updatePricing = () => {
+        const packagePrice = parseFloat(servicePackage.value) || 0;
+        
+        if(packagePrice === 0) {
+            amountDisplay.textContent = "$0.00";
+            btnAmount.textContent = "$0.00";
+            calculationDetails.textContent = "0 Guest(s) × 100%";
+            return;
+        }
+
+        const guests = parseInt(guestCountInput.value) || 1;
+        
+        let paymentMultiplier = 1; 
+        let scheduleText = "100%";
+        paymentRadios.forEach(radio => {
+            if (radio.checked) {
+                paymentMultiplier = parseFloat(radio.value);
+                if(paymentMultiplier === 0.5) scheduleText = "50% Deposit";
+            }
+        });
+
+        const finalAmount = (packagePrice * guests) * paymentMultiplier;
+        const formattedAmount = `$${finalAmount.toFixed(2)}`;
+        
+        amountDisplay.textContent = formattedAmount;
+        btnAmount.textContent = formattedAmount;
+        calculationDetails.textContent = `${guests} Guest(s) × ${scheduleText}`;
+    };
+
+    paymentRadios.forEach(radio => radio.addEventListener('change', updatePricing));
+
+    // --- 4. REVEAL SECURE CHECKOUT ---
+    proceedBtn.addEventListener('click', () => {
+        if(servicePackage.value === "0") {
+            alert("Please select a Service Package to proceed.");
+            servicePackage.focus();
+            return;
+        }
+
+        if (form.checkValidity()) {
+            proceedBtnContainer.style.display = 'none';
+            paymentSection.classList.add('active');
+            setTimeout(() => {
+                paymentSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+        } else {
+            form.reportValidity(); 
+        }
+    });
+
+    // --- 5. PAYMENT TAB & PROVIDER LOGIC ---
+    const tabCard = document.getElementById('tabCard');
+    const tabMobile = document.getElementById('tabMobile');
+    const cardProviders = document.getElementById('cardProviders');
+    const cardTypeBtns = document.querySelectorAll('.card-type-btn');
+    const mobileTypeBtns = document.querySelectorAll('.mobile-type-btn');
+    
+    const ccFields = document.getElementById('ccFields');
+    const paypalFields = document.getElementById('paypalFields');
+    const mobileFields = document.getElementById('mobileFields');
+
+    // Swap to Card
+    tabCard.addEventListener('click', () => {
+        tabCard.classList.add('active');
+        tabMobile.classList.remove('active');
+        
+        cardProviders.classList.remove('hidden'); 
+        mobileFields.classList.add('hidden'); 
+        mobileFields.classList.remove('block');
+        
+        const activeCard = document.querySelector('.card-type-btn.active');
+        if(activeCard) activeCard.click(); 
+    });
+
+    // Swap to Mobile Money
+    tabMobile.addEventListener('click', () => {
+        tabMobile.classList.add('active');
+        tabCard.classList.remove('active');
+        
+        cardProviders.classList.add('hidden'); 
+        ccFields.classList.add('hidden'); 
+        ccFields.classList.remove('block');
+        paypalFields.classList.add('hidden'); 
+        paypalFields.classList.remove('block');
+        
+        mobileFields.classList.remove('hidden'); 
+        mobileFields.classList.add('block');
+    });
+
+    // Select Specific Card Type
+    cardTypeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            cardTypeBtns.forEach(b => b.classList.remove('active'));
+            const clickedBtn = e.currentTarget;
+            clickedBtn.classList.add('active');
+            
+            const type = clickedBtn.getAttribute('data-type');
+            
+            if (type === 'paypal') {
+                ccFields.classList.add('hidden');
+                ccFields.classList.remove('block');
+                paypalFields.classList.remove('hidden');
+                paypalFields.classList.add('block');
+            } else {
+                paypalFields.classList.add('hidden');
+                paypalFields.classList.remove('block');
+                ccFields.classList.remove('hidden');
+                ccFields.classList.add('block');
+            }
+        });
+    });
+
+    // Select Specific Mobile Network
+    mobileTypeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            mobileTypeBtns.forEach(b => b.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+        });
+    });
+});
+
+
+//guest//
