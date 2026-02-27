@@ -317,109 +317,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-//zanzibar//
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- 1. FILTERING LOGIC ---
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.exp-card');
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active style from all
-            filterBtns.forEach(b => {
-                b.classList.remove('bg-[#003C63]', 'text-white', 'shadow-lg');
-                b.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
-            });
 
-            // Add active style to clicked
-            btn.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
-            btn.classList.add('bg-[#003C63]', 'text-white', 'shadow-lg');
 
-            const filterValue = btn.getAttribute('data-filter');
 
-            cards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                
-                if (filterValue === 'all' || filterValue === category) {
-                    gsap.to(card, { display: "block", opacity: 1, scale: 1, duration: 0.4 });
-                } else {
-                    gsap.to(card, { opacity: 0, scale: 0.8, duration: 0.3, onComplete: () => card.style.display = "none" });
-                }
-            });
-        });
-    });
 
-    // --- 2. MODAL LOGIC ---
-    const modal = document.getElementById('experience-modal');
-    const modalCard = document.getElementById('modal-card');
-    const closeBtn = document.getElementById('close-modal');
-    const closeBtnBottom = document.getElementById('close-modal-bottom');
-    const backdrop = document.getElementById('modal-backdrop');
-    
-    // Elements to update inside modal
-    const mTitle = document.getElementById('modal-title');
-    const mTitleMobile = document.getElementById('modal-title-mobile');
-    const mImg = document.getElementById('modal-img');
-    const mDesc = document.getElementById('modal-desc');
-    const mTime = document.getElementById('modal-time');
-    const mPrice = document.getElementById('modal-price');
-    const mWhatsapp = document.getElementById('modal-whatsapp');
 
-    // Open Modal
-    document.querySelectorAll('.view-details-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-
-            // Get Data
-            const title = btn.getAttribute('data-title');
-            const img = btn.getAttribute('data-image');
-            const desc = btn.getAttribute('data-desc');
-            const time = btn.getAttribute('data-time');
-            const price = btn.getAttribute('data-price');
-            const waText = btn.getAttribute('data-whatsapp');
-
-            // Populate Modal
-            mTitle.innerText = title;
-            if(mTitleMobile) mTitleMobile.innerText = title;
-            mImg.src = img;
-            mDesc.innerText = desc;
-            mTime.innerText = time;
-            mPrice.innerText = price; // Set Price at bottom
-            
-            const phoneNumber = "255746319059"; 
-            mWhatsapp.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(waText)}`;
-
-            // Show
-            modal.classList.remove('hidden');
-            gsap.to(modalCard, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.2)" });
-        });
-    });
-
-    // Close Modal Function
-    const closeModal = () => {
-        gsap.to(modalCard, { 
-            scale: 0.9, 
-            opacity: 0, 
-            duration: 0.3, 
-            ease: "power2.in", 
-            onComplete: () => modal.classList.add('hidden')
-        });
-    };
-
-    // Attach Close Events
-    closeBtn.addEventListener('click', closeModal);
-    closeBtnBottom.addEventListener('click', closeModal); // Bottom Button
-    backdrop.addEventListener('click', closeModal);
-    
-    // Close on Escape Key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-            closeModal();
-        }
-    });
-
-});
 
 //tanznaia//
 document.addEventListener("DOMContentLoaded", () => {
@@ -524,9 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 //GALLERY PAGE//
-/* =========================================
-   GALLERY PAGE LOGIC
-   ========================================= */
+
 
 // --- 1. PHOTO DATA (Images Only) ---
 const photoData = [
@@ -1036,3 +937,393 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //guest//
+
+
+
+
+//zanzibar//
+// 1. Database of Experiences (Now with multiple images for slideshows)
+const experiencesDB = [
+    {
+        id: "kendwa",
+        title: "Kendwa Beach",
+        category: "water",
+        badge: "Watersports",
+        images: [
+            "https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1520483601560-389dff434fdf?q=80&w=800&auto=format&fit=crop"
+        ],
+        shortDesc: "Enjoy Zanzibar’s most famous beach with exciting water activities.",
+        mainDesc: "A world-famous stretch of white sand and crystal-clear turquoise waters. Kendwa Beach blends natural beauty with vibrant energy, making it a prime destination for water sports and ocean experiences.",
+        services: [
+            { name: "Zanzibar Clear Kayak", icon: "fi fi-rr-water", price: 150, desc: "Paddle across transparent waters while professional drone footage captures your journey from above.", includes: ["Posing guidance", "Photo assistance"], excludes: ["Drone footage"] },
+            { name: "Jet Car Experience", icon: "fi fi-rr-ship", price: 200, desc: "Enjoy a thrilling ride on a luxury jet car while our drone records dynamic aerial shots.", includes: ["Posing guidance", "Photo assistance", "Safety briefing"], excludes: ["Drone footage"] },
+            { name: "Jet Ski Adventure", icon: "fi fi-rr-dashboard", price: 180, desc: "Race across the ocean with powerful drone footage tracking your movement.", includes: ["Posing guidance", "Photo assistance", "Safety training", "Life jacket"], excludes: ["Drone footage"] },
+            { name: "Drone Photography", icon: "fi fi-rr-camera", price: 120, desc: "Professional aerial photos and cinematic videos of your beach experience.", includes: ["Premium full package", "Edited & Raw footage"], excludes: [] }
+        ]
+    },
+    {
+        id: "safariblue",
+        title: "Island Cruise (Safari Blue)",
+        category: "water",
+        badge: "Cruise",
+        images: [
+            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+        ],
+        shortDesc: "Cruise across turquoise waters to hidden sandbanks.",
+        mainDesc: "Enjoy a full-day island adventure across Zanzibar’s turquoise waters, exploring pristine sandbanks, hidden lagoons, and colorful coral reefs.",
+        services: [
+            { name: "Safari Blue Adventure", icon: "fi fi-rr-ship", price: 100, desc: "Classic ocean experience including swimming, snorkeling, relaxing on natural islands, and baobab tree exploration.", includes: ["Drinking water & Fruits", "BBQ seafood lunch", "Snorkelling tools", "All entry fees", "Guide", "Dhow"], excludes: ["Tips", "Items of personal nature", "Transport"] }
+        ]
+    },
+    {
+        id: "navigator",
+        title: "The Navigator",
+        category: "culture",
+        badge: "Culture",
+        images: [
+            "https://images.unsplash.com/photo-1576487248805-cf45f6bcc67f?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1543051932-6ef9f5f15e51?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1520483601560-389dff434fdf?q=80&w=800&auto=format&fit=crop"
+        ],
+        shortDesc: "Explore Zanzibar’s history, iconic landmarks, and vibrant markets.",
+        mainDesc: "A carefully curated journey through Zanzibar’s most iconic cultural and island attractions, blending history, nature, and local lifestyle.",
+        services: [
+            { name: "Prison Island Tour", icon: "fi fi-rr-island", price: 80, desc: "Discover the famous island sanctuary home to giant tortoises and historic ruins.", includes: ["Guide", "All entry fees", "Boat/Dhow"], excludes: ["Transport", "Tips"] },
+            { name: "Nakupenda Sandbank", icon: "fi fi-rr-sun", price: 90, desc: "Relax on a pristine white sandbank in the middle of turquoise waters.", includes: ["Drinking water & Fruits", "BBQ seafood lunch", "Boat/Dhow"], excludes: ["Transport", "Tips"] },
+            { name: "Stone Town Tour", icon: "fi fi-rr-building", price: 50, desc: "Walk through Zanzibar’s UNESCO-listed old town with a professional guide.", includes: ["Professional tour guide", "All entry fees"], excludes: ["Transport", "Tips"] },
+            { name: "Forodhani Night Market", icon: "fi fi-rr-moon", price: 30, desc: "End your day tasting local street food and experiencing the lively oceanfront.", includes: ["Professional tour guide"], excludes: ["Transport", "Street food costs"] }
+        ]
+    },
+    {
+        id: "botanist",
+        title: "The Botanist",
+        category: "nature",
+        badge: "Nature",
+        images: [
+            "https://images.unsplash.com/photo-1543051932-6ef9f5f15e51?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1576487248805-cf45f6bcc67f?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop"
+        ],
+        shortDesc: "Discover spice farms, tropical forests, and unique swimming caves.",
+        mainDesc: "A nature-rich journey through Zanzibar’s most beautiful landscapes, blending spice culture, wildlife encounters, and natural swimming caves.",
+        services: [
+            { name: "Spice Farm Tour", icon: "fi fi-rr-leaf", price: 40, desc: "Explore famous spice plantations and discover cloves, vanilla, and tropical fruits.", includes: ["Professional tour guide"], excludes: ["Transport", "Tips"] },
+            { name: "Jozani Chwaka Bay", icon: "fi fi-rr-tree", price: 60, desc: "Encounter rare red colobus monkeys in their natural habitat.", includes: ["Guide", "All entry fees"], excludes: ["Transport", "Tips"] },
+            { name: "Cave Swimming", icon: "fi fi-rr-water", price: 55, desc: "Swim in a crystal-clear underground cave pool formed over thousands of years.", includes: ["Guide", "All entry fees"], excludes: ["Transport", "Tips"] },
+            { name: "The Rock Restaurant", icon: "fi fi-rr-restaurant", price: 75, desc: "Enjoy a meal at Zanzibar’s most iconic oceanfront restaurant.", includes: ["All entry fees", "Guide"], excludes: ["Transport", "Buffet", "Tips"] }
+        ]
+    },
+    {
+        id: "mariner",
+        title: "The Mariner",
+        category: "water",
+        badge: "Wildlife",
+        images: [
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop"
+        ],
+        shortDesc: "Set sail with dolphin encounters and turtle swimming experiences.",
+        mainDesc: "An ocean-inspired journey that brings you closer to Zanzibar’s marine life and coastal traditions.",
+        services: [
+            { name: "Dolphin Adventure", icon: "fi fi-rr-fish", price: 90, desc: "Early-morning boat trip to spot and swim near dolphins in their natural environment.", includes: ["All entry fees", "Snorkelling tools", "Guide", "Boat"], excludes: ["Transport", "Tips"] },
+            { name: "Swim with Turtles", icon: "fi fi-rr-water", price: 50, desc: "Special swimming experience with sea turtles in calm waters.", includes: ["All entry fees", "Guide"], excludes: ["Transport", "Tips"] },
+            { name: "Sunset Dhow Cruise", icon: "fi fi-rr-ship", price: 80, desc: "Glide across the ocean aboard a traditional wooden dhow as the sun sets.", includes: ["Guide", "Dhow/Boat", "Entry fees", "Fruits/Water"], excludes: ["Transport", "Tips"] }
+        ]
+    },
+    {
+        id: "romantic",
+        title: "Romantic",
+        category: "couples",
+        badge: "Love",
+        images: [
+            "https://images.unsplash.com/photo-1520483601560-389dff434fdf?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+        ],
+        shortDesc: "Celebrate love with cinematic photoshoots and private sunset dinners.",
+        mainDesc: "A thoughtfully curated collection of intimate and unforgettable moments for couples seeking romance in breathtaking settings.",
+        services: [
+            { name: "Beach Proposal", icon: "fi fi-rr-heart", price: 350, desc: "A private, decorated beach setting created especially for your proposal.", includes: ["Beach setup", "Decoration", "Photo assistance"], excludes: ["Transport", "Videography"] },
+            { name: "Flying Dress Photoshoot", icon: "fi fi-rr-camera", price: 250, desc: "Cinematic photoshoot featuring flowing designer dresses.", includes: ["Dresses", "Posing guidance", "Photo assistance"], excludes: ["Transport", "Videography"] },
+            { name: "Sunset Yacht", icon: "fi fi-rr-ship", price: 600, desc: "Sail into the golden hour aboard a luxury yacht.", includes: ["Drinks", "Buffet", "Music"], excludes: ["Transport", "Photography"] },
+            { name: "Honeymoon Dinner", icon: "fi fi-rr-restaurant", price: 200, desc: "Exclusive candlelit dining experience on the beach.", includes: ["Setup", "Decoration"], excludes: ["Transport", "Photography"] }
+        ]
+    }
+];
+
+// Global trackers for slideshow intervals so we don't cause memory leaks
+let gridIntervals = [];
+let modalInterval = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const grid = document.getElementById('experiences-grid');
+    
+    function renderCards(filter = 'all') {
+        grid.innerHTML = '';
+        
+        // Clear existing grid image intervals when re-rendering filters
+        gridIntervals.forEach(clearInterval);
+        gridIntervals = [];
+
+        experiencesDB.forEach(exp => {
+            if(filter === 'all' || exp.category === filter) {
+                
+                // Generate HTML for all images in the array
+                const imageLayers = exp.images.map((img, idx) => 
+                    `<img src="${img}" class="slide-${exp.id} absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 group-hover:scale-110 ${idx === 0 ? 'opacity-100' : 'opacity-0'}">`
+                ).join('');
+
+                grid.innerHTML += `
+                    <div class="exp-card group relative h-[500px] rounded-[2.5rem] overflow-hidden cursor-pointer" onclick="openModal('${exp.id}')">
+                        
+                        ${imageLayers}
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute top-6 left-6 flex gap-2">
+                            <span class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20 flex items-center">
+                                <i class="fi fi-rr-star mr-1.5"></i> ${exp.badge}
+                            </span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="text-3xl font-bold text-white mb-2">${exp.title}</h3>
+                            <p class="text-gray-300 text-sm mb-6 line-clamp-2">${exp.shortDesc}</p>
+                            <button class="w-full bg-white text-[#003C63] font-bold py-3 rounded-xl hover:bg-[#F27D57] hover:text-white transition-colors flex items-center justify-center gap-2 shadow-lg">
+                                View Details <i class="fi fi-rr-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        // Initialize Grid Image Slideshows
+        setTimeout(() => {
+            experiencesDB.forEach(exp => {
+                if(filter === 'all' || exp.category === filter) {
+                    const images = document.querySelectorAll(`.slide-${exp.id}`);
+                    if (images.length > 1) {
+                        let currentIndex = 0;
+                        // Randomize start times slightly so they don't all change at the exact same millisecond
+                        const delay = 3000 + (Math.random() * 1000); 
+                        
+                        const interval = setInterval(() => {
+                            images[currentIndex].classList.remove('opacity-100');
+                            images[currentIndex].classList.add('opacity-0');
+                            
+                            currentIndex = (currentIndex + 1) % images.length;
+                            
+                            images[currentIndex].classList.remove('opacity-0');
+                            images[currentIndex].classList.add('opacity-100');
+                        }, delay);
+                        
+                        gridIntervals.push(interval);
+                    }
+                }
+            });
+        }, 100);
+    }
+
+    renderCards();
+
+    // 3. Filter Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            filterBtns.forEach(b => {
+                b.classList.remove('bg-[#003C63]', 'text-white', 'shadow-lg');
+                b.classList.add('bg-white', 'text-gray-600');
+            });
+            const target = e.currentTarget;
+            target.classList.remove('bg-white', 'text-gray-600');
+            target.classList.add('bg-[#003C63]', 'text-white', 'shadow-lg');
+            
+            renderCards(target.getAttribute('data-filter'));
+        });
+    });
+
+    // 4. Modal & Booking Logic
+    const modal = document.getElementById('experience-modal');
+    const modalCard = document.getElementById('modal-card');
+    const modalImgEl = document.getElementById('modal-img');
+    
+    window.openModal = function(id) {
+        const data = experiencesDB.find(x => x.id === id);
+        
+        // Setup Modal Image and start Modal Slideshow
+        modalImgEl.style.transition = 'opacity 0.5s ease-in-out';
+        modalImgEl.src = data.images[0];
+        
+        if (data.images.length > 1) {
+            let currentModalImgIndex = 0;
+            modalInterval = setInterval(() => {
+                modalImgEl.style.opacity = '0';
+                setTimeout(() => {
+                    currentModalImgIndex = (currentModalImgIndex + 1) % data.images.length;
+                    modalImgEl.src = data.images[currentModalImgIndex];
+                    modalImgEl.style.opacity = '1';
+                }, 500); // Wait for fade out to finish before swapping src
+            }, 3500);
+        }
+
+        document.getElementById('modal-title').textContent = data.title;
+        document.getElementById('modal-badge').textContent = data.badge;
+        document.getElementById('modal-desc').textContent = data.mainDesc;
+
+        let servicesHTML = '';
+
+        // 1. GENERATE INDIVIDUAL SERVICE CARDS
+        servicesHTML += data.services.map(srv => {
+            const incHTML = srv.includes.map(i => `<li class="flex items-start gap-1"><span class="text-green-500">✓</span> ${i}</li>`).join('');
+            const excHTML = srv.excludes.map(i => `<li class="flex items-start gap-1 text-gray-400"><span>×</span> ${i}</li>`).join('');
+            const singleBookMessage = `Hi Morix, I want to book the ${srv.name} at ${data.title}.`;
+            const singleBookUrl = `https://wa.me/0746319059?text=${encodeURIComponent(singleBookMessage)}`;
+            
+            return `
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow mb-4">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-full bg-[#F8FAFC] text-[#003C63] flex items-center justify-center text-xl shrink-0">
+                            <i class="${srv.icon}"></i>
+                        </div>
+                        <h5 class="font-bold text-[#003C63] text-lg leading-tight">${srv.name}</h5>
+                    </div>
+                    
+                    <p class="text-gray-600 text-sm mb-5">${srv.desc}</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-xs mb-5">
+                        ${srv.includes.length ? `<div>
+                            <strong class="block text-gray-800 mb-1">Includes</strong>
+                            <ul class="space-y-1 text-gray-600">${incHTML}</ul>
+                        </div>` : ''}
+                        
+                        ${srv.excludes.length ? `<div>
+                            <strong class="block text-gray-800 mb-1">Excludes</strong>
+                            <ul class="space-y-1">${excHTML}</ul>
+                        </div>` : ''}
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                        <div class="text-2xl font-black text-[#003C63]">$${srv.price}</div>
+                        <a href="${singleBookUrl}" target="_blank" class="bg-[#F8FAFC] border border-gray-200 text-[#003C63] hover:bg-[#F27D57] hover:border-[#F27D57] hover:text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all flex items-center gap-2">
+                            Book Service <i class="fi fi-rr-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // 2. CALCULATE FULL PACKAGE TOTALS
+        const totalPrice = data.services.reduce((sum, srv) => sum + srv.price, 0);
+        const allServiceNames = data.services.map(s => s.name).join(', ');
+        const bookAllMessage = `Hi Morix, I want to book the FULL ${data.title} package including: ${allServiceNames}.`;
+        const bookAllUrl = `https://wa.me/0746319059?text=${encodeURIComponent(bookAllMessage)}`;
+
+        // 3. RE-DESIGNED FULL PACKAGE CARD (Fixed Button Layout)
+        if (data.services.length > 1) {
+            servicesHTML += `
+                <div class="bg-[#003C63] text-white p-6 md:p-8 rounded-2xl mt-8 shadow-xl relative overflow-hidden border border-[#003C63]/50">
+                    <div class="absolute top-0 right-0 opacity-10 transform translate-x-4 -translate-y-4">
+                        <i class="fi fi-rr-star text-9xl"></i>
+                    </div>
+                    
+                    <div class="relative z-10 block w-full">
+                        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6 pb-6 border-b border-white/20">
+                            <div class="flex-1">
+                                <h4 class="text-2xl font-bold mb-2">Book the Full Package</h4>
+                                <p class="text-white/80 text-sm leading-relaxed max-w-lg">
+                                    Experience everything ${data.title} has to offer in one ultimate booking. Includes all services listed above.
+                                </p>
+                            </div>
+                            <div class="text-left md:text-right shrink-0">
+                                <span class="block text-xs uppercase tracking-widest text-white/60 mb-1">Total Value</span>
+                                <span class="text-4xl font-black text-[#F27D57]">$${totalPrice}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 w-full">
+                            <a href="${bookAllUrl}" target="_blank" class="flex-1 bg-[#25D366] hover:bg-[#20b858] text-white px-6 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20">
+                                <i class="fi fi-brands-whatsapp text-xl"></i> Chat via WhatsApp
+                            </a>
+                            <a href="booking.html?package=${data.id}" class="flex-1 bg-[#F27D57] hover:bg-white hover:text-[#003C63] text-white px-6 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#F27D57]/20">
+                                <i class="fi fi-rr-ticket text-xl"></i> Book via System
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        document.getElementById('modal-services-list').innerHTML = servicesHTML;
+
+        // Show Modal
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modalCard.classList.remove('scale-90', 'opacity-0');
+            modalCard.classList.add('scale-100', 'opacity-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    };
+
+    function closeModal() {
+        // Stop modal image from changing when closed
+        if(modalInterval) clearInterval(modalInterval);
+        
+        modalCard.classList.remove('scale-100', 'opacity-100');
+        modalCard.classList.add('scale-90', 'opacity-0');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modalImgEl.style.opacity = '1'; // Reset opacity for next open
+        }, 300);
+        document.body.style.overflow = 'auto';
+    }
+
+    document.getElementById('close-modal').addEventListener('click', closeModal);
+    document.getElementById('close-modal-bottom').addEventListener('click', closeModal);
+    document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+});
+
+
+//tranferr//
+// ==========================================
+// ZANZIBAR TRANSFERS TAB LOGIC
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const transferTabs = document.querySelectorAll('.transfer-tab');
+    const transferGrids = document.querySelectorAll('.transfer-grid');
+
+    transferTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // 1. Reset all tabs to inactive styles
+            transferTabs.forEach(t => {
+                t.classList.remove('bg-[#003C63]', 'text-white', 'shadow-lg');
+                t.classList.add('bg-gray-50', 'text-[#003C63]');
+            });
+
+            // 2. Set clicked tab to active styles
+            tab.classList.remove('bg-gray-50', 'text-[#003C63]');
+            tab.classList.add('bg-[#003C63]', 'text-white', 'shadow-lg');
+
+            // 3. Hide all grids
+            transferGrids.forEach(grid => {
+                grid.classList.add('hidden');
+                grid.classList.remove('grid'); // Tailwind fix for toggling display:grid
+            });
+
+            // 4. Show the target grid
+            const targetId = tab.getAttribute('data-target');
+            const targetGrid = document.getElementById(targetId);
+            if (targetGrid) {
+                targetGrid.classList.remove('hidden');
+                targetGrid.classList.add('grid');
+                
+                // Add a quick fade-in animation
+                targetGrid.style.animation = 'fadeInTab 0.4s ease-out forwards';
+            }
+        });
+    });
+});
