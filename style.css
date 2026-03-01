@@ -249,3 +249,13 @@ img {
 
 
 /*guest*/
+
+
+/*transfer*/
+@keyframes fadeUpAnim {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-up-anim {
+    animation: fadeUpAnim 0.5s ease-out forwards;
+}
