@@ -16,7 +16,53 @@
     
     <link rel="stylesheet" href="styles.css">
 
-    <script src="header.js" defer></script>
+    <style>
+        /* Toast Notification */
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #F27D57;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            animation: slideInUp 0.3s ease-out, slideOutDown 0.3s ease-out 2.7s forwards;
+            font-weight: 500;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutDown {
+            to {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Cart item styles */
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        .cart-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body class="bg-gray-50">
@@ -36,8 +82,8 @@
                 </div>
                 <h2 class="font-[Playfair_Display] text-2xl font-bold text-[#003C63] mb-3">Fast Track Booking</h2>
                 <p class="text-gray-500 text-sm mb-6 leading-relaxed">Connect directly with our reservation team on WhatsApp for instant booking and priority support.</p>
-                <a href="https://wa.me/2557XXXXXXXX" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-green-200">
-                    <i class='bx bxl-whatsapp text-xl'></i> +255 7XX XXX XXX
+                <a href="https://wa.me/255746319059" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-green-200">
+                    <i class='bx bxl-whatsapp text-xl'></i> +255746319059
                 </a>
             </div>
 
@@ -64,11 +110,40 @@
         </aside>
 
         <main class="lg:col-span-8 order-1 lg:order-2">
-            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100">
-                <div class="mb-10 border-b border-gray-100 pb-8">
+            <div id="booking-cart" class="bg-white p-8 md:p-12 rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 mb-8">
+                <div class="mb-8 border-b border-gray-100 pb-6">
+                    <h1 class="font-[Playfair_Display] text-4xl md:text-5xl font-bold text-[#003C63] mb-2">Your Booking Cart</h1>
+                    <p class="text-gray-500 font-medium">Review and manage your selected experiences</p>
+                </div>
+
+                <div id="cart-items" class="space-y-4 mb-8">
+                    </div>
+
+                <div id="cart-total" class="bg-[#003C63] rounded-2xl p-6 flex justify-between items-center shadow-lg shadow-[#003C63]/20 text-white mb-6">
+                    <div>
+                        <span class="block text-xs text-[#F27D57] font-bold tracking-widest mb-1 uppercase">Total Amount</span>
+                        <span class="text-sm text-gray-300" id="total-items">0 items</span>
+                    </div>
+                    <div class="font-[Playfair_Display] text-4xl font-bold" id="total-price">$0.00</div>
+                </div>
+
+                <div class="text-center">
+                    <button id="proceed-to-payment" class="bg-[#F27D57] hover:bg-[#d96743] text-white font-bold text-lg py-4 px-8 rounded-xl shadow-lg shadow-[#F27D57]/30 transition-all transform hover:-translate-y-1">
+                        Proceed to Payment
+                    </button>
+                </div>
+            </div>
+
+            <div id="booking-form" class="bg-white p-8 md:p-12 rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100" style="display: none;">
+                <div class="mb-10 border-b border-gray-100 pb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
                     <h1 class="font-[Playfair_Display] text-4xl md:text-5xl font-bold text-[#003C63] mb-2">Secure Reservation</h1>
                     <p class="text-gray-500 font-medium">Morix Beyond Global Booking Engine</p>
                 </div>
+                <button type="button" onclick="editMyBooking()" class="shrink-0 bg-[#F27D57] hover:bg-[#d96743] text-white font-semibold px-6 py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors shadow-md">
+                    <i class='bx bx-edit text-lg'></i> Edit My Booking
+                </button>
+            </div>
 
                 <form id="reservationForm" class="space-y-8" onsubmit="event.preventDefault();">
                     
@@ -106,33 +181,6 @@
 
                     <hr class="border-gray-100">
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Service Package</label>
-                            <select id="servicePackage" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors cursor-pointer" required>
-                                <option value="0" disabled selected>Choose a Package...</option>
-                                <option value="150">Standard ($150)</option>
-                                <option value="300">Premium ($300)</option>
-                                <option value="600">VIP ($600)</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Number of Guests</label>
-                            <div id="guestCounterWrapper" class="flex items-center border border-gray-200 rounded-xl overflow-hidden bg-gray-100 opacity-60 cursor-not-allowed transition-colors focus-within:ring-2 focus-within:ring-[#F27D57] focus-within:bg-white">
-                                <button type="button" id="btnMinus" class="w-14 py-4 text-gray-400 font-bold text-xl transition-colors" disabled>-</button>
-                                <input type="number" id="guestCount" min="1" max="10" value="1" class="w-full text-center bg-transparent py-4 font-bold text-gray-900 pointer-events-none hide-arrows" readonly>
-                                <button type="button" id="btnPlus" class="w-14 py-4 text-gray-400 font-bold text-xl transition-colors" disabled>+</button>
-                            </div>
-                            <p id="guestNotice" class="text-[10px] text-[#F27D57] mt-1 font-semibold uppercase tracking-widest">Select a package first</p>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Date</label>
-                            <input type="date" id="bookingDate" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors cursor-pointer" required>
-                        </div>
-                    </div>
-
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-3">Payment Schedule</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -166,11 +214,14 @@
                     </div>
 
                     <div id="paymentSection" class="reveal-section bg-white rounded-2xl p-8 border-2 border-[#003C63]/10 shadow-2xl">
-                        <h3 class="font-[Playfair_Display] text-2xl font-bold text-[#003C63] mb-6 flex items-center gap-2">
-                            <i class='bx bx-lock-alt text-[#F27D57]'></i> Secure Checkout
-                        </h3>
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-[Playfair_Display] text-2xl font-bold text-[#003C63] flex items-center gap-2">
+                                <i class='bx bx-lock-alt text-[#F27D57]'></i> Secure Reservation
+                            </h3>
+                            
+                        </div>
                         
-                        <div class="flex gap-4 mb-6">
+                        <div class="hidden md:flex gap-4 mb-6">
                             <button type="button" id="tabCard" class="payment-tab active flex-1 border-2 border-gray-200 text-gray-500 font-semibold py-4 rounded-xl flex items-center justify-center gap-2 transition-all">
                                 <i class='bx bx-credit-card text-2xl'></i> <span class="hidden sm:inline">Credit / Debit Card</span><span class="sm:hidden">Card</span>
                             </button>
@@ -179,18 +230,54 @@
                             </button>
                         </div>
 
-                        <div id="cardProviders" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-                            <button type="button" data-type="credit" class="card-type-btn active border-2 border-gray-200 text-gray-600 font-medium py-3 rounded-lg flex flex-col items-center gap-1 transition-all">
-                                <i class='bx bxl-visa text-3xl'></i> <span class="text-xs">Credit/Visa</span>
+                        <div class="md:hidden mb-6">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">Select Payment Method</label>
+                            <select id="mobilePaymentMethod" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors font-medium">
+                                <option value="card">Credit / Debit Card</option>
+                                <option value="mobile">Mobile Money</option>
+                            </select>
+                        </div>
+
+                        <div id="mobileCardTypeContainer" class="md:hidden mb-6">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">Select Card Type</label>
+                            <select id="mobileCardType" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors font-medium">
+                                <option value="credit">Visa</option>
+                                <option value="mastercard">MasterCard</option>
+                                <option value="prepaid">Prepaid</option>
+                                <option value="paypal">PayPal</option>
+                            </select>
+                        </div>
+
+                        <div id="mobileNetworkContainer" class="md:hidden mb-6 hidden">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">Select Mobile Network</label>
+                            <select id="mobileNetworkType" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors font-medium">
+                                <option value="vodacom">Vodacom</option>
+                                <option value="yas">Mix by Yas</option>
+                                <option value="halopesa">HaloPesa</option>
+                                <option value="airtel">Airtel</option>
+                            </select>
+                        </div>
+
+                        <div id="cardProviders" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6" style="display: grid;">
+                            <button type="button" data-type="credit" class="card-type-btn active border-2 border-gray-200 font-medium py-4 rounded-lg flex flex-col items-center gap-2 transition-all">
+                                <i class='bx bxl-visa text-[40px] text-[#1434CB]'></i>
+                                <span class="text-xs font-bold">Visa</span>
                             </button>
-                            <button type="button" data-type="mastercard" class="card-type-btn border-2 border-gray-200 text-gray-600 font-medium py-3 rounded-lg flex flex-col items-center gap-1 transition-all">
-                                <i class='bx bxl-mastercard text-3xl'></i> <span class="text-xs">MasterCard</span>
+                            <button type="button" data-type="mastercard" class="card-type-btn border-2 border-gray-200 font-medium py-4 rounded-lg flex flex-col items-center gap-2 transition-all">
+                                <svg class="w-10 h-10" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="7.5" cy="7.5" r="7.5" fill="#EB001B"/>
+                                    <circle cx="16.5" cy="7.5" r="7.5" fill="#F79E1B"/>
+                                    <path d="M12 13.9142C10.6622 12.5614 9.83984 10.6231 9.83984 8.50002C9.83984 6.3769 10.6622 4.43864 12 3.08582C13.3378 4.43864 14.1602 6.3769 14.1602 8.50002C14.1602 10.6231 13.3378 12.5614 12 13.9142Z" fill="#FF5F00"/>
+                                </svg>
+                                <span class="text-xs font-bold">MasterCard</span>
                             </button>
-                            <button type="button" data-type="prepaid" class="card-type-btn border-2 border-gray-200 text-gray-600 font-medium py-3 rounded-lg flex flex-col items-center gap-1 transition-all">
-                                <i class='bx bx-credit-card-front text-3xl'></i> <span class="text-xs">Prepaid</span>
+                            <button type="button" data-type="prepaid" class="card-type-btn border-2 border-gray-200 font-medium py-4 rounded-lg flex flex-col items-center gap-2 transition-all">
+                                <i class='bx bx-credit-card-front text-[40px] text-[#003D7A]'></i>
+                                <span class="text-xs font-bold">Prepaid</span>
                             </button>
-                            <button type="button" data-type="paypal" class="card-type-btn border-2 border-gray-200 text-gray-600 font-medium py-3 rounded-lg flex flex-col items-center gap-1 transition-all">
-                                <i class='bx bxl-paypal text-3xl'></i> <span class="text-xs">PayPal</span>
+                            <button type="button" data-type="paypal" class="card-type-btn border-2 border-gray-200 font-medium py-4 rounded-lg flex flex-col items-center gap-2 transition-all">
+                                <i class='bx bxl-paypal text-[40px] text-[#003087]'></i>
+                                <span class="text-xs font-bold">PayPal</span>
                             </button>
                         </div>
 
@@ -213,7 +300,7 @@
                         <div id="mobileFields" class="hidden space-y-6">
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-3">Select Network</label>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <div class="hidden md:grid grid-cols-2 md:grid-cols-4 gap-3">
                                     <button type="button" class="mobile-type-btn active border-2 border-gray-200 py-3 rounded-lg flex flex-col items-center justify-center transition-all">
                                         <span class="text-sm font-bold text-red-600">Vodacom</span>
                                     </button>
@@ -250,20 +337,180 @@
     </div>
 </section>
 
-
-<!--
-
-         <button id="login-btn" class="nav-link-top px-6 py-2 bg--morix-navy text-white rounded-xl font-semibold transition-all duration-300 ease-out hover:bg-morix-orange hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(242,125,87,0.4)]">
-    Guest Handover -->
-
-
-
-
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="animations.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        // Booking Cart Functions
+        window.bookingItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
+
+        function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            const totalPrice = document.getElementById('total-price');
+            const totalItems = document.getElementById('total-items');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            if (window.bookingItems.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty. Add some experiences from our pages!</p>';
+                totalPrice.textContent = '$0.00';
+                totalItems.textContent = '0 items';
+                return;
+            }
+            
+            window.bookingItems.forEach((item, index) => {
+                const price = parseFloat(item.price.replace('$', ''));
+                total += price;
+                
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'flex justify-between items-center p-4 bg-gray-50 rounded-xl border border-gray-200';
+                itemDiv.innerHTML = `
+                    <div class="flex-1">
+                        <h4 class="font-bold text-[#003C63]">${item.name}</h4>
+                        <p class="text-gray-600 text-sm">${item.price}</p>
+                    </div>
+                    <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 p-2">
+                        <i class="fi fi-rr-trash text-lg"></i>
+                    </button>
+                `;
+                cartItems.appendChild(itemDiv);
+            });
+            
+            totalPrice.textContent = `$${total.toFixed(2)}`;
+            totalItems.textContent = `${window.bookingItems.length} item${window.bookingItems.length > 1 ? 's' : ''}`;
+        }
+
+        function removeFromCart(index) {
+            window.bookingItems.splice(index, 1);
+            localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+            renderCart();
+            updateHeaderCounter();
+        }
+
+        function updateHeaderCounter() {
+            const mobileCounter = document.querySelector('.mobile-booking-count');
+            const desktopCounter = document.querySelector('.desktop-booking-count');
+            const count = window.bookingItems.length;
+            
+            if (mobileCounter) mobileCounter.textContent = count;
+            if (desktopCounter) desktopCounter.textContent = count;
+        }
+
+        // Proceed to payment
+        document.getElementById('proceed-to-payment').addEventListener('click', function() {
+            document.getElementById('booking-cart').style.display = 'none';
+            document.getElementById('booking-form').style.display = 'block';
+        });
+
+        // =====================================
+        // MOBILE PAYMENT METHOD SELECTOR
+        // =====================================
+        const mobilePaymentMethod = document.getElementById('mobilePaymentMethod');
+        const mobileCardTypeContainer = document.getElementById('mobileCardTypeContainer');
+        const mobileNetworkContainer = document.getElementById('mobileNetworkContainer');
+
+        if(mobilePaymentMethod) {
+            mobilePaymentMethod.addEventListener('change', (e) => {
+                if(e.target.value === 'card') {
+                    // Show card selector
+                    mobileCardTypeContainer.style.display = 'block';
+                    mobileNetworkContainer.style.display = 'none';
+                    mobileNetworkContainer.classList.add('hidden');
+                    
+                    // Show card input fields
+                    ccFields.classList.remove('hidden');
+                    ccFields.classList.add('block');
+                    paypalFields.classList.add('hidden');
+                    paypalFields.classList.remove('block');
+                    mobileFields.classList.add('hidden');
+                    mobileFields.classList.remove('block');
+                } else if(e.target.value === 'mobile') {
+                    // Show mobile network selector
+                    mobileNetworkContainer.style.display = 'block';
+                    mobileNetworkContainer.classList.remove('hidden');
+                    mobileCardTypeContainer.style.display = 'none';
+                    
+                    // Show mobile input fields
+                    mobileFields.classList.remove('hidden');
+                    mobileFields.classList.add('block');
+                    ccFields.classList.add('hidden');
+                    ccFields.classList.remove('block');
+                    paypalFields.classList.add('hidden');
+                    paypalFields.classList.remove('block');
+                }
+            });
+        }
+
+        // =====================================
+        // FIXED DESKTOP CARD VISIBILITY
+        // =====================================
+        const tabCard = document.getElementById('tabCard');
+        const tabMobile = document.getElementById('tabMobile');
+        const cardProviders = document.getElementById('cardProviders');
+        const cardTypeBtns = document.querySelectorAll('.card-type-btn');
+        const ccFields = document.getElementById('ccFields');
+        const paypalFields = document.getElementById('paypalFields');
+        const mobileFields = document.getElementById('mobileFields');
+
+        if(tabCard && tabMobile) {
+            tabCard.addEventListener('click', () => {
+                tabCard.classList.add('active');
+                tabMobile.classList.remove('active');
+                
+                // Force grid display instead of relying on tailwind classes that get stuck
+                cardProviders.style.display = 'grid'; 
+                
+                mobileFields.classList.add('hidden'); 
+                mobileFields.classList.remove('block');
+                const activeCard = document.querySelector('.card-type-btn.active');
+                if(activeCard) activeCard.click(); 
+            });
+
+            tabMobile.addEventListener('click', () => {
+                tabMobile.classList.add('active');
+                tabCard.classList.remove('active');
+                
+                // Force hide display so it works on desktop and mobile
+                cardProviders.style.display = 'none'; 
+                
+                ccFields.classList.add('hidden'); 
+                ccFields.classList.remove('block');
+                paypalFields.classList.add('hidden'); 
+                paypalFields.classList.remove('block');
+                mobileFields.classList.remove('hidden'); 
+                mobileFields.classList.add('block');
+            });
+        }
+
+        cardTypeBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                cardTypeBtns.forEach(b => b.classList.remove('active'));
+                const clickedBtn = e.currentTarget;
+                clickedBtn.classList.add('active');
+                const type = clickedBtn.getAttribute('data-type');
+                
+                if (type === 'paypal') {
+                    ccFields.classList.add('hidden');
+                    ccFields.classList.remove('block');
+                    paypalFields.classList.remove('hidden');
+                    paypalFields.classList.add('block');
+                } else {
+                    paypalFields.classList.add('hidden');
+                    paypalFields.classList.remove('block');
+                    ccFields.classList.remove('hidden');
+                    ccFields.classList.add('block');
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', function() {
+            renderCart();
+            updateHeaderCounter();
+        });
+    </script>
 </body>
 </html>

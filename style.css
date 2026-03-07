@@ -19,7 +19,8 @@ h1, h2, h3, h4 {
 /* =========================================
    ANIMATION PREPARATION
    This hides elements initially so GSAP can 
-   fade them in smoothly.
+   fade them in smoothly. But they should be
+   visible after a short delay as a fallback.
    ========================================= */
 section:not(:first-child) h2, 
 section:not(:first-child) p, 
@@ -27,7 +28,14 @@ section:not(:first-child) .grid > *,
 section:not(:first-child) span.block,
 section:not(:first-child) .group {
     opacity: 0;
-    visibility: hidden; 
+    animation: fallbackFadeIn 0.8s ease-out 0.5s forwards;
+}
+
+@keyframes fallbackFadeIn {
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 /* =========================================
@@ -92,18 +100,68 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* Icon Filters */
-/* Makes icons white (for dark backgrounds) */
-.brightness-0 {
-    filter: brightness(0) invert(1);
+/* Payment Method Hover & Active States */
+.card-type-btn.active,
+.mobile-type-btn.active {
+    color: white !important;
 }
 
-/* why chhose */
+/* Card Type Button Active States Only */
+.card-type-btn.active[data-type="credit"] {
+    background-color: #1434CB !important;
+    border-color: #1434CB !important;
+    color: white !important;
+}
 
+.card-type-btn.active[data-type="mastercard"] {
+    background-color: #EB001B !important;
+    border-color: #EB001B !important;
+    color: white !important;
+}
 
+.card-type-btn.active[data-type="prepaid"] {
+    background-color: #003D7A !important;
+    border-color: #003D7A !important;
+    color: white !important;
+}
 
+.card-type-btn.active[data-type="paypal"] {
+    background-color: #003087 !important;
+    border-color: #003087 !important;
+    color: white !important;
+}
 
+/* Mobile Network Button Active States (Desktop view) */
+#mobileFields .mobile-type-btn.active:nth-child(1) {
+    background-color: #dc2626 !important;
+    border-color: #dc2626 !important;
+}
 
+#mobileFields .mobile-type-btn.active:nth-child(2) {
+    background-color: #9333ea !important;
+    border-color: #9333ea !important;
+}
+
+#mobileFields .mobile-type-btn.active:nth-child(3) {
+    background-color: #f97316 !important;
+    border-color: #f97316 !important;
+}
+
+#mobileFields .mobile-type-btn.active:nth-child(4) {
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+}
+
+/* Prevent dropdown layout shift */
+select {
+    min-height: 56px;
+    height: 56px;
+}
+
+#mobileCardTypeContainer,
+#mobileNetworkContainer {
+    min-height: 280px;
+}
 
 /*fqs*?
 /* Base */
@@ -242,9 +300,9 @@ img {
 
 .booking-engine .card-type-btn.active, 
 .booking-engine .mobile-type-btn.active { 
-    border-color: #F27D57; 
-    background-color: #fff5f2; 
-    color: #F27D57; 
+    border-color: #003C63;
+    background-color: #f0f7ff;
+    color: #003C63;
 }
 
 
@@ -259,3 +317,5 @@ img {
 .fade-up-anim {
     animation: fadeUpAnim 0.5s ease-out forwards;
 }
+
+/*safris*/

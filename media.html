@@ -16,14 +16,14 @@
     
     <link rel="stylesheet" href="styles.css">
 
-    <script src="header.js" defer></script>
+
 </head>
 
 <body class="bg-gray-50">
 
     <header id="main-header"></header>
 
-<section class="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#001E33] mt-20">
+    <section class="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#001E33] mt-20">
         <div class="absolute inset-0 z-0 parallax-wrapper">
             <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=2500&auto=format&fit=crop" 
                  alt="Cinematic Zanzibar" 
@@ -48,19 +48,9 @@
             </div>
         </div>
     </section>
+    
 
-    <section class="py-24 bg-[#001E33] text-white relative">
-        <div class="container mx-auto px-6 text-center max-w-4xl fade-up">
-            <p class="text-2xl md:text-3xl font-light leading-relaxed text-gray-300">
-                At Morix Beyond Zanzibar, we don’t just take photos and videos. We create cinematic stories that capture the emotion and beauty of your Zanzibar experience.
-            </p>
-            <p class="text-xl text-gray-400 mt-8 font-light">
-                From beach adventures to luxury resorts and romantic moments, our visual services are designed to elevate memories and brands through professional storytelling.
-            </p>
-        </div>
-    </section>
-
-    <section class="py-24 bg-white">
+     <section class="py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 fade-up">
                 <h2 class="text-4xl font-bold text-[#003C63]">SERVICES OFFERED</h2>
@@ -102,27 +92,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-black text-white relative overflow-hidden">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-6 fade-up">PORTFOLIO SECTION</h2>
-            <p class="text-gray-400 mb-16 fade-up font-light tracking-widest uppercase">Every frame is crafted to tell a story and inspire travel.</p>
-            
-            <div class="flex justify-center py-10">
-            <div class="w-full max-w-md group relative rounded-3xl overflow-hidden shadow-xl border border-white/10 bg-black">
-                
-                <video autoplay muted loop playsinline class="w-full aspect-video object-cover opacity-90 group-hover:opacity-100 transition-opacity">
-                    <source src="image/video.mp4" type="video/mp4">
-                </video>
 
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 text-white">
-                        <i class="fi fi-rr-play text-xs"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
 
     <section class="py-24 bg-[#003C63] text-white">
         <div class="container mx-auto px-6">
@@ -161,77 +131,199 @@
         </div>
     </section>
 
-    <section class="py-24 bg-[#F8FAFC]" id="packages">
-        <div class="container mx-auto px-6">
+    <section class="py-32 bg-[#050914] relative overflow-hidden" id="packages">
+        
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#003C63] rounded-full blur-[150px] opacity-40 pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-[#F27D57] rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 max-w-[1400px]">
             
-            <div class="text-center mb-16 fade-up">
-                <h2 class="text-4xl font-bold text-[#003C63]">PACKAGES (OPTIONAL FORMAT)</h2>
+            <div class="text-center mb-20 fade-up">
+                <span class="inline-block border border-[#F27D57]/30 bg-[#F27D57]/10 text-[#F27D57] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 backdrop-blur-md">Media Services</span>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tighter" style="font-family: 'Playfair Display', serif;">Choose Your Package</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-center">
                 
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-lg border border-gray-100 fade-up">
-                    <h3 class="text-2xl font-bold text-[#003C63] mb-6">Short Experience Shoot</h3>
-                    <ul class="space-y-4 text-gray-600 mb-8">
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-check text-[#F27D57]"></i> 30–60 minutes</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-check text-[#F27D57]"></i> Edited photos & short video</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-check text-[#F27D57]"></i> Ideal for couples and activities</li>
-                    </ul>
+                <div class="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col transition-all duration-200 hover:border-[#F27D57]/50 hover:bg-white/10 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(242,125,87,0.2)] fade-up h-full">
+                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-60 transition-opacity duration-200">
+                        <i class="fi fi-rr-camera-retro text-6xl text-white"></i>
+                    </div>
+                    
+                    <div class="inline-flex items-center gap-2 bg-[#003C63]/50 border border-white/10 px-4 py-1.5 rounded-full w-max mb-6">
+                        <i class="fi fi-rr-clock text-[#F27D57] text-xs mt-0.5"></i>
+                        <span class="text-gray-300 text-xs font-bold uppercase tracking-widest">30–60 Minutes</span>
+                    </div>
+
+                    <h3 class="text-3xl font-bold text-white mb-2 leading-tight">Short Experience <br>Shoot</h3>
+                    <p class="text-gray-400 text-sm font-light mb-8 h-10">Perfect for quick memories, activities, and social media content.</p>
+                    
+                    <div class="mb-8">
+                        <span class="text-sm text-gray-500 font-bold uppercase tracking-widest block mb-1">Starting from</span>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-black text-white">$199</span>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-300 text-sm leading-relaxed mb-8 flex-grow">
+                        This package is designed for travelers who want professional photos and a short cinematic video without spending a full day shooting. Ideal for couples, solo travelers, and activity experiences such as kayaking, Jet car experience, beach walks, jet ski and horseback riding.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-list"></i> Includes</h4>
+                            <ul class="space-y-3 text-sm text-gray-300 font-light">
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Professionally guided mini photoshoot</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> High-quality edited photos</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> 1 short cinematic highlight video</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Natural color grading and light retouching</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Best angles and poses guided by the photographer</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Filmed in one selected location</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Delivered in social-media-ready format</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-star"></i> Best For</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Couples</span>
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Beach activities</span>
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Content creators</span>
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Quick memories</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="handleMediaBooking('Short Experience Shoot', '$199')" class="mt-10 w-full bg-white/10 hover:bg-[#F27D57] text-white border border-white/20 hover:border-[#F27D57] px-6 py-4 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(242,125,87,0.4)]"
+                        <i class="fi fi-rr-shopping-cart-add text-xl"></i> Add to My Booking
+                    </button>
                 </div>
 
-                <div class="bg-[#003C63] text-white p-10 rounded-[2.5rem] shadow-xl transform md:-translate-y-4 scale-in">
-                    <h3 class="text-2xl font-bold mb-6 text-[#F27D57]">Full Experience Coverage</h3>
-                    <ul class="space-y-4 text-gray-200 mb-8">
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-check text-white"></i> Half-day or full-day shoot</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-check text-white"></i> Professional editing</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-check text-white"></i> Drone & ground footage</li>
-                    </ul>
+                <div class="group relative bg-gradient-to-b from-[#003C63] to-[#050914] border border-[#F27D57]/60 rounded-[2.5rem] p-8 md:p-10 flex flex-col transition-all duration-500 hover:shadow-[0_0_50px_rgba(242,125,87,0.3)] lg:scale-105 z-20 h-full">
+                    
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#F27D57] text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-widest shadow-[0_0_20px_rgba(242,125,87,0.6)]">
+                        Most Popular
+                    </div>
+
+                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-60 transition-opacity duration-200">
+                        <i class="fi fi-rr-film text-6xl text-white"></i>
+                    </div>
+                    
+                    <div class="inline-flex items-center gap-2 bg-[#F27D57]/20 border border-[#F27D57]/30 px-4 py-1.5 rounded-full w-max mb-6">
+                        <i class="fi fi-rr-clock text-[#F27D57] text-xs mt-0.5"></i>
+                        <span class="text-[#F27D57] text-xs font-bold uppercase tracking-widest">Half or Full Day</span>
+                    </div>
+
+                    <h3 class="text-3xl font-bold text-white mb-2 leading-tight">Full Experience <br>Coverage</h3>
+                    <p class="text-gray-300 text-sm font-light mb-8 h-10">For complete storytelling and unforgettable travel memories.</p>
+                    
+                    <div class="mb-8">
+                        <span class="text-sm text-[#F27D57] font-bold uppercase tracking-widest block mb-1">Starting from</span>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-6xl font-black text-white">$499</span>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-300 text-sm leading-relaxed mb-8 flex-grow">
+                        This package captures your entire experience from start to finish, creating a full visual story of your Zanzibar adventure. Perfect for excursions, tours, proposals and honeymoons, and private experiences where every moment matters.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-list"></i> Includes</h4>
+                            <ul class="space-y-3 text-sm text-gray-200 font-light">
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Extended shooting time (half or full day)</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Combination of drone footage & ground photography</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Multiple locations and activities covered</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Cinematic video production</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Professionally edited photos and videos</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Smooth transitions and storytelling edits</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Music and color grading for cinematic look</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Optional sunrise or sunset shooting</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> High-resolution files for personal or promotional use</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-star"></i> Best For</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Honeymoons</span>
+                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Proposals</span>
+                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Safari / Island tours</span>
+                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Yacht trips</span>
+                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Luxury experiences</span>
+                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Travel vloggers</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="handleMediaBooking('Full Experience Coverage', '$499')" class="mt-10 w-full bg-[#F27D57] text-white hover:bg-white hover:text-[#003C63] px-6 py-4 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(242,125,87,0.4)]"
+                        <i class="fi fi-rr-shopping-cart-add text-xl"></i> Add to My Booking
+                    </button>
                 </div>
 
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-lg border border-gray-100 fade-up">
-                    <h3 class="text-2xl font-bold text-[#003C63] mb-6">Brand & Resort Package</h3>
-                    <ul class="space-y-4 text-gray-600 mb-8">
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-check text-[#F27D57]"></i> Custom visual strategy</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-check text-[#F27D57]"></i> Promotional video</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-check text-[#F27D57]"></i> Social media-ready content</li>
-                    </ul>
+                <div class="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col transition-all duration-200 hover:border-[#F27D57]/50 hover:bg-white/10 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(242,125,87,0.2)] fade-up h-full">
+                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-60 transition-opacity duration-200">
+                        <i class="fi fi-rr-building text-6xl text-white"></i>
+                    </div>
+                    
+                    <div class="inline-flex items-center gap-2 bg-[#003C63]/50 border border-white/10 px-4 py-1.5 rounded-full w-max mb-6">
+                        <i class="fi fi-rr-settings-sliders text-[#F27D57] text-xs mt-0.5"></i>
+                        <span class="text-gray-300 text-xs font-bold uppercase tracking-widest">Custom Duration</span>
+                    </div>
+
+                    <h3 class="text-3xl font-bold text-white mb-2 leading-tight">Brand & Resort <br>Package</h3>
+                    <p class="text-gray-400 text-sm font-light mb-8 h-10">Designed to promote your business and increase bookings.</p>
+                    
+                    <div class="mb-8">
+                        <span class="text-sm text-gray-500 font-bold uppercase tracking-widest block mb-1">Starting from</span>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-black text-white">$899</span>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-300 text-sm leading-relaxed mb-8 flex-grow">
+                        This package is created specifically for hotels, resorts, villas, tour companies, and experience providers who want professional visual content for marketing and advertising.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-list"></i> Includes</h4>
+                            <ul class="space-y-3 text-sm text-gray-300 font-light">
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Custom visual strategy based on brand identity</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Professional photos of rooms, staff & services</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Promotional video for website and ads</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Drone aerial shots of property & surroundings</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Lifestyle shots with models or real guests</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Vertical & horizontal formats for social media</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Content optimized for Instagram & TikTok</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Consistent color grading and brand style</li>
+                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Commercial usage rights</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-star"></i> Best For</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Hotels & resorts</span>
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Tour companies</span>
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Brands</span>
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Restaurants/clubs</span>
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Airbnb & villas</span>
+                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Travel agencies</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="handleMediaBooking('Brand & Resort Package', '$899')" class="mt-10 w-full bg-white/10 hover:bg-[#F27D57] text-white border border-white/20 hover:border-[#F27D57] px-6 py-4 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(242,125,87,0.4)]"
+                        <i class="fi fi-rr-shopping-cart-add text-xl"></i> Add to My Booking
+                    </button>
                 </div>
 
             </div>
-
-            <div class="text-center mb-24 fade-up">
-                <a href="contact.html" class="bg-[#F27D57] hover:bg-[#e06943] text-white px-12 py-4 rounded-full font-bold shadow-lg transition-transform hover:scale-105 inline-block">
-                    Request a Quote
-                </a>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-16 border-t border-gray-200 pt-24">
-                
-                <div class="fade-up">
-                    <h2 class="text-3xl font-bold text-[#003C63] mb-8">WHY CHOOSE MORIX BEYOND ZANZIBAR</h2>
-                    <ul class="space-y-4 text-gray-600 text-lg">
-                        <li class="flex items-center gap-3"><i class="fi fi-sr-play text-[#F27D57] text-xs"></i> Professional drone operators</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-sr-play text-[#F27D57] text-xs"></i> Tourism-focused visual storytelling</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-sr-play text-[#F27D57] text-xs"></i> High-quality editing and delivery</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-sr-play text-[#F27D57] text-xs"></i> Creative direction and planning</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-sr-play text-[#F27D57] text-xs"></i> Trusted by international travelers and brands</li>
-                    </ul>
-                </div>
-
-                <div class="fade-up">
-                    <h2 class="text-3xl font-bold text-[#003C63] mb-8">IMPORTANT INFORMATION</h2>
-                    <ul class="space-y-4 text-gray-600 text-lg">
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-info text-[#003C63]"></i> Weather dependent</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-info text-[#003C63]"></i> Drone flights subject to local regulations</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-info text-[#003C63]"></i> Editing delivery time: 4 – 7 days</li>
-                        <li class="flex items-center gap-3"><i class="fi fi-rr-info text-[#003C63]"></i> Custom requests available</li>
-                    </ul>
-                </div>
-
-            </div>
-
         </div>
     </section>
+
 
     <section class="py-24 bg-white text-center">
     <div class="container mx-auto px-6 max-w-4xl fade-up">
@@ -251,8 +343,15 @@
     </div>
 </section>
 
-
-
+    <script>
+        window.handleMediaBooking = function(packageName, price) {
+            // Call the global cart counter function from script.js
+            // addToBooking handles the toast notification, so we don't need to create one here
+            if (typeof window.addToBooking === 'function') {
+                window.addToBooking(packageName, price);
+            }
+        }
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

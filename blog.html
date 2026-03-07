@@ -8,197 +8,343 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
-    
-    <link rel="stylesheet" href="styles.css">
 
     <script src="header.js" defer></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        /* Smooth scrolling and elegant transitions */
+        html { scroll-behavior: smooth; }
+        .guide-card:hover .guide-icon { transform: scale(1.1) rotate(5deg); }
+        .guide-icon { transition: transform 0.3s ease; }
+    </style>
 </head>
-<img src="images/morix-logo.png" alt="Morix Beyond" class="h-12 md:h-18 relative z-50 opacity-100 !visible">
-<body class="bg-gray-50">
+<body class="bg-[#f8fafc] text-gray-800 antialiased">
 
     <header id="main-header"></header>
 
-    <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&q=80" class="w-full h-full object-cover brightness-50" alt="Zanzibar Coast">
-        </div>
-        <div class="relative z-10 text-center px-4 max-w-4xl">
-            <h1 class="text-5xl md:text-7xl text-white mb-6 drop-shadow-lg leading-tight">Zanzibar & Tanzania <br><span class="italic">Travel Guide</span></h1>
-            <p class="text-xl text-stone-200 mb-10 font-light tracking-wide">Insider tips, travel inspiration, and local knowledge to help you plan the perfect Zanzibar and Tanzania adventure.</p>
-            <button class="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-4 rounded-full font-semibold transition-all shadow-xl hover:shadow-emerald-500/20 flex items-center mx-auto gap-3">
-                <i class="fa-solid fa-compass"></i> Explore Travel Guides
-            </button>
-        </div>
-    </header>
+    <section class="relative w-full h-[60vh] pt-16 min-h-[500px] flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-[#003C63]/70 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#003C63]/90"></div>
 
-    <section class="py-20 max-w-5xl mx-auto px-6 text-center">
-        <div class="inline-block p-1 px-4 mb-4 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold uppercase tracking-widest">Welcome to Morix Beyond</div>
-        <h2 class="text-4xl mb-6">Expertise Written by Locals</h2>
-        <p class="text-lg text-slate-600 leading-relaxed mb-12">
-            Here you’ll find helpful articles about Zanzibar experiences, Tanzania safaris, mountain trekking, and travel tips. 
-            Written by professionals who know the destination best. Our goal is to help you travel <span class="text-emerald-600 font-semibold">smarter, safer, and more confidently.</span>
-        </p>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="category-tag p-4 rounded-2xl bg-blue-50 border border-blue-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-umbrella-beach text-blue-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-blue-800">Zanzibar</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-emerald-50 border border-emerald-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-hippo text-emerald-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-emerald-800">Safaris</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-amber-50 border border-amber-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-mountain-sun text-amber-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-amber-800">Trekking</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-yellow-50 border border-yellow-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-camera text-yellow-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-yellow-800">Media</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-purple-50 border border-purple-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-map-location-dot text-purple-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-purple-800">Planning</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-rose-50 border border-rose-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-heart text-rose-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-rose-800">Romantic</span>
-            </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <span class="inline-block py-1 px-3 rounded-full bg-[#F27D57] text-white text-xs font-bold uppercase tracking-widest mb-4">Official Blog</span>
+            <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                Zanzibar and Tanzania<br>Travel Guide
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 font-light leading-relaxed max-w-3xl mx-auto">
+                In-depth travel advice, insider tips, and local expertise to help you plan unforgettable experiences across Zanzibar and Tanzania — from beaches and safaris to mountain adventures and romantic escapes.
+            </p>
         </div>
     </section>
 
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <h3 class="text-3xl mb-12 italic border-l-4 border-emerald-500 pl-4">Latest Insights</h3>
+    <section class="py-16 md:py-24 px-6 relative -mt-16 z-20">
+        <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl shadow-gray-200/50 p-8 md:p-12 border border-gray-100 flex flex-col md:flex-row gap-10 items-center">
+            <div class="flex-1">
+                <h2 class="font-playfair text-3xl font-bold text-[#003C63] mb-4">Welcome to the Morix Beyond Zanzibar Travel Guide.</h2>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                    This is your trusted source for practical travel information, inspiration, and expert insights about Zanzibar and mainland Tanzania. Our blog features carefully written guides on island excursions, wildlife safaris, mountain trekking, photography experiences, and essential travel planning.
+                </p>
+                <p class="text-gray-600 leading-relaxed font-medium">
+                    All articles are created by local professionals with real on-the-ground knowledge of the destinations.
+                </p>
+            </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                
-                <article class="group overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Zanzibar Beach">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-blue-600">Zanzibar Experiences</span>
-                    </div>
-                    <div class="p-8">
-                        <h2 class="text-2xl mb-3 group-hover:text-emerald-600 transition-colors">Best Time to Visit Zanzibar for Beach Lovers</h2>
-                        <p class="text-slate-500 text-sm line-clamp-2 mb-6 font-light">Discover the ideal months for sunshine, clear water, and perfect photography on the Spice Island.</p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-emerald-600 hover:gap-4 transition-all">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
-                    </div>
-                </article>
-
-                <article class="group overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Safari">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-emerald-600">Tanzania Safaris</span>
-                    </div>
-                    <div class="p-8">
-                        <h2 class="text-2xl mb-3 group-hover:text-emerald-600 transition-colors">Safari from Zanzibar: How It Works</h2>
-                        <p class="text-slate-500 text-sm line-clamp-2 mb-6 font-light">Everything you need to know about day-trip safaris and short bush-and-beach extensions.</p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-emerald-600 hover:gap-4 transition-all">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
-                    </div>
-                </article>
-
-                <article class="group overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1520114878144-6123749968dd?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Honeymoon">
-                        <span class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-rose-600">Romantic Travel</span>
-                    </div>
-                    <div class="p-8">
-                        <h2 class="text-2xl mb-3 group-hover:text-emerald-600 transition-colors">How to Plan a Honeymoon in Zanzibar</h2>
-                        <p class="text-slate-500 text-sm line-clamp-2 mb-6 font-light">From private island retreats to candlelit beach dinners, create your dream romantic escape.</p>
-                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-emerald-600 hover:gap-4 transition-all">Read More <i class="fa-solid fa-arrow-right-long"></i></a>
-                    </div>
-                </article>
-
+            <div class="flex-1 bg-[#f0f7ff] p-8 rounded-2xl border border-[#003C63]/10 w-full">
+                <h3 class="text-sm font-bold text-[#F27D57] uppercase tracking-widest mb-4">Our Mission Is To Help You:</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3 text-[#003C63] font-semibold"><i class='bx bxs-check-circle text-2xl text-[#F27D57]'></i> Travel smarter</li>
+                    <li class="flex items-center gap-3 text-[#003C63] font-semibold"><i class='bx bxs-check-circle text-2xl text-[#F27D57]'></i> Stay safe and well-prepared</li>
+                    <li class="flex items-center gap-3 text-[#003C63] font-semibold"><i class='bx bxs-check-circle text-2xl text-[#F27D57]'></i> Discover the best experiences</li>
+                    <li class="flex items-center gap-3 text-[#003C63] font-semibold"><i class='bx bxs-check-circle text-2xl text-[#F27D57]'></i> Make confident booking decisions</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <main class="py-20 bg-slate-50">
-        <article class="max-w-4xl mx-auto px-6 glass-card p-10 md:p-16 rounded-[3rem] shadow-xl">
-            <header class="mb-12">
-                <span class="text-emerald-600 font-bold uppercase text-xs tracking-[0.3em]">Weather & Timing</span>
-                <h1 class="text-4xl md:text-5xl mt-4 mb-6 leading-tight">Best Time to Visit Zanzibar for Beach Lovers</h1>
-                <p class="text-xl text-slate-500 font-light italic">Zanzibar is famous for its white-sand beaches and turquoise waters, but choosing the right time to visit can make your experience even better.</p>
-            </header>
+    <section class="py-12 bg-gray-50 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-4xl font-bold text-[#003C63] mb-3">Explore Categories</h2>
+                <p class="text-gray-500">Find exactly what you're looking for</p>
+            </div>
 
-            <div class="prose prose-lg text-slate-700 space-y-8 leading-relaxed">
-                <div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                        <i class="fa-solid fa-cloud-sun text-emerald-500"></i> Weather Overview
-                    </h2>
-                    <p>Zanzibar experiences two rainy seasons. The "long rains" occur in April and May, while the "short rains" happen in November. The dry seasons offer the most predictable beach weather.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="guide-card group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#003C63]/20 transition-all cursor-pointer">
+                    <div class="w-16 h-16 bg-[#f0f7ff] rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-water text-3xl text-[#003C63] guide-icon'></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-[#003C63] mb-3 group-hover:text-[#F27D57] transition-colors">Zanzibar Experiences</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Island tours, snorkeling, sandbanks, watersports, historical sites, and Swahili culture experiences.</p>
                 </div>
 
-                <div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                        <i class="fa-solid fa-calendar-check text-emerald-500"></i> Best Months for Beach Activities
-                    </h2>
-                    <p>For the ultimate experience, aim for <strong>June–October</strong> or <strong>December–February</strong>. These months offer clear blue skies and minimal humidity.</p>
+                <div class="guide-card group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#003C63]/20 transition-all cursor-pointer">
+                    <div class="w-16 h-16 bg-[#fff5f0] rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-landscape text-3xl text-[#F27D57] guide-icon'></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-[#003C63] mb-3 group-hover:text-[#F27D57] transition-colors">Tanzania Safaris</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Wildlife adventures to Serengeti, Ngorongoro, Tarangire, Mikumi with tips on seasons and planning.</p>
                 </div>
 
-                <div class="bg-slate-900 rounded-3xl p-10 text-white mt-16 text-center">
-                    <h2 class="text-3xl text-white mb-4">Ready to plan your Zanzibar experience?</h2>
-                    <p class="text-slate-400 mb-8 font-light">Explore our curated tours and safaris designed for unforgettable travel.</p>
-                    <div class="flex flex-col md:flex-row gap-4 justify-center">
-                        <button class="bg-emerald-600 hover:bg-emerald-500 px-8 py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-magnifying-glass"></i> View Zanzibar Experiences
-                        </button>
-                        <button class="bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-green-400"></i> Chat on WhatsApp
-                        </button>
+                <div class="guide-card group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#003C63]/20 transition-all cursor-pointer">
+                    <div class="w-16 h-16 bg-[#f0f7ff] rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-image-alt text-3xl text-[#003C63] guide-icon'></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-[#003C63] mb-3 group-hover:text-[#F27D57] transition-colors">Photography & Media</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Drone experiences, couple shoots, proposal photography, hotel marketing content, and tips.</p>
+                </div>
+
+                <div class="guide-card group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#003C63]/20 transition-all cursor-pointer">
+                    <div class="w-16 h-16 bg-[#fff5f0] rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-heart text-3xl text-[#F27D57] guide-icon'></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-[#003C63] mb-3 group-hover:text-[#F27D57] transition-colors">Romantic & Honeymoon</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Beach proposals, private dinners, flying dress photoshoots, sunset cruises, and couples’ itineraries.</p>
+                </div>
+
+                <div class="guide-card group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#003C63]/20 transition-all cursor-pointer">
+                    <div class="w-16 h-16 bg-[#f0f7ff] rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-map-pin text-3xl text-[#003C63] guide-icon'></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-[#003C63] mb-3 group-hover:text-[#F27D57] transition-colors">Kilimanjaro Trekking</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Route comparisons, packing lists, altitude tips, training advice, and what to expect on your climb.</p>
+                </div>
+
+                <div class="guide-card group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#003C63]/20 transition-all cursor-pointer">
+                    <div class="w-16 h-16 bg-[#fff5f0] rounded-2xl flex items-center justify-center mb-6">
+                        <i class='bx bx-notepad text-3xl text-[#F27D57] guide-icon'></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-[#003C63] mb-3 group-hover:text-[#F27D57] transition-colors">Travel Tips & Planning</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Visa guidance, packing checklists, currency, budget, health tips, and transportation planning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-8 px-6">
+        <div class="max-w-5xl mx-auto bg-gradient-to-r from-red-50 to-orange-50 border-l-8 border-[#F27D57] p-8 md:p-10 rounded-2xl shadow-sm">
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+                <div class="bg-white p-4 rounded-full shadow-sm">
+                    <i class='bx bx-error-circle text-4xl text-[#F27D57]'></i>
+                </div>
+                <div>
+                    <h2 class="font-playfair text-2xl font-bold text-gray-900 mb-2">Mandatory Inbound Travel Insurance for Zanzibar</h2>
+                    <p class="text-gray-700 leading-relaxed mb-4">All visitors traveling to Zanzibar are required to have mandatory inbound travel insurance issued by the Zanzibar authorities before arrival. This is separate from your personal travel insurance and is mandatory for entry.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700 font-medium bg-white/60 p-5 rounded-xl">
+                        <ul class="space-y-2">
+                            <li><i class='bx bx-check text-[#F27D57]'></i> Medical emergencies</li>
+                            <li><i class='bx bx-check text-[#F27D57]'></i> Accidents & Evacuation</li>
+                            <li><i class='bx bx-check text-[#F27D57]'></i> Lost or delayed luggage</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li><i class='bx bx-file text-[#003C63]'></i> Apply & pay online before arrival</li>
+                            <li><i class='bx bx-file text-[#003C63]'></i> Show document at airport/immigration</li>
+                            <li><i class='bx bx-file text-[#003C63]'></i> Required for ALL international travelers</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </article>
-    </main>
+        </div>
+    </section>
 
-    <!--sript
-    
-    that is good but there is addional chnages i want u to addd in 
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="category-tag p-4 rounded-2xl bg-blue-50 border border-blue-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-umbrella-beach text-blue-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-blue-800">Zanzibar</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-emerald-50 border border-emerald-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-hippo text-emerald-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-emerald-800">Safaris</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-amber-50 border border-amber-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-mountain-sun text-amber-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-amber-800">Trekking</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-yellow-50 border border-yellow-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-camera text-yellow-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-yellow-800">Media</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-purple-50 border border-purple-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-map-location-dot text-purple-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-purple-800">Planning</span>
-            </div>
-            <div class="category-tag p-4 rounded-2xl bg-rose-50 border border-rose-100 flex flex-col items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-heart text-rose-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase text-rose-800">Romantic</span>
-            </div>
-        </div> i want when i selecting  zanzibar the infomation is fertching  or appier for zanzibar and or feltering data option and  in the Latest Insights</h3> i want when the user click read more open and  some more infomation are open up  and i want in Latest Insights</h3> to add cartegory  such as zanzibar, trecking safaris media and animate from right to left 
-    
-    
-Dynamic Filtering: Clicking a category at the top now filters the blog posts instantly.
+    <section class="py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <div class="lg:col-span-8 space-y-12">
+                
+                <article class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#F27D57] mb-2 block">Comprehensive Guide</span>
+                    <h2 class="font-playfair text-3xl md:text-4xl font-bold text-[#003C63] mb-6">Best Time to Visit Zanzibar for Beach Lovers</h2>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-lg">Zanzibar is famous for its powder-white beaches, warm turquoise waters, and breathtaking sunsets. Whether you are planning a relaxing holiday, a romantic escape, or a photography trip, choosing the right time to visit can make a big difference in your experience.</p>
+                    
+                    <div class="bg-[#f8fafc] p-6 rounded-2xl mb-8 border border-gray-200">
+                        <h3 class="font-bold text-[#003C63] text-xl mb-3 flex items-center gap-2"><i class='bx bx-sun text-[#F27D57]'></i> Weather Overview</h3>
+                        <p class="text-gray-600 leading-relaxed text-sm">Zanzibar has a tropical climate with warm temperatures throughout the year (25°C - 32°C). The dry seasons are sunny and ideal for activities. The rainy seasons bring short or heavy showers, higher humidity, and rougher sea conditions.</p>
+                    </div>
 
-Animated "Latest Insights" Categories: A smooth right-to-left scrolling animation for sub-categories.
+                    <h3 class="font-playfair text-2xl font-bold text-[#003C63] mb-4 border-b border-gray-100 pb-2">Top Seasons for Beach Activities</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-[#f0f7ff] p-6 rounded-2xl border border-[#003C63]/10">
+                            <h4 class="font-bold text-lg text-[#003C63] mb-2">June to October</h4>
+                            <p class="text-sm text-gray-600 mb-4">Cooler temperatures, low humidity, clear oceans. Perfect for:</p>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li><i class='bx bx-check text-[#F27D57]'></i> Swimming & Snorkeling</li>
+                                <li><i class='bx bx-check text-[#F27D57]'></i> Sandbank Excursions</li>
+                                <li><i class='bx bx-check text-[#F27D57]'></i> Sunset Dhow Cruises</li>
+                                <li><i class='bx bx-check text-[#F27D57]'></i> Drone & Pro Photography</li>
+                            </ul>
+                        </div>
+                        <div class="bg-[#fff5f0] p-6 rounded-2xl border border-[#F27D57]/20">
+                            <h4 class="font-bold text-lg text-[#003C63] mb-2">December to February</h4>
+                            <p class="text-sm text-gray-600 mb-4">Hotter, mostly dry and sunny. Warm seas. Perfect for:</p>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li><i class='bx bx-check text-[#F27D57]'></i> Escaping Winter</li>
+                                <li><i class='bx bx-check text-[#F27D57]'></i> Honeymoon Trips</li>
+                                <li><i class='bx bx-check text-[#F27D57]'></i> Diving & Watersports</li>
+                                <li><i class='bx bx-check text-[#F27D57]'></i> Romantic Beach Dinners</li>
+                            </ul>
+                        </div>
+                    </div>
 
-Expandable Content: Clicking "Read More" now expands the card to show additional information directly on the page without a full reload.
-    -->
+                    <h3 class="font-playfair text-2xl font-bold text-[#003C63] mb-4">Months to Avoid (Or Travel With Caution)</h3>
+                    <p class="text-gray-600 mb-4"><strong>March to May (Long Rains):</strong> Heavy rain can last for days, rough oceans, cancelled boat trips, and reduced underwater visibility. Good for budget travelers.</p>
+                    <p class="text-gray-600"><strong>November (Short Rains):</strong> Unpredictable, short showers. Travel is possible but conditions are less stable.</p>
+                </article>
+
+                <article class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+                    <h2 class="font-playfair text-3xl md:text-4xl font-bold text-[#003C63] mb-6">Best Time for Tanzania Safaris</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 shrink-0 bg-[#003C63] text-white rounded-full flex items-center justify-center font-bold text-xl">1</div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-900">Dry Season (June – October)</h4>
+                                <p class="text-gray-600 mt-1">The absolute best time for safaris. Animals gather near water sources, roads are dry. Top parks: Serengeti, Ngorongoro, Tarangire, Mikumi.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 shrink-0 bg-[#F27D57] text-white rounded-full flex items-center justify-center font-bold text-xl">2</div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-900">Short Dry Season (Dec – Feb)</h4>
+                                <p class="text-gray-600 mt-1">Excellent safari period with warm temperatures. Famous for baby animals being born in the Serengeti.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 shrink-0 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center font-bold text-xl">3</div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-900">Rainy Season (March – May)</h4>
+                                <p class="text-gray-600 mt-1">Low season. Cheaper travel, lush green parks, but heavy rain makes animal spotting much harder.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <aside class="lg:col-span-4 space-y-8">
+                
+                <div class="bg-[#003C63] text-white p-8 rounded-3xl shadow-lg shadow-[#003C63]/20">
+                    <h3 class="font-playfair text-2xl font-bold mb-6 flex items-center gap-2"><i class='bx bx-bulb text-[#F27D57]'></i> Quick Tips</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-[#F27D57] font-bold text-sm uppercase tracking-wider">Visa & Entry</h4>
+                            <p class="text-sm text-gray-300 mt-1">Get on arrival or online. Always check current rules.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-[#F27D57] font-bold text-sm uppercase tracking-wider">Currency</h4>
+                            <p class="text-sm text-gray-300 mt-1">USD and TZS widely accepted. Carry small notes.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-[#F27D57] font-bold text-sm uppercase tracking-wider">Local Culture</h4>
+                            <p class="text-sm text-gray-300 mt-1">Muslim-majority. Dress modestly in towns/villages.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-[#F27D57] font-bold text-sm uppercase tracking-wider">Transport</h4>
+                            <p class="text-sm text-gray-300 mt-1">Private transfers are the safest, most reliable way to move.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="font-playfair text-2xl font-bold text-[#003C63] mb-6">Best Beaches Guide</h3>
+                    <ul class="space-y-4">
+                        <li class="pb-3 border-b border-gray-100">
+                            <strong class="text-gray-900 block">Kendwa & Nungwi</strong>
+                            <span class="text-sm text-gray-500">Wide beaches, luxury, parties, perfect sunsets. Best for nightlife & energy.</span>
+                        </li>
+                        <li class="pb-3 border-b border-gray-100">
+                            <strong class="text-gray-900 block">Paje</strong>
+                            <span class="text-sm text-gray-500">Strong winds, shallow waters. Best for kitesurfing and backpacker vibes.</span>
+                        </li>
+                        <li class="pb-3 border-b border-gray-100">
+                            <strong class="text-gray-900 block">Matemwe</strong>
+                            <span class="text-sm text-gray-500">Faces Mnemba Island. Best for absolute privacy and snorkeling.</span>
+                        </li>
+                        <li>
+                            <strong class="text-gray-900 block">Jambiani</strong>
+                            <span class="text-sm text-gray-500">Fishing villages, long sand stretches. Best for cultural romance.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+        </div>
+    </section>
+
+    <section class="py-12 px-6 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 max-w-2xl mx-auto">
+                <span class="text-[#F27D57] font-bold uppercase tracking-widest text-sm mb-2 block">For Couples</span>
+                <h2 class="font-playfair text-4xl font-bold text-[#003C63] mb-4">Top Romantic Experiences</h2>
+                <p class="text-gray-500">Warm weather, peaceful beaches, luxury resorts, and African–Arab culture create a magical atmosphere for love.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                    <div class="w-16 h-16 mx-auto bg-white shadow-sm rounded-full flex items-center justify-center mb-4">
+                        <i class='bx bx-diamond text-2xl text-[#F27D57]'></i>
+                    </div>
+                    <h4 class="font-bold text-[#003C63] mb-2">Beach Proposal</h4>
+                    <p class="text-sm text-gray-600">Decorated with flowers, candles, and “Marry Me” signs at sunset.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                    <div class="w-16 h-16 mx-auto bg-white shadow-sm rounded-full flex items-center justify-center mb-4">
+                        <i class='bx bx-water text-2xl text-[#F27D57]'></i>
+                    </div>
+                    <h4 class="font-bold text-[#003C63] mb-2">Sunset Dhow Cruise</h4>
+                    <p class="text-sm text-gray-600">Traditional wooden boats sail during golden hour with light refreshments.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                    <div class="w-16 h-16 mx-auto bg-white shadow-sm rounded-full flex items-center justify-center mb-4">
+                        <i class='bx bx-camera text-2xl text-[#F27D57]'></i>
+                    </div>
+                    <h4 class="font-bold text-[#003C63] mb-2">Flying Dress Shoot</h4>
+                    <p class="text-sm text-gray-600">Luxury photography with flowing designer dresses and dramatic scenery.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                    <div class="w-16 h-16 mx-auto bg-white shadow-sm rounded-full flex items-center justify-center mb-4">
+                        <i class='bx bx-basket text-2xl text-[#F27D57]'></i>
+                    </div>
+                    <h4 class="font-bold text-[#003C63] mb-2">Sandbank Picnic</h4>
+                    <p class="text-sm text-gray-600">Spend the day on a natural sand island with crystal-clear water.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6">
+        <div class="max-w-5xl mx-auto bg-gradient-to-br from-[#003C63] to-[#001829] rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden">
+            <i class='bx bx-compass absolute -right-10 -bottom-10 text-[200px] text-white opacity-5'></i>
+            
+            <div class="relative z-10">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mb-6">Plan Your Zanzibar Experience</h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                    At Morix Beyond Zanzibar, we help travelers design unforgettable beach holidays, safari extensions, and romantic experiences with professional photography and videography services.
+                </p>
+                <button class="bg-[#F27D57] hover:bg-[#d96743] text-white font-bold text-lg py-4 px-10 rounded-xl shadow-lg shadow-[#F27D57]/30 transition-all transform hover:-translate-y-1">
+                    Book Your Journey Today
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="main-footer"></footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="animations.js"></script>
     <script src="script.js"></script>
-
 
 </body>
 </html>

@@ -7,7 +7,7 @@ const branding = {
     },
     fonts: {
         heading: "'Playfair Display', serif", 
-        body: "'Inter', sans-serif"           
+        body: "'Inter', sans-serif"            
     }
 };
 
@@ -60,6 +60,10 @@ style.textContent = `
         align-items: center;
         gap: 8px; /* Space between icon, text, and badge */
         text-decoration: none;
+        border: none;
+        cursor: pointer;
+        font-size: inherit;
+        font-family: inherit;
     }
     .btn-booking:hover { 
         transform: scale(1.05);
@@ -137,6 +141,8 @@ style.textContent = `
         align-items: center;
         justify-content: center;
         gap: 8px;
+        cursor: pointer;
+        text-decoration: none;
     }
 
     /* AUTH MODAL */
@@ -160,7 +166,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// 3. THE HEADER TEMPLATE
+// 3. THE HEADER TEMPLATE - (REMOVED HIDDEN BOOKING MODAL, CHANGED BUTTONS TO LINKS)
 const headerTemplate = `
 <nav class="fixed top-0 w-full bg-white shadow-sm z-50">
     <div class="container mx-auto px-4 relative">
@@ -200,7 +206,7 @@ const headerTemplate = `
                 <a href="tanzania.html">Tanzania Safaris</a>
                 <a href="media.html">Media Services</a>
                 <a href="gallery.html">Gallery</a>
-                <a href="booking.html" class="mobile-btn-book">
+                <a href="booking.html" class="mobile-btn-book" id="mobile-booking-btn">
                     <i class="fi fi-rr-shopping-bag"></i> My Booking 
                     <span class="booking-badge mobile-booking-count">0</span>
                 </a>
@@ -214,7 +220,7 @@ const headerTemplate = `
             <a href="tanzania.html" class="nav-link-main">Tanzania Safaris</a>
             <a href="media.html" class="nav-link-main">Media Services</a>
             <a href="gallery.html" class="nav-link-main">Gallery</a>
-            <a href="booking.html" class="btn-booking">
+            <a href="booking.html" class="btn-booking" id="booking-btn">
                 <i class="fi fi-rr-shopping-bag"></i> My Booking 
                 <span class="booking-badge desktop-booking-count">0</span>
             </a>
@@ -239,295 +245,594 @@ const headerTemplate = `
 
 document.getElementById('main-header').innerHTML = headerTemplate;
 
-// 4. INTERACTION LOGIC
-const menuBtn = document.getElementById('menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const authModal = document.getElementById('auth-modal');
-const loginTriggers = [document.getElementById('login-btn'), document.getElementById('mobile-login-btn')];
-const closeAuth = document.getElementById('close-auth');
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeHeaderSystem);
+} else {
+    initializeHeaderSystem();
+}
 
-// Toggle Mobile Menu
-menuBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
-});
+function initializeHeaderSystem() {
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const authModal = document.getElementById('auth-modal');
+    const loginTriggers = [document.getElementById('login-btn'), document.getElementById('mobile-login-btn')];
+    const closeAuth = document.getElementById('close-auth');
 
-// Open Modal (Works for both Desktop and Mobile buttons)
-loginTriggers.forEach(trigger => {
-    if(trigger) {
-        trigger.addEventListener('click', () => {
-            authModal.style.display = 'flex';
-            mobileMenu.style.display = 'none'; // Close mobile menu when opening modal
+    // Toggle Mobile Menu
+    if(menuBtn) {
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
         });
     }
-});
 
-// Close Modal
-closeAuth.addEventListener('click', () => authModal.style.display = 'none');
+    // Open Modal
+    loginTriggers.forEach(trigger => {
+        if(trigger) {
+            trigger.addEventListener('click', () => {
+                authModal.style.display = 'flex';
+                mobileMenu.style.display = 'none'; 
+            });
+        }
+    });
 
-// Close when clicking outside
-window.addEventListener('click', (e) => {
-    if (e.target === authModal) authModal.style.display = 'none';
-    if (!mobileMenu.contains(e.target) && e.target !== menuBtn) mobileMenu.style.display = 'none';
-});
+    if(closeAuth) {
+        closeAuth.addEventListener('click', () => authModal.style.display = 'none');
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target === authModal) authModal.style.display = 'none';
+        if (mobileMenu && !mobileMenu.contains(e.target) && e.target !== menuBtn) mobileMenu.style.display = 'none';
+    });
+}
 
 // ==========================================
 // 5. GLOBAL BOOKING CART LOGIC
 // ==========================================
 
-// Load existing count from browser memory (defaults to 0)
 let currentBookingCount = parseInt(localStorage.getItem('morixBookingCount')) || 0;
 
-// Function to visually update the badges in the DOM
-function updateBookingUI() {
+window.updateBookingUI = function() {
     const desktopBadge = document.querySelector('.desktop-booking-count');
     const mobileBadge = document.querySelector('.mobile-booking-count');
     
     if (desktopBadge) desktopBadge.innerText = currentBookingCount;
     if (mobileBadge) mobileBadge.innerText = currentBookingCount;
-}
+};
 
-// Set initial value on page load
 setTimeout(updateBookingUI, 50);
 
-// GLOBAL FUNCTION: Call this whenever a user clicks "Book" or "Add Item"
-window.addToBooking = function() {
-    currentBookingCount++; // Increase the number
-    localStorage.setItem('morixBookingCount', currentBookingCount); // Save it
-    updateBookingUI(); // Update the visuals
+// Global Add To Booking function triggered from Zanzibar, Tanzania, Media pages
+window.addToBooking = function(serviceName, price) {
+    if (!window.bookingItems) {
+        try {
+            window.bookingItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
+            if (!Array.isArray(window.bookingItems)) window.bookingItems = [];
+        } catch(e) {
+            window.bookingItems = [];
+        }
+    }
     
-    // Add a quick "pop" animation to the desktop button so the user notices
+    // Check if item with same name and price already exists
+    const existingItem = window.bookingItems.find(item => item.name === serviceName && item.price === price);
+    
+    if (existingItem) {
+        // Item already exists - show warning notification
+        showWarningNotification(serviceName);
+        return; // Don't add it again
+    }
+    
+    // Add new item
+    const newItem = {
+        name: serviceName,
+        price: price,
+        quantity: 1
+    };
+    window.bookingItems.push(newItem);
+    
+    localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+    
+    currentBookingCount = window.bookingItems.length;
+    localStorage.setItem('morixBookingCount', currentBookingCount);
+    updateBookingUI();
+    
     const btn = document.querySelector('.btn-booking');
     if(btn) {
         btn.style.transform = 'scale(1.1)';
         setTimeout(() => btn.style.transform = 'scale(1)', 200);
     }
+    
+    showToastNotification(serviceName);
 };
 
+function showToastNotification(serviceName) {
+    const existingToasts = document.querySelectorAll('[data-toast]');
+    existingToasts.forEach(toast => toast.remove());
+    
+    const toast = document.createElement('div');
+    toast.setAttribute('data-toast', 'true');
+    toast.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white; padding: 16px 24px; border-radius: 12px; font-weight: 700; z-index: 99999; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transform: translateY(150px); opacity: 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 14px;';
+    toast.innerHTML = `<i class="fi fi-rr-check-circle" style="font-size: 20px; flex-shrink: 0;"></i><span style="white-space: nowrap;">${serviceName} added to cart!</span>`;
+    document.body.appendChild(toast);
+
+    setTimeout(() => { 
+        toast.style.transform = 'translateY(0)'; 
+        toast.style.opacity = '1'; 
+    }, 50);
+    
+    setTimeout(() => {
+        toast.style.transform = 'translateY(150px)';
+        toast.style.opacity = '0';
+        setTimeout(() => {
+            if (toast.parentNode) toast.parentNode.removeChild(toast);
+        }, 400);
+    }, 3000);
+}
+
+function showWarningNotification(serviceName) {
+    const existingWarnings = document.querySelectorAll('[data-warning]');
+    existingWarnings.forEach(warning => warning.remove());
+    
+    const warning = document.createElement('div');
+    warning.setAttribute('data-warning', 'true');
+    warning.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background-color: #FF9800; color: white; padding: 16px 24px; border-radius: 12px; font-weight: 700; z-index: 99999; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transform: translateY(150px); opacity: 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-size: 14px;';
+    warning.innerHTML = `<i class="fi fi-rr-info" style="font-size: 20px; flex-shrink: 0;"></i><span style="white-space: nowrap;">${serviceName} is already in your cart!</span>`;
+    document.body.appendChild(warning);
+
+    setTimeout(() => { 
+        warning.style.transform = 'translateY(0)'; 
+        warning.style.opacity = '1'; 
+    }, 50);
+    
+    setTimeout(() => {
+        warning.style.transform = 'translateY(150px)';
+        warning.style.opacity = '0';
+        setTimeout(() => {
+            if (warning.parentNode) warning.parentNode.removeChild(warning);
+        }, 400);
+    }, 3000);
+}
 
 
+// ==========================================
+// 6. BOOKING.HTML PAGE SPECIFIC LOGIC
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const bookingCartEl = document.getElementById('booking-cart');
+    
+    // Only run this logic if we are actually on the booking page
+    if (!bookingCartEl) return;
 
+    let baseCartTotal = 0; 
+    const cartItems = document.getElementById('cart-items');
+    const totalPrice = document.getElementById('total-price');
+    const totalItems = document.getElementById('total-items');
+    const proceedToPaymentBtn = document.getElementById('proceed-to-payment');
+    const formContainer = document.getElementById('booking-form');
 
+    // Rendering logic for the booking.html cart
+    window.renderCart = function() {
+        try {
+            window.bookingItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
+        } catch(e) {
+            window.bookingItems = [];
+        }
+
+        cartItems.innerHTML = '';
+        baseCartTotal = 0;
+        
+        if (window.bookingItems.length === 0) {
+            cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty. Add some experiences from our pages!</p>';
+            totalPrice.textContent = '$0.00';
+            totalItems.textContent = '0 items';
+            proceedToPaymentBtn.classList.add('hidden');
+            updatePricing();
+            return;
+        }
+        
+        window.bookingItems.forEach((item, index) => {
+            let priceValue = 0;
+            let displayPrice = "Enquire";
+            let basePrice = 0;
+            
+            if(item.price && item.price !== 'Enquire') {
+                displayPrice = String(item.price);
+                basePrice = parseFloat(displayPrice.replace(/[^0-9.-]+/g, "")) || 0;
+            }
+            
+            // Get guests count (default to 1) and calculate dynamic price
+            const guests = item.guests || 1;
+            priceValue = basePrice * guests;
+            baseCartTotal += priceValue;
+            
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'cart-item flex flex-col gap-4 p-5 bg-white rounded-xl border border-gray-200 shadow-sm';
+            
+            const today = new Date().toISOString().split('T')[0];
+            const itemDate = item.date || '';
+            
+            // Display dynamic price
+            const currentPrice = basePrice * guests;
+            const guestDisplay = guests > 1 ? `<span class="text-xs text-gray-500 ml-2">(${basePrice} × ${guests} guests)</span>` : '';
+            
+            itemDiv.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-[#003C63] text-lg mb-1">${item.name}</h4>
+                        <p class="text-[#F27D57] font-bold">$${currentPrice.toFixed(2)} ${guestDisplay}</p>
+                    </div>
+                    <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-600 p-3 bg-red-50 rounded-lg transition-colors">
+                        <i class="fi fi-rr-trash text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="border-t border-gray-200 pt-4 flex flex-col gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Travel Date *</label>
+                        <input type="date" id="date-${index}" value="${itemDate}" min="${today}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none" onchange="updateItemDate(${index}, this.value)">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Number of Guests *</label>
+                        <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-lg border border-gray-200 w-fit">
+                            <button onclick="decrementGuests(${index})" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
+                            <span class="w-12 text-center font-bold text-[#003C63] text-lg">${guests}</span>
+                            <button onclick="incrementGuests(${index})" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            cartItems.appendChild(itemDiv);
+        });
+        
+        totalPrice.textContent = `$${baseCartTotal.toFixed(2)}`;
+        totalItems.textContent = `${window.bookingItems.length} item${window.bookingItems.length > 1 ? 's' : ''}`;
+        proceedToPaymentBtn.classList.remove('hidden');
+
+        const today = new Date().toISOString().split('T')[0];
+        const dateInput = document.getElementById('bookingDate');
+        if(dateInput) dateInput.setAttribute('min', today);
+
+        updatePricing();
+    }
+
+    // Increment guests for an item
+    window.incrementGuests = function(index) {
+        if (!window.bookingItems[index]) return;
+        window.bookingItems[index].guests = (window.bookingItems[index].guests || 1) + 1;
+        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+        renderCart();
+        updatePricing();
+    }
+
+    // Decrement guests for an item
+    window.decrementGuests = function(index) {
+        if (!window.bookingItems[index]) return;
+        const currentGuests = window.bookingItems[index].guests || 1;
+        if (currentGuests > 1) {
+            window.bookingItems[index].guests = currentGuests - 1;
+            localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+            renderCart();
+            updatePricing();
+        }
+    }
+
+    // Update item date
+    window.updateItemDate = function(index, date) {
+        window.bookingItems[index].date = date;
+        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+        renderCart();
+    }
+
+    // Remove from booking.html cart
+    window.removeFromCart = function(index) {
+        window.bookingItems.splice(index, 1);
+        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+        localStorage.setItem('morixBookingCount', window.bookingItems.length);
+        currentBookingCount = window.bookingItems.length;
+        
+        renderCart();
+        updateBookingUI();
+    }
+
+    // Math calculation for checkout section
+    const guestCountInput = document.getElementById('guestCount');
+    const paymentRadios = document.querySelectorAll('input[name="paymentType"]');
+    const amountDisplay = document.getElementById('amountDisplay');
+    const calculationDetails = document.getElementById('calculationDetails');
+    const btnAmount = document.getElementById('btnAmount');
+    const btnMinus = document.getElementById('btnMinus');
+    const btnPlus = document.getElementById('btnPlus');
+
+    window.updatePricing = function() {
+        if(baseCartTotal === 0) {
+            if(amountDisplay) amountDisplay.textContent = "$0.00";
+            if(btnAmount) btnAmount.textContent = "$0.00";
+            if(calculationDetails) calculationDetails.textContent = "Total × 100%";
+            return;
+        }
+
+        let paymentMultiplier = 1; 
+        let scheduleText = "100%";
+        
+        paymentRadios.forEach(radio => {
+            if (radio.checked) {
+                paymentMultiplier = parseFloat(radio.value);
+                if(paymentMultiplier === 0.5) scheduleText = "50% Deposit";
+            }
+        });
+
+        // baseCartTotal ALREADY includes guest multiplication from renderCart()
+        // Just apply the payment percentage
+        const finalAmount = baseCartTotal * paymentMultiplier;
+        const formattedAmount = `$${finalAmount.toFixed(2)}`;
+        
+        if(amountDisplay) amountDisplay.textContent = formattedAmount;
+        if(btnAmount) btnAmount.textContent = formattedAmount;
+        if(calculationDetails) calculationDetails.textContent = `Total × ${scheduleText}`;
+    }
+
+    if(btnMinus) {
+        btnMinus.addEventListener('click', () => {
+            let currentVal = parseInt(guestCountInput.value);
+            if (currentVal > 1) {
+                guestCountInput.value = currentVal - 1;
+                updatePricing();
+            }
+        });
+    }
+
+    if(btnPlus) {
+        btnPlus.addEventListener('click', () => {
+            let currentVal = parseInt(guestCountInput.value);
+            if (currentVal < 20) { 
+                guestCountInput.value = currentVal + 1;
+                updatePricing();
+            }
+        });
+    }
+
+    paymentRadios.forEach(radio => radio.addEventListener('change', updatePricing));
+
+    // Show booking form
+    if(proceedToPaymentBtn) {
+        proceedToPaymentBtn.addEventListener('click', function() {
+            // Validate all dates are set and unique, and guests are set
+            if (!validateBookingDetails()) {
+                return; // Validation failed, don't proceed
+            }
+            
+            document.getElementById('booking-cart').style.display = 'none';
+            formContainer.style.display = 'block';
+            setTimeout(() => {
+                formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        });
+
+        // Validate booking details
+        window.validateBookingDetails = function() {
+            window.bookingItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
+            
+            // Check if all items have dates set
+            for (let item of window.bookingItems) {
+                if (!item.date) {
+                    alert('Please set a travel date for each package');
+                    return false;
+                }
+                if (!item.guests || item.guests < 1) {
+                    alert('Please set the number of guests for each package');
+                    return false;
+                }
+            }
+            
+            // Check if dates are unique (no two items with same date)
+            const dates = window.bookingItems.map(item => item.date);
+            const uniqueDates = new Set(dates);
+            
+            if (dates.length !== uniqueDates.size) {
+                alert('Each package must have a different travel date. You cannot book multiple packages on the same day.');
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Edit my booking - go back to cart
+        window.editMyBooking = function() {
+            const bookingCart = document.getElementById('booking-cart');
+            const formContainer = document.getElementById('booking-form');
+            const paymentSection = document.getElementById('paymentSection');
+            const proceedBtnContainer = document.getElementById('proceedBtnContainer');
+            
+            // Show booking cart
+            if (bookingCart) bookingCart.style.display = 'block';
+            
+            // Hide form and payment section
+            if (formContainer) formContainer.style.display = 'none';
+            if (proceedBtnContainer) proceedBtnContainer.style.display = 'block';
+            if (paymentSection) {
+                paymentSection.classList.remove('active');
+                paymentSection.style.display = 'none';
+            }
+            
+            // Scroll to cart
+            setTimeout(() => {
+                bookingCart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    }
+
+    // Reveal Secure Checkout Section inside Form
+    const proceedBtn = document.getElementById('proceedBtn');
+    const proceedBtnContainer = document.getElementById('proceedBtnContainer');
+    const paymentSection = document.getElementById('paymentSection');
+    const form = document.getElementById('reservationForm');
+
+    if(proceedBtn) {
+        proceedBtn.addEventListener('click', () => {
+            if (form.checkValidity()) {
+                proceedBtnContainer.style.display = 'none';
+                paymentSection.classList.add('active');
+                paymentSection.style.display = 'block'; 
+                setTimeout(() => {
+                    paymentSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            } else {
+                form.reportValidity(); 
+            }
+        });
+    }
+
+    // Payment Tabs Logic
+    const tabCard = document.getElementById('tabCard');
+    const tabMobile = document.getElementById('tabMobile');
+    const cardProviders = document.getElementById('cardProviders');
+    const cardTypeBtns = document.querySelectorAll('.card-type-btn');
+    const mobileTypeBtns = document.querySelectorAll('.mobile-type-btn');
+    const ccFields = document.getElementById('ccFields');
+    const paypalFields = document.getElementById('paypalFields');
+    const mobileFields = document.getElementById('mobileFields');
+
+    if(tabCard && tabMobile) {
+        tabCard.addEventListener('click', () => {
+            tabCard.classList.add('active');
+            tabMobile.classList.remove('active');
+            cardProviders.classList.remove('hidden'); 
+            mobileFields.classList.add('hidden'); 
+            mobileFields.classList.remove('block');
+            const activeCard = document.querySelector('.card-type-btn.active');
+            if(activeCard) activeCard.click(); 
+        });
+
+        tabMobile.addEventListener('click', () => {
+            tabMobile.classList.add('active');
+            tabCard.classList.remove('active');
+            cardProviders.classList.add('hidden'); 
+            ccFields.classList.add('hidden'); 
+            ccFields.classList.remove('block');
+            paypalFields.classList.add('hidden'); 
+            paypalFields.classList.remove('block');
+            mobileFields.classList.remove('hidden'); 
+            mobileFields.classList.add('block');
+        });
+    }
+
+    cardTypeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            cardTypeBtns.forEach(b => b.classList.remove('active'));
+            const clickedBtn = e.currentTarget;
+            clickedBtn.classList.add('active');
+            const type = clickedBtn.getAttribute('data-type');
+            
+            if (type === 'paypal') {
+                ccFields.classList.add('hidden');
+                ccFields.classList.remove('block');
+                paypalFields.classList.remove('hidden');
+                paypalFields.classList.add('block');
+            } else {
+                paypalFields.classList.add('hidden');
+                paypalFields.classList.remove('block');
+                ccFields.classList.remove('hidden');
+                ccFields.classList.add('block');
+            }
+        });
+    });
+
+    mobileTypeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            mobileTypeBtns.forEach(b => b.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+        });
+    });
+
+    renderCart(); // Initial cart render
+});
+
+// ==========================================
+// OTHER PAGES LOGIC
+// ==========================================
 
 //about us page//
 console.log("Morix Beyond Zanzibar - About Us Loaded");
-
-// Optional: Add hover 3D effect only on desktop
-// This adds a premium feel without affecting mobile performance
 if (window.matchMedia("(min-width: 1024px)").matches) {
     const cards = document.querySelectorAll('.service-card');
-    
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
-            // Subtle movement
             const xMove = (x - rect.width / 2) / 20;
             const yMove = (y - rect.height / 2) / 20;
-            
             card.style.transform = `perspective(1000px) rotateX(${yMove * -1}deg) rotateY(${xMove}deg) scale(1.02)`;
         });
-        
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
         });
     });
 }
 
-// why choose us//
-console.log("Morix Beyond Zanzibar - Why Choose Us Loaded");
+//team //
+const teamData = [
+    { name: "Morix – Founder", role: "Founder & Visionary", image: "image/morix 2.jpeg" },
+    { name: "Ngalla", role: " The Driver", image: "image/driver.jpeg" },
+    { name: "Abdul", role: "Tour Guide Extraordinaire", image: "image/tourguide.jpeg" },
+    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" }
+];
 
-// Optional: Smooth scroll adjustment for anchor links if you have a fixed header
+function renderTeam() {
+    const container = document.getElementById('team-grid');
+    if (!container) return;
+
+    container.innerHTML = teamData.map((member, index) => `
+        <div class="team-card group relative overflow-hidden rounded-xl cursor-pointer service-pop-up" style="transition-delay: ${index * 150}ms">
+            <div class="h-80 w-full overflow-hidden bg-gray-200">
+                <img src="${member.image}" alt="${member.name}" class="team-card-image w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0">
+            </div>
+            <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-[#0E415E] to-transparent pt-12">
+                <h4 class="text-white font-bold text-lg font-serif">${member.name}</h4>
+                <p class="text-[#F28E64] text-xs font-bold uppercase tracking-widest">${member.role}</p>
+            </div>
+            <div class="team-social absolute inset-0 bg-[#0E415E]/90 flex flex-col items-center justify-center text-center p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <div class="w-16 h-16 rounded-full border-2 border-[#F28E64] p-1 mb-4">
+                    <img src="${member.image}" class="w-full h-full rounded-full object-cover">
+                </div>
+                <h4 class="text-white font-bold text-xl mb-1">${member.name}</h4>
+                <p class="text-gray-300 text-sm mb-6">${member.role}</p>
+            </div>
+        </div>
+    `).join('');
+}
+document.addEventListener('DOMContentLoaded', () => { renderTeam(); });
+
+// why choose us & contact us//
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
         const targetId = this.getAttribute('href');
         if(targetId === '#') return;
-        
         const targetElement = document.querySelector(targetId);
         if(targetElement){
-            // Offset for fixed header (approx 80px)
-            const headerOffset = 80;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-        }
-    });
-});
-
-
-
-
-
-//contact us//
-console.log("Morix Beyond Zanzibar - Contact Page Loaded");
-
-// Smooth scroll handler for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if(targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if(targetElement){
+            e.preventDefault();
             const headerOffset = 100;
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
     });
 });
 
-
-
-
-
-
-
-
-//tanznaia//
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- 1. FILTERING LOGIC ---
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.package-card');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active styles from all buttons
-            filterBtns.forEach(b => {
-                b.classList.remove('active', 'bg-[#003C63]', 'text-white', 'shadow-lg');
-                b.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
-            });
-
-            // Add active styles to clicked button
-            btn.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
-            btn.classList.add('active', 'bg-[#003C63]', 'text-white', 'shadow-lg');
-
-            const filter = btn.getAttribute('data-filter');
-
-            cards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                
-                // Filtering Logic:
-                // If filter is 'all', show everything.
-                // If filter is 'safari', show cards with data-category="safari".
-                // If filter is 'trekking', show cards with data-category="trekking".
-                if (filter === 'all' || filter === category) {
-                    gsap.to(card, { 
-                        display: "block", 
-                        opacity: 1, 
-                        scale: 1, 
-                        duration: 0.4, 
-                        ease: "power2.out" 
-                    });
-                } else {
-                    gsap.to(card, { 
-                        opacity: 0, 
-                        scale: 0.8, 
-                        duration: 0.3, 
-                        onComplete: () => card.style.display = "none" 
-                    });
-                }
-            });
-        });
-    });
-
-    // --- 2. MODAL LOGIC ---
-    const modal = document.getElementById('itinerary-modal');
-    const mContent = document.getElementById('modal-content');
-    const mTitle = document.getElementById('modal-title');
-    const mType = document.getElementById('modal-type');
-    const mItinerary = document.getElementById('modal-itinerary');
-    const mIncludes = document.getElementById('modal-includes');
-    const mPrice = document.getElementById('modal-price');
-    const mWhatsapp = document.getElementById('modal-whatsapp');
-
-    // Open Modal
-    document.querySelectorAll('.view-details-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const title = btn.getAttribute('data-title');
-            const type = btn.getAttribute('data-type');
-            const itinerary = btn.getAttribute('data-itinerary');
-            const includes = btn.getAttribute('data-inclusions');
-            const price = btn.getAttribute('data-price');
-            
-            mTitle.innerText = title;
-            mType.innerText = type;
-            mItinerary.innerHTML = itinerary; // Renders HTML line breaks
-            mIncludes.innerText = includes;
-            mPrice.innerText = price;
-            
-            const phone = "255746319059"; 
-            mWhatsapp.href = `https://wa.me/${phone}?text=I'm interested in the ${encodeURIComponent(title)} - Price: ${price}`;
-
-            modal.classList.remove('hidden');
-            gsap.to(mContent, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.2)" });
-        });
-    });
-
-    // Close Modal Functions
-    const closeModal = () => {
-        gsap.to(mContent, { 
-            scale: 0.9, 
-            opacity: 0, 
-            duration: 0.3, 
-            ease: "power2.in", 
-            onComplete: () => modal.classList.add('hidden') 
-        });
-    };
-
-    document.getElementById('close-modal-bg').addEventListener('click', closeModal);
-    document.getElementById('close-modal-btn').addEventListener('click', closeModal);
-    document.getElementById('close-modal-x').addEventListener('click', closeModal);
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-    });
-});
-
-
-
-
-
-
-
-
 //GALLERY PAGE//
-
-
-// --- 1. PHOTO DATA (Images Only) ---
 const photoData = [
-    // Safari
     { src: "image/1 (13).jpg", cat: "safari", title: "Lion King" },
     { src: "image/1 (10).jpg", cat: "safari", title: "Ngorongoro Crater" },
     { src: "image/1 (15).jpg", cat: "safari", title: "The Great Migration" },
     { src: "image/1 (19).jpg", cat: "safari", title: "Elephants at Sunset" },
-    
-    // Beach
     { src: "image/1 (1).jpg", cat: "beach", title: "Nungwi Turquoise" },
     { src: "image/1 (2).jpg", cat: "beach", title: "Sandbank Relax" },
     { src: "image/1 (9).jpg", cat: "beach", title: "Traditional Dhow" },
-
-    // Culture
     { src: "image/1 (7).jpg", cat: "culture", title: "Stone Town Alleys" },
     { src: "image/1 (6).jpg", cat: "culture", title: "Spice Farm Colors" }
 ];
 
-// --- 2. VIDEO DATA (Videos Only) ---
 const videoData = [
     { src: "image/video.mp4", title: "Safari Adventure" },
     { src: "image/video.mp4", title: "Nungwi Vibes" },
@@ -537,11 +842,9 @@ const videoData = [
     { src: "image/video.mp4", title: "Luxury Resort Tour" }
 ];
 
-// STATE TRACKING
 let activeLightboxList = []; 
 let activeIndex = 0; 
 
-// --- 3. RENDER PHOTOS (Masonry) ---
 function renderPhotos(filter = 'all') {
     const container = document.getElementById('photo-masonry');
     if (!container) return;
@@ -561,14 +864,12 @@ function renderPhotos(filter = 'all') {
         </div>
     `).join('');
     
-    // Trigger GSAP entrance animation for new items
     if(typeof ScrollTrigger !== "undefined") {
         ScrollTrigger.refresh();
         gsap.fromTo(".gallery-item", {opacity: 0, y: 30}, {opacity: 1, y: 0, stagger: 0.1, duration: 0.8, ease: "power2.out"});
     }
 }
 
-// --- 4. RENDER VIDEOS (Grid) ---
 function renderVideos() {
     const container = document.getElementById('video-grid');
     if (!container) return;
@@ -576,13 +877,11 @@ function renderVideos() {
     container.innerHTML = videoData.map((item, index) => `
         <div class="relative rounded-3xl overflow-hidden group cursor-pointer fade-up bg-black h-64" onclick="openLightbox('video', ${index})">
             <video src="${item.src}" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
-            
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="w-16 h-16 bg-[#F27D57]/90 rounded-full flex items-center justify-center text-white text-2xl pl-1 group-hover:scale-110 transition-transform shadow-lg">
                     <i class="fi fi-sr-play"></i>
                 </div>
             </div>
-
             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
                 <h3 class="text-white text-lg font-bold">${item.title}</h3>
             </div>
@@ -590,12 +889,10 @@ function renderVideos() {
     `).join('');
 }
 
-// --- 5. LIGHTBOX LOGIC ---
 function openLightbox(type, index, filter = 'all') {
     const modal = document.getElementById('lightbox-modal');
     const content = document.getElementById('lightbox-content');
     
-    // 1. Determine which list we are navigating
     if (type === 'photo') {
         if (filter === 'all') {
             activeLightboxList = photoData.map(item => ({...item, type: 'photo'}));
@@ -609,13 +906,12 @@ function openLightbox(type, index, filter = 'all') {
     activeIndex = index;
     updateLightboxView();
 
-    // Show Modal with Animation
     modal.classList.remove('hidden');
     setTimeout(() => { 
         modal.style.opacity = '1'; 
         content.style.transform = 'scale(1)';
     }, 10);
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
 }
 
 function updateLightboxView() {
@@ -635,17 +931,14 @@ function updateLightboxView() {
         videoEl.classList.add('hidden');
         videoEl.pause();
         imgEl.classList.remove('hidden');
-        // Load higher resolution version if using Unsplash
         imgEl.src = item.src.replace('&w=800', '&w=1600'); 
     }
 }
 
 function navigateLightbox(direction) {
     activeIndex += direction;
-    // Loop navigation
     if (activeIndex >= activeLightboxList.length) activeIndex = 0;
     if (activeIndex < 0) activeIndex = activeLightboxList.length - 1;
-    
     updateLightboxView();
 }
 
@@ -662,11 +955,10 @@ function closeLightbox() {
         modal.classList.add('hidden'); 
     }, 300);
     
-    document.body.style.overflow = 'auto'; // Restore scrolling
+    document.body.style.overflow = 'auto';
 }
 
 function filterPhotos(category) {
-    // Update active button state
     document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
         btn.classList.remove('active', 'bg-[#003C63]', 'text-white', 'shadow-lg');
         btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
@@ -676,17 +968,14 @@ function filterPhotos(category) {
             btn.classList.add('active', 'bg-[#003C63]', 'text-white', 'shadow-lg');
         }
     });
-    // Re-render
     renderPhotos(category);
 }
 
-// --- 6. INIT ---
 document.addEventListener('DOMContentLoaded', () => {
     renderPhotos('all');
     renderVideos();
 });
 
-// Keyboard Navigation for Lightbox
 document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('lightbox-modal');
     if (!modal || modal.classList.contains('hidden')) return;
@@ -696,45 +985,24 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') navigateLightbox(-1);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-/* =========================================
-   GLOBAL FOOTER GENERATOR
-   ========================================= */
-
+// GLOBAL FOOTER GENERATOR
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. Create the footer element
     const siteFooter = document.createElement("footer");
     siteFooter.className = "bg-[#003C63] text-white pt-16 pb-6 mt-auto";
     
-    // 2. Add all your footer HTML inside it
     siteFooter.innerHTML = `
         <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
-            
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-12">
-                
                 <div class="space-y-4 lg:col-span-1">
                     <h2 class="font-serif text-3xl font-bold tracking-wide">
                         MORIX <span class="text-[#F27D57]">BEYOND</span>
                     </h2>
                     <p class="text-gray-400 text-sm leading-relaxed font-light mt-4 lg:pr-4">
                         Morix Beyond Zanzibar is a premium tourism and visual storytelling brand based in Zanzibar. We create unforgettable travel experiences across Zanzibar and mainland Tanzania while capturing them through cinematic photography and videography.
-
                     </p>
                 </div>    
 
                 <div class="grid grid-cols-2 gap-6 lg:col-span-2 lg:grid-cols-2 lg:gap-12">
-                    
                     <div>
                         <h3 class="text-[#F27D57] font-bold uppercase tracking-widest text-xs mb-5 md:mb-6">Quick Links</h3>
                         <ul class="space-y-4 text-sm">
@@ -748,38 +1016,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     <div>
                         <h3 class="text-[#F27D57] font-bold uppercase tracking-widest text-xs mb-5 md:mb-6">Follow Us</h3>
-                        
                         <div class="flex flex-col gap-4 text-sm">                            
-                            
                             <a href="#" target="_blank" class="text-gray-300 hover:text-[#F27D57] transition-colors flex items-center group">
-                                <i class="fi fi-brands-instagram text-xl w-8"></i>
-                                <span>Instagram</span>
+                                <i class="fi fi-brands-instagram text-xl w-8"></i><span>Instagram</span>
                             </a>                            
-                            
                             <a href="#" target="_blank" class="text-gray-300 hover:text-[#F27D57] transition-colors flex items-center group">
-                                <i class="fi fi-brands-twitter-alt text-xl w-8"></i> 
-                                <span>X (Twitter)</span>
+                                <i class="fi fi-brands-twitter-alt text-xl w-8"></i><span>X (Twitter)</span>
                             </a>                            
-                            
                             <a href="#" target="_blank" class="text-gray-300 hover:text-[#F27D57] transition-colors flex items-center group">
-                                <i class="fi fi-brands-facebook text-xl w-8"></i>
-                                <span>Facebook</span>
+                                <i class="fi fi-brands-facebook text-xl w-8"></i><span>Facebook</span>
                             </a>
-                            
                             <a href="#" target="_blank" class="text-gray-300 hover:text-[#F27D57] transition-colors flex items-center group">
-                                <i class="fi fi-brands-tik-tok text-xl w-8"></i>
-                                <span>TikTok</span>
+                                <i class="fi fi-brands-tik-tok text-xl w-8"></i><span>TikTok</span>
                             </a>                            
                         </div>
                     </div>
-
                 </div>          
 
                 <div class="lg:col-span-1 mt-4 lg:mt-0">
                     <h3 class="text-[#F27D57] font-bold uppercase tracking-widest text-xs mb-5 md:mb-6">Get In Touch</h3>             
-                    
                     <div class="flex flex-row flex-wrap gap-4 md:flex-col md:gap-5"> 
-                        
                         <a href="https://wa.me/255746319059" target="_blank" class="flex items-center group transition-all duration-300" title="WhatsApp">
                             <div class="w-12 h-12 md:w-10 md:h-10 flex-shrink-0 flex items-center justify-center bg-[#25D366]/10 text-[#25D366] rounded-xl group-hover:bg-[#25D366] group-hover:text-white transition-all shadow-sm">
                                 <i class="fi fi-brands-whatsapp text-xl"></i>
@@ -789,7 +1045,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <span class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">(+255) 746 319 059</span>
                             </div>
                         </a>
-
                         <a href="mailto:morixbeyond@gmail.com" class="flex items-center group transition-all duration-300" title="Email Us">
                             <div class="w-12 h-12 md:w-10 md:h-10 flex-shrink-0 flex items-center justify-center bg-[#F27D57]/10 text-[#F27D57] rounded-xl group-hover:bg-[#F27D57] group-hover:text-white transition-all shadow-sm">
                                 <i class="fi fi-rr-envelope text-lg mt-1"></i>
@@ -799,7 +1054,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <span class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">morixbeyond@gmail.com</span>
                             </div>
                         </a>
-
                         <a href="#" target="_blank" class="flex items-center group transition-all duration-300" title="Location">
                             <div class="w-12 h-12 md:w-10 md:h-10 flex-shrink-0 flex items-center justify-center bg-blue-400/10 text-blue-400 rounded-xl group-hover:bg-blue-400 group-hover:text-white transition-all shadow-sm">
                                 <i class="fi fi-rr-marker text-lg mt-1"></i>
@@ -811,9 +1065,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </a>
                     </div>
                 </div>
-
             </div> 
-            
             <div class="pt-8 mt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
                 <p>© ${new Date().getFullYear()} MORIX BEYOND ZANZIBAR. All rights reserved.</p>
                 <div class="flex gap-6">
@@ -823,201 +1075,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
     `;
-
-    // 3. Automatically attach it to the bottom of the page
     document.body.appendChild(siteFooter);
-
 });
-
-
-
-//booking now//
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('reservationForm');
-    
-    // Safety check in case the script runs on a page without the booking form
-    if(!form) return; 
-
-    const servicePackage = document.getElementById('servicePackage');
-    const paymentRadios = document.querySelectorAll('input[name="paymentType"]');
-    const amountDisplay = document.getElementById('amountDisplay');
-    const calculationDetails = document.getElementById('calculationDetails');
-    const btnAmount = document.getElementById('btnAmount');
-    
-    const proceedBtn = document.getElementById('proceedBtn');
-    const proceedBtnContainer = document.getElementById('proceedBtnContainer');
-    const paymentSection = document.getElementById('paymentSection');
-
-    // Elements for Guest Logic
-    const guestCounterWrapper = document.getElementById('guestCounterWrapper');
-    const guestCountInput = document.getElementById('guestCount');
-    const btnMinus = document.getElementById('btnMinus');
-    const btnPlus = document.getElementById('btnPlus');
-    const guestNotice = document.getElementById('guestNotice');
-
-    // Set Minimum Date to Today
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('bookingDate').setAttribute('min', today);
-
-    // --- 1. UNLOCK GUEST COUNTER WHEN PACKAGE IS SELECTED ---
-    servicePackage.addEventListener('change', () => {
-        if(servicePackage.value !== "0") {
-            guestCounterWrapper.classList.remove('opacity-60', 'cursor-not-allowed', 'bg-gray-100');
-            guestCounterWrapper.classList.add('bg-gray-50');
-            
-            btnMinus.removeAttribute('disabled');
-            btnPlus.removeAttribute('disabled');
-            
-            btnMinus.classList.add('hover:bg-gray-200', 'hover:text-[#F27D57]', 'text-gray-500');
-            btnPlus.classList.add('hover:bg-gray-200', 'hover:text-[#F27D57]', 'text-gray-500');
-            
-            guestNotice.classList.add('hidden'); 
-            updatePricing(); 
-        }
-    });
-
-    // --- 2. +/- GUEST COUNTER MATH ---
-    btnMinus.addEventListener('click', () => {
-        let currentVal = parseInt(guestCountInput.value);
-        if (currentVal > 1) {
-            guestCountInput.value = currentVal - 1;
-            updatePricing();
-        }
-    });
-
-    btnPlus.addEventListener('click', () => {
-        let currentVal = parseInt(guestCountInput.value);
-        if (currentVal < 10) { 
-            guestCountInput.value = currentVal + 1;
-            updatePricing();
-        }
-    });
-
-    // --- 3. DYNAMIC PRICING ENGINE ---
-    const updatePricing = () => {
-        const packagePrice = parseFloat(servicePackage.value) || 0;
-        
-        if(packagePrice === 0) {
-            amountDisplay.textContent = "$0.00";
-            btnAmount.textContent = "$0.00";
-            calculationDetails.textContent = "0 Guest(s) × 100%";
-            return;
-        }
-
-        const guests = parseInt(guestCountInput.value) || 1;
-        
-        let paymentMultiplier = 1; 
-        let scheduleText = "100%";
-        paymentRadios.forEach(radio => {
-            if (radio.checked) {
-                paymentMultiplier = parseFloat(radio.value);
-                if(paymentMultiplier === 0.5) scheduleText = "50% Deposit";
-            }
-        });
-
-        const finalAmount = (packagePrice * guests) * paymentMultiplier;
-        const formattedAmount = `$${finalAmount.toFixed(2)}`;
-        
-        amountDisplay.textContent = formattedAmount;
-        btnAmount.textContent = formattedAmount;
-        calculationDetails.textContent = `${guests} Guest(s) × ${scheduleText}`;
-    };
-
-    paymentRadios.forEach(radio => radio.addEventListener('change', updatePricing));
-
-    // --- 4. REVEAL SECURE CHECKOUT ---
-    proceedBtn.addEventListener('click', () => {
-        if(servicePackage.value === "0") {
-            alert("Please select a Service Package to proceed.");
-            servicePackage.focus();
-            return;
-        }
-
-        if (form.checkValidity()) {
-            proceedBtnContainer.style.display = 'none';
-            paymentSection.classList.add('active');
-            setTimeout(() => {
-                paymentSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
-        } else {
-            form.reportValidity(); 
-        }
-    });
-
-    // --- 5. PAYMENT TAB & PROVIDER LOGIC ---
-    const tabCard = document.getElementById('tabCard');
-    const tabMobile = document.getElementById('tabMobile');
-    const cardProviders = document.getElementById('cardProviders');
-    const cardTypeBtns = document.querySelectorAll('.card-type-btn');
-    const mobileTypeBtns = document.querySelectorAll('.mobile-type-btn');
-    
-    const ccFields = document.getElementById('ccFields');
-    const paypalFields = document.getElementById('paypalFields');
-    const mobileFields = document.getElementById('mobileFields');
-
-    // Swap to Card
-    tabCard.addEventListener('click', () => {
-        tabCard.classList.add('active');
-        tabMobile.classList.remove('active');
-        
-        cardProviders.classList.remove('hidden'); 
-        mobileFields.classList.add('hidden'); 
-        mobileFields.classList.remove('block');
-        
-        const activeCard = document.querySelector('.card-type-btn.active');
-        if(activeCard) activeCard.click(); 
-    });
-
-    // Swap to Mobile Money
-    tabMobile.addEventListener('click', () => {
-        tabMobile.classList.add('active');
-        tabCard.classList.remove('active');
-        
-        cardProviders.classList.add('hidden'); 
-        ccFields.classList.add('hidden'); 
-        ccFields.classList.remove('block');
-        paypalFields.classList.add('hidden'); 
-        paypalFields.classList.remove('block');
-        
-        mobileFields.classList.remove('hidden'); 
-        mobileFields.classList.add('block');
-    });
-
-    // Select Specific Card Type
-    cardTypeBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            cardTypeBtns.forEach(b => b.classList.remove('active'));
-            const clickedBtn = e.currentTarget;
-            clickedBtn.classList.add('active');
-            
-            const type = clickedBtn.getAttribute('data-type');
-            
-            if (type === 'paypal') {
-                ccFields.classList.add('hidden');
-                ccFields.classList.remove('block');
-                paypalFields.classList.remove('hidden');
-                paypalFields.classList.add('block');
-            } else {
-                paypalFields.classList.add('hidden');
-                paypalFields.classList.remove('block');
-                ccFields.classList.remove('hidden');
-                ccFields.classList.add('block');
-            }
-        });
-    });
-
-    // Select Specific Mobile Network
-    mobileTypeBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            mobileTypeBtns.forEach(b => b.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-        });
-    });
-});
-
-
-//guest//
-
 
 
 
@@ -1466,7 +1525,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="block font-bold text-[#003C63] text-sm leading-tight mb-1">${opt.name}</span>
                                 <span class="block font-black text-[#F27D57] text-xl">$${opt.price.toLocaleString()}</span>
                             </div>
-                            <button onclick="handleBookingClick('${safeTitle}', '${safeSrvName} - ${opt.name}')" class="w-full bg-[#003C63] text-white px-3 py-2.5 rounded-lg font-bold text-xs hover:bg-[#F27D57] transition-all flex items-center justify-center gap-2 mt-auto">
+                            <button onclick="handleBookingClick('${safeTitle}', '${safeSrvName} - ${opt.name}', '\$${opt.price}')" class="w-full bg-[#003C63] text-white px-3 py-2.5 rounded-lg font-bold text-xs hover:bg-[#F27D57] transition-all flex items-center justify-center gap-2 mt-auto">
                                 Add <i class="fi fi-rr-shopping-cart-add"></i>
                             </button>
                         </div>
@@ -1547,7 +1606,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
 
                         <div class="flex w-full">
-                            <button onclick="handleBookingClick('${safeTitleAll}', 'Full Experience')" class="w-full bg-[#F27D57] hover:bg-white hover:text-[#003C63] text-white px-6 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#F27D57]/20">
+                            <button onclick="handleBookingClick('${safeTitleAll}', 'Full Experience', '\$${totalPrice}')" class="w-full bg-[#F27D57] hover:bg-white hover:text-[#003C63] text-white px-6 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#F27D57]/20">
                                 <i class="fi fi-rr-shopping-cart-add text-xl"></i> Add Full Experience to Cart
                             </button>
                         </div>
@@ -1594,23 +1653,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 // 4. CART INTEGRATION LOGIC
 // ==========================================
-window.handleBookingClick = function(experienceName, serviceName) {
+window.handleBookingClick = function(experienceName, serviceName, price) {
     if (typeof window.addToBooking === 'function') {
-        window.addToBooking();
+        window.addToBooking(serviceName, price);
     } else {
-        console.warn("addToBooking function not found. Ensure header script is loaded.");
+        console.warn("addToBooking function not found. Ensure script is loaded.");
     }
-
-    const toast = document.createElement('div');
-    toast.className = 'fixed bottom-4 right-4 bg-[#25D366] text-white px-6 py-3 rounded-lg font-bold shadow-xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 z-[1001]';
-    toast.innerHTML = `<i class="fi fi-rr-check-circle"></i> Added ${serviceName} to Cart!`;
-    document.body.appendChild(toast);
-
-    setTimeout(() => { toast.classList.remove('translate-y-20', 'opacity-0'); }, 10);
-    setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-        setTimeout(() => toast.remove(), 300);
-    }, 3000);
 };
 
 
@@ -1653,3 +1701,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// safaris //
