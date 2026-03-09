@@ -397,10 +397,11 @@ function showWarningNotification(serviceName) {
 // ==========================================
 // 6. BOOKING.HTML PAGE SPECIFIC LOGIC
 // ==========================================
+// =====================================
+// MORIX BEYOND DYNAMIC CART LOGIC
+// =====================================
 document.addEventListener('DOMContentLoaded', () => {
     const bookingCartEl = document.getElementById('booking-cart');
-    
-    // Only run this logic if we are actually on the booking page
     if (!bookingCartEl) return;
 
     let baseCartTotal = 0; 
@@ -410,7 +411,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const proceedToPaymentBtn = document.getElementById('proceed-to-payment');
     const formContainer = document.getElementById('booking-form');
 
-    // Rendering logic for the booking.html cart
+    // --- HELPER FUNCTIONS ---
+    window.updateItemDate = function(index, date) {
+        window.bookingItems[index].date = date;
+        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+        renderCart();
+    }
+
+    window.updateBookingType = function(index, type) {
+        window.bookingItems[index].bookingType = type;
+        if(type === 'couple') {
+            window.bookingItems[index].adults = 2; 
+        } else if (!window.bookingItems[index].adults) {
+            window.bookingItems[index].adults = 1; 
+        }
+        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+        renderCart();
+    };
+
+    window.updateItemAdults = function(index, change) {
+        let current = window.bookingItems[index].adults || 1;
+        let newVal = current + change;
+        if (newVal >= 1 && newVal <= 30) {
+            window.bookingItems[index].adults = newVal;
+            localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+            renderCart();
+        }
+    };
+
+    // FIXED: Now properly recalculates price when vehicle changes
+    window.updateItemVehicle = function(index, vehicle) {
+        window.bookingItems[index].vehicle = vehicle;
+        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+        renderCart(); // Triggers the math update
+    };
+
+    window.removeFromCart = function(index) {
+        window.bookingItems.splice(index, 1);
+        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
+        localStorage.setItem('morixBookingCount', window.bookingItems.length);
+        if(typeof currentBookingCount !== 'undefined') currentBookingCount = window.bookingItems.length;
+        renderCart();
+        if(typeof updateBookingUI === 'function') updateBookingUI();
+    }
+
+    // --- RENDERING ENGINE ---
     window.renderCart = function() {
         try {
             window.bookingItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
@@ -422,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
         baseCartTotal = 0;
         
         if (window.bookingItems.length === 0) {
-            cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty. Add some experiences from our pages!</p>';
+            cartItems.innerHTML = '<p class="text-gray-500 text-center py-10 bg-white border border-gray-100 rounded-2xl shadow-sm">Your cart is empty. Add some experiences from our pages!</p>';
             totalPrice.textContent = '$0.00';
             totalItems.textContent = '0 items';
             proceedToPaymentBtn.classList.add('hidden');
@@ -430,57 +475,305 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
+        const today = new Date().toISOString().split('T')[0];
+
+        // Track dates for red highlighting (REQUIREMENT 1: DATE CONFLICT DETECTION)
+        const dateCounts = {};
+        window.bookingItems.forEach(item => {
+            if (item.date) dateCounts[item.date] = (dateCounts[item.date] || 0) + 1;
+        });
+
         window.bookingItems.forEach((item, index) => {
-            let priceValue = 0;
-            let displayPrice = "Enquire";
-            let basePrice = 0;
-            
-            if(item.price && item.price !== 'Enquire') {
-                displayPrice = String(item.price);
-                basePrice = parseFloat(displayPrice.replace(/[^0-9.-]+/g, "")) || 0;
+            let basePrice = item.basePrice;
+            if (basePrice === undefined) {
+                if(item.price && item.price !== 'Enquire') {
+                    basePrice = parseFloat(String(item.price).replace(/[^0-9.-]+/g, "")) || 0;
+                } else {
+                    basePrice = 0;
+                }
+                item.basePrice = basePrice;
             }
+
+            let itemName = (item.name || "").toLowerCase();
+            let bookingType = item.bookingType || 'guest';
+            let adults = item.adults || (bookingType === 'couple' ? 2 : 1);
+            let itemDate = item.date || '';
+            let vehicle = item.vehicle || '1 - 4 PAX = Noah/Alphard';
             
-            // Get guests count (default to 1) and calculate dynamic price
-            const guests = item.guests || 1;
-            priceValue = basePrice * guests;
-            baseCartTotal += priceValue;
+            let itemTotal = 0;
+            let controlsHTML = '';
+
+            // Date conflict indicator (RED HIGHLIGHT & ERROR MESSAGE)
+            let dateErrorClass = '';
+            let dateErrorHTML = '';
+            if (itemDate && dateCounts[itemDate] > 1) {
+                dateErrorClass = 'bg-red-50/50 border-2 border-red-300';
+                dateErrorHTML = `<div class="text-xs font-bold text-red-600 bg-red-100 p-2 rounded-lg mt-2 flex items-center gap-2"><i class="fi fi-rr-exclamation"></i> Date conflict detected! This date is used by another package.</div>`;
+            }
+
+            // ---------------------------------------------------------
+            // LOGIC 1: TRANSFERS (Dynamic Vehicle Pricing)
+            // ---------------------------------------------------------
+            if (itemName.includes('transfer')) {
+                // Determine price multiplier based on vehicle size
+                let vehicleMultiplier = 1;
+                if (vehicle.includes('1 - 8 PAX')) vehicleMultiplier = 2;
+                else if (vehicle.includes('1 - 12 PAX')) vehicleMultiplier = 3;
+                else if (vehicle.includes('1 - 16 PAX')) vehicleMultiplier = 4;
+                else if (vehicle.includes('1 - 20 PAX')) vehicleMultiplier = 5;
+                else if (vehicle.includes('1 - 24 PAX')) vehicleMultiplier = 6;
+
+                itemTotal = basePrice * vehicleMultiplier; // Applies the math
+                
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Transfer Date *</label>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="w-full px-4 py-2 border ${dateCounts[itemDate] > 1 ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer" required>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Select Vehicle (PAX) *</label>
+                            <select onchange="updateItemVehicle(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white">
+                                <option value="1 - 4 PAX = Noah/Alphard" ${vehicle === '1 - 4 PAX = Noah/Alphard' ? 'selected' : ''}>1 - 4 PAX = Noah/Alphard</option>
+                                <option value="1 - 8 PAX = Dungu" ${vehicle === '1 - 8 PAX = Dungu' ? 'selected' : ''}>1 - 8 PAX = Dungu</option>
+                                <option value="1 - 12 PAX = Dungu" ${vehicle === '1 - 12 PAX = Dungu' ? 'selected' : ''}>1 - 12 PAX = Dungu</option>
+                                <option value="1 - 16 PAX = Coaster" ${vehicle === '1 - 16 PAX = Coaster' ? 'selected' : ''}>1 - 16 PAX = Coaster</option>
+                                <option value="1 - 20 PAX = Coaster" ${vehicle === '1 - 20 PAX = Coaster' ? 'selected' : ''}>1 - 20 PAX = Coaster</option>
+                                <option value="1 - 24 PAX = Coaster" ${vehicle === '1 - 24 PAX = Coaster' ? 'selected' : ''}>1 - 24 PAX = Coaster</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+            }
+            // ---------------------------------------------------------
+            // LOGIC 2: SAFARIS
+            // ---------------------------------------------------------
+            else if (itemName.includes('safari') && !itemName.includes('safari blue')) {
+                itemTotal = basePrice * adults;
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Safari Start Date *</label>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="w-full px-4 py-2 border ${dateCounts[itemDate] > 1 ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer" required>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Number of Travelers *</label>
+                            <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-200 w-fit">
+                                <button type="button" onclick="updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
+                                <span class="w-8 text-center font-bold text-[#003C63] text-lg">${adults}</span>
+                                <button type="button" onclick="updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            // ---------------------------------------------------------
+            // LOGIC 3: BEACH PROPOSAL (COUPLE ONLY - LOCKED)
+            // ---------------------------------------------------------
+            else if (itemName.includes('beach proposal')) {
+                // Force couple setup
+                item.bookingType = 'couple';
+                item.adults = 2;
+                itemTotal = basePrice;
+                
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Engagement Date *</label>
+                        <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="w-full px-4 py-2 border ${dateCounts[itemDate] > 1 ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer" required>
+                        ${dateErrorHTML}
+                        <div class="mt-3 text-xs font-bold text-white bg-[#F27D57] p-2 rounded-lg inline-flex items-center gap-2">
+                            <i class='bx bx-heart text-base'></i> Couple Setup (2 Guests) - Flat Rate
+                        </div>
+                    </div>
+                `;
+            }
+            // ---------------------------------------------------------
+            // LOGIC 4: TRADITIONAL NGALAWA SAILING (1 Person or Couple)
+            // ---------------------------------------------------------
+            else if (itemName.includes('traditional ngalawa sailing')) {
+                if (bookingType === 'couple') {
+                    itemTotal = basePrice;
+                } else {
+                    itemTotal = basePrice;
+                }
+
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Sailing Date *</label>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="w-full px-4 py-2 border ${dateCounts[itemDate] > 1 ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer" required>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Capacity *</label>
+                            <select onchange="updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white">
+                                <option value="guest" ${bookingType === 'guest' ? 'selected' : ''}>1 Person</option>
+                                <option value="couple" ${bookingType === 'couple' ? 'selected' : ''}>Couple (2 People)</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+            }
+            // ---------------------------------------------------------
+            // LOGIC 5: FLYING DRESS PHOTOSHOOT (Kendwa-style logic)
+            // ---------------------------------------------------------
+            else if (itemName.includes('flying dress photoshoot')) {
+                if (bookingType === 'couple') {
+                    itemTotal = (basePrice * 2) * 1.07;
+                } else {
+                    itemTotal = basePrice * adults;
+                }
+
+                let guestControls = bookingType === 'guest' ? `
+                    <div class="mt-2">
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Number of Guests</label>
+                        <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-200 w-fit">
+                            <button type="button" onclick="updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
+                            <span class="w-8 text-center font-bold text-[#003C63] text-lg">${adults}</span>
+                            <button type="button" onclick="updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
+                        </div>
+                    </div>
+                ` : `<div class="mt-3 text-xs font-bold text-[#003C63] bg-[#F27D57]/10 p-2 rounded-lg inline-block">2 Guests (Includes 7% Couple Surcharge)</div>`;
+
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Photoshoot Date *</label>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="w-full px-4 py-2 border ${dateCounts[itemDate] > 1 ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer" required>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Booking Type *</label>
+                            <select onchange="updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white">
+                                <option value="guest" ${bookingType === 'guest' ? 'selected' : ''}>Number of Guests</option>
+                                <option value="couple" ${bookingType === 'couple' ? 'selected' : ''}>Couple</option>
+                            </select>
+                            ${guestControls}
+                        </div>
+                    </div>
+                `;
+            }
+            // ---------------------------------------------------------
+            // LOGIC 6: MEDIA & PHOTOGRAPHY (No children tracking)
+            // ---------------------------------------------------------
+            else if (itemName.includes('media') || itemName.includes('photo') || itemName.includes('shoot') || itemName.includes('video')) {
+                itemTotal = basePrice;
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Shoot Date *</label>
+                        <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="w-full px-4 py-2 border ${dateCounts[itemDate] > 1 ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer" required>
+                        ${dateErrorHTML}
+                    </div>
+                `;
+            }
+            // ---------------------------------------------------------
+            // LOGIC 7: PRIVATE DHOW
+            // ---------------------------------------------------------
+            else if (itemName.includes('private dhow') || (itemName.includes('safari blue') && itemName.includes('private'))) {
+                itemTotal = basePrice; 
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Travel Date *</label>
+                        <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="w-full px-4 py-2 border ${dateCounts[itemDate] > 1 ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer" required>
+                        ${dateErrorHTML}
+                        <div class="mt-3 text-xs font-semibold text-[#003C63] bg-[#003C63]/5 p-2 rounded-lg inline-flex items-center gap-2">
+                            <i class='bx bx-info-circle text-[#F27D57] text-base'></i> Private Group Booking (Flat Rate applies)
+                        </div>
+                    </div>
+                `;
+            } 
+            // ---------------------------------------------------------
+            // LOGIC 8: KENDWA BEACH 
+            // ---------------------------------------------------------
+            else if (itemName.includes('kendwa')) {
+                if (bookingType === 'couple') {
+                    itemTotal = (basePrice * 2) * 1.07;
+                } else {
+                    itemTotal = basePrice * adults;
+                }
+
+                let guestControls = bookingType === 'guest' ? `
+                    <div class="mt-2">
+                        <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Number of Guests</label>
+                        <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-200 w-fit">
+                            <button type="button" onclick="updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
+                            <span class="w-8 text-center font-bold text-[#003C63] text-lg">${adults}</span>
+                            <button type="button" onclick="updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
+                        </div>
+                    </div>
+                ` : `<div class="mt-3 text-xs font-bold text-[#003C63] bg-[#F27D57]/10 p-2 rounded-lg inline-block">2 Guests (Includes 7% Couple Surcharge)</div>`;
+
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Travel Date *</label>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="w-full px-4 py-2 border ${dateCounts[itemDate] > 1 ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer" required>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Booking Type *</label>
+                            <select onchange="updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white">
+                                <option value="guest" ${bookingType === 'guest' ? 'selected' : ''}>Number of Guests</option>
+                                <option value="couple" ${bookingType === 'couple' ? 'selected' : ''}>Couple</option>
+                            </select>
+                            ${guestControls}
+                        </div>
+                    </div>
+                `;
+            } 
+            // ---------------------------------------------------------
+            // LOGIC 9: DEFAULT EXPERIENCES (No children, only adults)
+            // ---------------------------------------------------------
+            else {
+                let adultPrice = basePrice;
+                itemTotal = adults * adultPrice;
+
+                let adultControls = bookingType === 'guest' ? `
+                    <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-200 w-fit mt-2">
+                        <button type="button" onclick="updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
+                        <span class="w-8 text-center font-bold text-[#003C63] text-lg">${adults}</span>
+                        <button type="button" onclick="updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
+                    </div>
+                ` : `<div class="mt-3 text-sm font-bold text-[#003C63] p-2 bg-gray-50 rounded-lg border border-gray-200 inline-block">2 Guests (Couple)</div>`;
+
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4 flex flex-col gap-4">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="flex-1">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Travel Date *</label>
+                                <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="w-full px-4 py-2 border ${dateCounts[itemDate] > 1 ? 'border-red-500 bg-red-50' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer" required>
+                            </div>
+                            <div class="flex-1">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Booking Type *</label>
+                                <select onchange="updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white">
+                                    <option value="guest" ${bookingType === 'guest' ? 'selected' : ''}>Number of Guests</option>
+                                    <option value="couple" ${bookingType === 'couple' ? 'selected' : ''}>Couple</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-6 mt-2">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest">Adults ($${adultPrice})</label>
+                                ${adultControls}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            baseCartTotal += itemTotal;
             
             const itemDiv = document.createElement('div');
-            itemDiv.className = 'cart-item flex flex-col gap-4 p-5 bg-white rounded-xl border border-gray-200 shadow-sm';
-            
-            const today = new Date().toISOString().split('T')[0];
-            const itemDate = item.date || '';
-            
-            // Display dynamic price
-            const currentPrice = basePrice * guests;
-            const guestDisplay = guests > 1 ? `<span class="text-xs text-gray-500 ml-2">(${basePrice} × ${guests} guests)</span>` : '';
-            
+            itemDiv.className = `cart-item flex flex-col gap-4 p-5 rounded-xl border shadow-sm relative overflow-hidden transition-all ${dateErrorClass || 'bg-white border-gray-200'}`;
             itemDiv.innerHTML = `
-                <div class="flex justify-between items-start">
-                    <div class="flex-1">
+                <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-[#003C63]"></div>
+                <div class="flex justify-between items-start pl-2">
+                    <div class="flex-1 pr-4">
                         <h4 class="font-bold text-[#003C63] text-lg mb-1">${item.name}</h4>
-                        <p class="text-[#F27D57] font-bold">$${currentPrice.toFixed(2)} ${guestDisplay}</p>
+                        <p class="text-[#F27D57] font-black text-xl">$${itemTotal.toFixed(2)}</p>
                     </div>
                     <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-600 p-3 bg-red-50 rounded-lg transition-colors">
                         <i class="fi fi-rr-trash text-xl"></i>
                     </button>
                 </div>
-                
-                <div class="border-t border-gray-200 pt-4 flex flex-col gap-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Travel Date *</label>
-                        <input type="date" id="date-${index}" value="${itemDate}" min="${today}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none" onchange="updateItemDate(${index}, this.value)">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Number of Guests *</label>
-                        <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-lg border border-gray-200 w-fit">
-                            <button onclick="decrementGuests(${index})" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
-                            <span class="w-12 text-center font-bold text-[#003C63] text-lg">${guests}</span>
-                            <button onclick="incrementGuests(${index})" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
-                        </div>
-                    </div>
-                </div>
+                ${controlsHTML}
             `;
             cartItems.appendChild(itemDiv);
         });
@@ -489,60 +782,14 @@ document.addEventListener('DOMContentLoaded', () => {
         totalItems.textContent = `${window.bookingItems.length} item${window.bookingItems.length > 1 ? 's' : ''}`;
         proceedToPaymentBtn.classList.remove('hidden');
 
-        const today = new Date().toISOString().split('T')[0];
-        const dateInput = document.getElementById('bookingDate');
-        if(dateInput) dateInput.setAttribute('min', today);
-
         updatePricing();
     }
 
-    // Increment guests for an item
-    window.incrementGuests = function(index) {
-        if (!window.bookingItems[index]) return;
-        window.bookingItems[index].guests = (window.bookingItems[index].guests || 1) + 1;
-        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        renderCart();
-        updatePricing();
-    }
-
-    // Decrement guests for an item
-    window.decrementGuests = function(index) {
-        if (!window.bookingItems[index]) return;
-        const currentGuests = window.bookingItems[index].guests || 1;
-        if (currentGuests > 1) {
-            window.bookingItems[index].guests = currentGuests - 1;
-            localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-            renderCart();
-            updatePricing();
-        }
-    }
-
-    // Update item date
-    window.updateItemDate = function(index, date) {
-        window.bookingItems[index].date = date;
-        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        renderCart();
-    }
-
-    // Remove from booking.html cart
-    window.removeFromCart = function(index) {
-        window.bookingItems.splice(index, 1);
-        localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        localStorage.setItem('morixBookingCount', window.bookingItems.length);
-        currentBookingCount = window.bookingItems.length;
-        
-        renderCart();
-        updateBookingUI();
-    }
-
-    // Math calculation for checkout section
-    const guestCountInput = document.getElementById('guestCount');
+    // --- CHECKOUT & MATH LOGIC ---
     const paymentRadios = document.querySelectorAll('input[name="paymentType"]');
     const amountDisplay = document.getElementById('amountDisplay');
     const calculationDetails = document.getElementById('calculationDetails');
     const btnAmount = document.getElementById('btnAmount');
-    const btnMinus = document.getElementById('btnMinus');
-    const btnPlus = document.getElementById('btnPlus');
 
     window.updatePricing = function() {
         if(baseCartTotal === 0) {
@@ -562,8 +809,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // baseCartTotal ALREADY includes guest multiplication from renderCart()
-        // Just apply the payment percentage
         const finalAmount = baseCartTotal * paymentMultiplier;
         const formattedAmount = `$${finalAmount.toFixed(2)}`;
         
@@ -572,118 +817,51 @@ document.addEventListener('DOMContentLoaded', () => {
         if(calculationDetails) calculationDetails.textContent = `Total × ${scheduleText}`;
     }
 
-    if(btnMinus) {
-        btnMinus.addEventListener('click', () => {
-            let currentVal = parseInt(guestCountInput.value);
-            if (currentVal > 1) {
-                guestCountInput.value = currentVal - 1;
-                updatePricing();
-            }
-        });
-    }
-
-    if(btnPlus) {
-        btnPlus.addEventListener('click', () => {
-            let currentVal = parseInt(guestCountInput.value);
-            if (currentVal < 20) { 
-                guestCountInput.value = currentVal + 1;
-                updatePricing();
-            }
-        });
-    }
-
     paymentRadios.forEach(radio => radio.addEventListener('change', updatePricing));
 
-    // Show booking form
     if(proceedToPaymentBtn) {
         proceedToPaymentBtn.addEventListener('click', function() {
-            // Validate all dates are set and unique, and guests are set
-            if (!validateBookingDetails()) {
-                return; // Validation failed, don't proceed
-            }
-            
+            if (!validateBookingDetails()) return; 
             document.getElementById('booking-cart').style.display = 'none';
             formContainer.style.display = 'block';
-            setTimeout(() => {
-                formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            setTimeout(() => { formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
         });
 
-        // Validate booking details
         window.validateBookingDetails = function() {
             window.bookingItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
-            
-            // Check if all items have dates set
             for (let item of window.bookingItems) {
                 if (!item.date) {
-                    alert('Please set a travel date for each package');
-                    return false;
-                }
-                if (!item.guests || item.guests < 1) {
-                    alert('Please set the number of guests for each package');
+                    alert('Please set a date for each package');
                     return false;
                 }
             }
-            
-            // Check if dates are unique (no two items with same date)
-            const dates = window.bookingItems.map(item => item.date);
-            const uniqueDates = new Set(dates);
-            
-            if (dates.length !== uniqueDates.size) {
-                alert('Each package must have a different travel date. You cannot book multiple packages on the same day.');
-                return false;
-            }
-            
             return true;
         }
 
-        // Edit my booking - go back to cart
         window.editMyBooking = function() {
-            const bookingCart = document.getElementById('booking-cart');
-            const formContainer = document.getElementById('booking-form');
-            const paymentSection = document.getElementById('paymentSection');
-            const proceedBtnContainer = document.getElementById('proceedBtnContainer');
-            
-            // Show booking cart
-            if (bookingCart) bookingCart.style.display = 'block';
-            
-            // Hide form and payment section
-            if (formContainer) formContainer.style.display = 'none';
-            if (proceedBtnContainer) proceedBtnContainer.style.display = 'block';
-            if (paymentSection) {
-                paymentSection.classList.remove('active');
-                paymentSection.style.display = 'none';
-            }
-            
-            // Scroll to cart
-            setTimeout(() => {
-                bookingCart.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            document.getElementById('booking-cart').style.display = 'block';
+            formContainer.style.display = 'none';
+            document.getElementById('proceedBtnContainer').style.display = 'block';
+            const paySec = document.getElementById('paymentSection');
+            if (paySec) { paySec.classList.remove('active'); paySec.style.display = 'none'; }
+            setTimeout(() => { document.getElementById('booking-cart').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
         }
     }
 
-    // Reveal Secure Checkout Section inside Form
     const proceedBtn = document.getElementById('proceedBtn');
-    const proceedBtnContainer = document.getElementById('proceedBtnContainer');
-    const paymentSection = document.getElementById('paymentSection');
-    const form = document.getElementById('reservationForm');
-
     if(proceedBtn) {
         proceedBtn.addEventListener('click', () => {
-            if (form.checkValidity()) {
-                proceedBtnContainer.style.display = 'none';
-                paymentSection.classList.add('active');
-                paymentSection.style.display = 'block'; 
-                setTimeout(() => {
-                    paymentSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 100);
+            if (document.getElementById('reservationForm').checkValidity()) {
+                document.getElementById('proceedBtnContainer').style.display = 'none';
+                document.getElementById('paymentSection').style.display = 'block'; 
+                setTimeout(() => { document.getElementById('paymentSection').scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
             } else {
-                form.reportValidity(); 
+                document.getElementById('reservationForm').reportValidity(); 
             }
         });
     }
 
-    // Payment Tabs Logic
+    // --- PAYMENT TABS LOGIC ---
     const tabCard = document.getElementById('tabCard');
     const tabMobile = document.getElementById('tabMobile');
     const cardProviders = document.getElementById('cardProviders');
@@ -692,48 +870,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const ccFields = document.getElementById('ccFields');
     const paypalFields = document.getElementById('paypalFields');
     const mobileFields = document.getElementById('mobileFields');
+    const mobilePaymentMethod = document.getElementById('mobilePaymentMethod');
+
+    if (mobilePaymentMethod) {
+        mobilePaymentMethod.addEventListener('change', function() {
+            if (this.value === 'mobile') {
+                cardProviders.style.display = 'none'; 
+                ccFields.classList.add('hidden'); ccFields.classList.remove('block');
+                paypalFields.classList.add('hidden'); paypalFields.classList.remove('block');
+                mobileFields.classList.remove('hidden'); mobileFields.classList.add('block');
+            } else {
+                cardProviders.style.display = 'grid'; 
+                mobileFields.classList.add('hidden'); mobileFields.classList.remove('block');
+                const activeCard = document.querySelector('.card-type-btn.active');
+                if(activeCard) activeCard.click(); 
+            }
+        });
+    }
 
     if(tabCard && tabMobile) {
         tabCard.addEventListener('click', () => {
-            tabCard.classList.add('active');
-            tabMobile.classList.remove('active');
-            cardProviders.classList.remove('hidden'); 
-            mobileFields.classList.add('hidden'); 
-            mobileFields.classList.remove('block');
+            tabCard.classList.add('active'); tabMobile.classList.remove('active');
+            cardProviders.style.display = 'grid'; 
+            mobileFields.classList.add('hidden'); mobileFields.classList.remove('block');
             const activeCard = document.querySelector('.card-type-btn.active');
             if(activeCard) activeCard.click(); 
         });
 
         tabMobile.addEventListener('click', () => {
-            tabMobile.classList.add('active');
-            tabCard.classList.remove('active');
-            cardProviders.classList.add('hidden'); 
-            ccFields.classList.add('hidden'); 
-            ccFields.classList.remove('block');
-            paypalFields.classList.add('hidden'); 
-            paypalFields.classList.remove('block');
-            mobileFields.classList.remove('hidden'); 
-            mobileFields.classList.add('block');
+            tabMobile.classList.add('active'); tabCard.classList.remove('active');
+            cardProviders.style.display = 'none'; 
+            ccFields.classList.add('hidden'); ccFields.classList.remove('block');
+            paypalFields.classList.add('hidden'); paypalFields.classList.remove('block');
+            mobileFields.classList.remove('hidden'); mobileFields.classList.add('block');
         });
     }
 
     cardTypeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             cardTypeBtns.forEach(b => b.classList.remove('active'));
-            const clickedBtn = e.currentTarget;
-            clickedBtn.classList.add('active');
-            const type = clickedBtn.getAttribute('data-type');
-            
+            e.currentTarget.classList.add('active');
+            const type = e.currentTarget.getAttribute('data-type');
             if (type === 'paypal') {
-                ccFields.classList.add('hidden');
-                ccFields.classList.remove('block');
-                paypalFields.classList.remove('hidden');
-                paypalFields.classList.add('block');
+                ccFields.classList.add('hidden'); ccFields.classList.remove('block');
+                paypalFields.classList.remove('hidden'); paypalFields.classList.add('block');
             } else {
-                paypalFields.classList.add('hidden');
-                paypalFields.classList.remove('block');
-                ccFields.classList.remove('hidden');
-                ccFields.classList.add('block');
+                paypalFields.classList.add('hidden'); paypalFields.classList.remove('block');
+                ccFields.classList.remove('hidden'); ccFields.classList.add('block');
             }
         });
     });
@@ -745,12 +928,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    renderCart(); // Initial cart render
+    renderCart(); 
 });
 
 // ==========================================
 // OTHER PAGES LOGIC
 // ==========================================
+
+
+
+
+
 
 //about us page//
 console.log("Morix Beyond Zanzibar - About Us Loaded");
@@ -1059,7 +1247,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <i class="fi fi-rr-marker text-lg mt-1"></i>
                             </div>
                             <div class="hidden md:flex flex-col ml-4">
-                                <span class="text-[10px] font-bold uppercase text-gray-500 tracking-wider">Location</span>
+                                <span class="text-[10px] font-bold uppercase text-gray-500 tracking-widest">Location</span>
                                 <span class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">Zanzibar, Tanzania</span>
                             </div>
                         </a>
@@ -1195,7 +1383,7 @@ const experiencesDB = [
                 desc: "Discover the famous island sanctuary home to Giant Aldabra tortoises and historic ruins, surrounded by crystal-clear waters and scenic ocean views.", 
                 options: [{ name: "Per Person", price: 55 }],
                 includes: ["Professional tour guide", "All entry fees", "Boat/Dhow"], 
-                excludes: ["Transport", "Tips", "Money to buy local gifts", "Items of personal nature"],
+                excludes: ["Transport", "Tips", "Items of personal nature", "Money to buy local gifts"],
                 transportNote: "Transport to Stone Town departure point must be booked separately or with us."
             },
             { 
@@ -1702,4 +1890,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// safaris //
+// safaris
