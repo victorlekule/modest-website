@@ -303,24 +303,31 @@
 
 <script>
 // ==============================================================
-// 1. GLOBAL ADD TO CART FUNCTION (Solves the "Full Experience" naming issue)
+// 1. SMART ADD TO BOOKING FUNCTION (Reads Modal Title properly!)
 // ==============================================================
-window.addToCart = function(name, price) {
+window.addToBooking = function(name, price) {
     let finalName = name;
     
-    // Automatically detect generic names and add the Page Title to them
     let lowerName = name.toLowerCase();
-    if (lowerName === 'full experience' || lowerName === 'standard' || lowerName === 'premium' || lowerName === 'vip') {
-        // Grabs the page title (e.g. "Kendwa Beach | Morix Beyond" becomes "Kendwa Beach")
-        let pageTitle = document.title.split('|')[0].split('-')[0].trim();
-        // Combines them: "Kendwa Beach - Full Experience"
-        finalName = pageTitle + " - " + name; 
+    if (lowerName.includes('full experience') || lowerName.includes('standard') || lowerName.includes('premium') || lowerName.includes('vip')) {
+        let experienceName = "";
+        const modalTitleEl = document.getElementById('modal-title');
+        const experienceModal = document.getElementById('experience-modal');
+
+        // Check if modal is open and grab title
+        if (modalTitleEl && experienceModal && !experienceModal.classList.contains('hidden')) {
+            experienceName = modalTitleEl.innerText.trim();
+        } else {
+            experienceName = document.title.split('|')[0].split('-')[0].trim();
+        }
+
+        if (experienceName && !experienceName.toLowerCase().includes('morix')) {
+            finalName = experienceName + " - " + name; 
+        }
     }
 
-    // Fetch existing cart items
     let items = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
     
-    // Add the new item to the cart
     items.push({
         name: finalName, 
         price: price,
@@ -330,17 +337,15 @@ window.addToCart = function(name, price) {
         bookingType: 'guest'
     });
     
-    // Save back to local storage
     localStorage.setItem('morixBookingItems', JSON.stringify(items));
-    
-    // Update the cart counter in your header
     localStorage.setItem('morixBookingCount', items.length);
+    
     if (typeof updateBookingUI === 'function') {
         updateBookingUI();
     }
     
-    // Show success message with the full name
     alert(finalName + " has been added to your cart!");
+    window.renderCart();
 };
 
 // ==============================================================
@@ -357,7 +362,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const proceedToPaymentBtn = document.getElementById('proceed-to-payment');
     const formContainer = document.getElementById('booking-form');
 
-    // --- INSTANT RED TOAST NOTIFICATION ---
     window.showErrorToast = function(msg) {
         const existing = document.getElementById('error-toast');
         if (existing) existing.remove();
@@ -383,7 +387,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // --- HELPER FUNCTIONS ---
     window.updateItemDate = function(index, date) {
         const currentItem = window.bookingItems[index];
         const isTransfer = (currentItem.name || "").toLowerCase().includes('transfer');
@@ -401,32 +404,25 @@ document.addEventListener('DOMContentLoaded', () => {
         
         window.bookingItems[index].date = date;
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        renderCart();
+        window.renderCart();
     }
 
-    // ==============================================================
-    // FIX #1: HARD RESET TO 1 GUEST 
-    // ==============================================================
     window.updateBookingType = function(index, type) {
-        // Fetch fresh from local storage to avoid memory bugs
         let freshItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
-        
         freshItems[index].bookingType = type;
         
         if (type === 'couple') {
-            freshItems[index].adults = 2; // Lock to 2
+            freshItems[index].adults = 2; 
         } else {
-            freshItems[index].adults = 1; // STRICT FORCE TO 1
+            freshItems[index].adults = 1; 
         }
         
-        // Clean out any old ghost data
         delete freshItems[index].guests;
         delete freshItems[index].children;
         
-        // Save back to memory instantly
         window.bookingItems = freshItems;
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        renderCart();
+        window.renderCart();
     };
 
     window.updateItemAdults = function(index, change) {
@@ -435,26 +431,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (newVal >= 1 && newVal <= 30) {
             window.bookingItems[index].adults = newVal;
             localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-            renderCart();
+            window.renderCart();
         }
     };
 
     window.setExactAdults = function(index, val) {
         window.bookingItems[index].adults = parseInt(val);
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        renderCart();
+        window.renderCart();
     };
 
     window.updateItemVehicle = function(index, vehicle) {
         window.bookingItems[index].vehicle = vehicle;
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        renderCart(); 
+        window.renderCart(); 
     };
 
     window.updateItemTripType = function(index, type) {
         window.bookingItems[index].tripType = type;
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        renderCart(); 
+        window.renderCart(); 
     };
 
     window.removeFromCart = function(index) {
@@ -462,11 +458,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
         localStorage.setItem('morixBookingCount', window.bookingItems.length);
         if(typeof currentBookingCount !== 'undefined') currentBookingCount = window.bookingItems.length;
-        renderCart();
+        window.renderCart();
         if(typeof updateBookingUI === 'function') updateBookingUI();
     }
 
-    // --- RENDERING ENGINE ---
     window.renderCart = function() {
         try {
             window.bookingItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
@@ -482,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
             totalPrice.textContent = '$0.00';
             totalItems.textContent = '0 items';
             proceedToPaymentBtn.classList.add('hidden');
-            updatePricing();
+            window.updatePricing();
             return;
         }
         
@@ -543,13 +538,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 dateInputClass = "w-full px-4 py-2 border-2 border-red-500 rounded-lg focus:ring-2 focus:ring-red-500 outline-none cursor-pointer bg-red-50 text-red-700 font-bold";
             }
 
-            // ==============================================================
-            // LOGIC 1: TRANSFERS
-            // ==============================================================
-        
-            // ==============================================================
-            // LOGIC 2: SAFARIS
-            // ==============================================================
+            if (isTransferItem) {
+                let vehicleMultiplier = 1; 
+                if (vehicle.includes('12 Pax')) vehicleMultiplier = 1.4; 
+                else if (vehicle.includes('24 Pax')) vehicleMultiplier = 1.96; 
+
+                let tripMultiplier = (tripType === 'return') ? 1.9 : 1;
+                itemTotal = basePrice * vehicleMultiplier * tripMultiplier; 
+                
+                controlsHTML = `
+                    <div class="border-t border-gray-200 pt-4 flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Transfer Date *</label>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                            ${dateErrorHTML}
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Trip Type *</label>
+                            <select onchange="window.updateItemTripType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white">
+                                <option value="one-way" ${tripType === 'one-way' ? 'selected' : ''}>One Way</option>
+                                <option value="return" ${tripType === 'return' ? 'selected' : ''}>Go & Return </option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Select Vehicle (PAX) *</label>
+                            <select onchange="window.updateItemVehicle(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white text-sm">
+                                <option value="1 - 4 Pax = Noah / Alphard" ${vehicle === '1 - 4 Pax = Noah / Alphard' ? 'selected' : ''}>1 - 4 Pax = Noah/Alphard</option>
+                                <option value="1 - 12 Pax = Mini Bus" ${vehicle === '1 - 12 Pax = Mini Bus' ? 'selected' : ''}>1 - 12 Pax = Hiace Minibus</option>
+                                <option value="1 - 24 Pax = Bus" ${vehicle === '1 - 24 Pax = Bus' ? 'selected' : ''}>1 - 24 Pax = Coaster</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+            }
             else if (itemName.includes('safari') && !itemName.includes('safari blue')) {
                 itemTotal = basePrice * adults;
                 controlsHTML = `
@@ -570,9 +591,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             }
-            // ==============================================================
-            // LOGIC 3: BEACH PROPOSAL (COUPLE ONLY)
-            // ==============================================================
             else if (itemName.includes('proposal')) {
                 itemTotal = basePrice; 
                 controlsHTML = `
@@ -591,9 +609,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             }
-            // ==============================================================
-            // LOGIC 4: TRADITIONAL NGALAWA SAILING (1 Person or Couple)
-            // ==============================================================
             else if (itemName.includes('ngalawa')) {
                 let pax = adults > 2 ? 2 : adults; 
                 itemTotal = basePrice * pax;
@@ -607,7 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="flex-1">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Passengers (Max 2) *</label>
-                            <select onchange="window.setExactAdults(${index}, parseInt(this.value))" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
+                            <select onchange="window.setExactAdults(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
                                 <option value="1" ${pax === 1 ? 'selected' : ''}>1 Person</option>
                                 <option value="2" ${pax === 2 ? 'selected' : ''}>Couple (2 People)</option>
                             </select>
@@ -615,13 +630,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             }
-            // ==============================================================
-            // LOGIC 5: FLYING DRESS PHOTOSHOOT
-            // ==============================================================
             else if (itemName.includes('flying dress') || itemName.includes('dress shoot')) {
                 if (bookingType === 'couple') {
                     itemTotal = basePrice * 2;
-                    adults = 2; // enforce UI display
+                    adults = 2; 
                 } else {
                     itemTotal = basePrice * adults;
                 }
@@ -655,9 +667,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             }
-            // ==============================================================
-            // LOGIC 6: MEDIA & GENERAL PHOTOGRAPHY
-            // ==============================================================
             else if (itemName.includes('media') || itemName.includes('photo') || itemName.includes('video')) {
                 itemTotal = basePrice;
                 controlsHTML = `
@@ -668,9 +677,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             }
-            // ==============================================================
-            // LOGIC 7: PRIVATE DHOW
-            // ==============================================================
             else if (itemName.includes('private dhow') || (itemName.includes('safari blue') && itemName.includes('private'))) {
                 itemTotal = basePrice; 
                 controlsHTML = `
@@ -684,13 +690,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             } 
-            // ==============================================================
-            // LOGIC 8: KENDWA BEACH 
-            // ==============================================================
             else if (itemName.includes('kendwa')) {
                 if (bookingType === 'couple') {
                     itemTotal = (basePrice * 2) * 1.07;
-                    adults = 2; // enforce UI display
+                    adults = 2; 
                 } else {
                     itemTotal = basePrice * adults;
                 }
@@ -724,11 +727,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             } 
-            // ==============================================================
-            // LOGIC 9: DEFAULT EXPERIENCES
-            // ==============================================================
             else {
-                if (bookingType === 'couple') adults = 2; // enforce UI display
+                if (bookingType === 'couple') adults = 2; 
                 itemTotal = adults * basePrice;
 
                 let adultControls = bookingType === 'guest' ? `
@@ -789,14 +789,8 @@ document.addEventListener('DOMContentLoaded', () => {
         totalItems.textContent = `${window.bookingItems.length} item${window.bookingItems.length > 1 ? 's' : ''}`;
         proceedToPaymentBtn.classList.remove('hidden');
 
-        updatePricing();
+        window.updatePricing();
     }
-
-    // --- CHECKOUT & MATH LOGIC ---
-    const paymentRadios = document.querySelectorAll('input[name="paymentType"]');
-    const amountDisplay = document.getElementById('amountDisplay');
-    const calculationDetails = document.getElementById('calculationDetails');
-    const btnAmount = document.getElementById('btnAmount');
 
     window.updatePricing = function() {
         if(baseCartTotal === 0) {
@@ -824,9 +818,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(calculationDetails) calculationDetails.textContent = `Total × ${scheduleText}`;
     }
 
-    paymentRadios.forEach(radio => radio.addEventListener('change', updatePricing));
+    paymentRadios.forEach(radio => radio.addEventListener('change', window.updatePricing));
 
-    // CHECKOUT VALIDATION
     if(proceedToPaymentBtn) {
         proceedToPaymentBtn.addEventListener('click', function() {
             if (!validateBookingDetails()) return; 
@@ -892,7 +885,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- PAYMENT TABS LOGIC ---
     const tabCard = document.getElementById('tabCard');
     const tabMobile = document.getElementById('tabMobile');
     const cardProviders = document.getElementById('cardProviders');
@@ -959,13 +951,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    renderCart(); 
+    window.renderCart(); 
 });
 </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="animations.js"></script>
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

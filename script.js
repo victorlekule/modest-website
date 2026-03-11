@@ -400,43 +400,6 @@ function showWarningNotification(serviceName) {
 // =====================================
 // MORIX BEYOND DYNAMIC CART LOGIC
 // =====================================
-// ==============================================================
-// 1. GLOBAL ADD TO BOOKING FUNCTION
-// ==============================================================
-window.addToBooking = function(name, price) {
-    let finalName = name;
-    
-    // Automatically detect generic names and add the Page Title to them
-    let lowerName = name.toLowerCase();
-    if (lowerName === 'full experience' || lowerName === 'standard' || lowerName === 'premium' || lowerName === 'vip') {
-        let pageTitle = document.title.split('|')[0].split('-')[0].trim();
-        finalName = pageTitle + " - " + name; 
-    }
-
-    let items = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
-    
-    items.push({
-        name: finalName, 
-        price: price,
-        basePrice: parseFloat(String(price).replace(/[^0-9.-]+/g, "")) || 0,
-        date: '',
-        adults: 1, 
-        bookingType: 'guest'
-    });
-    
-    localStorage.setItem('morixBookingItems', JSON.stringify(items));
-    
-    localStorage.setItem('morixBookingCount', items.length);
-    if (typeof updateBookingUI === 'function') {
-        updateBookingUI();
-    }
-    
-    alert(finalName + " has been added to your cart!");
-};
-
-// ==============================================================
-// 2. DYNAMIC BOOKING ENGINE LOGIC
-// ==============================================================
 document.addEventListener('DOMContentLoaded', () => {
     const bookingCartEl = document.getElementById('booking-cart');
     if (!bookingCartEl) return;
@@ -492,26 +455,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
         window.bookingItems[index].date = date;
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        window.renderCart();
+        renderCart();
     }
 
     // FIXED: HARD RESET TO 1 GUEST
     window.updateBookingType = function(index, type) {
-        let freshItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
-        freshItems[index].bookingType = type;
+        window.bookingItems[index].bookingType = type;
         
-        if (type === 'couple') {
-            freshItems[index].adults = 2; 
+        if(type === 'couple') {
+            window.bookingItems[index].adults = 2; // Lock to 2 for couple
         } else {
-            freshItems[index].adults = 1; 
+            // STRICT RESET: If changing back to 'guest', force the value to 1
+            window.bookingItems[index].adults = 1; 
         }
         
-        delete freshItems[index].guests;
-        delete freshItems[index].children;
-        
-        window.bookingItems = freshItems;
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        window.renderCart();
+        renderCart();
     };
 
     window.updateItemAdults = function(index, change) {
@@ -520,26 +479,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (newVal >= 1 && newVal <= 30) {
             window.bookingItems[index].adults = newVal;
             localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-            window.renderCart();
+            renderCart();
         }
     };
 
     window.setExactAdults = function(index, val) {
         window.bookingItems[index].adults = parseInt(val);
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        window.renderCart();
+        renderCart();
     };
 
     window.updateItemVehicle = function(index, vehicle) {
         window.bookingItems[index].vehicle = vehicle;
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        window.renderCart(); 
+        renderCart(); 
     };
 
     window.updateItemTripType = function(index, type) {
         window.bookingItems[index].tripType = type;
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-        window.renderCart(); 
+        renderCart(); 
     };
 
     window.removeFromCart = function(index) {
@@ -547,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
         localStorage.setItem('morixBookingCount', window.bookingItems.length);
         if(typeof currentBookingCount !== 'undefined') currentBookingCount = window.bookingItems.length;
-        window.renderCart();
+        renderCart();
         if(typeof updateBookingUI === 'function') updateBookingUI();
     }
 
@@ -567,12 +526,13 @@ document.addEventListener('DOMContentLoaded', () => {
             totalPrice.textContent = '$0.00';
             totalItems.textContent = '0 items';
             proceedToPaymentBtn.classList.add('hidden');
-            window.updatePricing();
+            updatePricing();
             return;
         }
         
         const today = new Date().toISOString().split('T')[0];
 
+        // Track dates for red highlighting (Separate logic for Transfers vs Non-Transfers)
         const transferDates = {};
         const nonTransferDates = {};
         window.bookingItems.forEach(item => {
@@ -600,6 +560,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let itemName = (item.name || "").toLowerCase();
             let bookingType = item.bookingType || 'guest';
             
+            // Ensure adults is treated as a number, defaulting based on type
             let adults = parseInt(item.adults);
             if (isNaN(adults)) {
                  adults = (bookingType === 'couple' ? 2 : 1);
@@ -629,37 +590,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // ==============================================================
-            // LOGIC 1: TRANSFERS (WITH RETURN DISCOUNT)
+            // LOGIC 1: TRANSFERS
             // ==============================================================
             if (isTransferItem) {
                 let vehicleMultiplier = 1; 
                 if (vehicle.includes('12 Pax')) vehicleMultiplier = 1.4; 
                 else if (vehicle.includes('24 Pax')) vehicleMultiplier = 1.96; 
 
-                // NEW DISCOUNT LOGIC: 1.9x multiplier for return (e.g. $50 one-way becomes $95 return)
+                // FIX: GO AND RETURN DISCOUNT MULTIPLIER (1.9x instead of 2x)
                 let tripMultiplier = (tripType === 'return') ? 1.9 : 1;
+
                 itemTotal = basePrice * vehicleMultiplier * tripMultiplier; 
                 
                 controlsHTML = `
                     <div class="border-t border-gray-200 pt-4 flex flex-col md:flex-row gap-4">
                         <div class="flex-1">
                             <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Transfer Date *</label>
-                            <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
                             ${dateErrorHTML}
                         </div>
                         <div class="flex-1">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Trip Type *</label>
-                            <select onchange="window.updateItemTripType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white">
+                            <select onchange="updateItemTripType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white">
                                 <option value="one-way" ${tripType === 'one-way' ? 'selected' : ''}>One Way</option>
                                 <option value="return" ${tripType === 'return' ? 'selected' : ''}>Go & Return </option>
                             </select>
                         </div>
                         <div class="flex-1">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Select Vehicle (PAX) *</label>
-                            <select onchange="window.updateItemVehicle(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white text-sm">
-                                <option value="1 - 4 Pax = Noah / Alphard" ${vehicle === '1 - 4 Pax = Noah / Alphard' ? 'selected' : ''}>1 - 4 Pax = Noah / Alphard</option>
-                                <option value="1 - 12 Pax = Mini Bus" ${vehicle === '1 - 12 Pax = Mini Bus' ? 'selected' : ''}>1 - 12 Pax = Mini Bus </option>
-                                <option value="1 - 24 Pax = Bus" ${vehicle === '1 - 24 Pax = Bus' ? 'selected' : ''}>1 - 24 Pax = Bus</option>
+                            <select onchange="updateItemVehicle(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer bg-white text-sm">
+                                <option value="1 - 4 Pax = Noah / Alphard" ${vehicle === '1 - 4 Pax = Noah / Alphard' ? 'selected' : ''}>1 - 4 Pax = Noah/Alphard</option>
+                                <option value="1 - 12 Pax = Mini Bus" ${vehicle === '1 - 12 Pax = Mini Bus' ? 'selected' : ''}>1 - 12 Pax = Hiace Minibus</option>
+                                <option value="1 - 24 Pax = Bus" ${vehicle === '1 - 24 Pax = Bus' ? 'selected' : ''}>1 - 24 Pax = Coaster</option>
                             </select>
                         </div>
                     </div>
@@ -674,15 +636,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
                         <div class="flex-1">
                             <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Safari Start Date *</label>
-                            <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
                             ${dateErrorHTML}
                         </div>
                         <div class="flex-1">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Number of Travelers *</label>
                             <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-200 w-fit">
-                                <button type="button" onclick="window.updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
+                                <button type="button" onclick="updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
                                 <span class="w-8 text-center font-bold text-[#003C63] text-lg">${adults}</span>
-                                <button type="button" onclick="window.updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
+                                <button type="button" onclick="updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
                             </div>
                         </div>
                     </div>
@@ -697,7 +659,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
                         <div class="flex-1">
                             <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Proposal Date *</label>
-                            <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
                             ${dateErrorHTML}
                         </div>
                         <div class="flex-1">
@@ -720,12 +682,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
                         <div class="flex-1">
                             <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Sailing Date *</label>
-                            <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
                             ${dateErrorHTML}
                         </div>
                         <div class="flex-1">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Passengers (Max 2) *</label>
-                            <select onchange="window.setExactAdults(${index}, parseInt(this.value))" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
+                            <select onchange="setExactAdults(${index}, parseInt(this.value))" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
                                 <option value="1" ${pax === 1 ? 'selected' : ''}>1 Person</option>
                                 <option value="2" ${pax === 2 ? 'selected' : ''}>Couple (2 People)</option>
                             </select>
@@ -739,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (itemName.includes('flying dress') || itemName.includes('dress shoot')) {
                 if (bookingType === 'couple') {
                     itemTotal = basePrice * 2;
-                    adults = 2; 
+                    adults = 2; // enforce UI display
                 } else {
                     itemTotal = basePrice * adults;
                 }
@@ -748,9 +710,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="mt-2">
                         <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Number of Guests</label>
                         <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-200 w-fit">
-                            <button type="button" onclick="window.updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
+                            <button type="button" onclick="updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
                             <span class="w-8 text-center font-bold text-[#003C63] text-lg">${adults}</span>
-                            <button type="button" onclick="window.updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
+                            <button type="button" onclick="updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
                         </div>
                     </div>
                 ` : `<div class="mt-3 text-xs font-bold text-[#003C63] bg-[#F27D57]/10 p-2 rounded-lg inline-block">Couple Shoot (2 Guests)</div>`;
@@ -759,12 +721,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
                         <div class="flex-1">
                             <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Shoot Date *</label>
-                            <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
                             ${dateErrorHTML}
                         </div>
                         <div class="flex-1">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Booking Type *</label>
-                            <select onchange="window.updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
+                            <select onchange="updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
                                 <option value="guest" ${bookingType === 'guest' ? 'selected' : ''}>Number of Guests</option>
                                 <option value="couple" ${bookingType === 'couple' ? 'selected' : ''}>Couple</option>
                             </select>
@@ -781,7 +743,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 controlsHTML = `
                     <div class="border-t border-gray-200 pt-4">
                         <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Shoot Date *</label>
-                        <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                        <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
                         ${dateErrorHTML}
                     </div>
                 `;
@@ -794,7 +756,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 controlsHTML = `
                     <div class="border-t border-gray-200 pt-4">
                         <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Travel Date *</label>
-                        <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                        <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
                         ${dateErrorHTML}
                         <div class="mt-3 text-xs font-semibold text-[#003C63] bg-[#003C63]/5 p-2 rounded-lg inline-flex items-center gap-2">
                             <i class='bx bx-info-circle text-[#F27D57] text-base'></i> Private Group Booking (Flat Rate applies)
@@ -808,7 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (itemName.includes('kendwa')) {
                 if (bookingType === 'couple') {
                     itemTotal = (basePrice * 2) * 1.07;
-                    adults = 2; 
+                    adults = 2; // enforce UI display
                 } else {
                     itemTotal = basePrice * adults;
                 }
@@ -817,9 +779,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="mt-2">
                         <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Number of Guests</label>
                         <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-200 w-fit">
-                            <button type="button" onclick="window.updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
+                            <button type="button" onclick="updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
                             <span class="w-8 text-center font-bold text-[#003C63] text-lg">${adults}</span>
-                            <button type="button" onclick="window.updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
+                            <button type="button" onclick="updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
                         </div>
                     </div>
                 ` : `<div class="mt-3 text-xs font-bold text-[#003C63] bg-[#F27D57]/10 p-2 rounded-lg inline-block">2 Guests (Includes 7% Couple Surcharge)</div>`;
@@ -828,12 +790,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="border-t border-gray-200 pt-4 flex flex-col sm:flex-row gap-4">
                         <div class="flex-1">
                             <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Travel Date *</label>
-                            <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                            <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
                             ${dateErrorHTML}
                         </div>
                         <div class="flex-1">
                             <label class="block text-sm font-semibold text-gray-700 mb-2">Booking Type *</label>
-                            <select onchange="window.updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
+                            <select onchange="updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
                                 <option value="guest" ${bookingType === 'guest' ? 'selected' : ''}>Number of Guests</option>
                                 <option value="couple" ${bookingType === 'couple' ? 'selected' : ''}>Couple</option>
                             </select>
@@ -846,14 +808,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // LOGIC 9: DEFAULT EXPERIENCES
             // ==============================================================
             else {
-                if (bookingType === 'couple') adults = 2; 
+                if (bookingType === 'couple') adults = 2; // enforce UI display
                 itemTotal = adults * basePrice;
 
                 let adultControls = bookingType === 'guest' ? `
                     <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg border border-gray-200 w-fit mt-2">
-                        <button type="button" onclick="window.updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
+                        <button type="button" onclick="updateItemAdults(${index}, -1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">−</button>
                         <span class="w-8 text-center font-bold text-[#003C63] text-lg">${adults}</span>
-                        <button type="button" onclick="window.updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
+                        <button type="button" onclick="updateItemAdults(${index}, 1)" class="inline-flex items-center justify-center w-8 h-8 bg-[#003C63] text-white rounded-md hover:bg-[#F27D57] transition-colors font-bold text-lg">+</button>
                     </div>
                 ` : `<div class="mt-3 text-sm font-bold text-[#003C63] p-2 bg-gray-50 rounded-lg border border-gray-200 inline-block">2 Guests (Couple)</div>`;
 
@@ -862,12 +824,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="flex flex-col sm:flex-row gap-4">
                             <div class="flex-1">
                                 <label class="block text-sm font-semibold ${hasDateConflict ? 'text-red-600' : 'text-gray-700'} mb-2">Travel Date *</label>
-                                <input type="date" min="${today}" value="${itemDate}" onchange="window.updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
+                                <input type="date" min="${today}" value="${itemDate}" onchange="updateItemDate(${index}, this.value)" class="${dateInputClass}" required>
                                 ${dateErrorHTML}
                             </div>
                             <div class="flex-1">
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Booking Type *</label>
-                                <select onchange="window.updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
+                                <select onchange="updateBookingType(${index}, this.value)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F27D57] outline-none cursor-pointer">
                                     <option value="guest" ${bookingType === 'guest' ? 'selected' : ''}>Number of Guests</option>
                                     <option value="couple" ${bookingType === 'couple' ? 'selected' : ''}>Couple</option>
                                 </select>
@@ -894,7 +856,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h4 class="font-bold ${hasDateConflict ? 'text-red-700' : 'text-[#003C63]'} text-lg mb-1">${item.name}</h4>
                         <p class="text-[#F27D57] font-black text-xl">$${itemTotal.toFixed(2)}</p>
                     </div>
-                    <button onclick="window.removeFromCart(${index})" class="text-red-400 hover:text-red-600 p-3 bg-red-50 rounded-lg transition-colors">
+                    <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-600 p-3 bg-red-50 rounded-lg transition-colors">
                         <i class="fi fi-rr-trash text-xl"></i>
                     </button>
                 </div>
@@ -907,7 +869,7 @@ document.addEventListener('DOMContentLoaded', () => {
         totalItems.textContent = `${window.bookingItems.length} item${window.bookingItems.length > 1 ? 's' : ''}`;
         proceedToPaymentBtn.classList.remove('hidden');
 
-        window.updatePricing();
+        updatePricing();
     }
 
     // --- CHECKOUT & MATH LOGIC ---
@@ -942,7 +904,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(calculationDetails) calculationDetails.textContent = `Total × ${scheduleText}`;
     }
 
-    paymentRadios.forEach(radio => radio.addEventListener('change', window.updatePricing));
+    paymentRadios.forEach(radio => radio.addEventListener('change', updatePricing));
 
     // CHECKOUT VALIDATION
     if(proceedToPaymentBtn) {
@@ -1010,6 +972,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- PAYMENT TABS LOGIC ---
     const tabCard = document.getElementById('tabCard');
     const tabMobile = document.getElementById('tabMobile');
     const cardProviders = document.getElementById('cardProviders');
@@ -1076,10 +1039,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    window.renderCart(); 
+    renderCart(); 
 });
-
-
 // ==========================================
 // OTHER PAGES LOGIC
 // ==========================================
