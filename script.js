@@ -1074,7 +1074,12 @@ const teamData = [
     { name: "Morix – Founder", role: "Founder & Visionary", image: "image/morix 2.jpeg" },
     { name: "Ngalla", role: " The Driver", image: "image/driver.jpeg" },
     { name: "Abdul", role: "Tour Guide Extraordinaire", image: "image/tourguide.jpeg" },
-    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" }
+    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
+    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
+    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
+    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
+    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
+    
 ];
 
 function renderTeam() {

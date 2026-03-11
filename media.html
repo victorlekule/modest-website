@@ -3,359 +3,516 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morix Beyond | Beyond Zanzibar Experiences</title>
-    
+    <title>Morix Beyond | Beyond Zanzibar Experiences</title>    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
-    
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>    
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>    
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>    
     <link rel="stylesheet" href="styles.css">
 
+    <style>
+        .pricing-card { transition: all 0.3s ease; }
+        .pricing-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -5px rgba(0,0,0,0.1); border-color: #F27D57; }
+        
+        /* Modal Scrollbar Styling */
+        #booking-modal-content::-webkit-scrollbar { width: 8px; }
+        #booking-modal-content::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        #booking-modal-content::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 10px; }
+        #booking-modal-content::-webkit-scrollbar-thumb:hover { background: #F27D57; }
 
+        /* FIXED: Custom Checkbox Styling */
+        .custom-checkbox:checked + div { 
+            border-color: #F27D57 !important; 
+            background-color: #FFF3F0 !important; 
+        }
+        .custom-checkbox:checked + div .check-box { 
+            background-color: #F27D57 !important; 
+            border-color: #F27D57 !important; 
+        }
+        .custom-checkbox:checked + div .check-icon { 
+            opacity: 1 !important; 
+        }
+    </style>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-[#F8FAFC] font-sans text-slate-800 antialiased selection:bg-[#F27D57] selection:text-white">
 
-    <header id="main-header"></header>
+    <header id="main-header" class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm h-20 transition-all duration-300"></header>
 
-    <section class="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#001E33] mt-20">
-        <div class="absolute inset-0 z-0 parallax-wrapper">
-            <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=2500&auto=format&fit=crop" 
-                 alt="Cinematic Zanzibar" 
-                 class="w-full h-full object-cover parallax-img opacity-50 scale-105">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#001E33]/80 via-[#001E33]/40 to-[#001E33]"></div>
+    <div class="h-[80px] w-full bg-[#f8fafc] pointer-events-none block"></div>
+
+    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden bg-[#003C63]">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2000&auto=format&fit=crop" 
+                 alt="Professional Camera" 
+                 class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent"></div>
         </div>
 
-        <div class="relative z-10 text-center container mx-auto px-6">
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight fade-up">
-                Cinematic Videography & Photography in Zanzibar
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed fade-up mb-12">
-                Professional drone footage and visual storytelling for travelers, couples, hotels, and tourism brands.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-5 justify-center fade-up">
-                <a href="booking.html" class="bg-[#F27D57] hover:bg-white hover:text-[#001E33] text-white px-10 py-5 rounded-full font-bold shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-3">
-                    <i class="fi fi-rr-camera-retro"></i> Book a Shoot
-                </a>
-                <a href="https://wa.me/255746319059" target="_blank" class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white hover:text-[#001E33] text-white px-10 py-5 rounded-full font-bold transition-all transform hover:scale-105 flex items-center justify-center gap-3">
-                    <i class="fi fi-brands-whatsapp text-xl"></i> Chat on WhatsApp
-                </a>
+        <div class="container mx-auto px-6 relative z-10 text-center text-white">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-6">
+                <i class="bx bx-camera text-[#F27D57]"></i>
+                <span class="text-xs font-bold tracking-[0.2em] uppercase text-gray-200">Morix Creative Studio</span>
             </div>
-        </div>
-    </section>
-    
-
-     <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-up">
-                <h2 class="text-4xl font-bold text-[#003C63]">SERVICES OFFERED</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="p-10 rounded-[2.5rem] bg-[#F8FAFC] border border-gray-100 hover:border-[#F27D57] transition-all group fade-up">
-                    <i class="fi fi-rr-camera-movie text-4xl text-[#F27D57] mb-6 block"></i>
-                    <h3 class="text-2xl font-bold text-[#003C63] mb-4">Drone Videography</h3>
-                    <p class="text-gray-600 leading-relaxed">We capture your Zanzibar experiences with cinematic drone footage while you enjoy activities such as kayaking, beach walks, tours, and special moments.</p>
-                </div>
-
-                <div class="p-10 rounded-[2.5rem] bg-[#F8FAFC] border border-gray-100 hover:border-[#F27D57] transition-all group fade-up">
-                    <i class="fi fi-rr-camera text-4xl text-[#F27D57] mb-6 block"></i>
-                    <h3 class="text-2xl font-bold text-[#003C63] mb-4">Travel & Lifestyle Photography</h3>
-                    <p class="text-gray-600 leading-relaxed">High-quality photography for travelers, couples, and content creators, capturing authentic moments and scenic locations.</p>
-                </div>
-
-                <div class="p-10 rounded-[2.5rem] bg-[#F8FAFC] border border-gray-100 hover:border-[#F27D57] transition-all group fade-up">
-                    <i class="fi fi-rr-gem text-4xl text-[#F27D57] mb-6 block"></i>
-                    <h3 class="text-2xl font-bold text-[#003C63] mb-4">Couple & Proposal Shoots</h3>
-                    <p class="text-gray-600 leading-relaxed">Romantic beach setups, surprise proposals, and honeymoon photoshoots designed to tell your love story beautifully.</p>
-                </div>
-
-                <div class="p-10 rounded-[2.5rem] bg-[#F8FAFC] border border-gray-100 hover:border-[#F27D57] transition-all group fade-up md:col-span-2 lg:col-span-1">
-                    <i class="fi fi-rr-building text-4xl text-[#F27D57] mb-6 block"></i>
-                    <h3 class="text-2xl font-bold text-[#003C63] mb-4">Hotel & Resort Promotion</h3>
-                    <p class="text-gray-600 leading-relaxed">Professional visual content for hotels, lodges, and tourism brands to boost online presence and marketing campaigns.</p>
-                </div>
-
-                <div class="p-10 rounded-[2.5rem] bg-[#F8FAFC] border border-gray-100 hover:border-[#F27D57] transition-all group fade-up md:col-span-2 lg:col-span-2">
-                    <i class="fi fi-rr-earth-americas text-4xl text-[#F27D57] mb-6 block"></i>
-                    <h3 class="text-2xl font-bold text-[#003C63] mb-4">Experience Documentation</h3>
-                    <p class="text-gray-600 leading-relaxed">Professional photo and video coverage of tours, safaris, and special activities for marketing and memory keeping.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-
-    <section class="py-24 bg-[#003C63] text-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-up">
-                <h2 class="text-4xl font-bold">HOW IT WORKS</h2>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 relative">
-                <div class="hidden md:block absolute top-10 left-10 right-10 h-0.5 bg-white/10 z-0"></div>
-
-                <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 fade-up">
-                    <div class="w-20 h-20 rounded-full bg-[#F27D57] flex items-center justify-center text-2xl font-bold mb-6 shadow-lg">1</div>
-                    <p class="font-medium text-gray-200">Choose your experience or shoot type</p>
-                </div>
-
-                <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 fade-up" style="transition-delay: 100ms;">
-                    <div class="w-20 h-20 rounded-full bg-[#F27D57] flex items-center justify-center text-2xl font-bold mb-6 shadow-lg">2</div>
-                    <p class="font-medium text-gray-200">Share your vision and preferred location</p>
-                </div>
-
-                <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 fade-up" style="transition-delay: 200ms;">
-                    <div class="w-20 h-20 rounded-full bg-[#F27D57] flex items-center justify-center text-2xl font-bold mb-6 shadow-lg">3</div>
-                    <p class="font-medium text-gray-200">We plan and organize the shoot</p>
-                </div>
-
-                <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 fade-up" style="transition-delay: 300ms;">
-                    <div class="w-20 h-20 rounded-full bg-[#F27D57] flex items-center justify-center text-2xl font-bold mb-6 shadow-lg">4</div>
-                    <p class="font-medium text-gray-200">Enjoy your experience while we capture it</p>
-                </div>
-
-                <div class="flex flex-col items-center text-center relative z-10 w-full md:w-1/5 fade-up" style="transition-delay: 400ms;">
-                    <div class="w-20 h-20 rounded-full bg-[#F27D57] flex items-center justify-center text-2xl font-bold mb-6 shadow-lg">5</div>
-                    <p class="font-medium text-gray-200">Receive professionally edited photos and videos</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-[#050914] relative overflow-hidden" id="packages">
-        
-        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#003C63] rounded-full blur-[150px] opacity-40 pointer-events-none"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-[#F27D57] rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
-
-        <div class="container mx-auto px-6 relative z-10 max-w-[1400px]">
             
-            <div class="text-center mb-20 fade-up">
-                <span class="inline-block border border-[#F27D57]/30 bg-[#F27D57]/10 text-[#F27D57] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4 backdrop-blur-md">Media Services</span>
-                <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tighter" style="font-family: 'Playfair Display', serif;">Choose Your Package</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 items-center">
-                
-                <div class="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col transition-all duration-200 hover:border-[#F27D57]/50 hover:bg-white/10 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(242,125,87,0.2)] fade-up h-full">
-                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-60 transition-opacity duration-200">
-                        <i class="fi fi-rr-camera-retro text-6xl text-white"></i>
-                    </div>
-                    
-                    <div class="inline-flex items-center gap-2 bg-[#003C63]/50 border border-white/10 px-4 py-1.5 rounded-full w-max mb-6">
-                        <i class="fi fi-rr-clock text-[#F27D57] text-xs mt-0.5"></i>
-                        <span class="text-gray-300 text-xs font-bold uppercase tracking-widest">30–60 Minutes</span>
-                    </div>
-
-                    <h3 class="text-3xl font-bold text-white mb-2 leading-tight">Short Experience <br>Shoot</h3>
-                    <p class="text-gray-400 text-sm font-light mb-8 h-10">Perfect for quick memories, activities, and social media content.</p>
-                    
-                    <div class="mb-8">
-                        <span class="text-sm text-gray-500 font-bold uppercase tracking-widest block mb-1">Starting from</span>
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-5xl font-black text-white">$199</span>
-                        </div>
-                    </div>
-
-                    <p class="text-gray-300 text-sm leading-relaxed mb-8 flex-grow">
-                        This package is designed for travelers who want professional photos and a short cinematic video without spending a full day shooting. Ideal for couples, solo travelers, and activity experiences such as kayaking, Jet car experience, beach walks, jet ski and horseback riding.
-                    </p>
-
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-list"></i> Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-300 font-light">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Professionally guided mini photoshoot</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> High-quality edited photos</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> 1 short cinematic highlight video</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Natural color grading and light retouching</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Best angles and poses guided by the photographer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Filmed in one selected location</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Delivered in social-media-ready format</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-star"></i> Best For</h4>
-                            <div class="flex flex-wrap gap-2 text-xs">
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Couples</span>
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Beach activities</span>
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Content creators</span>
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Quick memories</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button onclick="handleMediaBooking('Short Experience Shoot', '$199')" class="mt-10 w-full bg-white/10 hover:bg-[#F27D57] text-white border border-white/20 hover:border-[#F27D57] px-6 py-4 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(242,125,87,0.4)]"
-                        <i class="fi fi-rr-shopping-cart-add text-xl"></i> Add to My Booking
-                    </button>
-                </div>
-
-                <div class="group relative bg-gradient-to-b from-[#003C63] to-[#050914] border border-[#F27D57]/60 rounded-[2.5rem] p-8 md:p-10 flex flex-col transition-all duration-500 hover:shadow-[0_0_50px_rgba(242,125,87,0.3)] lg:scale-105 z-20 h-full">
-                    
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#F27D57] text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-widest shadow-[0_0_20px_rgba(242,125,87,0.6)]">
-                        Most Popular
-                    </div>
-
-                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-60 transition-opacity duration-200">
-                        <i class="fi fi-rr-film text-6xl text-white"></i>
-                    </div>
-                    
-                    <div class="inline-flex items-center gap-2 bg-[#F27D57]/20 border border-[#F27D57]/30 px-4 py-1.5 rounded-full w-max mb-6">
-                        <i class="fi fi-rr-clock text-[#F27D57] text-xs mt-0.5"></i>
-                        <span class="text-[#F27D57] text-xs font-bold uppercase tracking-widest">Half or Full Day</span>
-                    </div>
-
-                    <h3 class="text-3xl font-bold text-white mb-2 leading-tight">Full Experience <br>Coverage</h3>
-                    <p class="text-gray-300 text-sm font-light mb-8 h-10">For complete storytelling and unforgettable travel memories.</p>
-                    
-                    <div class="mb-8">
-                        <span class="text-sm text-[#F27D57] font-bold uppercase tracking-widest block mb-1">Starting from</span>
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-6xl font-black text-white">$499</span>
-                        </div>
-                    </div>
-
-                    <p class="text-gray-300 text-sm leading-relaxed mb-8 flex-grow">
-                        This package captures your entire experience from start to finish, creating a full visual story of your Zanzibar adventure. Perfect for excursions, tours, proposals and honeymoons, and private experiences where every moment matters.
-                    </p>
-
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-list"></i> Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-200 font-light">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Extended shooting time (half or full day)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Combination of drone footage & ground photography</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Multiple locations and activities covered</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Cinematic video production</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Professionally edited photos and videos</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Smooth transitions and storytelling edits</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Music and color grading for cinematic look</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> Optional sunrise or sunset shooting</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-0.5"></i> High-resolution files for personal or promotional use</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-star"></i> Best For</h4>
-                            <div class="flex flex-wrap gap-2 text-xs">
-                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Honeymoons</span>
-                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Proposals</span>
-                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Safari / Island tours</span>
-                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Yacht trips</span>
-                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Luxury experiences</span>
-                                <span class="bg-[#F27D57]/20 text-white px-3 py-1 rounded-full border border-[#F27D57]/30">Travel vloggers</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button onclick="handleMediaBooking('Full Experience Coverage', '$499')" class="mt-10 w-full bg-[#F27D57] text-white hover:bg-white hover:text-[#003C63] px-6 py-4 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(242,125,87,0.4)]"
-                        <i class="fi fi-rr-shopping-cart-add text-xl"></i> Add to My Booking
-                    </button>
-                </div>
-
-                <div class="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col transition-all duration-200 hover:border-[#F27D57]/50 hover:bg-white/10 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(242,125,87,0.2)] fade-up h-full">
-                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-60 transition-opacity duration-200">
-                        <i class="fi fi-rr-building text-6xl text-white"></i>
-                    </div>
-                    
-                    <div class="inline-flex items-center gap-2 bg-[#003C63]/50 border border-white/10 px-4 py-1.5 rounded-full w-max mb-6">
-                        <i class="fi fi-rr-settings-sliders text-[#F27D57] text-xs mt-0.5"></i>
-                        <span class="text-gray-300 text-xs font-bold uppercase tracking-widest">Custom Duration</span>
-                    </div>
-
-                    <h3 class="text-3xl font-bold text-white mb-2 leading-tight">Brand & Resort <br>Package</h3>
-                    <p class="text-gray-400 text-sm font-light mb-8 h-10">Designed to promote your business and increase bookings.</p>
-                    
-                    <div class="mb-8">
-                        <span class="text-sm text-gray-500 font-bold uppercase tracking-widest block mb-1">Starting from</span>
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-5xl font-black text-white">$899</span>
-                        </div>
-                    </div>
-
-                    <p class="text-gray-300 text-sm leading-relaxed mb-8 flex-grow">
-                        This package is created specifically for hotels, resorts, villas, tour companies, and experience providers who want professional visual content for marketing and advertising.
-                    </p>
-
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-list"></i> Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-300 font-light">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Custom visual strategy based on brand identity</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Professional photos of rooms, staff & services</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Promotional video for website and ads</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Drone aerial shots of property & surroundings</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Lifestyle shots with models or real guests</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Vertical & horizontal formats for social media</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Content optimized for Instagram & TikTok</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Consistent color grading and brand style</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-green-400 mt-0.5"></i> Commercial usage rights</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 class="text-[#F27D57] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2"><i class="fi fi-rr-star"></i> Best For</h4>
-                            <div class="flex flex-wrap gap-2 text-xs">
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Hotels & resorts</span>
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Tour companies</span>
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Brands</span>
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Restaurants/clubs</span>
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Airbnb & villas</span>
-                                <span class="bg-white/10 text-white px-3 py-1 rounded-full border border-white/10">Travel agencies</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button onclick="handleMediaBooking('Brand & Resort Package', '$899')" class="mt-10 w-full bg-white/10 hover:bg-[#F27D57] text-white border border-white/20 hover:border-[#F27D57] px-6 py-4 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(242,125,87,0.4)]"
-                        <i class="fi fi-rr-shopping-cart-add text-xl"></i> Add to My Booking
-                    </button>
-                </div>
-
-            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Media <span class="italic font-serif text-[#F27D57]">Services</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto font-light leading-relaxed">
+                Capture your unforgettable moments in Zanzibar with our professional photography, cinematic videography, and drone services.
+            </p>
         </div>
     </section>
 
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-8 max-w-7xl">
+            
+            <div class="mb-24">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-black text-[#003C63] mb-4">1. Personal Media Services</h2>
+                    <p class="text-gray-500 text-lg">Perfect for travelers, influencers, couples, or individuals who want professional memories.</p>
+                </div>
 
-    <section class="py-24 bg-white text-center">
-    <div class="container mx-auto px-6 max-w-4xl fade-up">
-        <h2 class="text-sm font-bold text-gray-400 tracking-widest uppercase mb-8">TESTIMONIALS</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="pricing-card bg-white rounded-3xl border-2 border-gray-100 p-8 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-gray-300"></div>
+                        <h3 class="text-2xl font-bold text-[#003C63] mb-2">Basic</h3>
+                        <p class="text-[#F27D57] font-bold text-sm uppercase tracking-wider mb-4 pb-4 border-b border-gray-100">Personal Package</p>
+                        <div class="text-4xl font-black text-[#003C63] mb-6">$150 <span class="text-sm font-normal text-gray-500">/ session</span></div>
+                        <ul class="space-y-4 text-gray-600 mb-8 flex-grow text-sm">
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 1-hour photoshoot</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 20 professionally edited photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 1 location</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Delivered in high resolution</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Delivery within 4–5 days</li>
+                        </ul>
+                        <div class="bg-gray-50 p-4 rounded-xl mb-6 text-xs text-gray-500 font-medium">
+                            <span class="font-bold text-[#003C63]">Ideal for:</span> Solo travelers, quick beach photos, profile photos.
+                        </div>
+                        <button onclick="bookPackage('personal', 'basic-personal')" class="w-full py-4 rounded-xl font-bold text-[#003C63] bg-gray-100 hover:bg-gray-200 transition-colors mt-auto">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card bg-white rounded-3xl border-2 border-[#003C63] shadow-xl p-8 flex flex-col relative overflow-hidden transform md:-translate-y-4">
+                        <div class="absolute top-4 right-4 bg-[#F27D57] text-white text-xs font-black uppercase tracking-wider py-1 px-3 rounded-full">Most Popular</div>
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-[#003C63]"></div>
+                        <h3 class="text-2xl font-bold text-[#003C63] mb-2">Standard</h3>
+                        <p class="text-[#F27D57] font-bold text-sm uppercase tracking-wider mb-4 pb-4 border-b border-gray-100">Personal Package</p>
+                        <div class="text-4xl font-black text-[#003C63] mb-6">$250 <span class="text-sm font-normal text-gray-500">/ session</span></div>
+                        <ul class="space-y-4 text-gray-600 mb-8 flex-grow text-sm">
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 2-hour photoshoot</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 15 professionally edited photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Up to 2 locations</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Short cinematic video (30–60 sec)</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Drone shots included</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Delivery within 4–5 days</li>
+                        </ul>
+                        <div class="bg-gray-50 p-4 rounded-xl mb-6 text-xs text-gray-500 font-medium">
+                            <span class="font-bold text-[#003C63]">Ideal for:</span> Couples, influencers, travel memories.
+                        </div>
+                        <button onclick="bookPackage('personal', 'standard-personal')" class="w-full py-4 rounded-xl font-bold text-white bg-[#003C63] hover:bg-[#F27D57] transition-colors mt-auto shadow-md">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card bg-white rounded-3xl border-2 border-gray-100 p-8 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-[#F27D57]"></div>
+                        <h3 class="text-2xl font-bold text-[#003C63] mb-2">Premium</h3>
+                        <p class="text-[#F27D57] font-bold text-sm uppercase tracking-wider mb-4 pb-4 border-b border-gray-100">Personal Package</p>
+                        <div class="text-4xl font-black text-[#003C63] mb-6">$400 <span class="text-sm font-normal text-gray-500">/ session</span></div>
+                        <ul class="space-y-4 text-gray-600 mb-8 flex-grow text-sm">
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 3–4 hour photoshoot</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 15 professionally edited photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 3 locations</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Cinematic highlight video (1 min)</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Drone photography & video</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Priority editing (72 hours)</li>
+                        </ul>
+                        <div class="bg-gray-50 p-4 rounded-xl mb-6 text-xs text-gray-500 font-medium">
+                            <span class="font-bold text-[#003C63]">Ideal for:</span> Engagements, proposals, luxury travel content.
+                        </div>
+                        <button onclick="bookPackage('personal', 'premium-personal')" class="w-full py-4 rounded-xl font-bold text-[#003C63] bg-gray-100 hover:bg-gray-200 transition-colors mt-auto">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-24">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-black text-[#003C63] mb-4">2. Event Media Coverage</h2>
+                    <p class="text-gray-500 text-lg">For weddings, private parties, corporate events, or celebrations.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="pricing-card bg-white rounded-3xl border-2 border-gray-100 p-8 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-gray-300"></div>
+                        <h3 class="text-2xl font-bold text-[#003C63] mb-2">Basic</h3>
+                        <p class="text-[#F27D57] font-bold text-sm uppercase tracking-wider mb-4 pb-4 border-b border-gray-100">Event Coverage</p>
+                        <div class="text-4xl font-black text-[#003C63] mb-6">$300 <span class="text-sm font-normal text-gray-500">/ event</span></div>
+                        <ul class="space-y-4 text-gray-600 mb-8 flex-grow text-sm">
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 2 hours coverage</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Professional photography</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 40 edited photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Online gallery delivery</li>
+                        </ul>
+                        <button onclick="bookPackage('events', 'basic-event')" class="w-full py-4 rounded-xl font-bold text-[#003C63] bg-gray-100 hover:bg-gray-200 transition-colors mt-auto">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card bg-white rounded-3xl border-2 border-gray-100 p-8 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-[#003C63]"></div>
+                        <h3 class="text-2xl font-bold text-[#003C63] mb-2">Standard</h3>
+                        <p class="text-[#F27D57] font-bold text-sm uppercase tracking-wider mb-4 pb-4 border-b border-gray-100">Event Coverage</p>
+                        <div class="text-4xl font-black text-[#003C63] mb-6">$600 <span class="text-sm font-normal text-gray-500">/ event</span></div>
+                        <ul class="space-y-4 text-gray-600 mb-8 flex-grow text-sm">
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 4 hours coverage</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Photography + video coverage</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 20 edited photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Event highlight video (1 minute)</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Drone shots (if location allows)</li>
+                        </ul>
+                        <button onclick="bookPackage('events', 'standard-event')" class="w-full py-4 rounded-xl font-bold text-[#003C63] bg-gray-100 hover:bg-gray-200 transition-colors mt-auto">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card bg-white rounded-3xl border-2 border-[#F27D57] shadow-xl p-8 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-[#F27D57]"></div>
+                        <h3 class="text-2xl font-bold text-[#003C63] mb-2">Premium</h3>
+                        <p class="text-[#F27D57] font-bold text-sm uppercase tracking-wider mb-4 pb-4 border-b border-gray-100">Event Coverage</p>
+                        <div class="text-4xl font-black text-[#003C63] mb-6">$900 <span class="text-sm font-normal text-gray-500">/ event</span></div>
+                        <ul class="space-y-4 text-gray-600 mb-8 flex-grow text-sm">
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 5–6 hours full coverage</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Photography + cinematic video</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 25 edited photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 1 minute event highlight film</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Drone coverage</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Fast delivery within 3 days</li>
+                        </ul>
+                        <button onclick="bookPackage('events', 'premium-event')" class="w-full py-4 rounded-xl font-bold text-white bg-[#F27D57] hover:bg-[#d96743] transition-colors mt-auto shadow-md">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-black text-[#003C63] mb-4">3. Branding & Business Media</h2>
+                    <p class="text-gray-500 text-lg">For hotels, tour companies, restaurants, or personal brands.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="pricing-card bg-white rounded-3xl border-2 border-gray-100 p-8 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-gray-300"></div>
+                        <h3 class="text-2xl font-bold text-[#003C63] mb-2">Starter</h3>
+                        <p class="text-[#F27D57] font-bold text-sm uppercase tracking-wider mb-4 pb-4 border-b border-gray-100">Branding Package</p>
+                        <div class="text-4xl font-black text-[#003C63] mb-6">$200 <span class="text-sm font-normal text-gray-500">/ package</span></div>
+                        <ul class="space-y-4 text-gray-600 mb-8 flex-grow text-sm">
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 1–2 hour shoot</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 20 professional photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Product / service photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Social media ready images</li>
+                        </ul>
+                        <div class="bg-gray-50 p-4 rounded-xl mb-6 text-xs text-gray-500 font-medium">
+                            <span class="font-bold text-[#003C63]">Perfect for:</span> Small businesses and startups.
+                        </div>
+                        <button onclick="bookPackage('branding', 'starter-branding')" class="w-full py-4 rounded-xl font-bold text-[#003C63] bg-gray-100 hover:bg-gray-200 transition-colors mt-auto">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card bg-white rounded-3xl border-2 border-[#003C63] shadow-xl p-8 flex flex-col relative overflow-hidden md:-translate-y-4">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-[#003C63]"></div>
+                        <h3 class="text-2xl font-bold text-[#003C63] mb-2">Business</h3>
+                        <p class="text-[#F27D57] font-bold text-sm uppercase tracking-wider mb-4 pb-4 border-b border-gray-100">Branding Package</p>
+                        <div class="text-4xl font-black text-[#003C63] mb-6">$500 <span class="text-sm font-normal text-gray-500">/ package</span></div>
+                        <ul class="space-y-4 text-gray-600 mb-8 flex-grow text-sm">
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 3-hour professional shoot</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 15 edited photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Brand storytelling photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 1 promotional video (30–60 sec)</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Drone shots included</li>
+                        </ul>
+                        <div class="bg-gray-50 p-4 rounded-xl mb-6 text-xs text-gray-500 font-medium">
+                            <span class="font-bold text-[#003C63]">Perfect for:</span> Hotels, tour companies, restaurants.
+                        </div>
+                        <button onclick="bookPackage('branding', 'business-branding')" class="w-full py-4 rounded-xl font-bold text-white bg-[#003C63] hover:bg-[#F27D57] transition-colors mt-auto shadow-md">Book Now</button>
+                    </div>
+
+                    <div class="pricing-card bg-white rounded-3xl border-2 border-gray-100 p-8 flex flex-col relative overflow-hidden">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-[#F27D57]"></div>
+                        <h3 class="text-2xl font-bold text-[#003C63] mb-2">Premium</h3>
+                        <p class="text-[#F27D57] font-bold text-sm uppercase tracking-wider mb-4 pb-4 border-b border-gray-100">Brand Package</p>
+                        <div class="text-4xl font-black text-[#003C63] mb-6">$1000 <span class="text-sm font-normal text-gray-500">/ package</span></div>
+                        <ul class="space-y-4 text-gray-600 mb-8 flex-grow text-sm">
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Full day shoot</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 50 edited photos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Multiple locations</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> 2 promotional videos</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Drone coverage</li>
+                            <li class="flex items-start gap-3"><i class='bx bx-check-circle text-[#F27D57] text-lg mt-0.5'></i> Social media content pack</li>
+                        </ul>
+                        <div class="bg-gray-50 p-4 rounded-xl mb-6 text-xs text-gray-500 font-medium">
+                            <span class="font-bold text-[#003C63]">Perfect for:</span> Major campaigns and marketing.
+                        </div>
+                        <button onclick="bookPackage('branding', 'premium-branding')" class="w-full py-4 rounded-xl font-bold text-[#003C63] bg-gray-100 hover:bg-gray-200 transition-colors mt-auto">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="booking-modal-overlay" class="fixed inset-0 z-[100] hidden bg-[#001E33]/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
         
-        <h3 class="text-3xl md:text-4xl italic font-light text-[#003C63] leading-relaxed mb-10">
-            “The drone video of our Zanzibar trip was absolutely stunning. Highly professional service.”
-        </h3>
+        <div class="bg-white rounded-[2.5rem] w-full max-w-4xl shadow-2xl relative transform scale-95 transition-transform duration-300 flex flex-col max-h-[90vh]">
+            
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center hover:bg-[#F27D57] hover:text-white transition-all z-10 shadow-sm">
+                <i class='bx bx-x text-2xl'></i>
+            </button>
 
-        <div class="flex justify-center gap-1.5 text-[#F27D57] text-xl">
-            <i class="fi fi-sr-star"></i>
-            <i class="fi fi-sr-star"></i>
-            <i class="fi fi-sr-star"></i>
-            <i class="fi fi-sr-star"></i>
-            <i class="fi fi-sr-star"></i>
+            <div id="booking-modal-content" class="p-8 md:p-12 overflow-y-auto w-full rounded-[2.5rem]">
+                <div class="text-center mb-8 pr-12 sm:pr-0">
+                    <h2 class="text-3xl md:text-4xl font-black text-[#003C63] mb-3">Book Your Media Session</h2>
+                    <p class="text-gray-500 text-sm sm:text-base">Fill out the details below to reserve your shoot date.</p>
+                </div>
+
+                <form id="mediaBookingForm" onsubmit="event.preventDefault(); alert('Booking Request Sent Successfully!'); closeBookingModal();" class="space-y-8">
+                    
+                    <div>
+                        <h4 class="text-[#F27D57] font-bold uppercase tracking-widest text-xs mb-4 border-b border-gray-100 pb-2">1. Personal Information</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" placeholder="John Doe" class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" placeholder="john@example.com" class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Phone / WhatsApp *</label>
+                                <input type="tel" placeholder="+123 456 7890" class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Country</label>
+                                <input type="text" placeholder="Your Country" class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="modal-package-highlight" class="p-4 rounded-xl transition-all duration-500">
+                        <h4 class="text-[#F27D57] font-bold uppercase tracking-widest text-xs mb-4 border-b border-gray-100 pb-2">2. Select Your Service</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Service Category *</label>
+                                <select id="serviceCategory" class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors cursor-pointer text-gray-700" required>
+                                    <option value="" disabled selected>Select a Category...</option>
+                                    <option value="personal">Personal Media Services</option>
+                                    <option value="events">Event Media Coverage</option>
+                                    <option value="branding">Branding & Business Media</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Package Selection *</label>
+                                <select id="packageSelection" class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors cursor-pointer text-gray-700 disabled:opacity-50" required disabled>
+                                    <option value="" disabled selected>Select a Category first...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-[#F27D57] font-bold uppercase tracking-widest text-xs mb-4 border-b border-gray-100 pb-2">3. Shoot Details</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Date *</label>
+                                <input type="date" class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors cursor-pointer text-gray-700" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Time *</label>
+                                <select class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors cursor-pointer text-gray-700" required>
+                                    <option value="Morning (Sunrise)">Morning (Sunrise)</option>
+                                    <option value="Mid-Day">Mid-Day</option>
+                                    <option value="Afternoon">Afternoon</option>
+                                    <option value="Evening (Sunset)">Evening (Sunset)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Location</label>
+                                <input type="text" placeholder="e.g. Kendwa Beach / Hotel Name" class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Number of People</label>
+                                <input type="number" min="1" placeholder="2" class="w-full px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-[#F27D57] font-bold uppercase tracking-widest text-xs mb-4 border-b border-gray-100 pb-2">4. Optional Add-Ons</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                            
+                            <label class="cursor-pointer relative block">
+                                <input type="checkbox" class="custom-checkbox sr-only">
+                                <div class="p-4 rounded-xl border-2 border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors flex items-center gap-3">
+                                    <div class="check-box w-5 h-5 rounded border border-gray-300 flex items-center justify-center bg-white transition-colors">
+                                        <svg class="check-icon w-3 h-3 text-white opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-sm font-bold text-[#003C63]">Drone Footage</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer relative block">
+                                <input type="checkbox" class="custom-checkbox sr-only">
+                                <div class="p-4 rounded-xl border-2 border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors flex items-center gap-3">
+                                    <div class="check-box w-5 h-5 rounded border border-gray-300 flex items-center justify-center bg-white transition-colors">
+                                        <svg class="check-icon w-3 h-3 text-white opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-sm font-bold text-[#003C63]">Cinematic Video</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer relative block">
+                                <input type="checkbox" class="custom-checkbox sr-only">
+                                <div class="p-4 rounded-xl border-2 border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors flex items-center gap-3">
+                                    <div class="check-box w-5 h-5 rounded border border-gray-300 flex items-center justify-center bg-white transition-colors">
+                                        <svg class="check-icon w-3 h-3 text-white opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-sm font-bold text-[#003C63]">Extra Edited Photos</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer relative block">
+                                <input type="checkbox" class="custom-checkbox sr-only">
+                                <div class="p-4 rounded-xl border-2 border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors flex items-center gap-3">
+                                    <div class="check-box w-5 h-5 rounded border border-gray-300 flex items-center justify-center bg-white transition-colors">
+                                        <svg class="check-icon w-3 h-3 text-white opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-sm font-bold text-[#003C63]">Same Day Delivery</span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer relative block">
+                                <input type="checkbox" class="custom-checkbox sr-only">
+                                <div class="p-4 rounded-xl border-2 border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors flex items-center gap-3">
+                                    <div class="check-box w-5 h-5 rounded border border-gray-300 flex items-center justify-center bg-white transition-colors">
+                                        <svg class="check-icon w-3 h-3 text-white opacity-0 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-sm font-bold text-[#003C63]">Social Media Reels</span>
+                                </div>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-[#F27D57] font-bold uppercase tracking-widest text-xs mb-4 border-b border-gray-100 pb-2">5. Special Requests</h4>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Tell us about your shoot (e.g. Proposal surprise, Hotel shoot, Brand promotion)</label>
+                        <textarea rows="4" placeholder="Share your vision or requirements..." class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#F27D57] outline-none transition-colors"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#003C63] hover:bg-[#F27D57] text-white font-bold text-lg py-5 rounded-xl shadow-lg transition-all transform hover:-translate-y-1">
+                        Book Your Media Session
+                    </button>
+
+                </form>
+            </div>
         </div>
     </div>
-</section>
 
     <script>
-        window.handleMediaBooking = function(packageName, price) {
-            // Call the global cart counter function from script.js
-            // addToBooking handles the toast notification, so we don't need to create one here
-            if (typeof window.addToBooking === 'function') {
-                window.addToBooking(packageName, price);
-            }
-        }
-    </script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // The mapping of categories to their specific packages
+            const packagesMap = {
+                'personal': [
+                    { value: 'basic-personal', text: 'Basic Personal Package ($150)' },
+                    { value: 'standard-personal', text: 'Standard Personal Package ($250)' },
+                    { value: 'premium-personal', text: 'Premium Personal Package ($400)' }
+                ],
+                'events': [
+                    { value: 'basic-event', text: 'Basic Event Coverage ($300)' },
+                    { value: 'standard-event', text: 'Standard Event Coverage ($600)' },
+                    { value: 'premium-event', text: 'Premium Event Coverage ($900)' }
+                ],
+                'branding': [
+                    { value: 'starter-branding', text: 'Starter Branding Package ($200)' },
+                    { value: 'business-branding', text: 'Business Branding Package ($500)' },
+                    { value: 'premium-branding', text: 'Premium Brand Package ($1000)' }
+                ]
+            };
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="animations.js"></script>
+            const categorySelect = document.getElementById('serviceCategory');
+            const packageSelect = document.getElementById('packageSelection');
+            const modalOverlay = document.getElementById('booking-modal-overlay');
+            const modalContainer = modalOverlay.querySelector('div'); 
+
+            // Handle Dropdown Change
+            categorySelect.addEventListener('change', function() {
+                const selectedCategory = this.value;
+                const options = packagesMap[selectedCategory] || [];
+                
+                // Clear existing options
+                packageSelect.innerHTML = '';
+                
+                if (options.length > 0) {
+                    packageSelect.disabled = false;
+                    options.forEach(opt => {
+                        const newOption = document.createElement('option');
+                        newOption.value = opt.value;
+                        newOption.textContent = opt.text;
+                        packageSelect.appendChild(newOption);
+                    });
+                } else {
+                    packageSelect.disabled = true;
+                    packageSelect.innerHTML = '<option value="" disabled selected>Select a Category first...</option>';
+                }
+            });
+
+            // Smart Function to Open Modal and Auto-Fill
+            window.bookPackage = function(categoryValue, packageValue) {
+                // 1. Select the correct category
+                categorySelect.value = categoryValue;
+                
+                // 2. Trigger the change event to populate the package dropdown
+                categorySelect.dispatchEvent(new Event('change'));
+                
+                // 3. Select the exact package the user clicked
+                packageSelect.value = packageValue;
+                
+                // 4. Show the Modal securely
+                modalOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Stop background scrolling
+                
+                // Fade in animation
+                setTimeout(() => {
+                    modalOverlay.classList.remove('opacity-0');
+                    modalContainer.classList.remove('scale-95');
+                }, 10);
+                
+                // Highlight the form selection briefly to show the user it autofilled
+                const formHighlight = document.getElementById('modal-package-highlight');
+                formHighlight.style.backgroundColor = '#fff7f5'; 
+                setTimeout(() => {
+                    formHighlight.style.backgroundColor = 'transparent';
+                }, 1500);
+            };
+
+            // Close Modal Function
+            window.closeBookingModal = function() {
+                modalOverlay.classList.add('opacity-0');
+                modalContainer.classList.add('scale-95');
+                
+                // Wait for animation to finish before hiding completely
+                setTimeout(() => {
+                    modalOverlay.classList.add('hidden');
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }, 300);
+            };
+
+            // Close when clicking the dark background outside the modal
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) {
+                    closeBookingModal();
+                }
+            });
+        });
+    </script>
+    
     <script src="script.js"></script>
 </body>
 </html>
