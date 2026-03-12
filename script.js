@@ -1183,7 +1183,7 @@ const teamData = [
     { name: "Majalo", role: "Photographer", image: "image/creative.jpeg" },
     { name: "De King", role: "Drone Pilot & Visual Editor", image: "image/dking.jpeg" },
     { name: "Victor", role: "IT", image: "image/victor.png" },
-    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
+    { name: "Lattifa", role: "Expert Tour Guide", image: "image/latifa.jpeg" },
     { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },    
     
 ];
