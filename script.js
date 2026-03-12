@@ -1,20 +1,19 @@
-// 1. BRAND CONFIGURATION
+// 1. BRANDING CONFIGURATION 
 const branding = {
     colors: {
-        navy: "#003C63",    
-        orange: "#F27D57",  
-        white: "#FFFFFF"
+        navy: '#003C63',
+        orange: '#F27D57'
     },
     fonts: {
-        heading: "'Playfair Display', serif", 
-        body: "'Inter', sans-serif"            
+        heading: "'Playfair Display', serif",
+        body: "'Inter', sans-serif"
     }
 };
 
 // 2. INJECT CSS
 const style = document.createElement('style');
 style.textContent = `
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
     
     :root {
         --morix-navy: ${branding.colors.navy};
@@ -23,31 +22,86 @@ style.textContent = `
 
     header { font-family: ${branding.fonts.heading}; }
 
-    /* Desktop Navigation Links */
+    /* =========================================
+       DESKTOP TOP NAV LINKS
+       ========================================= */
     .nav-link-top {
         color: var(--morix-navy);
         font-family: ${branding.fonts.body};
         font-size: 1rem;
         text-transform: uppercase;
-        transition: 0.3s;
+        transition: color 0.3s ease;
         position: relative;
-        font-weight: 400;
+        font-weight: 500;
+        padding-bottom: 6px; 
     }
-    .nav-link-top:hover { color: var(--morix-orange); }
+    
+    .nav-link-top::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--morix-orange);
+        transition: width 0.3s ease;
+        border-radius: 2px;
+    }
 
-    /* SECOND NAV BAR: Solid Blue Background */
+    .nav-link-top:hover { color: var(--morix-orange); }
+    .nav-link-top:hover::after { width: 100%; }
+
+    /* --- PERMANENT ACTIVE STATE --- */
+    .nav-link-top.active {
+        color: var(--morix-orange) !important;
+        font-weight: 700 !important;
+    }
+    .nav-link-top.active::after {
+        width: 100% !important; 
+        background-color: var(--morix-orange) !important;
+    }
+
+
+    /* =========================================
+       SECOND NAV BAR
+       ========================================= */
     .second-nav-bar { background-color: var(--morix-navy); }
 
     .nav-link-main {
         color: white;
         font-size: 1.05rem;
-        font-weight: 600;
-        transition: 0.3s;
+        font-weight: 500;
+        transition: color 0.3s ease;
         position: relative;
+        padding-bottom: 6px;
     }
-    .nav-link-main:hover { color: var(--morix-orange); }
 
-    /* BOOKING BUTTON STYLE (Desktop) - UPDATED FOR ICON & BADGE */
+    .nav-link-main::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--morix-orange);
+        transition: width 0.3s ease;
+        border-radius: 2px;
+    }
+
+    .nav-link-main:hover { color: var(--morix-orange); }
+    .nav-link-main:hover::after { width: 100%; }
+
+    /* --- PERMANENT ACTIVE STATE --- */
+    .nav-link-main.active {
+        color: var(--morix-orange) !important;
+        font-weight: 700 !important;
+    }
+    .nav-link-main.active::after {
+        width: 100% !important; 
+        background-color: var(--morix-orange) !important;
+    }
+
+    /* BOOKING BUTTON STYLE (Desktop) */
     .btn-booking {
         background-color: var(--morix-orange);
         color: white;
@@ -58,7 +112,7 @@ style.textContent = `
         transition: transform 0.3s, background-color 0.3s, color 0.3s;
         display: inline-flex;
         align-items: center;
-        gap: 8px; /* Space between icon, text, and badge */
+        gap: 8px; 
         text-decoration: none;
         border: none;
         cursor: pointer;
@@ -87,11 +141,13 @@ style.textContent = `
         transition: 0.3s;
     }
     .btn-booking:hover .booking-badge {
-        background-color: var(--morix-orange); /* Match hover text */
+        background-color: var(--morix-orange); 
         color: white;
     }
 
-    /* MOBILE MENU STYLES */
+    /* =========================================
+       MOBILE MENU STYLES
+       ========================================= */
     #mobile-menu {
         position: absolute;
         top: 100%;
@@ -118,6 +174,8 @@ style.textContent = `
         font-weight: 500;
         border-bottom: 1px solid #f3f4f6;
         background: none;
+        transition: 0.3s;
+        position: relative;
     }
     
     .mobile-group-2 { background-color: var(--morix-navy); padding: 8px 0; }
@@ -127,9 +185,27 @@ style.textContent = `
         color: white;
         font-weight: 600;
         border-bottom: 1px solid rgba(255,255,255,0.1);
+        transition: 0.3s;
+        position: relative;
     }
 
-    /* Mobile Booking Button - UPDATED FOR FLEXBOX */
+    /* Mobile Permanent Active Styles */
+    .mobile-group-1 a.active {
+        color: var(--morix-orange) !important;
+        font-weight: 700 !important;
+        background-color: rgba(242, 125, 87, 0.05);
+        border-left: 4px solid var(--morix-orange);
+        padding-left: 20px;
+    }
+    .mobile-group-2 a.active {
+        color: var(--morix-orange) !important;
+        font-weight: 700 !important;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-left: 4px solid var(--morix-orange);
+        padding-left: 20px;
+    }
+
+    /* Mobile Booking Button */
     .mobile-btn-book {
         background-color: var(--morix-orange) !important;
         color: white !important;
@@ -166,7 +242,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// 3. THE HEADER TEMPLATE - (REMOVED HIDDEN BOOKING MODAL, CHANGED BUTTONS TO LINKS)
+// 3. THE HEADER TEMPLATE
 const headerTemplate = `
 <nav class="fixed top-0 w-full bg-white shadow-sm z-50">
     <div class="container mx-auto px-4 relative">
@@ -180,7 +256,7 @@ const headerTemplate = `
             </div>
 
             <div class="hidden lg:flex space-x-6 items-center">
-                <a href="index.html" class="nav-link-top ">Home</a>
+                <a href="index.html" class="nav-link-top">Home</a>
                 <a href="about us.html" class="nav-link-top">About Us</a>
                 <a href="why us.html" class="nav-link-top">Why Us</a>
                 <a href="contact.html" class="nav-link-top">Contact</a>
@@ -196,9 +272,10 @@ const headerTemplate = `
         <div id="mobile-menu">
             <div class="mobile-group-1">
                 <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
+                <a href="about us.html">About Us</a>
+                <a href="why us.html">Why Us</a>
                 <a href="contact.html">Contact</a>
-                <a href="faq.html">FAQ</a>
+                <a href="FQS.html">FAQ</a>
                 <button id="mobile-login-btn" style="color: var(--morix-navy); font-weight: 700;">Guest Handover</button>
             </div>
             <div class="mobile-group-2">
@@ -257,6 +334,35 @@ function initializeHeaderSystem() {
     const authModal = document.getElementById('auth-modal');
     const loginTriggers = [document.getElementById('login-btn'), document.getElementById('mobile-login-btn')];
     const closeAuth = document.getElementById('close-auth');
+
+    // === NEW FEATURE: BULLETPROOF ACTIVE LINK HIGHLIGHTER ===
+    function setActiveLink() {
+        // Use decodeURIComponent to fix spaces (e.g. "about%20us.html" becomes "about us.html")
+        let path = decodeURIComponent(window.location.pathname);
+        let page = path.split('/').pop().split('?')[0]; 
+        
+        // If we are on the base URL, default to index.html
+        if (page === '' || page === '/') {
+            page = 'index.html'; 
+        }
+
+        const allNavLinks = document.querySelectorAll('.nav-link-top, .nav-link-main, .mobile-group-1 a, .mobile-group-2 a');
+        
+        allNavLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            
+            // Remove active class just to be safe
+            link.classList.remove('active');
+
+            // If the href matches the page name perfectly, set it to Active
+            if (linkHref && linkHref === page) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    // Run the active link function immediately
+    setActiveLink();
 
     // Toggle Mobile Menu
     if(menuBtn) {
@@ -1071,14 +1177,14 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 
 //team //
 const teamData = [
-    { name: "Morix – Founder", role: "Founder & Visionary", image: "image/morix 2.jpeg" },
-    { name: "Ngalla", role: " The Driver", image: "image/driver.jpeg" },
-    { name: "Abdul", role: "Tour Guide Extraordinaire", image: "image/tourguide.jpeg" },
+    { name: "Morix | Modest", role: "Founder & Visionary", image: "image/morix 2.jpeg" },
+    { name: "Ngalla", role: " Professional Driver", image: "image/driver.jpeg" },
+    { name: "Abdul", role: "Expert Tour Guide", image: "image/tourguide.jpeg" },
+    { name: "Majalo", role: "Photographer", image: "image/creative.jpeg" },
+    { name: "De King", role: "Drone Pilot & Visual Editor", image: "image/dking.jpeg" },
+    { name: "Victor", role: "IT", image: "image/victor.png" },
     { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
-    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
-    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
-    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
-    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },
+    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },    
     
 ];
 

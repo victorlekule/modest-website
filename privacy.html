@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morix Beyond | Beyond Zanzibar Experiences</title>
+    <title>Morix Beyond Zanzibar</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
+     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -13,197 +13,208 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
-    
-    <link rel="stylesheet" href="styles.css">
 
-
+    <style>
+        /* Custom formatting for the policy content */
+        .policy-section {
+            margin-bottom: 2.5rem;
+        }
+        .policy-heading {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #003C63;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .policy-heading i {
+            color: #F27D57;
+            font-size: 1.75rem;
+        }
+        .policy-text {
+            color: #4b5563; /* text-gray-600 */
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .policy-list {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .policy-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        .policy-list li i {
+            color: #F27D57;
+            margin-top: 0.25rem;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-[#F8FAFC] font-sans text-slate-800 antialiased selection:bg-[#F27D57] selection:text-white">
 
-    <header id="main-header"></header>
+    <header id="main-header" class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm h-20 transition-all duration-300"></header>
 
-    <section class="relative pt-36 pb-24 flex items-center justify-center overflow-hidden bg-[#001E33] mt-20">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?q=80&w=2000&auto=format&fit=crop" 
-                 alt="Background" 
-                 class="w-full h-full object-cover opacity-10 blur-sm">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#001E33] to-transparent"></div>
+    <div class="h-[80px] w-full bg-[#003C63] pointer-events-none block"></div>
+
+    <section class="relative pt-20 pb-24 md:pt-28 md:pb-32 flex items-center justify-center overflow-hidden bg-[#003C63]">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 -left-24 w-72 h-72 bg-[#F27D57]/10 rounded-full blur-3xl"></div>
         </div>
 
-        <div class="relative z-10 text-center container mx-auto px-6">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight fade-up">
-                Terms & <span class="italic font-serif text-[#F27D57]">Conditions</span>
+        <div class="container mx-auto px-6 relative z-10 text-center text-white max-w-4xl">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-6">
+                <i class="bx bx-lock-alt text-[#F27D57]"></i>
+                <span class="text-xs font-bold tracking-[0.2em] uppercase text-gray-200">Secure & Confidential</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight font-[Playfair_Display]">
+                Privacy <span class="italic font-serif text-[#F27D57]">Policy</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed fade-up" style="transition-delay: 100ms;">
-                Please read these terms and conditions carefully before booking any tour, safari, or service with Morix Beyond Zanzibar.
+            
+            <p class="text-lg md:text-xl text-gray-200 font-light leading-relaxed max-w-2xl mx-auto">
+                Your privacy is important to us. This policy explains how Morix Beyond Zanzibar collects and uses your information.
             </p>
         </div>
     </section>
 
-    <section class="py-20 bg-[#F8FAFC]">
-        <div class="container mx-auto px-6">
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-4 md:px-8 max-w-4xl">
             
-            <div class="max-w-4xl mx-auto bg-white p-8 md:p-16 rounded-[2.5rem] shadow-sm border border-gray-100">
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-xl shadow-gray-200/50 border border-gray-100">
                 
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-info text-[#F27D57]"></i> Introduction
-                    </h2>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        These Terms & Conditions apply to all tours, safaris, trekking packages, and media services provided by Morix Beyond Zanzibar.
-                    </p>
-                    <p class="text-gray-600 leading-relaxed font-medium">
-                        By making a booking with us, you agree to these terms and conditions.
+                <div class="policy-section border-b border-gray-100 pb-10">
+                    <h2 class="policy-heading"><i class='bx bx-info-circle'></i> Introduction</h2>
+                    <p class="policy-text">
+                        Morix Beyond Zanzibar is committed to protecting your personal data and respecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website or contact us for tours, safaris, trekking packages, or media services.
                     </p>
                 </div>
 
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-calendar-check text-[#F27D57]"></i> Bookings & Confirmation
-                    </h2>
-                    <ul class="space-y-3 text-gray-600 leading-relaxed">
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> All bookings must be confirmed in advance via WhatsApp, email, or website inquiry form.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> A deposit is required to secure your booking.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> The remaining balance must be paid before or on the day of the tour or service.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Booking details will be confirmed in writing.</li>
+                <div class="policy-section border-b border-gray-100 pb-10">
+                    <h2 class="policy-heading"><i class='bx bx-data'></i> Information We Collect</h2>
+                    <p class="policy-text mb-4">We may collect the following information:</p>
+                    <ul class="policy-list">
+                        <li><i class='bx bx-check-circle'></i> <span>Full name</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Email address</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Phone / WhatsApp number</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Travel dates and preferences</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Messages and inquiries sent to us</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Booking details</span></li>
                     </ul>
                 </div>
 
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-wallet text-[#F27D57]"></i> Payments
-                    </h2>
-                    <ul class="space-y-3 text-gray-600 leading-relaxed">
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Accepted payment methods include bank transfer, mobile money, and cash (as advised during booking).</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Prices are quoted in USD unless otherwise stated.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> All prices are subject to availability and may change without prior notice.</li>
+                <div class="policy-section border-b border-gray-100 pb-10">
+                    <h2 class="policy-heading"><i class='bx bx-cog'></i> How We Use Your Information</h2>
+                    <p class="policy-text mb-4">We use your information to:</p>
+                    <ul class="policy-list mb-6">
+                        <li><i class='bx bx-check-circle'></i> <span>Respond to inquiries</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Process bookings</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Customize travel experiences</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Provide customer support</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Improve our services</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Send booking confirmations and updates</span></li>
                     </ul>
-                </div>
-
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-refresh text-[#F27D57]"></i> Cancellation & Refunds
-                    </h2>
-                    <ul class="space-y-3 text-gray-600 leading-relaxed">
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Cancellation policies depend on the type of tour, safari, trekking package, or service booked.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Cancellations made within a short period before the tour may not be refundable.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> In case of weather conditions or circumstances beyond our control, tours may be rescheduled or replaced with an alternative experience.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> No refunds for no-shows or late arrivals.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-map-marker text-[#F27D57]"></i> Changes to Itineraries
-                    </h2>
-                    <ul class="space-y-3 text-gray-600 leading-relaxed">
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Morix Beyond Zanzibar reserves the right to modify itineraries due to weather, safety concerns, or operational reasons.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Any changes will be made in the best interest of the client’s safety and experience.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-heart text-[#F27D57]"></i> Health & Fitness
-                    </h2>
-                    <ul class="space-y-3 text-gray-600 leading-relaxed">
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Some activities (such as safaris, trekking, and water sports) require a reasonable level of fitness.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Clients must inform us of any medical conditions before booking.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Participation is at the client’s own risk.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-shield-check text-[#F27D57]"></i> Travel Insurance
-                    </h2>
-                    <ul class="space-y-3 text-gray-600 leading-relaxed">
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> All clients are strongly advised to have valid travel insurance covering medical emergencies, accidents, and trip cancellations.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-document text-[#F27D57]"></i> Liability
-                    </h2>
-                    <ul class="space-y-3 text-gray-600 leading-relaxed">
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Morix Beyond Zanzibar acts as an organizer and agent for services provided by third-party operators (transport, lodges, guides, etc.).</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> We are not responsible for loss, injury, damage, or delays caused by factors beyond our control.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Clients participate in activities at their own risk.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-camera text-[#F27D57]"></i> Photography & Media
-                    </h2>
-                    <ul class="space-y-3 text-gray-600 leading-relaxed">
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Photos and videos taken during tours or shoots may be used for promotional purposes unless the client requests otherwise in writing.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Drone flights are subject to local aviation regulations and weather conditions.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-users text-[#F27D57]"></i> Child Policy
-                    </h2>
-                    <ul class="space-y-3 text-gray-600 leading-relaxed">
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Children must be accompanied by an adult.</li>
-                        <li class="flex items-start gap-3"><i class="fi fi-sr-circle-small text-[#003C63] mt-1.5 text-[8px]"></i> Certain activities may have age restrictions for safety reasons.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-12 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-bolt text-[#F27D57]"></i> Force Majeure
-                    </h2>
-                    <p class="text-gray-600 leading-relaxed">
-                        Morix Beyond Zanzibar shall not be liable for failure to perform services due to events beyond reasonable control, including natural disasters, government restrictions, or unforeseen circumstances.
+                    <p class="policy-text font-semibold text-[#003C63] bg-[#003C63]/5 p-4 rounded-xl">
+                        We do not sell or share your personal data with third parties for marketing purposes.
                     </p>
                 </div>
 
-                <div class="mb-16 fade-up">
-                    <h2 class="text-2xl font-bold text-[#003C63] mb-4 flex items-center gap-3">
-                        <i class="fi fi-rr-book-alt text-[#F27D57]"></i> Governing Law
-                    </h2>
-                    <p class="text-gray-600 leading-relaxed">
-                        These Terms & Conditions are governed by the laws of the United Republic of Tanzania.
+                <div class="policy-section border-b border-gray-100 pb-10">
+                    <h2 class="policy-heading"><i class='bx bx-share-alt'></i> Sharing of Information</h2>
+                    <p class="policy-text mb-4">Your information may be shared only with trusted service providers such as:</p>
+                    <ul class="policy-list mb-6">
+                        <li><i class='bx bx-check-circle'></i> <span>Hotels and lodges</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Safari operators</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Transport providers</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Tour guides</span></li>
+                    </ul>
+                    <p class="policy-text italic text-gray-500">
+                        * This is done strictly to deliver your booked service.
                     </p>
                 </div>
 
-                <hr class="border-gray-200 mb-12">
+                <div class="policy-section border-b border-gray-100 pb-10">
+                    <h2 class="policy-heading"><i class='bx bx-shield-quarter'></i> Data Security</h2>
+                    <p class="policy-text">
+                        Morix Beyond Zanzibar takes reasonable measures to protect your personal information from loss, misuse, or unauthorized access.
+                    </p>
+                </div>
 
-                <div class="grid md:grid-cols-2 gap-8 fade-up">
-                    
-                    <div class="bg-[#F8FAFC] p-8 rounded-2xl border border-gray-100">
-                        <h3 class="font-bold text-[#003C63] uppercase tracking-widest text-sm mb-4">Contact Information</h3>
-                        <p class="text-gray-600 text-sm mb-4">For any questions regarding these terms, please contact:</p>
-                        <div class="space-y-2">
-                            <a href="mailto:morix.beyond@gmail.com" class="flex items-center gap-3 text-[#003C63] hover:text-[#F27D57] font-medium transition-colors">
-                                <i class="fi fi-rr-envelope"></i> morix.beyond@gmail.com
-                            </a>
-                            <a href="https://wa.me/255746319059" target="_blank" class="flex items-center gap-3 text-[#003C63] hover:text-[#F27D57] font-medium transition-colors">
-                                <i class="fi fi-brands-whatsapp"></i> +255 746 319 059
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="bg-[#003C63] p-8 rounded-2xl text-white shadow-lg">
-                        <h3 class="font-bold text-[#F27D57] uppercase tracking-widest text-sm mb-4">Final Note</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            By booking with Morix Beyond Zanzibar, you acknowledge that you have read, understood, and agreed to these Terms & Conditions.
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 border-b border-gray-100 pb-10 mb-10">
+                    <div>
+                        <h2 class="policy-heading"><i class='bx bx-cookie'></i> Cookies</h2>
+                        <p class="policy-text">
+                            Our website may use cookies to improve user experience and analyze website traffic. You can choose to disable cookies through your browser settings.
                         </p>
                     </div>
+                    <div>
+                        <h2 class="policy-heading"><i class='bx bx-link-external'></i> Third-Party Links</h2>
+                        <p class="policy-text">
+                            Our website may contain links to third-party websites (such as social media platforms). We are not responsible for the privacy practices of those websites.
+                        </p>
+                    </div>
+                </div>
 
+                <div class="policy-section border-b border-gray-100 pb-10">
+                    <h2 class="policy-heading"><i class='bx bx-user-check'></i> Your Rights</h2>
+                    <p class="policy-text mb-4">You have the right to:</p>
+                    <ul class="policy-list mb-6">
+                        <li><i class='bx bx-check-circle'></i> <span>Request access to your personal data</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Request correction or deletion of your data</span></li>
+                        <li><i class='bx bx-check-circle'></i> <span>Withdraw consent for data use</span></li>
+                    </ul>
+                    <p class="policy-text">
+                        You may contact us at any time regarding your data.
+                    </p>
+                </div>
+
+                <div class="policy-section border-b border-gray-100 pb-10">
+                    <h2 class="policy-heading"><i class='bx bx-camera'></i> Media & Photography</h2>
+                    <p class="policy-text">
+                        Photos and videos taken during tours or photoshoots may be used for promotional purposes unless you request otherwise in writing.
+                    </p>
+                </div>
+
+                <div class="policy-section">
+                    <h2 class="policy-heading"><i class='bx bx-refresh'></i> Changes to This Policy</h2>
+                    <p class="policy-text">
+                        Morix Beyond Zanzibar reserves the right to update this Privacy Policy at any time. Any changes will be published on this page.
+                    </p>
+                </div>
+
+                <div class="mt-12 bg-gray-50 border border-gray-200 p-8 rounded-2xl text-center">
+                    <h3 class="text-2xl font-black text-[#003C63] mb-4">Contact Information</h3>
+                    <p class="text-gray-600 mb-6">For any questions regarding this Privacy Policy, please contact us:</p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+                        <a href="mailto:morix.beyond@gmail.com" class="flex items-center gap-3 text-lg font-bold text-[#F27D57] hover:text-[#003C63] transition-colors">
+                            <div class="w-10 h-10 rounded-full bg-[#F27D57]/10 flex items-center justify-center">
+                                <i class='bx bx-envelope'></i>
+                            </div>
+                            morix.beyond@gmail.com
+                        </a>
+                        
+                        <a href="https://wa.me/255746319059" target="_blank" class="flex items-center gap-3 text-lg font-bold text-[#F27D57] hover:text-[#003C63] transition-colors">
+                            <div class="w-10 h-10 rounded-full bg-[#F27D57]/10 flex items-center justify-center">
+                                <i class='bx bxl-whatsapp'></i>
+                            </div>
+                            +255 746 319 059
+                        </a>
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
-
-
-
 
 
 
