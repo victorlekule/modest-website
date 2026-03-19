@@ -1184,7 +1184,7 @@ const teamData = [
     { name: "De King", role: "Drone Pilot & Visual Editor", image: "image/dking.jpeg" },
     { name: "Victor", role: "IT", image: "image/victor.png" },
     { name: "Lattifa", role: "Expert Tour Guide", image: "image/latifa.jpeg" },
-    { name: "Majalo", role: "Creative Director", image: "image/creative.jpeg" },    
+    { name: "Bernard", role: "Graphic Designer", image: "image/designer.jpeg" },    
     
 ];
 
@@ -1231,15 +1231,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 //GALLERY PAGE//
 const photoData = [
-    { src: "image/1 (13).jpg", cat: "safari", title: "Lion King" },
-    { src: "image/1 (10).jpg", cat: "safari", title: "Ngorongoro Crater" },
-    { src: "image/1 (15).jpg", cat: "safari", title: "The Great Migration" },
-    { src: "image/1 (19).jpg", cat: "safari", title: "Elephants at Sunset" },
-    { src: "image/1 (1).jpg", cat: "beach", title: "Nungwi Turquoise" },
-    { src: "image/1 (2).jpg", cat: "beach", title: "Sandbank Relax" },
-    { src: "image/1 (9).jpg", cat: "beach", title: "Traditional Dhow" },
-    { src: "image/1 (7).jpg", cat: "culture", title: "Stone Town Alleys" },
-    { src: "image/1 (6).jpg", cat: "culture", title: "Spice Farm Colors" }
+    { src: "image/roma (1).JPG", cat: "safari", title: "Lion King" },
+    { src: "image/ruhaa.jpg", cat: "safari", title: "Ngorongoro Crater" },
+    { src: "image/mikumi2.JPG", cat: "safari", title: "The Great Migration" },
+    { src: "image/marangu.JPG", cat: "safari", title: "Elephants at Sunset" },
+    { src: "image/safri blue (1).JPG", cat: "beach", title: "Nungwi Turquoise" },
+    { src: "image/serengeti.jpg", cat: "beach", title: "Sandbank Relax" },
+    { src: "image/marina.JPG", cat: "beach", title: "Traditional Dhow" },
+    { src: "image/navigator (1).jpg", cat: "culture", title: "Stone Town Alleys" },
+    { src: "image/ngorongoro.jpg", cat: "culture", title: "Spice Farm Colors" }
 ];
 
 const videoData = [
@@ -1489,7 +1489,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-//zanzibar//
+
 //zanzibar//
 // ==========================================
 // 1. DATABASE OF EXPERIENCES 
@@ -1501,9 +1501,9 @@ const experiencesDB = [
         category: "water",
         badge: "Watersports",
         images: [
-            "https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1520483601560-389dff434fdf?q=80&w=800&auto=format&fit=crop"
+            "image/kendwa (1).JPG",
+            "image/kendwa (2).JPG",
+            "image/kendwa (3).JPG",
         ],
         shortDesc: "Experience Zanzibar’s most popular beach with exciting water activities.",
         mainDesc: "A white-sand paradise with crystal-clear waters and legendary sunsets — the perfect setting for luxury ocean experiences, captured with professional drone photography and videography.",
@@ -1563,9 +1563,9 @@ const experiencesDB = [
         category: "cruise",
         badge: "Cruise",
         images: [
-            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+            "image/safri blue (1).JPG",
+            "image/safri blue (2).JPG",
+            "image/safri blue (3).JPG"
         ],
         shortDesc: "Enjoy a full-day island adventure across Zanzibar’s turquoise waters.",
         mainDesc: "Exploring pristine sandbanks, hidden lagoons, and colorful coral reefs. This classic ocean experience includes swimming, snorkeling, relaxing on a natural island, baobab tree exploration and a delicious seafood lunch.",
@@ -1590,9 +1590,9 @@ const experiencesDB = [
         category: "culture",
         badge: "Culture",
         images: [
-            "https://images.unsplash.com/photo-1576487248805-cf45f6bcc67f?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1543051932-6ef9f5f15e51?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1520483601560-389dff434fdf?q=80&w=800&auto=format&fit=crop"
+            "image/navigator (1).JPG",
+            "image/navigator (2).JPG",
+            "image/navigator (3).JPG"
         ],
         shortDesc: "Embark on a guided cultural and island-hopping journey through Zanzibar’s most iconic sites.",
         mainDesc: "Explore Zanzibar’s culture, islands, and local life in one unforgettable day.",
@@ -1642,9 +1642,9 @@ const experiencesDB = [
         category: "nature",
         badge: "Nature",
         images: [
-            "https://images.unsplash.com/photo-1543051932-6ef9f5f15e51?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1576487248805-cf45f6bcc67f?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop"
+            "image/botanist (1).JPG",
+            "image/botanist (2).JPG",
+            "image/botanist (3).JPG"
         ],
         shortDesc: "Explore Zanzibar’s highlights: spice farms, forests, a swimming cave, turtles, and a famous lunch at The Rock Restaurant.",
         mainDesc: "Blending spice culture, wildlife, natural swimming caves, a unique turtle experience, and iconic oceanfront dining into one unforgettable adventure.",
@@ -1703,9 +1703,9 @@ const experiencesDB = [
         category: "marinelife",
         badge: "marinelife",
         images: [
-            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop"
+            "image/marina1 (1).JPG",
+            "image/marina1 (2).JPG",
+            "image/marina.JPG"
         ],
         shortDesc: "Experience Zanzibar’s marine life and coastal traditions on a curated ocean adventure with unforgettable sailing moments.",
         mainDesc: "Dive into Zanzibar’s marine life with a unique ocean swim near dolphins and a traditional sunset cruise.",
@@ -1749,9 +1749,10 @@ const experiencesDB = [
         category: "couples",
         badge: "Love",
         images: [
-            "https://images.unsplash.com/photo-1520483601560-389dff434fdf?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1590523278191-995cbcda646b?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+            "image/roma (1).JPG",
+            "image/roma (2).JPG",
+            "image/roma (4).JPG",
+            "image/roma (3).JPG"
         ],
         shortDesc: "Celebrate love with intimate proposals and sunset experiences in Zanzibar’s most romantic settings.",
         mainDesc: "Celebrate love in breathtaking settings with intimate, luxurious experiences for couples.",
