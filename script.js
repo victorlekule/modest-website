@@ -2112,4 +2112,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// safaris
