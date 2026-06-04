@@ -10,318 +10,316 @@ const branding = {
     }
 };
 
-// 2. INJECT CSS
+// 2. INJECT FONTS ONLY
 const style = document.createElement('style');
 style.textContent = `
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
-    
-    :root {
-        --morix-navy: ${branding.colors.navy};
-        --morix-orange: ${branding.colors.orange};
-    }
-
-    header { font-family: ${branding.fonts.heading}; }
-
-    /* =========================================
-       DESKTOP TOP NAV LINKS
-       ========================================= */
-    .nav-link-top {
-        color: var(--morix-navy);
-        font-family: ${branding.fonts.body};
-        font-size: 1rem;
-        text-transform: uppercase;
-        transition: color 0.3s ease;
-        position: relative;
-        font-weight: 500;
-        padding-bottom: 6px; 
-    }
-    
-    .nav-link-top::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 3px;
-        bottom: 0;
-        left: 0;
-        background-color: var(--morix-orange);
-        transition: width 0.3s ease;
-        border-radius: 2px;
-    }
-
-    .nav-link-top:hover { color: var(--morix-orange); }
-    .nav-link-top:hover::after { width: 100%; }
-
-    /* --- PERMANENT ACTIVE STATE --- */
-    .nav-link-top.active {
-        color: var(--morix-orange) !important;
-        font-weight: 700 !important;
-    }
-    .nav-link-top.active::after {
-        width: 100% !important; 
-        background-color: var(--morix-orange) !important;
-    }
-
-
-    /* =========================================
-       SECOND NAV BAR
-       ========================================= */
-    .second-nav-bar { background-color: var(--morix-navy); }
-
-    .nav-link-main {
-        color: white;
-        font-size: 1.05rem;
-        font-weight: 500;
-        transition: color 0.3s ease;
-        position: relative;
-        padding-bottom: 6px;
-    }
-
-    .nav-link-main::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 3px;
-        bottom: 0;
-        left: 0;
-        background-color: var(--morix-orange);
-        transition: width 0.3s ease;
-        border-radius: 2px;
-    }
-
-    .nav-link-main:hover { color: var(--morix-orange); }
-    .nav-link-main:hover::after { width: 100%; }
-
-    /* --- PERMANENT ACTIVE STATE --- */
-    .nav-link-main.active {
-        color: var(--morix-orange) !important;
-        font-weight: 700 !important;
-    }
-    .nav-link-main.active::after {
-        width: 100% !important; 
-        background-color: var(--morix-orange) !important;
-    }
-
-    /* BOOKING BUTTON STYLE (Desktop) */
-    .btn-booking {
-        background-color: var(--morix-orange);
-        color: white;
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-weight: bold;
-        font-style: italic;
-        transition: transform 0.3s, background-color 0.3s, color 0.3s;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px; 
-        text-decoration: none;
-        border: none;
-        cursor: pointer;
-        font-size: inherit;
-        font-family: inherit;
-    }
-    .btn-booking:hover { 
-        transform: scale(1.05);
-        background-color: white;
-        color: var(--morix-orange); 
-    }
-
-    /* THE NUMBER BADGE */
-    .booking-badge {
-        background-color: var(--morix-navy);
-        color: white;
-        border-radius: 50%;
-        padding: 2px 7px;
-        font-size: 0.8rem;
-        font-style: normal;
-        font-weight: 800;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 24px;
-        transition: 0.3s;
-    }
-    .btn-booking:hover .booking-badge {
-        background-color: var(--morix-orange); 
-        color: white;
-    }
-
-    /* =========================================
-       MOBILE MENU STYLES
-       ========================================= */
-    #mobile-menu {
-        position: absolute;
-        top: 100%;
-        left: 1rem;
-        width: auto;
-        min-width: 260px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-        display: none;
-        flex-direction: column;
-        overflow: hidden;
-        z-index: 100;
-    }
-
-    .mobile-group-1 { padding: 8px 0; }
-    .mobile-group-1 a, .mobile-group-1 button {
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 12px 24px;
-        color: var(--morix-navy);
-        font-family: ${branding.fonts.body};
-        font-weight: 500;
-        border-bottom: 1px solid #f3f4f6;
-        background: none;
-        transition: 0.3s;
-        position: relative;
-    }
-    
-    .mobile-group-2 { background-color: var(--morix-navy); padding: 8px 0; }
-    .mobile-group-2 a {
-        display: block;
-        padding: 12px 24px;
-        color: white;
-        font-weight: 600;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        transition: 0.3s;
-        position: relative;
-    }
-
-    /* Mobile Permanent Active Styles */
-    .mobile-group-1 a.active {
-        color: var(--morix-orange) !important;
-        font-weight: 700 !important;
-        background-color: rgba(242, 125, 87, 0.05);
-        border-left: 4px solid var(--morix-orange);
-        padding-left: 20px;
-    }
-    .mobile-group-2 a.active {
-        color: var(--morix-orange) !important;
-        font-weight: 700 !important;
-        background-color: rgba(255, 255, 255, 0.05);
-        border-left: 4px solid var(--morix-orange);
-        padding-left: 20px;
-    }
-
-    /* Mobile Booking Button */
-    .mobile-btn-book {
-        background-color: var(--morix-orange) !important;
-        color: white !important;
-        margin: 10px 20px;
-        border-radius: 4px;
-        width: auto !important;
-        border: none !important;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-    /* AUTH MODAL */
-    .modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.7);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-    }
-    .modal-box {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 12px;
-        width: 90%;
-        max-width: 450px;
-        text-align: center;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+    @import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
+    @import url('https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css');
 `;
 document.head.appendChild(style);
 
 // 3. THE HEADER TEMPLATE
 const headerTemplate = `
-<nav class="fixed top-0 w-full bg-white shadow-sm z-50">
-    <div class="container mx-auto px-4 relative">
-        <div class="flex justify-between items-center py-4">
-            <div class="flex items-center">
-            <img src="/image/MORIX WEB SECOND-01.png.png" 
-            alt="Morix Beyond" 
-            class="h-10 md:h-14 logo-img" 
-            style="display: block !important; opacity: 1 !important; visibility: visible !important;"
-            onerror="this.src='image/MORIX WEB-01.png';">
+<!-- TOP INFO HEADER - Fixed at Top -->
+<div id="info-header" style="background-color: ${branding.colors.navy}; font-family: 'Inter', sans-serif; position: fixed; top: 0; left: 0; right: 0; z-index: 60;">
+    <div class="w-full px-3 sm:px-4 lg:px-6 xl:px-8">
+        <div class="flex justify-between items-center py-2 lg:py-2.5">
+            <!-- LEFT: WhatsApp + Email -->
+            <div class="flex items-center justify-between sm:justify-start w-full sm:w-auto gap-2 sm:gap-4 lg:gap-6">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/+255746319059" target="_blank" 
+                   class="flex items-center gap-1.5 sm:gap-2 text-white transition-all duration-300 group flex-1 sm:flex-none justify-center sm:justify-start">
+                    <i class="fi fi-brands-whatsapp text-base sm:text-lg" style="color: #25D366;"></i>
+                    <span class="text-xs sm:text-sm font-medium truncate" 
+                          style="color: white;"
+                          onmouseover="this.style.color='${branding.colors.orange}'" 
+                          onmouseout="this.style.color='white'">
+                        +255 746 319 059
+                    </span>
+                </a>
+                
+                <!-- Separator -->
+                <span class="text-gray-500 text-sm hidden sm:block">|</span>
+                
+                <!-- Email -->
+                <a href="mailto:hello@morixbeyond.com" 
+                   class="flex items-center gap-1.5 sm:gap-2 text-white transition-all duration-300 group flex-1 sm:flex-none justify-center sm:justify-start">
+                    <i class="fi fi-rr-envelope text-base sm:text-lg" style="color: ${branding.colors.orange};"></i>
+                    <span class="text-xs sm:text-sm font-medium truncate" 
+                          style="color: white;"
+                          onmouseover="this.style.color='${branding.colors.orange}'" 
+                          onmouseout="this.style.color='white'">
+                        hello@morixbeyond.com
+                    </span>
+                </a>
             </div>
-
-            <div class="hidden lg:flex space-x-6 items-center">
-                <a href="index.html" class="nav-link-top">Home</a>
-                <a href="about us.html" class="nav-link-top">About Us</a>
-                <a href="why us.html" class="nav-link-top">Why Us</a>
-                <a href="contact.html" class="nav-link-top">Contact</a>
-                <a href="blog.html" class="nav-link-top">BLOG</a>
-                <a href="FQS.html" class="nav-link-top">FAQ</a>
-            </div>
-
-            <button id="menu-btn" class="lg:hidden text-morix-navy focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </div>
-
-        <div id="mobile-menu">
-            <div class="mobile-group-1">
-                <a href="index.html">Home</a>
-                <a href="about us.html">About Us</a>
-                <a href="why us.html">Why Us</a>
-                <a href="contact.html">Contact</a>
-                <a href="FQS.html">FAQ</a>
-                <button id="mobile-login-btn" style="color: var(--morix-navy); font-weight: 700;">Guest Handover</button>
-            </div>
-            <div class="mobile-group-2">
-                <a href="zanzibar.html">Zanzibar Experiences</a>
-                <a href="tanzania.html">Tanzania Safaris</a>
-                <a href="media.html">Media Services</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="booking.html" class="mobile-btn-book" id="mobile-booking-btn">
-                    <i class="fi fi-rr-shopping-bag"></i> My Booking 
-                    <span class="booking-badge mobile-booking-count">0</span>
+            
+            <!-- RIGHT: Navigation Links (Desktop) -->
+            <div class="hidden lg:flex items-center gap-4 xl:gap-6 flex-shrink-0">
+                <a href="about-us.html" 
+                   class="relative text-white text-xs xl:text-sm font-medium uppercase tracking-wide transition-all duration-300 pb-1 group"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='white'">
+                    About Us
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="why-morix.html" 
+                   class="relative text-white text-xs xl:text-sm font-medium uppercase tracking-wide transition-all duration-300 pb-1 group"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='white'">
+                    Why Morix
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="contact.html" 
+                   class="relative text-white text-xs xl:text-sm font-medium uppercase tracking-wide transition-all duration-300 pb-1 group"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='white'">
+                    Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="blog.html" 
+                   class="relative text-white text-xs xl:text-sm font-medium uppercase tracking-wide transition-all duration-300 pb-1 group"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='white'">
+                    Blog
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="faq.html" 
+                   class="relative text-white text-xs xl:text-sm font-medium uppercase tracking-wide transition-all duration-300 pb-1 group"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='white'">
+                    FAQ
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <span class="text-gray-500 text-sm">|</span>
+                
+                <a href="privacy.html" 
+                   class="relative text-white text-xs xl:text-sm font-medium uppercase tracking-wide transition-all duration-300 pb-1 group"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='white'">
+                    Privacy
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="terms.html" 
+                   class="relative text-white text-xs xl:text-sm font-medium uppercase tracking-wide transition-all duration-300 pb-1 group"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='white'">
+                    Terms
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
                 </a>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="hidden lg:block second-nav-bar">
-        <div class="container mx-auto flex justify-center items-center py-3 space-x-12">
-            <a href="zanzibar.html" class="nav-link-main">Zanzibar Experiences</a>
-            <a href="tanzania.html" class="nav-link-main">Tanzania Safaris</a>
-            <a href="media.html" class="nav-link-main">Media Services</a>
-            <a href="gallery.html" class="nav-link-main">Gallery</a>
-            <a href="booking.html" class="btn-booking" id="booking-btn">
-                <i class="fi fi-rr-shopping-bag"></i> My Booking 
-                <span class="booking-badge desktop-booking-count">0</span>
+<!-- MAIN HEADER - Fixed below info header -->
+<nav id="main-nav" style="font-family: 'Inter', sans-serif; background-color: white; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1); position: fixed; top: 0; left: 0; right: 0; z-index: 50;">
+    <div class="w-full px-3 sm:px-4 lg:px-6 xl:px-8">
+        <div class="flex justify-between items-center py-2 lg:py-3">
+            <!-- LEFT: Logo -->
+            <a href="index.html" class="flex-shrink-0">
+                <img src="/image/MORIX WEB SECOND-01.png.png" 
+                     alt="Morix Beyond" 
+                     class="h-7 sm:h-10 lg:h-12 xl:h-14 w-auto" 
+                     onerror="this.src='image/MORIX WEB-01.png';">
             </a>
+
+            <!-- RIGHT: Main Navigation (Desktop) -->
+            <div class="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-7">
+                <a href="index.html" 
+                   class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
+                   style="color: ${branding.colors.navy};"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='${branding.colors.navy}'">
+                    Home
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="water-sports.html" 
+                   class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
+                   style="color: ${branding.colors.navy};"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='${branding.colors.navy}'">
+                    Water Sports
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="zanzibar-tours.html" 
+                   class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
+                   style="color: ${branding.colors.navy};"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='${branding.colors.navy}'">
+                    Zanzibar Tours
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="transfers.html" 
+                   class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
+                   style="color: ${branding.colors.navy};"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='${branding.colors.navy}'">
+                    Transfers
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="tanzania-safaris.html" 
+                   class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
+                   style="color: ${branding.colors.navy};"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='${branding.colors.navy}'">
+                    Tanzania Safaris
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="media-services.html" 
+                   class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
+                   style="color: ${branding.colors.navy};"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='${branding.colors.navy}'">
+                    Media Services
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="stays.html" 
+                   class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
+                   style="color: ${branding.colors.navy};"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='${branding.colors.navy}'">
+                    Stays
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="gallery.html" 
+                   class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
+                   style="color: ${branding.colors.navy};"
+                   onmouseover="this.style.color='${branding.colors.orange}'" 
+                   onmouseout="if(!this.classList.contains('active')) this.style.color='${branding.colors.navy}'">
+                    Gallery
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full rounded-full"
+                          style="background-color: ${branding.colors.orange};"></span>
+                </a>
+                
+                <a href="booking.html" 
+                   class="inline-flex items-center gap-2 px-4 xl:px-6 py-2 lg:py-2.5 text-sm xl:text-base font-bold italic rounded-full transition-all duration-300 transform hover:scale-105 border-2 border-transparent"
+                   style="background-color: ${branding.colors.orange}; color: white;"
+                   onmouseover="this.style.backgroundColor='white'; this.style.color='${branding.colors.orange}'; this.style.borderColor='${branding.colors.orange}'"
+                   onmouseout="this.style.backgroundColor='${branding.colors.orange}'; this.style.color='white'; this.style.borderColor='transparent'">
+                    <i class="fi fi-rr-shopping-bag"></i> Book Experiences
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="lg:hidden p-2 focus:outline-none transition-all duration-300"
+                    style="color: ${branding.colors.navy};"
+                    onmouseover="this.style.color='${branding.colors.orange}'" 
+                    onmouseout="this.style.color='${branding.colors.navy}'">
+                <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" 
+         class="absolute left-4 bg-white hidden overflow-hidden rounded-lg"
+         style="z-index: 49; top: 100%; width: auto; min-width: 200px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); border: 1px solid #e5e7eb;">
+        <div class="divide-y divide-gray-100">
+            <a href="index.html" 
+               class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
+               style="color: ${branding.colors.navy};"
+               onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
+               onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
+                Home
+            </a>
+            <a href="water-sports.html" 
+               class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
+               style="color: ${branding.colors.navy};"
+               onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
+               onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
+                Water Sports
+            </a>
+            <a href="zanzibar-tours.html" 
+               class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
+               style="color: ${branding.colors.navy};"
+               onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
+               onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
+                Zanzibar Tours
+            </a>
+            <a href="transfers.html" 
+               class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
+               style="color: ${branding.colors.navy};"
+               onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
+               onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
+                Transfers
+            </a>
+            <a href="tanzania-safaris.html" 
+               class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
+               style="color: ${branding.colors.navy};"
+               onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
+               onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
+                Tanzania Safaris
+            </a>
+            <a href="media-services.html" 
+               class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
+               style="color: ${branding.colors.navy};"
+               onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
+               onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
+                Media Services
+            </a>
+            <a href="stays.html" 
+               class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
+               style="color: ${branding.colors.navy};"
+               onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
+               onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
+                Stays
+            </a>
+            <a href="gallery.html" 
+               class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
+               style="color: ${branding.colors.navy};"
+               onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
+               onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
+                Gallery
+            </a>
+            <div class="p-3 bg-gray-50">
+                <a href="booking.html" 
+                   class="block text-center py-3 px-4 text-sm font-bold italic rounded-lg transition-all duration-300 transform active:scale-95 border-2 border-transparent whitespace-nowrap"
+                   style="background-color: ${branding.colors.orange}; color: white;"
+                   onmouseover="this.style.backgroundColor='white'; this.style.color='${branding.colors.orange}'; this.style.borderColor='${branding.colors.orange}'"
+                   onmouseout="this.style.backgroundColor='${branding.colors.orange}'; this.style.color='white'; this.style.borderColor='transparent'">
+                    <i class="fi fi-rr-shopping-bag"></i> Book Experiences
+                </a>
+            </div>
         </div>
     </div>
 </nav>
-
-<div id="auth-modal" class="modal-overlay">
-    <div class="modal-box">
-        <h2 class="text-3xl font-bold mb-6 text-morix-navy" style="font-family: 'Playfair Display'">Join Morix Beyond</h2>
-        <div class="space-y-4 font-sans">
-            <input type="email" placeholder="Email Address" class="w-full border p-3 rounded text-left">
-            <input type="password" placeholder="Password" class="w-full border p-3 rounded text-left">
-            <button class="w-full bg-morix-navy text-white py-3 rounded-lg font-semibold hover:opacity-90">Log In</button>
-            <div class="text-gray-400">or</div>
-            <button class="w-full border-2 border-morix-navy text-morix-navy py-3 rounded-lg font-semibold hover:bg-gray-50">Sign Up</button>
-            <button id="close-auth" class="mt-4 text-sm text-gray-500 underline">Close</button>
-        </div>
-    </div>
-</div>
 `;
 
+// 4. INJECT HTML INTO THE PAGE
 document.getElementById('main-header').innerHTML = headerTemplate;
 
+// 5. INITIALIZE ALL FUNCTIONALITY
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeHeaderSystem);
 } else {
@@ -331,66 +329,167 @@ if (document.readyState === 'loading') {
 function initializeHeaderSystem() {
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    const authModal = document.getElementById('auth-modal');
-    const loginTriggers = [document.getElementById('login-btn'), document.getElementById('mobile-login-btn')];
-    const closeAuth = document.getElementById('close-auth');
+    const infoHeader = document.getElementById('info-header');
+    const mainNav = document.getElementById('main-nav');
 
-    // === NEW FEATURE: BULLETPROOF ACTIVE LINK HIGHLIGHTER ===
+    // ===== POSITION MAIN NAV BELOW INFO HEADER & ADD PAGE MARGIN =====
+    function updateHeaderPositions() {
+        if (infoHeader && mainNav) {
+            const infoHeight = infoHeader.offsetHeight;
+            mainNav.style.top = infoHeight + 'px';
+            document.body.style.paddingTop = (infoHeight + mainNav.offsetHeight) + 'px';
+        }
+    }
+    
+    // Run on load and resize
+    setTimeout(updateHeaderPositions, 50);
+    window.addEventListener('resize', updateHeaderPositions);
+
+    // ===== CREATE BLUR OVERLAY =====
+    let contentOverlay = document.createElement('div');
+    contentOverlay.id = 'content-overlay';
+    contentOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        z-index: 30;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    `;
+    document.body.appendChild(contentOverlay);
+
+    // ===== ACTIVE LINK HIGHLIGHTER =====
     function setActiveLink() {
-        // Use decodeURIComponent to fix spaces (e.g. "about%20us.html" becomes "about us.html")
         let path = decodeURIComponent(window.location.pathname);
         let page = path.split('/').pop().split('?')[0]; 
         
-        // If we are on the base URL, default to index.html
         if (page === '' || page === '/') {
             page = 'index.html'; 
         }
 
-        const allNavLinks = document.querySelectorAll('.nav-link-top, .nav-link-main, .mobile-group-1 a, .mobile-group-2 a');
+        const allNavLinks = document.querySelectorAll('a[href]');
         
         allNavLinks.forEach(link => {
             const linkHref = link.getAttribute('href');
-            
-            // Remove active class just to be safe
             link.classList.remove('active');
-
-            // If the href matches the page name perfectly, set it to Active
-            if (linkHref && linkHref === page) {
-                link.classList.add('active');
+            link.style.fontWeight = '';
+            
+            if (linkHref) {
+                const linkPage = linkHref.split('/').pop();
+                
+                if (linkPage === page) {
+                    link.classList.add('active');
+                    link.style.fontWeight = '700';
+                    link.style.color = branding.colors.orange;
+                }
             }
         });
     }
     
-    // Run the active link function immediately
     setActiveLink();
 
-    // Toggle Mobile Menu
-    if(menuBtn) {
+    // ===== OPEN MOBILE MENU =====
+    function openMobileMenu() {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('block');
+        
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.transform = 'translateY(-10px)';
+        
+        setTimeout(() => {
+            mobileMenu.style.opacity = '1';
+            mobileMenu.style.transform = 'translateY(0)';
+        }, 10);
+        
+        if (contentOverlay) {
+            contentOverlay.style.opacity = '1';
+            contentOverlay.style.pointerEvents = 'auto';
+        }
+        
+        menuBtn.innerHTML = `
+            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        `;
+    }
+
+    // ===== CLOSE MOBILE MENU =====
+    function closeMobileMenu() {
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.transform = 'translateY(-10px)';
+        
+        if (contentOverlay) {
+            contentOverlay.style.opacity = '0';
+            contentOverlay.style.pointerEvents = 'none';
+        }
+        
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('block');
+        }, 200);
+        
+        menuBtn.innerHTML = `
+            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        `;
+    }
+
+    // ===== MOBILE MENU TOGGLE =====
+    if(menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+            if (mobileMenu.classList.contains('hidden')) {
+                openMobileMenu();
+            } else {
+                closeMobileMenu();
+            }
         });
     }
 
-    // Open Modal
-    loginTriggers.forEach(trigger => {
-        if(trigger) {
-            trigger.addEventListener('click', () => {
-                authModal.style.display = 'flex';
-                mobileMenu.style.display = 'none'; 
+    // ===== CLOSE ON OVERLAY CLICK =====
+    if(contentOverlay) {
+        contentOverlay.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    }
+
+    // ===== CLOSE ON MENU LINK CLICK =====
+    if(mobileMenu) {
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
             });
+        });
+    }
+
+    // ===== RESIZE HANDLER =====
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            closeMobileMenu();
         }
     });
 
-    if(closeAuth) {
-        closeAuth.addEventListener('click', () => authModal.style.display = 'none');
+    // ===== ADD TRANSITION PROPERTIES =====
+    if(mobileMenu) {
+        mobileMenu.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
     }
 
-    window.addEventListener('click', (e) => {
-        if (e.target === authModal) authModal.style.display = 'none';
-        if (mobileMenu && !mobileMenu.contains(e.target) && e.target !== menuBtn) mobileMenu.style.display = 'none';
+    // ===== ESCAPE KEY TO CLOSE =====
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            closeMobileMenu();
+        }
     });
 }
+
 
 // ==========================================
 // 5. GLOBAL BOOKING CART LOGIC

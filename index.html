@@ -9,360 +9,2449 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>    
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>    
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">    
     <link rel="stylesheet" href="styles.css">
     <script src="header.js" defer></script>
+    <!-- Moved previously inline styles into a central style block (should be placed in styles.css in production) -->
+    <style>
+        .signature-section{ font-family: 'Inter', sans-serif; }
+        .signature-subtle-pattern{ opacity: .015; background-image: radial-gradient(circle at 2px 2px, #003C63 1px, transparent 0); background-size: 40px 40px; }
+        .playfair-heading{ font-family: 'Playfair Display', serif; }
+    </style>
 </head>
-
-<img src="images/morix-logo.png" alt="Morix Beyond" class="h-12 md:h-18 relative z-50 opacity-100 !visible">
-<body class="bg-gray-50">
+<body class="bg-white">
 
     <header id="main-header"></header>
     
 
-<section class="relative h-[100dvh] w-full flex items-center justify-center bg-gray-900 overflow-hidden hero-trigger">
-    <div class="absolute -top-[10%] -bottom-[10%] left-0 right-0 z-0">
-        <img src="image/hero.jpg" 
-             alt="Zanzibar Beach and Safari" 
-             class="block w-full h-full object-cover object-center opacity-60 gs-hero-img"> 
+<!-- PROFESSIONAL HERO SECTION - Fixed -->
+<section class="relative h-[60vh] min-h-[480px] md:h-[65vh] md:min-h-[500px] lg:h-[75vh] lg:min-h-[550px] overflow-hidden">
+    
+    <!-- Static Gradient Overlay - Never Animates -->
+    <div class="absolute inset-0 z-[1] bg-gradient-to-r from-[#003C63]/90 via-[#003C63]/60 to-transparent pointer-events-none sm:bg-gradient-to-r sm:from-[#003C63] sm:via-[#003C63]/60 sm:to-transparent"></div>
+
+    <!-- Image Slider Background - Only Images Animate -->
+    <div class="absolute inset-0 z-0" id="hero-slider">
+        <div class="relative w-full h-full" id="slides-container">
+            <!-- Slide 1 -->
+            <div class="absolute inset-0 w-full h-full slide active" data-index="0">
+                <img src="image/gallary.jpg" alt="Zanzibar Beach" class="w-full h-full object-cover object-center">
+            </div>
+            <!-- Slide 2 -->
+            <div class="absolute inset-0 w-full h-full slide" data-index="1">
+                <img src="image/who we are 2.jpg" alt="Dolphin Tour" class="w-full h-full object-cover object-center sm:object-top">
+            </div>
+            <!-- Slide 3 -->
+            <div class="absolute inset-0 w-full h-full slide" data-index="2">
+                <img src="image/kayaki.home.jpg" alt="Stone Town" class="w-full h-full object-cover object-center sm:object-top">
+            </div>
+            <!-- Slide 4 -->
+            <div class="absolute inset-0 w-full h-full slide" data-index="3">
+                <img src="image/mikumi2.JPG" alt="Safari Adventure" class="w-full h-full object-cover object-center sm:object-top">
+            </div>
+            <!-- Slide 5 -->
+            <div class="absolute inset-0 w-full h-full slide" data-index="4">
+                <img src="image/header.jpg" alt="Zanzibar Sunset" class="w-full h-full object-cover object-center sm:object-top">
+            </div>
+            <!-- Slide 6 -->
+            <div class="absolute inset-0 w-full h-full slide" data-index="5">
+                <img src="image/contact.jpg" alt="Tropical Paradise" class="w-full h-full object-cover object-center">
+            </div>
+            <!-- Slide 7 -->
+            <div class="absolute inset-0 w-full h-full slide" data-index="6">
+                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1920&q=80" alt="Snorkeling Adventure" class="w-full h-full object-cover object-center">
+            </div>
+            <!-- Slide 8 -->
+            <div class="absolute inset-0 w-full h-full slide" data-index="7">
+                <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1920&q=80" alt="Ocean View" class="w-full h-full object-cover object-center">
+            </div>
+            <!-- Slide 9 -->
+            <div class="absolute inset-0 w-full h-full slide" data-index="8">
+                <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=1920&q=80" alt="Travel Destination" class="w-full h-full object-cover object-center">
+            </div>
+            <!-- Slide 10 -->
+            <div class="absolute inset-0 w-full h-full slide" data-index="9">
+                <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=1920&q=80" alt="Beach Paradise" class="w-full h-full object-cover object-center">
+            </div>
+        </div>
     </div>
 
-    <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        <h1 class="text-5xl md:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight drop-shadow-2xl gs-hero-text" 
-            style="font-family: 'Playfair Display', serif;">
-            Explore Zanzibar and Tanzania <br>
-            <span class="text-[#FF8A5B] italic">Beyond the Ordinary</span>
-        </h1>
+    <!-- Content -->
+    <div class="relative z-10 h-full w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+        <div class="w-full lg:w-[55%] xl:w-[52%] pb-8 sm:pb-0">
+            
+            <!-- Main Headline -->
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-3 sm:mb-4 opacity-0 animate-fadeIn" 
+                style="font-family: 'Playfair Display', serif; animation-delay: 0.15s;">
+                Book your beyond<br/>
+                <span class="relative inline-block">
+                    Zanzibar
+                    <svg class="absolute -bottom-1 left-0 w-full" viewBox="0 0 200 6" preserveAspectRatio="none">
+                        <path d="M0,3 Q50,0 100,3 T200,3" stroke="#F27D57" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span class="text-2xl sm:text-4xl lg:text-5xl"> experiences with</span><br/>
+                <span class="text-[#F27D57]">100% confidence</span>
+            </h1>
+            
+            <p class="text-xs sm:text-sm lg:text-base text-white/80 max-w-lg leading-relaxed font-light mb-5 sm:mb-6 opacity-0 animate-fadeIn" style="animation-delay: 0.3s;">
+                No hidden fees, secure online payments, and expert local guides. Select your dream itinerary and lock in your dates today with Morix Beyond.
+            </p>
 
-        <p class="text-lg md:text-2xl text-gray-100 mb-10 max-w-3xl mx-auto font-light leading-relaxed gs-hero-subtext"
-           style="font-family: 'Inter', sans-serif;">
-            Premium Zanzibar Tours, Mainland Tanzania Safaris, and Cinematic Videography,
-            <span class="font-semibold text-white">Crafted for unforgettable experiences.</span>
-        </p>
+            <!-- Category Quick Links (Grid on mobile, inline-flex on tablet/desktop) -->
+            <div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-6 opacity-0 animate-fadeIn" style="animation-delay: 0.4s;">
+                <a href="water-sports.html" class="group inline-flex items-center justify-center sm:justify-start gap-1.5 bg-white/15 backdrop-blur-sm text-white text-[11px] sm:text-xs lg:text-sm font-medium px-2 py-2.5 sm:px-3 lg:px-4 sm:py-2 lg:py-2.5 rounded-xl border border-white/25 hover:bg-white/25 hover:border-white/45 transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap">
+                    <i class="fi fi-rr-swimmer text-sm lg:text-base"></i>
+                    <span>Water Sports</span>
+                </a>
+                <a href="zanzibar-tours.html" class="group inline-flex items-center justify-center sm:justify-start gap-1.5 bg-white/15 backdrop-blur-sm text-white text-[11px] sm:text-xs lg:text-sm font-medium px-2 py-2.5 sm:px-3 lg:px-4 sm:py-2 lg:py-2.5 rounded-xl border border-white/25 hover:bg-white/25 hover:border-white/45 transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap">
+                    <i class="fi fi-rr-island-tropical text-sm lg:text-base"></i>
+                    <span>Zanzibar Tours</span>
+                </a>
+                <a href="tanzania-safaris.html" class="group inline-flex items-center justify-center sm:justify-start gap-1.5 bg-white/15 backdrop-blur-sm text-white text-[11px] sm:text-xs lg:text-sm font-medium px-2 py-2.5 sm:px-3 lg:px-4 sm:py-2 lg:py-2.5 rounded-xl border border-white/25 hover:bg-white/25 hover:border-white/45 transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap">
+                    <i class="fi fi-rr-elephant text-sm lg:text-base"></i>
+                    <span>Tanzania Safaris</span>
+                </a>
+                <a href="stays.html" class="group inline-flex items-center justify-center sm:justify-start gap-1.5 bg-white/15 backdrop-blur-sm text-white text-[11px] sm:text-xs lg:text-sm font-medium px-2 py-2.5 sm:px-3 lg:px-4 sm:py-2 lg:py-2.5 rounded-xl border border-white/25 hover:bg-white/25 hover:border-white/45 transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap">
+                    <i class="fi fi-rr-bed-alt text-sm lg:text-base"></i>
+                    <span>Stays</span>
+                </a>
+            </div>
 
-        <div class="flex flex-col md:flex-row gap-5 justify-center items-center gs-hero-btns">
-            <a href="https://wa.me/255746319059" 
-               class="group px-8 py-4 bg-white text-[#003358] font-bold text-lg rounded-full shadow-lg hover:bg-green-600 hover:text-white transition-all duration-300 flex items-center gap-2">
-                <i class='bx bxl-whatsapp text-2xl text-green-600 group-hover:text-white transition-colors duration-300'></i>
-                <span>Chat on WhatsApp</span>
+            <!-- Social Proof -->
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3 lg:gap-4 text-[11px] sm:text-xs lg:text-sm opacity-0 animate-fadeIn" style="animation-delay: 0.5s;">
+                <div class="flex items-center gap-1">
+                    <span class="text-yellow-400 text-xs lg:text-sm">★★★★★</span>
+                    <span class="text-white font-semibold ml-1">Rated 4.9/5</span>
+                    <span class="text-white/90 hidden sm:inline">by global travelers</span>
+                </div>
+                <span class="text-white/30 hidden sm:block">|</span>
+                <div class="flex items-center gap-1.5 text-white/80">
+                    <i class="fi fi-rr-bolt text-[#F27D57]"></i>
+                    <span>Instant Confirmation</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dot Indicators - Bottom Center -->
+    <div class="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 sm:gap-2">
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="0" aria-label="Go to slide 1"></button>
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="1" aria-label="Go to slide 2"></button>
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="2" aria-label="Go to slide 3"></button>
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="3" aria-label="Go to slide 4"></button>
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="4" aria-label="Go to slide 5"></button>
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="5" aria-label="Go to slide 6"></button>
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="6" aria-label="Go to slide 7"></button>
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="7" aria-label="Go to slide 8"></button>
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="8" aria-label="Go to slide 9"></button>
+        <button class="dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-index="9" aria-label="Go to slide 10"></button>
+    </div>
+</section>
+
+<script>
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    let isTransitioning = false;
+    let autoplayInterval;
+    
+    function initSlides() {
+        slides.forEach((slide, i) => {
+            slide.style.transition = 'none';
+            slide.style.transform = 'translateX(100%)';
+            if (i === 0) {
+                slide.style.transform = 'translateX(0)';
+                slide.classList.add('active');
+            }
+        });
+        slides[0].offsetHeight;
+        slides.forEach(slide => {
+            slide.style.transition = 'transform 0.8s cubic-bezier(0.77, 0, 0.175, 1)';
+        });
+        dots[0].classList.add('active');
+    }
+    
+    function goToSlide(index) {
+        if (isTransitioning || index === currentIndex) return;
+        isTransitioning = true;
+        
+        const currentSlide = slides[currentIndex];
+        const nextSlide = slides[index];
+        
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        
+        if (currentSlide) {
+            currentSlide.style.transform = 'translateX(-100%)';
+        }
+        
+        nextSlide.style.transform = 'translateX(0)';
+        nextSlide.classList.add('active');
+        dots[index].classList.add('active');
+        
+        slides.forEach((slide, i) => {
+            if (i !== currentIndex && i !== index) {
+                slide.style.transform = 'translateX(100%)';
+            }
+        });
+        
+        currentIndex = index;
+        
+        setTimeout(() => { isTransitioning = false; }, 800);
+    }
+    
+    function nextSlide() {
+        const nextIndex = (currentIndex + 1) % totalSlides;
+        goToSlide(nextIndex);
+        resetAutoplay();
+    }
+    
+    function resetAutoplay() {
+        clearInterval(autoplayInterval);
+        autoplayInterval = setInterval(nextSlide, 5000);
+    }
+    
+    initSlides();
+    
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index'));
+            goToSlide(index);
+            resetAutoplay();
+        });
+    });
+    
+    autoplayInterval = setInterval(nextSlide, 5000);
+    
+    const slider = document.getElementById('hero-slider');
+    slider.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+    slider.addEventListener('mouseleave', () => { autoplayInterval = setInterval(nextSlide, 5000); });
+})();
+</script>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(25px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fadeIn {
+        opacity: 0;
+        animation: fadeIn 0.7s ease-out forwards;
+    }
+    
+    .dot.active {
+        background-color: #F27D57 !important;
+        width: 1.5rem !important;
+        border-radius: 12px !important;
+    }
+    
+    @media (max-width: 768px) {
+        .dot.active { width: 1rem !important; }
+    }
+</style>
+
+<!--ABOUT US SECTION -->
+
+<section class="relative py-20 lg:py-28 bg-white overflow-hidden signature-section">
+    
+    <!-- Background Decorations -->
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[#003C63]/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-[#F27D57]/5 rounded-full blur-3xl"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            <!-- LEFT: Text Content -->
+            <div class="w-full lg:w-1/2">
+                
+                <!-- Section Label -->
+                <span class="text-[#F27D57] font-bold tracking-widest text-xs sm:text-sm uppercase mb-3 block animate-fadeIn">
+                    <i class="fi fi-rr-sparkles mr-1"></i> Who We Are
+                </span>
+                
+                <!-- Headline -->
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#003C63] mb-6 leading-tight animate-fadeIn" 
+                    style="font-family: 'Playfair Display', serif; animation-delay: 0.1s;">
+                    Welcome to<br/>
+                    <span class="italic text-[#F27D57]">Morix Beyond</span>
+                </h2>
+                
+                <!-- Description -->
+                <p class="text-base lg:text-lg text-gray-600 mb-8 leading-relaxed animate-fadeIn" style="animation-delay: 0.2s;">
+                    Morix Beyond Zanzibar is a locally based travel and experience company dedicated to helping visitors 
+                    discover the very best of 
+                    <span class="text-[#003C63] font-semibold">Zanzibar and Tanzania</span>. 
+                    From unforgettable island adventures and wildlife safaris to reliable transfers, stays, and media services, 
+                    we create <span class="text-[#003C63] font-semibold">seamless experiences tailored to every traveler</span>.
+                </p>
+
+                <!-- Feature Icons Grid (Forced 2 columns on all screens) -->
+                <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-10 animate-fadeIn" style="animation-delay: 0.3s;">
+                    <!-- Feature 1 -->
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#003C63]/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fi fi-rr-island-tropical text-sm sm:text-lg text-[#003C63]"></i>
+                        </div>
+                        <span class="font-medium text-gray-700 text-xs sm:text-sm leading-tight">Island Adventures</span>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F27D57]/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fi fi-rr-elephant text-sm sm:text-lg text-[#F27D57]"></i>
+                        </div>
+                        <span class="font-medium text-gray-700 text-xs sm:text-sm leading-tight">Wildlife Safaris</span>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#F27D57]/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fi fi-rr-car-side text-sm sm:text-lg text-[#F27D57]"></i>
+                        </div>
+                        <span class="font-medium text-gray-700 text-xs sm:text-sm leading-tight">Reliable Transfers</span>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#003C63]/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fi fi-rr-shield-check text-sm sm:text-lg text-[#003C63]"></i>
+                        </div>
+                        <span class="font-medium text-gray-700 text-xs sm:text-sm leading-tight">Seamless Experiences</span>
+                    </div>
+                </div>
+
+                <!-- Learn More Button -->
+                <a href="about-us.html" 
+                   class="group inline-flex items-center gap-2 text-[#003C63] font-bold border-b-2 border-[#F27D57] pb-1 hover:text-[#F27D57] hover:border-[#003C63] transition-all duration-300 animate-fadeIn" 
+                   style="animation-delay: 0.4s;">
+                    Learn More About Us
+                    <i class="fi fi-rr-arrow-right transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+            </div>
+
+            <!-- RIGHT: Image Gallery (Hidden on mobile, visible on md and up) -->
+            <div class="hidden md:block w-full lg:w-1/2 relative animate-fadeIn" style="animation-delay: 0.2s;">
+                <!-- Main Image -->
+                <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white h-72 sm:h-80 lg:h-96 w-full max-w-lg mx-auto">
+                    <img src="image/who we are.jpg" 
+                         alt="Zanzibar Experience" 
+                         class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                </div>
+                
+                <!-- Small Overlay Image - Bottom Left -->
+                <div class="absolute -bottom-6 -left-2 sm:-left-4 w-40 h-24 sm:w-48 sm:h-32 z-20 rounded-xl overflow-hidden shadow-2xl border-4 border-white hidden md:block">
+                    <img src="image/who we are 2.JPG" 
+                         alt="Safari Adventure" 
+                         class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Stats Badge - Top Right -->
+                <div class="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-[#F27D57] text-white w-20 h-20 sm:w-24 sm:h-24 flex flex-col items-center justify-center rounded-full shadow-xl border-4 border-white z-30 hidden md:flex">
+                    <span class="block text-xl sm:text-2xl font-black leading-none mb-0.5" style="font-family: 'Playfair Display', serif;">500+</span>
+                    <span class="text-[0.6rem] sm:text-[0.65rem] font-bold uppercase tracking-widest leading-none">Trusted</span>
+                </div>
+
+                <!-- Mobile Stats Badge (Left as fallback if layout changes later) -->
+                <div class="absolute -top-4 -right-4 bg-[#F27D57] text-white w-16 h-16 flex flex-col items-center justify-center rounded-full shadow-xl border-4 border-white z-30 md:hidden">
+                    <span class="block text-sm font-black leading-none mb-0.5">500+</span>
+                    <span class="text-[0.5rem] font-bold uppercase tracking-wider leading-none">Trusted</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(25px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fadeIn {
+        opacity: 0;
+        animation: fadeIn 0.7s ease-out forwards;
+    }
+</style>
+
+<!-- water activity -->
+
+<!-- WATER SPORTS SECTION - Rotating Images with Dynamic Titles -->
+<section class="relative py-24 lg:py-32 overflow-hidden" style="font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #003C63 0%, #002240 100%);">
+    
+    <!-- Background Wave Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="white" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <!-- Animated Bubbles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-10 left-10 w-64 h-64 bg-[#F27D57]/20 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-20 right-10 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl animate-float animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Grid Pattern -->
+    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-16 lg:mb-20">
+            <span class="inline-flex items-center gap-2 text-[#F27D57] font-semibold tracking-widest text-xs sm:text-sm uppercase mb-4 bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full border border-white/20">
+                <i class="fi fi-rr-swimmer"></i>
+                Ocean Adventures
+            </span>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight" style="font-family: 'Playfair Display', serif;">
+                Water <span class="italic text-[#F27D57]">Sports</span>
+            </h2>
+            <p class="text-white/60 max-w-xl mx-auto mt-4 text-base lg:text-lg">
+                Dive into Zanzibar's crystal-clear waters and experience the ultimate aquatic adventure
+            </p>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid lg:grid-cols-5 gap-8 lg:gap-10 items-center">
+            
+            <!-- LEFT: Rotating Feature Image -->
+            <div class="lg:col-span-3 relative">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20" id="water-sports-image-container">
+                    <!-- Image -->
+                    <img id="water-sports-main-image" 
+                         src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80" 
+                         alt="Jetski Adventure" 
+                         class="w-full h-80 sm:h-96 lg:h-[500px] object-cover transition-all duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                    
+                    <!-- Dynamic Image Overlay Content -->
+                    <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span id="water-sports-badge" class="bg-[#F27D57] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider transition-all duration-500">
+                                Most Popular
+                            </span>
+                        </div>
+                        <h3 id="water-sports-title" class="text-white text-2xl lg:text-3xl font-bold transition-all duration-500" style="font-family: 'Playfair Display', serif;">
+                            Jetski Adventure
+                        </h3>
+                    </div>
+
+                    <!-- Dot Indicators on Image -->
+                    <div class="absolute top-4 right-4 flex gap-1.5 z-20">
+                        <button class="ws-dot w-2.5 h-2.5 rounded-full bg-white transition-all duration-300" data-index="0"></button>
+                        <button class="ws-dot w-2.5 h-2.5 rounded-full bg-white/40 transition-all duration-300" data-index="1"></button>
+                        <button class="ws-dot w-2.5 h-2.5 rounded-full bg-white/40 transition-all duration-300" data-index="2"></button>
+                        <button class="ws-dot w-2.5 h-2.5 rounded-full bg-white/40 transition-all duration-300" data-index="3"></button>
+                        <button class="ws-dot w-2.5 h-2.5 rounded-full bg-white/40 transition-all duration-300" data-index="4"></button>
+                    </div>
+                </div>
+
+                <!-- Floating Review Card -->
+                <div class="absolute -top-6 -right-4 lg:-right-8 bg-white rounded-2xl shadow-2xl p-4 z-20 hidden sm:block">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-2xl">🏄</div>
+                        <div>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fi fi-rr-star"></i>
+                                <i class="fi fi-rr-star"></i>
+                                <i class="fi fi-rr-star"></i>
+                                <i class="fi fi-rr-star"></i>
+                                <i class="fi fi-rr-star"></i>
+                            </div>
+                            <p class="text-[#003C63] font-bold text-sm">4.9/5 Rating</p>
+                            <p class="text-gray-400 text-xs">2,500+ reviews</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Content & Activities -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Description Card -->
+                <div class="bg-white/5 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-white/10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[#F27D57]/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fi fi-rr-swimmer text-2xl text-[#F27D57]"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white" style="font-family: 'Playfair Display', serif;">
+                            Feel the Thrill
+                        </h3>
+                    </div>
+                    <p class="text-white/70 text-sm lg:text-base leading-relaxed mb-6">
+                        Feel the thrill of Zanzibar's ocean with <span class="text-white font-semibold">Jetski Adventure, Zanzibar Clear Kayak, Jetcar Experience, Snorkeling, and Parasailing</span>. Safe, fun, and unforgettable sea adventures.
+                    </p>
+                    
+                    <!-- Activity Tags - Clickable to change image -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="changeWaterSport(0)" class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-water"></i> Jetski
+                        </button>
+                        <button onclick="changeWaterSport(1)" class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-kayak"></i> Clear Kayak
+                        </button>
+                        <button onclick="changeWaterSport(2)" class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-car-side"></i> Jetcar
+                        </button>
+                        <button onclick="changeWaterSport(3)" class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-diving-snorkel"></i> Snorkeling
+                        </button>
+                        <button onclick="changeWaterSport(4)" class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-parachute-box"></i> Parasailing
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Perfect For Card -->
+                <div class="bg-white/5 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-white/10">
+                    <h4 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <i class="fi fi-rr-heart text-[#F27D57]"></i>
+                        Perfect For
+                    </h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center gap-2 bg-white/5 rounded-xl p-3 hover:bg-white/10 transition-all duration-300">
+                            <i class="fi fi-rr-heart text-[#F27D57]"></i>
+                            <span class="text-white text-sm font-medium">Couples</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 rounded-xl p-3 hover:bg-white/10 transition-all duration-300">
+                            <i class="fi fi-rr-users text-[#F27D57]"></i>
+                            <span class="text-white text-sm font-medium">Groups</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 rounded-xl p-3 hover:bg-white/10 transition-all duration-300">
+                            <i class="fi fi-rr-person-circle-plus text-[#F27D57]"></i>
+                            <span class="text-white text-sm font-medium">Solo Travelers</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 rounded-xl p-3 hover:bg-white/10 transition-all duration-300">
+                            <i class="fi fi-rr-mountain text-[#F27D57]"></i>
+                            <span class="text-white text-sm font-medium">Adventure Seekers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <a href="water-sports.html" class="group relative w-full inline-flex items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[#F27D57] px-8 py-4 text-white font-bold text-lg transition-all duration-500 hover:shadow-2xl hover:shadow-[#F27D57]/50 hover:-translate-y-1">
+                    <span class="relative z-10">Explore All Water Sports</span>
+                    <i class="fi fi-rr-arrow-right relative z-10 group-hover:translate-x-1 transition-transform duration-300"></i>
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animation-delay-2000 { animation-delay: 2s; }
+</style>
+
+<script>
+// Water Sports Data
+const waterSports = [
+    {
+        name: 'Jetski Adventure',
+        badge: 'Most Popular',
+        image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80',
+        icon: '🏄'
+    },
+    {
+        name: 'Clear Kayak',
+        badge: 'Unique Experience',
+        image: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=900&q=80',
+        icon: '🛶'
+    },
+    {
+        name: 'Jetcar Experience',
+        badge: 'Thrill Ride',
+        image: 'https://images.unsplash.com/photo-1590523278191-7c8b90f28e6c?w=900&q=80',
+        icon: '🚤'
+    },
+    {
+        name: 'Snorkeling',
+        badge: 'Family Favorite',
+        image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=900&q=80',
+        icon: '🤿'
+    },
+    {
+        name: 'Parasailing',
+        badge: 'Sky High',
+        image: 'https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=900&q=80',
+        icon: '🪂'
+    }
+];
+
+let currentWSIndex = 0;
+let wsInterval;
+
+function changeWaterSport(index) {
+    currentWSIndex = index;
+    updateWaterSportDisplay();
+    resetWSAutoplay();
+}
+
+function updateWaterSportDisplay() {
+    const sport = waterSports[currentWSIndex];
+    const img = document.getElementById('water-sports-main-image');
+    const title = document.getElementById('water-sports-title');
+    const badge = document.getElementById('water-sports-badge');
+    const dots = document.querySelectorAll('.ws-dot');
+    
+    // Fade out
+    img.style.opacity = '0';
+    title.style.opacity = '0';
+    badge.style.opacity = '0';
+    
+    setTimeout(() => {
+        // Change content
+        img.src = sport.image;
+        img.alt = sport.name;
+        title.textContent = sport.name;
+        badge.textContent = sport.badge;
+        
+        // Update floating card icon
+        const floatIcon = document.querySelector('.bg-green-100');
+        if (floatIcon) floatIcon.textContent = sport.icon;
+        
+        // Fade in
+        img.style.opacity = '1';
+        title.style.opacity = '1';
+        badge.style.opacity = '1';
+    }, 300);
+    
+    // Update dots
+    dots.forEach((d, i) => {
+        d.style.backgroundColor = i === currentWSIndex ? 'white' : 'rgba(255,255,255,0.4)';
+        d.style.width = i === currentWSIndex ? '1.5rem' : '0.625rem';
+        d.style.borderRadius = i === currentWSIndex ? '12px' : '50%';
+    });
+}
+
+function resetWSAutoplay() {
+    clearInterval(wsInterval);
+    wsInterval = setInterval(() => {
+        currentWSIndex = (currentWSIndex + 1) % waterSports.length;
+        updateWaterSportDisplay();
+    }, 4000);
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    updateWaterSportDisplay();
+    wsInterval = setInterval(() => {
+        currentWSIndex = (currentWSIndex + 1) % waterSports.length;
+        updateWaterSportDisplay();
+    }, 4000);
+});
+
+// Dot clicks
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.ws-dot').forEach(dot => {
+        dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index'));
+            changeWaterSport(index);
+        });
+    });
+});
+</script>
+
+
+<!--zanzibar tours-->
+<!-- ZANZIBAR TOURS SECTION - Powerful Cards with Intros -->
+<section class="relative py-24 lg:py-32 bg-white overflow-hidden" style="font-family: 'Inter', sans-serif;">
+    
+    <!-- Background Decor Elements -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-[#003C63]/3 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#F27D57]/5 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+    
+    <!-- Subtle Grid Pattern -->
+    <div class="absolute inset-0 opacity-[0.02] pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #003C63 1px, transparent 0); background-size: 48px 48px;"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="max-w-2xl mb-12 lg:mb-20">
+            <span class="inline-flex items-center gap-2 text-[#F27D57] font-semibold tracking-widest text-xs sm:text-sm uppercase mb-4 bg-[#F27D57]/5 px-4 py-1.5 rounded-full">
+                <i class="fi fi-rr-sparkles text-xs"></i>
+                Curated Experiences
+            </span>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#003C63] leading-tight" style="font-family: 'Playfair Display', serif;">
+                Zanzibar <span class="italic text-[#F27D57]">Tours</span>
+            </h2>
+            <p class="text-gray-500 text-base lg:text-lg mt-4 leading-relaxed">
+                Explore Zanzibar's top gems with <span class="text-[#003C63] font-semibold">expert local guides</span> who know every hidden corner of this paradise island.
+            </p>
+        </div>
+
+        <!-- Hybrid Layout: Horizontal Scroll on Mobile, Grid on Desktop -->
+        <div id="tours-scroll" class="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6 pb-6 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 hide-scrollbar" style="scroll-behavior: smooth;">
+            
+            <!-- Card 1: Mnemba Island -->
+            <div class="tour-card w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 snap-center opacity-0 translate-x-12">
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 h-full flex flex-col">
+                    <div class="relative h-52 sm:h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?w=500&q=80" alt="Mnemba Island" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-[#F27D57] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">From $89</div>
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full w-9 h-9 flex items-center justify-center shadow-lg group-hover:bg-[#F27D57] group-hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-island-tropical text-sm"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="text-white font-bold text-lg lg:text-xl mb-1" style="font-family: 'Playfair Display', serif;">Mnemba Island</h3>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-white/80 ml-1">4.9</span>
+                                <span class="text-white/50 text-[10px] ml-1">(1.2k)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Zanzibar's most exclusive island — swim with dolphins in crystal-clear turquoise waters surrounded by vibrant coral reefs teeming with marine life.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                            <div class="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                                <i class="fi fi-rr-clock"></i> 4 Hours
+                            </div>
+                            <a href="#" class="text-[#F27D57] font-semibold text-sm hover:text-[#003C63] transition-colors duration-300 flex items-center gap-1">
+                                Explore <i class="fi fi-rr-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Kendwa Beach -->
+            <div class="tour-card w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 snap-center opacity-0 translate-x-12">
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 h-full flex flex-col">
+                    <div class="relative h-52 sm:h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1590523278191-7c8b90f28e6c?w=500&q=80" alt="Kendwa Beach" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-[#F27D57] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">From $59</div>
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full w-9 h-9 flex items-center justify-center shadow-lg group-hover:bg-[#F27D57] group-hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-umbrella-beach text-sm"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="text-white font-bold text-lg lg:text-xl mb-1" style="font-family: 'Playfair Display', serif;">Kendwa Beach</h3>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-white/80 ml-1">4.8</span>
+                                <span class="text-white/50 text-[10px] ml-1">(950)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Famous for breathtaking sunsets and powdery white sand — the perfect spot for swimming, sunbathing, and beachfront dining under the stars.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                            <div class="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                                <i class="fi fi-rr-clock"></i> 3 Hours
+                            </div>
+                            <a href="#" class="text-[#F27D57] font-semibold text-sm hover:text-[#003C63] transition-colors duration-300 flex items-center gap-1">
+                                Explore <i class="fi fi-rr-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Prison Island -->
+            <div class="tour-card w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 snap-center opacity-0 translate-x-12">
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 h-full flex flex-col">
+                    <div class="relative h-52 sm:h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&q=80" alt="Prison Island" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-[#003C63] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">From $49</div>
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full w-9 h-9 flex items-center justify-center shadow-lg group-hover:bg-[#F27D57] group-hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-landmark text-sm"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="text-white font-bold text-lg lg:text-xl mb-1" style="font-family: 'Playfair Display', serif;">Prison Island</h3>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-white/80 ml-1">4.7</span>
+                                <span class="text-white/50 text-[10px] ml-1">(720)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Home to giant Aldabra tortoises and fascinating history — explore the old prison ruins, snorkel pristine reefs, and relax on secluded beaches.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                            <div class="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                                <i class="fi fi-rr-clock"></i> 3 Hours
+                            </div>
+                            <a href="#" class="text-[#F27D57] font-semibold text-sm hover:text-[#003C63] transition-colors duration-300 flex items-center gap-1">
+                                Explore <i class="fi fi-rr-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Jozani Forest -->
+            <div class="tour-card w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 snap-center opacity-0 translate-x-12">
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 h-full flex flex-col">
+                    <div class="relative h-52 sm:h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=500&q=80" alt="Jozani Forest" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-[#003C63] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">From $39</div>
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full w-9 h-9 flex items-center justify-center shadow-lg group-hover:bg-[#F27D57] group-hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-tree text-sm"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="text-white font-bold text-lg lg:text-xl mb-1" style="font-family: 'Playfair Display', serif;">Jozani Forest</h3>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-white/80 ml-1">4.7</span>
+                                <span class="text-white/50 text-[10px] ml-1">(580)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Walk among rare red colobus monkeys in Zanzibar's only national park — a lush tropical forest with mangrove boardwalks and diverse wildlife.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                            <div class="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                                <i class="fi fi-rr-clock"></i> 2.5 Hours
+                            </div>
+                            <a href="#" class="text-[#F27D57] font-semibold text-sm hover:text-[#003C63] transition-colors duration-300 flex items-center gap-1">
+                                Explore <i class="fi fi-rr-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Safari Blue -->
+            <div class="tour-card w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 snap-center opacity-0 translate-x-12">
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 h-full flex flex-col">
+                    <div class="relative h-52 sm:h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80" alt="Safari Blue" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-[#F27D57] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">From $99</div>
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full w-9 h-9 flex items-center justify-center shadow-lg group-hover:bg-[#F27D57] group-hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-ship-side text-sm"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="text-white font-bold text-lg lg:text-xl mb-1" style="font-family: 'Playfair Display', serif;">Safari Blue</h3>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-white/80 ml-1">4.9</span>
+                                <span class="text-white/50 text-[10px] ml-1">(1.5k)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            The ultimate full-day ocean adventure — sail traditional dhows, snorkel vibrant reefs, feast on fresh seafood BBQ on a deserted sandbank.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                            <div class="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                                <i class="fi fi-rr-clock"></i> 8 Hours
+                            </div>
+                            <a href="#" class="text-[#F27D57] font-semibold text-sm hover:text-[#003C63] transition-colors duration-300 flex items-center gap-1">
+                                Explore <i class="fi fi-rr-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Nakupenda Sandbank -->
+            <div class="tour-card w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 snap-center opacity-0 translate-x-12">
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 h-full flex flex-col">
+                    <div class="relative h-52 sm:h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=500&q=80" alt="Nakupenda Sandbank" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-[#F27D57] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">From $79</div>
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full w-9 h-9 flex items-center justify-center shadow-lg group-hover:bg-[#F27D57] group-hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-water text-sm"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="text-white font-bold text-lg lg:text-xl mb-1" style="font-family: 'Playfair Display', serif;">Nakupenda</h3>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-white/80 ml-1">4.9</span>
+                                <span class="text-white/50 text-[10px] ml-1">(890)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            "I Love You" in Swahili — a magical disappearing sandbank surrounded by turquoise Indian Ocean waters, perfect for swimming and sunbathing.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                            <div class="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                                <i class="fi fi-rr-clock"></i> 5 Hours
+                            </div>
+                            <a href="#" class="text-[#F27D57] font-semibold text-sm hover:text-[#003C63] transition-colors duration-300 flex items-center gap-1">
+                                Explore <i class="fi fi-rr-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: Mtende Beach -->
+            <div class="tour-card w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 snap-center opacity-0 translate-x-12">
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 h-full flex flex-col">
+                    <div class="relative h-52 sm:h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=500&q=80" alt="Mtende Beach" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-[#003C63] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">From $49</div>
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full w-9 h-9 flex items-center justify-center shadow-lg group-hover:bg-[#F27D57] group-hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-beach text-sm"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="text-white font-bold text-lg lg:text-xl mb-1" style="font-family: 'Playfair Display', serif;">Mtende Beach</h3>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-white/80 ml-1">4.8</span>
+                                <span class="text-white/50 text-[10px] ml-1">(430)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            A secluded paradise with dramatic limestone cliffs — escape the crowds and discover one of Zanzibar's most photogenic hidden gems.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                            <div class="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                                <i class="fi fi-rr-clock"></i> 3 Hours
+                            </div>
+                            <a href="#" class="text-[#F27D57] font-semibold text-sm hover:text-[#003C63] transition-colors duration-300 flex items-center gap-1">
+                                Explore <i class="fi fi-rr-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8: Salaam Cave -->
+            <div class="tour-card w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 snap-center opacity-0 translate-x-12">
+                <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 h-full flex flex-col">
+                    <div class="relative h-52 sm:h-56 overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=500&q=80" alt="Salaam Cave" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-[#003C63] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">From $35</div>
+                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full w-9 h-9 flex items-center justify-center shadow-lg group-hover:bg-[#F27D57] group-hover:text-white transition-all duration-300">
+                            <i class="fi fi-rr-cave text-sm"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="text-white font-bold text-lg lg:text-xl mb-1" style="font-family: 'Playfair Display', serif;">Salaam Cave</h3>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-white/80 ml-1">4.6</span>
+                                <span class="text-white/50 text-[10px] ml-1">(310)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Discover a mystical natural cave with a crystal-clear freshwater pool — an off-the-beaten-path adventure perfect for nature enthusiasts.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                            <div class="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                                <i class="fi fi-rr-clock"></i> 2 Hours
+                            </div>
+                            <a href="#" class="text-[#F27D57] font-semibold text-sm hover:text-[#003C63] transition-colors duration-300 flex items-center gap-1">
+                                Explore <i class="fi fi-rr-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Mobile Pagination Counter (Hidden on desktop) -->
+        <div class="flex items-center justify-center lg:hidden mt-2 mb-8">
+            <div class="bg-[#003C63]/5 text-[#003C63] font-bold text-sm px-5 py-2 rounded-full flex items-center gap-2 border border-[#003C63]/10 shadow-sm">
+                <i class="fi fi-rr-apps-sort opacity-50"></i>
+                <span id="tours-current">1</span> 
+                <span class="text-[#003C63]/50 font-normal">of</span> 
+                <span>8</span>
+            </div>
+        </div>
+
+        <!-- Bottom: Perfect For & CTA -->
+        <div class="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-8 bg-gradient-to-r from-[#003C63] to-[#002240] rounded-3xl p-5 sm:p-8 lg:p-10 shadow-xl mt-2 w-full">
+            
+            <!-- Perfect For Container -->
+            <div class="w-full lg:flex-1">
+                <h4 class="text-white/60 font-semibold text-[10px] sm:text-xs uppercase tracking-widest mb-3 sm:mb-4 flex items-center gap-2">
+                    <i class="fi fi-rr-heart text-[#F27D57]"></i> Perfect For
+                </h4>
+                
+                <!-- MOBILE: 2x2 Grid Layout | DESKTOP: Flex Row Layout -->
+                <div class="grid grid-cols-2 gap-2 sm:gap-3 lg:flex lg:flex-wrap lg:gap-3">
+                    
+                    <!-- Tag 1: Cultural Explorers -->
+                    <div class="flex items-center justify-center lg:justify-start gap-1.5 sm:gap-2 bg-white/10 rounded-xl px-2 sm:px-4 py-2 sm:py-2.5 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                        <i class="fi fi-rr-landmark text-[#F27D57] text-[10px] sm:text-sm"></i>
+                        <span class="text-white text-[10px] sm:text-sm font-medium whitespace-nowrap tracking-tight sm:tracking-normal">Cultural Explorers</span>
+                    </div>
+                    
+                    <!-- Tag 2: Nature Lovers -->
+                    <div class="flex items-center justify-center lg:justify-start gap-1.5 sm:gap-2 bg-white/10 rounded-xl px-2 sm:px-4 py-2 sm:py-2.5 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                        <i class="fi fi-rr-tree text-[#F27D57] text-[10px] sm:text-sm"></i>
+                        <span class="text-white text-[10px] sm:text-sm font-medium whitespace-nowrap tracking-tight sm:tracking-normal">Nature Lovers</span>
+                    </div>
+                    
+                    <!-- Tag 3: First-Time Visitors -->
+                    <div class="flex items-center justify-center lg:justify-start gap-1.5 sm:gap-2 bg-white/10 rounded-xl px-2 sm:px-4 py-2 sm:py-2.5 border border-white/10 hover:bg-white/20 transition-all duration-300">
+                        <i class="fi fi-rr-camera text-[#F27D57] text-[10px] sm:text-sm"></i>
+                        <span class="text-white text-[10px] sm:text-sm font-medium whitespace-nowrap tracking-tight sm:tracking-normal">First-Timers</span>
+                    </div>
+                    
+                    <!-- Mobile CTA Button (Only visible on small screens to complete the 2x2 grid) -->
+                    <a href="zanzibar-tours.html" class="lg:hidden group flex justify-center items-center gap-1.5 sm:gap-2 bg-[#F27D57] text-white font-bold text-[11px] sm:text-sm px-2 sm:px-4 py-2 sm:py-2.5 rounded-xl hover:shadow-lg hover:shadow-[#F27D57]/50 hover:-translate-y-0.5 transition-all duration-300 shadow-md">
+                        Explore All
+                        <i class="fi fi-rr-arrow-right text-[10px] sm:text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Desktop CTA Button (Only visible on large screens) -->
+            <a href="zanzibar-tours.html" class="hidden lg:inline-flex flex-shrink-0 group justify-center items-center gap-3 bg-[#F27D57] text-white font-bold text-base px-8 py-4 rounded-2xl hover:shadow-2xl hover:shadow-[#F27D57]/50 hover:-translate-y-1 transition-all duration-500 whitespace-nowrap">
+                Explore All Tours
+                <i class="fi fi-rr-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Scoped Logic and Styling -->
+<style>
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollContainer = document.getElementById('tours-scroll');
+    const currentIndicator = document.getElementById('tours-current');
+    const cards = document.querySelectorAll('.tour-card');
+    
+    // ===== 1. Entrance Animation (Slide from right to left staggered) =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                cards.forEach((card, i) => {
+                    setTimeout(() => {
+                        card.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out';
+                        card.classList.remove('opacity-0', 'translate-x-12');
+                        card.classList.add('opacity-100', 'translate-x-0');
+                    }, i * 150); 
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 }); 
+    
+    if (scrollContainer) observer.observe(scrollContainer);
+
+    // ===== 2. Image Rotation Logic =====
+    document.querySelectorAll('.experience-img').forEach((img, index) => {
+        const images = img.getAttribute('data-images');
+        if (!images) return;
+        const imageArray = images.split(',');
+        let currentIndex = 0;
+        
+        setTimeout(() => {
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % imageArray.length;
+                img.style.transition = 'opacity 0.5s ease-in-out';
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.src = imageArray[currentIndex].trim();
+                    img.style.opacity = '1';
+                }, 500);
+            }, 4000 + (Math.random() * 2000));
+        }, 2000 + (index * 200)); 
+    });
+
+    // ===== 3. Mobile Slider Auto-Scroll & Pagination =====
+    if (scrollContainer && currentIndicator) {
+        let isTouching = false;
+        let autoPlayInterval;
+        
+        scrollContainer.addEventListener('scroll', () => {
+            if(window.innerWidth >= 1024) return;
+            const cardWidth = cards[0].offsetWidth + 20; 
+            const activeIndex = Math.round(scrollContainer.scrollLeft / cardWidth);
+            currentIndicator.innerText = Math.min(Math.max(activeIndex + 1, 1), cards.length);
+        }, { passive: true });
+
+        function startAutoPlay() {
+            if(window.innerWidth >= 1024) return; 
+            clearInterval(autoPlayInterval);
+            
+            autoPlayInterval = setInterval(() => {
+                if (isTouching) return; 
+                
+                const cardWidth = cards[0].offsetWidth + 20;
+                const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+                
+                if (scrollContainer.scrollLeft >= maxScroll - 10) {
+                    scrollContainer.style.scrollBehavior = 'auto';
+                    scrollContainer.scrollLeft = 0;
+                    setTimeout(() => scrollContainer.style.scrollBehavior = 'smooth', 50);
+                } else {
+                    scrollContainer.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                }
+            }, 4000);
+        }
+
+        scrollContainer.addEventListener('touchstart', () => isTouching = true, { passive: true });
+        scrollContainer.addEventListener('touchend', () => {
+            isTouching = false;
+            startAutoPlay();
+        }, { passive: true });
+
+        setTimeout(startAutoPlay, 4500);
+    }
+});
+</script>
+
+
+
+
+
+
+<!--tanzania safaris-->
+<!-- Add this in your <head> if not already there -->
+
+<section class="relative py-12 lg:py-20 overflow-hidden bg-[#0a0a0a]">
+    
+    <!-- Full-Width Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=1920&q=80" 
+             alt="Tanzania Safari" 
+             class="w-full h-full object-cover opacity-40">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90"></div>
+    </div>
+
+    <!-- Animated Dust Particles -->
+    <div class="absolute inset-0 z-[1] opacity-30">
+        <div class="absolute top-1/4 left-1/4 w-1 h-1 bg-[#F27D57] rounded-full animate-dust"></div>
+        <div class="absolute top-1/3 right-1/3 w-0.5 h-0.5 bg-yellow-400 rounded-full animate-dust animation-delay-1000"></div>
+        <div class="absolute top-2/3 left-1/2 w-1 h-1 bg-[#F27D57] rounded-full animate-dust animation-delay-2000"></div>
+        <div class="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-white rounded-full animate-dust animation-delay-3000"></div>
+        <div class="absolute bottom-1/3 left-1/3 w-1 h-1 bg-yellow-400 rounded-full animate-dust animation-delay-1500"></div>
+    </div>
+
+    <!-- Animal Silhouettes (SVG) -->
+    <div class="absolute bottom-0 left-0 right-0 z-[1] opacity-10">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full">
+            <path fill="white" d="M0,80 Q80,10 160,60 Q240,110 320,40 Q400,-10 480,50 Q560,100 640,30 Q720,-20 800,55 Q880,100 960,20 Q1040,-10 1120,45 Q1200,90 1280,25 Q1360,-10 1440,50 L1440,120 L0,120 Z"/>
+        </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Top Row: Header + Main Feature -->
+        <div class="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center mb-6 lg:mb-8">
+            
+            <!-- LEFT: Headline & Description -->
+            <div>
+                <span class="inline-flex items-center gap-1.5 text-[#F27D57] font-bold tracking-widest text-[10px] lg:text-xs uppercase mb-2 lg:mb-3 bg-[#F27D57]/10 backdrop-blur-sm px-3 py-1 lg:px-4 lg:py-1.5 rounded-full border border-[#F27D57]/30">
+                    <i class="fi fi-rr-elephant text-xs lg:text-sm"></i>
+                    Wild Encounters
+                </span>
+                
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-none mb-3 lg:mb-4" 
+                    style="font-family: 'Playfair Display', serif;">
+                    Tanzania<br>
+                    <span class="relative inline-block">
+                        <span class="bg-gradient-to-r from-[#F27D57] to-yellow-400 bg-clip-text text-transparent">Safaris</span>
+                        <svg class="absolute -bottom-1.5 lg:-bottom-2 left-0 w-28 sm:w-36 lg:w-40" viewBox="0 0 200 8" preserveAspectRatio="none">
+                            <path d="M0,4 Q50,0 100,4 T200,4" stroke="#F27D57" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </h2>
+                
+                <p class="text-sm lg:text-base text-white/70 max-w-lg leading-relaxed mb-4 lg:mb-5">
+                    Discover the wild side of Tanzania. Big Five, Serengeti Migration, Game Drives, Trekking, and epic landscapes — experience Africa in its rawest form.
+                </p>
+
+                <!-- Stats Row -->
+                <div class="grid grid-cols-3 gap-2 lg:gap-4 mb-4 lg:mb-5">
+                    <div class="text-center">
+                        <span class="block text-xl lg:text-3xl font-black text-[#F27D57]" style="font-family: 'Playfair Display', serif;">98%</span>
+                        <span class="text-white/50 text-[9px] lg:text-[11px] uppercase tracking-wider">Sighting Rate</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-xl lg:text-3xl font-black text-[#F27D57]" style="font-family: 'Playfair Display', serif;">500+</span>
+                        <span class="text-white/50 text-[9px] lg:text-[11px] uppercase tracking-wider">Safaris Done</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-xl lg:text-3xl font-black text-[#F27D57]" style="font-family: 'Playfair Display', serif;">15+</span>
+                        <span class="text-white/50 text-[9px] lg:text-[11px] uppercase tracking-wider">National Parks</span>
+                    </div>
+                </div>
+
+                <!-- Perfect For Tags - NOWRAP on mobile to keep all 3 in one row -->
+                <div class="flex flex-nowrap gap-1.5 lg:gap-2">
+                    <div class="inline-flex items-center gap-1 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 lg:px-4 lg:py-2 border border-white/20 whitespace-nowrap shrink-0">
+                        <i class="fi fi-rr-paw text-[#F27D57] text-[10px] lg:text-sm"></i>
+                        <span class="text-white text-[10px] lg:text-sm font-medium">Wildlife Lovers</span>
+                    </div>
+                    <div class="inline-flex items-center gap-1 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 lg:px-4 lg:py-2 border border-white/20 whitespace-nowrap shrink-0">
+                        <i class="fi fi-rr-camera text-[#F27D57] text-[10px] lg:text-sm"></i>
+                        <span class="text-white text-[10px] lg:text-sm font-medium">Photographers</span>
+                    </div>
+                    <div class="inline-flex items-center gap-1 bg-white/10 backdrop-blur-sm rounded-full px-2 py-1 lg:px-4 lg:py-2 border border-white/20 whitespace-nowrap shrink-0">
+                        <i class="fi fi-rr-gem text-[#F27D57] text-[10px] lg:text-sm"></i>
+                        <span class="text-white text-[10px] lg:text-sm font-medium">Luxury Adventure</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Feature Card Stack - HIDDEN ON MOBILE, visible lg+ -->
+            <div class="relative hidden lg:block">
+                <!-- Main Feature Card -->
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 group">
+                    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80" 
+                         alt="Serengeti" 
+                         class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    
+                    <!-- Featured Badge -->
+                    <div class="absolute top-3 left-3 bg-[#F27D57] text-white text-[11px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-xl">
+                        ⭐ Bestseller
+                    </div>
+                    
+                    <!-- Card Bottom Content -->
+                    <div class="absolute bottom-0 left-0 right-0 p-4">
+                        <h3 class="text-white text-xl font-bold mb-1" style="font-family: 'Playfair Display', serif;">Serengeti Migration</h3>
+                        <div class="flex items-center gap-1.5 text-white/70 text-xs">
+                            <i class="fi fi-rr-clock"></i> 5 Days
+                            <span class="text-white/30">|</span>
+                            <i class="fi fi-rr-star text-yellow-400"></i> 4.9
+                            <span class="text-white/30">|</span>
+                            From <span class="text-[#F27D57] font-bold">$1,499</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Small Card 1 -->
+                <div class="absolute -top-3 -left-4 bg-white rounded-xl shadow-2xl p-3 z-20">
+                    <div class="flex items-center gap-2">
+                        <div class="w-9 h-9 bg-yellow-100 rounded-full flex items-center justify-center text-lg">🦁</div>
+                        <div>
+                            <p class="text-[#003C63] font-bold text-xs">Big Five</p>
+                            <p class="text-gray-400 text-[10px]">Guaranteed Sightings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Small Card 2 -->
+                <div class="absolute -bottom-3 -right-4 bg-white rounded-xl shadow-2xl p-3 z-20">
+                    <div class="flex items-center gap-2">
+                        <div class="w-9 h-9 bg-green-100 rounded-full flex items-center justify-center text-lg">🏕️</div>
+                        <div>
+                            <p class="text-[#003C63] font-bold text-xs">Luxury Camps</p>
+                            <p class="text-gray-400 text-[10px]">5-Star Tented Lodges</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom: Experience Cards Grid - 2 per row on mobile, compact -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4">
+            
+            <!-- Card 1: Big Five -->
+            <div class="group relative bg-white/5 backdrop-blur-sm rounded-xl lg:rounded-2xl p-2.5 lg:p-4 border border-white/10 hover:bg-white/10 hover:border-[#F27D57]/50 transition-all duration-500 active:scale-[0.98] lg:hover:-translate-y-1">
+                <div class="flex items-center gap-2 mb-1.5 lg:block lg:mb-3">
+                    <div class="w-7 h-7 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-[#F27D57]/20 flex items-center justify-center shrink-0 group-hover:bg-[#F27D57] transition-all duration-500">
+                        <i class="fi fi-rr-lion text-sm lg:text-lg text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-xs lg:text-sm">Big Five</h4>
+                </div>
+                <p class="text-white/50 text-[11px] lg:text-xs leading-relaxed line-clamp-2">Track lions, leopards, elephants, rhinos & buffalo across the Serengeti plains.</p>
+            </div>
+
+            <!-- Card 2: Migration -->
+            <div class="group relative bg-white/5 backdrop-blur-sm rounded-xl lg:rounded-2xl p-2.5 lg:p-4 border border-white/10 hover:bg-white/10 hover:border-[#F27D57]/50 transition-all duration-500 active:scale-[0.98] lg:hover:-translate-y-1">
+                <div class="flex items-center gap-2 mb-1.5 lg:block lg:mb-3">
+                    <div class="w-7 h-7 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-yellow-400/20 flex items-center justify-center shrink-0 group-hover:bg-yellow-400 transition-all duration-500">
+                        <i class="fi fi-rr-hoof text-sm lg:text-lg text-yellow-400 group-hover:text-black transition-colors duration-500"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-xs lg:text-sm">Great Migration</h4>
+                </div>
+                <p class="text-white/50 text-[11px] lg:text-xs leading-relaxed line-clamp-2">Witness millions of wildebeest thunder across the Mara River in an epic spectacle.</p>
+            </div>
+
+            <!-- Card 3: Game Drives -->
+            <div class="group relative bg-white/5 backdrop-blur-sm rounded-xl lg:rounded-2xl p-2.5 lg:p-4 border border-white/10 hover:bg-white/10 hover:border-[#F27D57]/50 transition-all duration-500 active:scale-[0.98] lg:hover:-translate-y-1">
+                <div class="flex items-center gap-2 mb-1.5 lg:block lg:mb-3">
+                    <div class="w-7 h-7 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-green-400/20 flex items-center justify-center shrink-0 group-hover:bg-green-400 transition-all duration-500">
+                        <i class="fi fi-rr-car-side text-sm lg:text-lg text-green-400 group-hover:text-black transition-colors duration-500"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-xs lg:text-sm">Game Drives</h4>
+                </div>
+                <p class="text-white/50 text-[11px] lg:text-xs leading-relaxed line-clamp-2">Open-vehicle safaris with expert guides through Ngorongoro & Tarangire.</p>
+            </div>
+
+            <!-- Card 4: Trekking -->
+            <div class="group relative bg-white/5 backdrop-blur-sm rounded-xl lg:rounded-2xl p-2.5 lg:p-4 border border-white/10 hover:bg-white/10 hover:border-[#F27D57]/50 transition-all duration-500 active:scale-[0.98] lg:hover:-translate-y-1">
+                <div class="flex items-center gap-2 mb-1.5 lg:block lg:mb-3">
+                    <div class="w-7 h-7 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-blue-400/20 flex items-center justify-center shrink-0 group-hover:bg-blue-400 transition-all duration-500">
+                        <i class="fi fi-rr-mountain text-sm lg:text-lg text-blue-400 group-hover:text-black transition-colors duration-500"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-xs lg:text-sm">Trekking</h4>
+                </div>
+                <p class="text-white/50 text-[11px] lg:text-xs leading-relaxed line-clamp-2">Conquer Kilimanjaro or explore the Usambara Mountains on guided treks.</p>
+            </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="text-center mt-6 lg:mt-8">
+            <a href="tanzania-safaris.html" class="group relative inline-flex items-center gap-1.5 overflow-hidden rounded-xl bg-[#F27D57] px-5 py-2.5 lg:px-8 lg:py-3.5 text-white font-bold text-sm lg:text-base transition-all duration-500 hover:shadow-2xl hover:shadow-[#F27D57]/50 active:scale-95 lg:hover:-translate-y-1">
+                <span class="relative z-10">Explore All Safaris</span>
+                <i class="fi fi-rr-arrow-right relative z-10 text-base lg:text-lg group-hover:translate-x-1 transition-transform duration-300"></i>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </a>
         </div>
     </div>
 </section>
 
-    <section class="relative py-24 bg-white overflow-hidden">
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-50 rounded-full opacity-50 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-orange-50 rounded-full opacity-50 blur-3xl"></div>
+<style>
+    @keyframes dust {
+        0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(-60px) translateX(20px); opacity: 0; }
+    }
+    
+    .animate-dust {
+        animation: dust 6s ease-in-out infinite;
+    }
+    
+    .animation-delay-1000 { animation-delay: 1s; }
+    .animation-delay-1500 { animation-delay: 1.5s; }
+    .animation-delay-2000 { animation-delay: 2s; }
+    .animation-delay-3000 { animation-delay: 3s; }
+</style>
 
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="w-full lg:w-1/2">
-                    <span class="text-[#FF8A5B] font-bold tracking-widest text-sm uppercase mb-2 block">Who We Are</span>
-                    <h2 class="text-4xl md:text-4xl font-bold text-[#003358] mb-6 leading-tight">
-                        Experience the Extraordinary,<br> 
-                        <span class="italic text-[#FF8A5B]">Captured in Motion.</span>
-                    </h2>
+
+<!-- stays-->
+
+<!-- TRANSFERS SECTION - Modern & Professional -->
+<section class="relative py-12 lg:py-28 bg-white overflow-hidden" style="font-family: 'Inter', sans-serif;">
+    
+    <!-- Background Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-[#003C63]/3 rounded-full blur-3xl -ml-32 -mt-32"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-[#F27D57]/5 rounded-full blur-3xl -mr-20 -mb-20"></div>
+    </div>
+
+    <!-- Subtle Map Pattern -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 2px 2px, #003C63 1px, transparent 0); background-size: 40px 40px;"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            
+            <!-- LEFT: Image & Features -->
+            <div class="relative">
+                <!-- Main Image -->
+                <div class="relative rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl group">
+                    <img src="https://images.unsplash.com/photo-1549316080-d00b46b73144?w=700&q=80" 
+                         alt="Zanzibar Transfer Service" 
+                         class="w-full h-56 sm:h-80 lg:h-96 object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
                     
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Morix Beyond Zanzibar is a premium tourism and visual storytelling brand based in Zanzibar. We <span class="text-[#003358] font-semibold">create unforgettable travel experiences across Zanzibar and mainland Tanzania </span> while
-                        capturing them through cinematic photography and videography. 
-                        From crystal-clear waters to iconic wildlife safaris, we help travelers experience 
-                       <span class="text-[#003358] font-semibold">East Africa beyond the ordinary.</span> 
-                        
-                    </p>
+                    <!-- Overlay Badge -->
+                    <div class="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
+                        <div class="flex items-center gap-2 text-white/90 text-xs lg:text-sm">
+                            <i class="fi fi-rr-shield-check text-[#F27D57]"></i>
+                            <span>Licensed & Insured Fleet</span>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#003358]"><i class='bx bx-camera-movie text-xl'></i></div>
-                            <span class="font-medium text-gray-700">Drone Cinematography</span>
+                <!-- Floating Stat Card -->
+                <div class="absolute -bottom-4 -left-2 lg:-bottom-6 lg:-left-4 bg-white rounded-xl lg:rounded-2xl shadow-2xl p-3 lg:p-5 z-20 border border-gray-100">
+                    <div class="flex items-center gap-2 lg:gap-3">
+                        <div class="w-10 h-10 lg:w-14 lg:h-14 bg-[#003C63] rounded-xl lg:rounded-2xl flex items-center justify-center">
+                            <i class="fi fi-rr-car-side text-lg lg:text-2xl text-white"></i>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-[#FF8A5B]"><i class='bx bx-map-pin text-xl'></i></div>
-                            <span class="font-medium text-gray-700">Local Expert Guides</span>
+                        <div>
+                            <p class="text-[#003C63] font-black text-lg lg:text-2xl" style="font-family: 'Playfair Display', serif;">24/7</p>
+                            <p class="text-gray-500 text-[10px] lg:text-xs">Airport Pickup</p>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-[#FF8A5B]"><i class='bx bx-sun text-xl'></i></div>
-                            <span class="font-medium text-gray-700">Premium Beach Escapes</span>
+                    </div>
+                </div>
+
+                <!-- Floating Trust Badge -->
+                <div class="absolute -top-3 -right-3 lg:-top-4 lg:-right-4 bg-[#F27D57] text-white w-14 h-14 lg:w-20 lg:h-20 rounded-xl lg:rounded-2xl shadow-xl flex flex-col items-center justify-center rotate-6 z-20">
+                    <span class="text-base lg:text-xl font-black leading-none">500+</span>
+                    <span class="text-[8px] lg:text-[10px] font-bold uppercase tracking-wider leading-tight text-center">Daily<br>Trips</span>
+                </div>
+            </div>
+
+            <!-- RIGHT: Content -->
+            <div>
+                <!-- Section Label -->
+                <span class="inline-flex items-center gap-1.5 text-[#F27D57] font-semibold tracking-widest text-[10px] lg:text-xs uppercase mb-3 lg:mb-4 bg-[#F27D57]/5 px-3 py-1 lg:px-4 lg:py-1.5 rounded-full">
+                    <i class="fi fi-rr-car-side text-xs"></i>
+                    Getting Around
+                </span>
+                
+                <!-- Headline -->
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-[#003C63] leading-none mb-4 lg:mb-6" 
+                    style="font-family: 'Playfair Display', serif;">
+                    Premium<br>
+                    <span class="italic text-[#F27D57] relative">
+                        Transfers
+                        <svg class="absolute -bottom-1 left-0 w-full" viewBox="0 0 150 6" preserveAspectRatio="none">
+                            <path d="M0,3 Q37,0 75,3 T150,3" stroke="#F27D57" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </h2>
+                
+                <!-- Description -->
+                <p class="text-gray-600 text-sm lg:text-lg leading-relaxed mb-4 lg:mb-6">
+                    Fast, safe, and reliable airport and hotel transfers across Zanzibar and Tanzania. 
+                    <span class="text-[#003C63] font-semibold">Travel stress-free</span> with our professional drivers and modern fleet.
+                </p>
+
+                <!-- Feature List - 2 per row on mobile, descriptions visible -->
+                <div class="grid grid-cols-2 gap-3 lg:space-y-3 lg:block mb-5 lg:mb-8">
+                    <!-- Feature 1 -->
+                    <div class="flex items-start gap-2 lg:gap-3">
+                        <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fi fi-rr-time-check text-green-500 text-sm lg:text-lg"></i>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#003358]"><i class='bx bxs-check-shield text-xl'></i></div>
-                            <span class="font-medium text-gray-700">Safe & Private Tours</span>
+                        <div>
+                            <h4 class="text-[#003C63] font-semibold text-[11px] lg:text-sm">On-Time Guarantee</h4>
+                            <p class="text-gray-500 text-[10px] lg:text-xs leading-relaxed">We track your flight and adjust pickup times automatically</p>
+                        </div>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="flex items-start gap-2 lg:gap-3">
+                        <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fi fi-rr-car text-blue-500 text-sm lg:text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[#003C63] font-semibold text-[11px] lg:text-sm">Modern Fleet</h4>
+                            <p class="text-gray-500 text-[10px] lg:text-xs leading-relaxed">Air-conditioned vehicles for solo travelers, couples, and groups</p>
+                        </div>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="flex items-start gap-2 lg:gap-3">
+                        <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-orange-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fi fi-rr-shield-check text-[#F27D57] text-sm lg:text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[#003C63] font-semibold text-[11px] lg:text-sm">Safe & Insured</h4>
+                            <p class="text-gray-500 text-[10px] lg:text-xs leading-relaxed">Professional licensed drivers and comprehensive insurance coverage</p>
+                        </div>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="flex items-start gap-2 lg:gap-3">
+                        <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-purple-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fi fi-rr-usd-circle text-purple-500 text-sm lg:text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[#003C63] font-semibold text-[11px] lg:text-sm">Fixed Pricing</h4>
+                            <p class="text-gray-500 text-[10px] lg:text-xs leading-relaxed">No hidden fees — the price you see is the price you pay</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Perfect For -->
+                <div class="flex flex-wrap items-center gap-2 lg:gap-3 mb-5 lg:mb-8">
+                    <span class="text-gray-400 text-[10px] lg:text-xs uppercase tracking-wider font-semibold">Perfect for:</span>
+                    <div class="flex flex-wrap gap-1.5 lg:gap-2">
+                        <span class="inline-flex items-center gap-1 bg-[#003C63]/5 text-[#003C63] text-[10px] lg:text-xs font-medium px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full">
+                            <i class="fi fi-rr-user text-xs"></i> Solo Travelers
+                        </span>
+                        <span class="inline-flex items-center gap-1 bg-[#003C63]/5 text-[#003C63] text-[10px] lg:text-xs font-medium px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full">
+                            <i class="fi fi-rr-users text-xs"></i> Groups
+                        </span>
+                        <span class="inline-flex items-center gap-1 bg-[#003C63]/5 text-[#003C63] text-[10px] lg:text-xs font-medium px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full">
+                            <i class="fi fi-rr-heart text-xs"></i> Comfort Seekers
+                        </span>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <a href="transfers.html" class="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl lg:rounded-2xl bg-[#F27D57] px-6 py-3 lg:px-8 lg:py-4 text-white font-bold text-sm lg:text-base transition-all duration-500 hover:shadow-2xl hover:shadow-[#F27D57]/40 active:scale-95 lg:hover:-translate-y-1 w-full sm:w-auto">
+                    <span class="relative z-10">Book Your Transfer</span>
+                    <i class="fi fi-rr-arrow-right relative z-10 text-sm lg:text-base group-hover:translate-x-1 transition-transform duration-300"></i>
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- stays -->
+
+<!-- STAYS SECTION - Modern, Elegant & Eye-Catching -->
+<section class="relative py-12 lg:py-28 bg-[#fafafa] overflow-hidden" style="font-family: 'Inter', sans-serif;">
+    
+    <!-- Background Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-20 right-0 w-80 h-80 bg-[#003C63]/3 rounded-full blur-3xl -mr-20"></div>
+        <div class="absolute bottom-20 left-0 w-96 h-96 bg-[#F27D57]/4 rounded-full blur-3xl -ml-20"></div>
+    </div>
+
+    <!-- Subtle Pattern -->
+    <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle at 1.5px 1.5px, #003C63 1px, transparent 0); background-size: 36px 36px;"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid lg:grid-cols-5 gap-8 lg:gap-14 items-center">
+            
+            <!-- LEFT: Content (3 columns) -->
+            <div class="lg:col-span-3">
+                <!-- Section Label -->
+                <span class="inline-flex items-center gap-2 text-[#F27D57] font-semibold tracking-widest text-[10px] lg:text-xs uppercase mb-3 lg:mb-4 bg-[#F27D57]/5 px-3 py-1 lg:px-4 lg:py-1.5 rounded-full">
+                    <i class="fi fi-rr-bed-alt text-xs"></i>
+                    Accommodation
+                </span>
+                
+                <!-- Headline -->
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-[#003C63] leading-none mb-3 lg:mb-4" 
+                    style="font-family: 'Playfair Display', serif;">
+                    Your Perfect<br>
+                    <span class="italic text-[#F27D57] relative">
+                        Stay Awaits
+                        <svg class="absolute -bottom-1 left-0 w-full" viewBox="0 0 180 6" preserveAspectRatio="none">
+                            <path d="M0,3 Q45,0 90,3 T180,3" stroke="#F27D57" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </h2>
+                
+                <!-- Description -->
+                <p class="text-gray-600 text-sm lg:text-lg leading-relaxed mb-4 lg:mb-6 max-w-lg">
+                    We help you find the best <span class="text-[#003C63] font-semibold">Villas, Apartments, BnBs, and Hotels</span> — 
+                    comfortable, safe, and perfectly located for your Zanzibar experience.
+                </p>
+
+                <!-- IMAGE GALLERY - Mobile: below heading/description | Desktop: hidden -->
+                <div class="lg:hidden mb-5">
+                    <!-- Main Image -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl group mb-3">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" 
+                             alt="Luxury Villa Zanzibar" 
+                             class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                        
+                        <!-- Badge -->
+                        <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-[#003C63] text-[10px] font-bold px-2.5 py-1 rounded-full shadow-lg">
+                            🏆 Top Rated
+                        </div>
+                        
+                        <!-- Bottom Info -->
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 class="text-white font-bold text-base" style="font-family: 'Playfair Display', serif;">Ocean View Villa</h3>
+                            <p class="text-white/70 text-[10px]">Nungwi, Zanzibar</p>
                         </div>
                     </div>
 
-                    <a href="about us.html" class="group inline-flex items-center gap-2 text-[#003358] font-bold border-b-2 border-[#FF8A5B] pb-1 hover:text-[#FF8A5B] transition duration-300">
-                        Discover Our Story
-                        <i class='bx bx-right-arrow-alt transform group-hover:translate-x-1 transition'></i>
+                    <!-- Two Smaller Images Row -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="relative rounded-xl overflow-hidden shadow-lg group">
+                            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400&q=80" 
+                                 alt="Zanzibar Apartment" 
+                                 class="w-full h-28 object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-2.5">
+                                <p class="text-white font-semibold text-[10px]">Modern Apartments</p>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl overflow-hidden shadow-lg group">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" 
+                                 alt="Zanzibar Hotel" 
+                                 class="w-full h-28 object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-2.5">
+                                <p class="text-white font-semibold text-[10px]">Boutique Hotels</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accommodation Type Cards - 2×2 grid on mobile, 4 in row on desktop -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-3 mb-4 lg:mb-6">
+                    <!-- Villas -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-3 lg:p-4 border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#F27D57]/30 transition-all duration-500 hover:-translate-y-1 animate-card-in" style="animation-delay: 0.1s;">
+                        <div class="w-9 h-9 lg:w-11 lg:h-11 rounded-lg lg:rounded-xl bg-[#003C63]/10 flex items-center justify-center mb-2 lg:mb-3 group-hover:bg-[#003C63] transition-all duration-500">
+                            <i class="fi fi-rr-home text-base lg:text-xl text-[#003C63] group-hover:text-white transition-colors duration-500"></i>
+                        </div>
+                        <h4 class="text-[#003C63] font-bold text-xs lg:text-sm mb-0.5 lg:mb-1">Villas</h4>
+                        <p class="text-gray-400 text-[10px] lg:text-[11px] leading-relaxed">Private luxury villas with pools & ocean views</p>
+                        <span class="inline-flex items-center gap-1 text-[#F27D57] text-[10px] lg:text-[11px] font-semibold mt-1.5 lg:mt-2 group-hover:gap-2 transition-all duration-300">
+                            Explore <i class="fi fi-rr-arrow-right text-[8px] lg:text-[9px]"></i>
+                        </span>
+                    </div>
+                    <!-- Apartments -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-3 lg:p-4 border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#F27D57]/30 transition-all duration-500 hover:-translate-y-1 animate-card-in" style="animation-delay: 0.2s;">
+                        <div class="w-9 h-9 lg:w-11 lg:h-11 rounded-lg lg:rounded-xl bg-[#F27D57]/10 flex items-center justify-center mb-2 lg:mb-3 group-hover:bg-[#F27D57] transition-all duration-500">
+                            <i class="fi fi-rr-building text-base lg:text-xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
+                        </div>
+                        <h4 class="text-[#003C63] font-bold text-xs lg:text-sm mb-0.5 lg:mb-1">Apartments</h4>
+                        <p class="text-gray-400 text-[10px] lg:text-[11px] leading-relaxed">Modern apartments in prime locations</p>
+                        <span class="inline-flex items-center gap-1 text-[#F27D57] text-[10px] lg:text-[11px] font-semibold mt-1.5 lg:mt-2 group-hover:gap-2 transition-all duration-300">
+                            Explore <i class="fi fi-rr-arrow-right text-[8px] lg:text-[9px]"></i>
+                        </span>
+                    </div>
+                    <!-- BNB -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-3 lg:p-4 border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#F27D57]/30 transition-all duration-500 hover:-translate-y-1 animate-card-in" style="animation-delay: 0.3s;">
+                        <div class="w-9 h-9 lg:w-11 lg:h-11 rounded-lg lg:rounded-xl bg-purple-100 flex items-center justify-center mb-2 lg:mb-3 group-hover:bg-purple-500 transition-all duration-500">
+                            <i class="fi fi-rr-house-chimney text-base lg:text-xl text-purple-500 group-hover:text-white transition-colors duration-500"></i>
+                        </div>
+                        <h4 class="text-[#003C63] font-bold text-xs lg:text-sm mb-0.5 lg:mb-1">BnBs</h4>
+                        <p class="text-gray-400 text-[10px] lg:text-[11px] leading-relaxed">Cozy bed & breakfasts with local charm & hospitality</p>
+                        <span class="inline-flex items-center gap-1 text-[#F27D57] text-[10px] lg:text-[11px] font-semibold mt-1.5 lg:mt-2 group-hover:gap-2 transition-all duration-300">
+                            Explore <i class="fi fi-rr-arrow-right text-[8px] lg:text-[9px]"></i>
+                        </span>
+                    </div>
+                    <!-- Hotels -->
+                    <div class="group bg-white rounded-xl lg:rounded-2xl p-3 lg:p-4 border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#F27D57]/30 transition-all duration-500 hover:-translate-y-1 animate-card-in" style="animation-delay: 0.4s;">
+                        <div class="w-9 h-9 lg:w-11 lg:h-11 rounded-lg lg:rounded-xl bg-yellow-400/15 flex items-center justify-center mb-2 lg:mb-3 group-hover:bg-yellow-400 transition-all duration-500">
+                            <i class="fi fi-rr-hotel text-base lg:text-xl text-yellow-500 group-hover:text-black transition-colors duration-500"></i>
+                        </div>
+                        <h4 class="text-[#003C63] font-bold text-xs lg:text-sm mb-0.5 lg:mb-1">Hotels</h4>
+                        <p class="text-gray-400 text-[10px] lg:text-[11px] leading-relaxed">Boutique hotels with full amenities & services</p>
+                        <span class="inline-flex items-center gap-1 text-[#F27D57] text-[10px] lg:text-[11px] font-semibold mt-1.5 lg:mt-2 group-hover:gap-2 transition-all duration-300">
+                            Explore <i class="fi fi-rr-arrow-right text-[8px] lg:text-[9px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Dot Indicators - Mobile only -->
+                <div class="flex items-center justify-center gap-2 mb-4 lg:hidden">
+                    <span class="w-2 h-2 rounded-full bg-[#F27D57] animate-dot-in" style="animation-delay: 0.3s;"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 animate-dot-in" style="animation-delay: 0.45s;"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 animate-dot-in" style="animation-delay: 0.6s;"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 animate-dot-in" style="animation-delay: 0.75s;"></span>
+                </div>
+
+                <!-- Features Row - all 3 in one horizontal line, animated right-to-left -->
+                <div class="flex flex-nowrap items-center gap-2 lg:gap-4 mb-5 lg:mb-7 overflow-hidden">
+                    <div class="flex items-center gap-1.5 lg:gap-2 text-sm flex-shrink-0 animate-slide-right">
+                        <span class="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fi fi-rr-shield-check text-green-500 text-xs lg:text-sm"></i>
+                        </span>
+                        <span class="text-gray-600 text-[10px] lg:text-xs font-medium whitespace-nowrap">Verified Properties</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 lg:gap-2 text-sm flex-shrink-0 animate-slide-right" style="animation-delay: 0.2s;">
+                        <span class="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fi fi-rr-map-pin text-blue-500 text-xs lg:text-sm"></i>
+                        </span>
+                        <span class="text-gray-600 text-[10px] lg:text-xs font-medium whitespace-nowrap">Prime Locations</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 lg:gap-2 text-sm flex-shrink-0 animate-slide-right" style="animation-delay: 0.4s;">
+                        <span class="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-purple-50 flex items-center justify-center flex-shrink-0">
+                            <i class="fi fi-rr-headset text-purple-500 text-xs lg:text-sm"></i>
+                        </span>
+                        <span class="text-gray-600 text-[10px] lg:text-xs font-medium whitespace-nowrap">24/7 Support</span>
+                    </div>
+                </div>
+
+                <!-- Perfect For + CTA -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-3 lg:gap-4">
+                    <!-- Perfect For Tags -->
+                    <div class="flex flex-wrap gap-1 lg:gap-1.5">
+                        <span class="inline-flex items-center gap-1 bg-[#003C63]/5 text-[#003C63] text-[10px] lg:text-[11px] font-medium px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full">
+                            <i class="fi fi-rr-users text-[#F27D57] text-[10px]"></i> Families
+                        </span>
+                        <span class="inline-flex items-center gap-1 bg-[#003C63]/5 text-[#003C63] text-[10px] lg:text-[11px] font-medium px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full">
+                            <i class="fi fi-rr-heart text-[#F27D57] text-[10px]"></i> Couples
+                        </span>
+                        <span class="inline-flex items-center gap-1 bg-[#003C63]/5 text-[#003C63] text-[10px] lg:text-[11px] font-medium px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full">
+                            <i class="fi fi-rr-user text-[#F27D57] text-[10px]"></i> Groups
+                        </span>
+                        <span class="inline-flex items-center gap-1 bg-[#003C63]/5 text-[#003C63] text-[10px] lg:text-[11px] font-medium px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-full">
+                            <i class="fi fi-rr-clock text-[#F27D57] text-[10px]"></i> Long-Stay
+                        </span>
+                    </div>
+                    
+                    <!-- CTA -->
+                    <a href="stays.html" class="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#F27D57] px-5 py-2.5 lg:px-6 lg:py-3 text-white font-bold text-sm transition-all duration-500 hover:shadow-xl hover:shadow-[#F27D57]/40 hover:-translate-y-0.5 whitespace-nowrap w-full sm:w-auto justify-center">
+                        <span class="relative z-10">Find Your Stay</span>
+                        <i class="fi fi-rr-arrow-right relative z-10 text-xs group-hover:translate-x-1 transition-transform duration-300"></i>
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </a>
                 </div>
-
-                <div class="w-full lg:w-1/2 relative">
-                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white h-72 w-full max-w-lg mx-auto">
-                        <img src="image/who we are.jpg" 
-                             alt="Zanzibar Woman" 
-                             class="w-full h-full object-cover hover:scale-105 transition duration-700">
-                    </div>
-                    <div class="absolute -bottom-6 -left-4 w-48 h-32 z-20 rounded-xl overflow-hidden shadow-2xl border-4 border-white hidden md:block">
-                        <img src="image/who we are 2.JPG" 
-                             alt="Safari Car" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -top-6 -right-6 bg-[#FF8A5B] text-white w-20 h-20 flex flex-col items-center justify-center rounded-full shadow-xl border-4 border-white z-30 animate-bounce-slow hidden md:flex">
-                        <span class="block text-xl font-black leading-none mb-0.5">500+</span>
-                        <span class="text-[0.65rem] font-bold uppercase tracking-widest leading-none">Trust</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-[#FF8A5B] font-bold tracking-widest text-sm uppercase">Our Expertise</span>
-                <h2 class="text-3xl md:text-5xl font-bold text-[#003358] mt-2" style="font-family: 'Playfair Display', serif;">
-                    Experience Tanzania  <span class="italic text-[#FF8A5B]">Through a Different Lens</span>
-                </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="group relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl cursor-pointer">
-                    <img src="image/jetski home.jpg" 
-                         class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110" 
-                         alt="Zanzibar Beach">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003358] via-[#003358]/40 to-transparent opacity-80 group-hover:opacity-90 transition duration-500"></div>
-                    <div class="absolute top-6 right-6 w-14 h-14 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white z-10">
-                        <i class='bx bxs-sun text-2xl'></i>
+            <!-- RIGHT: Image Gallery - Desktop only (hidden on mobile) -->
+            <div class="lg:col-span-2 relative hidden lg:block">
+                <!-- Main Image -->
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl group mb-4">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" 
+                         alt="Luxury Villa Zanzibar" 
+                         class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    
+                    <!-- Badge -->
+                    <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                        🏆 Top Rated
                     </div>
-                    <div class="absolute bottom-0 left-0 p-8 w-full z-10 translate-y-4 group-hover:translate-y-0 transition duration-500">
-                        <span class="text-[#FF8A5B] font-bold text-xs tracking-widest uppercase mb-2 block">01. COASTAL LUXURY</span>
-                        <h3 class="text-3xl font-bold text-white mb-3" style="font-family: 'Playfair Display', serif;">Zanzibar Tours</h3>
-                        <p class="text-gray-200 text-sm leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
-                           Discover Zanzibar through curated beach escapes, water adventures, cultural tours, and romantic experiences designed for couples, honeymooners, and explorers.
-                        </p>
-                        <a href="zanzibar.html" class="inline-flex items-center gap-2 text-white font-bold border-b border-[#FF8A5B] pb-1 hover:text-[#FF8A5B] transition">
-                            View Experiences <i class='bx bx-right-arrow-alt'></i>
-                        </a>
+                    
+                    <!-- Bottom Info -->
+                    <div class="absolute bottom-0 left-0 right-0 p-5">
+                        <h3 class="text-white font-bold text-lg" style="font-family: 'Playfair Display', serif;">Ocean View Villa</h3>
+                        <p class="text-white/70 text-xs">Nungwi, Zanzibar</p>
                     </div>
                 </div>
 
-                <div class="group relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl cursor-pointer">
-                    <img src="image/tanzania home.JPG" 
-                         class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110" 
-                         alt="Tanzania Safari">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003358] via-[#003358]/40 to-transparent opacity-80 group-hover:opacity-90 transition duration-500"></div>
-                    <div class="absolute top-6 right-6 w-14 h-14 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white z-10">
-                        <i class='bx bxs-landscape text-2xl'></i>
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-8 w-full z-10 translate-y-4 group-hover:translate-y-0 transition duration-500">
-                        <span class="text-[#FF8A5B] font-bold text-xs tracking-widest uppercase mb-2 block">02. SAVANNAH HERITAGE </span>
-                        <h3 class="text-3xl font-bold text-white mb-3" style="font-family: 'Playfair Display', serif;">Tanzania Safaris</h3>
-                        <p class="text-gray-200 text-sm leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
-                            Journey into Tanzania’s world-famous national parks including Serengeti and Ngorongoro with professionally guided safari packages.
-                        </p>
-                        <a href="safaris.html" class="inline-flex items-center gap-2 text-white font-bold border-b border-[#FF8A5B] pb-1 hover:text-[#FF8A5B] transition">
-                            View Packages <i class='bx bx-right-arrow-alt'></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="group relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl cursor-pointer">
-                    <img src="image/visual   home.JPG" 
-                         class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110" 
-                         alt="Drone Cinematography">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003358] via-[#003358]/40 to-transparent opacity-80 group-hover:opacity-90 transition duration-500"></div>
-                    <div class="absolute top-6 right-6 w-14 h-14 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white z-10">
-                        <i class='bx bxs-camera-movie text-2xl'></i>
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-8 w-full z-10 translate-y-4 group-hover:translate-y-0 transition duration-500">
-                        <span class="text-[#FF8A5B] font-bold text-xs tracking-widest uppercase mb-2 block">03. Storytelling</span>
-                        <h3 class="text-3xl font-bold text-white mb-3" style="font-family: 'Playfair Display', serif;">Cinematic Visuals</h3>
-                        <p class="text-gray-200 text-sm leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
-                            Cinematic drone footage and professional photography for travelers, couples, hotels, and tourism brands.
-                        </p>
-                        <a href="media.html" class="inline-flex items-center gap-2 text-white font-bold border-b border-[#FF8A5B] pb-1 hover:text-[#FF8A5B] transition">
-                            View Media Services <i class='bx bx-right-arrow-alt'></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-[#003358] text-white overflow-hidden">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-            <div class="w-full md:w-1/2" data-aos="fade-right">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8" style="font-family: 'Playfair Display', serif;">
-                    Why Choose <span class="text-[#FF8A5B]">Morix Beyond Zanzibar ?</span>
-                </h2>
-                <ul class="space-y-6">
-                    <li class="flex items-center gap-4"><div class="bg-white/10 p-2 rounded-lg"><i class='bx bx-world text-[#FF8A5B] text-xl'></i></div><span class="text-lg">Locally based with global standards</span></li>
-                    <li class="flex items-center gap-4"><div class="bg-white/10 p-2 rounded-lg"><i class='bx bxs-star text-[#FF8A5B] text-xl'></i></div><span class="text-lg">Curated premium experiences</span></li>
-                    <li class="flex items-center gap-4"><div class="bg-white/10 p-2 rounded-lg"><i class='bx bxs-user-check text-[#FF8A5B] text-xl'></i></div><span class="text-lg">Professional guides and creatives</span></li>
-                    <li class="flex items-center gap-4"><div class="bg-white/10 p-2 rounded-lg"><i class='bx bxs-camera text-[#FF8A5B] text-xl'></i></div><span class="text-lg">Cinematic drone & photo storytelling</span></li>
-                    <li class="flex items-center gap-4"><div class="bg-white/10 p-2 rounded-lg"><i class='bx bxs-badge-check text-[#FF8A5B] text-xl'></i> </div><span class="text-lg">Trusted by international travelers</span></li>
-                </ul>
-            </div>
-            <div class="w-full md:w-1/2 relative" data-aos="zoom-in-left">
-                <div class="absolute -top-6 -right-6 w-24 h-24 bg-[#FF8A5B] rounded-full opacity-20 animate-pulse"></div>
-                <img src="image/why choose us.JPG" 
-                     class="w-full h-96 object-cover rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500" 
-                     alt="Why Choose Us">
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-right">
-                <div class="max-w-xl">
-                    <span class="text-[#FF8A5B] font-bold tracking-[0.2em] text-xs uppercase mb-2 block">Curated Adventures</span>
-                    <h2 class="text-4xl md:text-5xl font-bold text-[#003358] leading-tight" style="font-family: 'Playfair Display', serif;">
-                        Signature <span class="italic text-[#FF8A5B]">Experiences</span>
-                    </h2>
-                </div>
-                <a href="zanzibar.html" class="hidden md:flex items-center gap-2 text-[#003358] font-semibold border-b border-[#003358] pb-1 hover:text-[#FF8A5B] hover:border-[#FF8A5B] transition group">
-                    View All Tours <i class='bx bx-right-arrow-alt transform group-hover:translate-x-1 transition'></i>
-                </a>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[400px]">
-                <div class="group relative lg:col-span-2 rounded-3xl overflow-hidden cursor-pointer shadow-xl">
-                    <img src="image/kayaki.home.jpg" 
-                         class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="Clear Kayak">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003358]/90 via-transparent to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 left-6 right-6 p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex justify-between items-center transition duration-500 group-hover:bg-white/20">
-                        <div>
-                            <span class="text-xs text-[#FF8A5B] font-bold uppercase tracking-wider mb-1 block">Trending</span>
-                            <h3 class="text-2xl text-white font-bold" style="font-family: 'Playfair Display', serif;">Zanzibar Clear Kayak with Drone Experience</h3>
+                <!-- Two Smaller Images Row -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg group">
+                        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400&q=80" 
+                             alt="Zanzibar Apartment" 
+                             class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-3">
+                            <p class="text-white font-semibold text-xs">Modern Apartments</p>
                         </div>
-                        
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg group">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" 
+                             alt="Zanzibar Hotel" 
+                             class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-3">
+                            <p class="text-white font-semibold text-xs">Boutique Hotels</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="group relative rounded-3xl overflow-hidden cursor-pointer shadow-xl">
-                    <img src="image/zanzibar home 2.jpg" 
-                         class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="Nungwi Beach">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003358]/90 via-transparent to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 left-4 right-4 p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex flex-col justify-end min-h-[100px] transition duration-500 group-hover:-translate-y-2">
-                        <span class="text-[10px] text-[#FF8A5B] font-bold uppercase tracking-wider mb-1 block">Trending</span>
-                        <h3 class="text-lg text-white font-bold leading-tight" style="font-family: 'Playfair Display', serif;">Zanzibar Jetcar Adventure with Drone Experience</h3>
+                <!-- Floating Rating Card -->
+                <div class="absolute -top-3 -right-3 bg-white rounded-2xl shadow-2xl p-3 z-20 border border-gray-100">
+                    <div class="flex items-center gap-2">
+                        <div class="flex text-yellow-400 text-sm">
+                            <i class="fi fi-rr-star"></i>
+                            <i class="fi fi-rr-star"></i>
+                            <i class="fi fi-rr-star"></i>
+                            <i class="fi fi-rr-star"></i>
+                            <i class="fi fi-rr-star"></i>
+                        </div>
+                        <span class="text-[#003C63] font-bold text-sm">4.9</span>
                     </div>
+                    <p class="text-gray-400 text-[10px]">300+ verified stays</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <div class="group relative rounded-3xl overflow-hidden cursor-pointer shadow-xl">
-                    <img src="image/jetski home.jpg" 
-                         class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="Sunset Proposal">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003358]/90 via-transparent to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 left-4 right-4 p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex flex-col justify-end min-h-[100px] transition duration-500 group-hover:-translate-y-2">
-                        <span class="text-[10px] text-[#FF8A5B] font-bold uppercase tracking-wider mb-1 block">Trending</span>
-                        <h3 class="text-lg text-white font-bold leading-tight" style="font-family: 'Playfair Display', serif;">Zanzibar Jetski Ride with Drone Experience</h3>
-                    </div>
-                </div>
-
-                <a href="tanzania.html" class="group block relative lg:col-span-4 h-[300px] rounded-3xl overflow-hidden cursor-pointer shadow-xl mt-0 md:mt-0">
+<style>
+    /* Slide right-to-left animation */
+    @keyframes slideRight {
+        0% {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
     
-                    <img src="image/mikumi home.JPG" 
-                        class="w-full h-full object-cover transition duration-1000 group-hover:scale-105" alt="Serengeti Safari">
-                    
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003358]/90 via-transparent to-transparent opacity-80"></div>
-                    
-                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                        <span class="px-3 py-1 bg-[#FF8A5B] text-white text-xs font-bold uppercase rounded-full mb-4 shadow-lg">Most Popular</span>
-                        
-                        <h3 class="text-3xl md:text-4xl text-white font-bold mb-2 drop-shadow-lg" style="font-family: 'Playfair Display', serif;">Visit Mikumi National Park</h3>
-                        
-                        <p class="text-gray-200 mb-6 max-w-lg hidden md:block"> A True Safari Experience</p>
-                        
-                        <span class="px-6 py-2 border border-white text-white rounded-full text-sm font-bold group-hover:bg-white group-hover:text-[#003358] transition">View Itinerary</span>
-                    </div>
+    .animate-slide-right {
+        animation: slideRight 0.8s ease-out forwards;
+        opacity: 0;
+    }
 
-                </a>
+    /* Card entrance animation - right to left */
+    @keyframes cardIn {
+        0% {
+            transform: translateX(80px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    .animate-card-in {
+        animation: cardIn 0.7s ease-out forwards;
+        opacity: 0;
+    }
 
-            <div class="mt-8 text-center md:hidden">
-                <a href="zanzibar.html" class="inline-block px-8 py-3 border border-[#003358] text-[#003358] font-bold rounded-full hover:bg-[#003358] hover:text-white transition">
-                    Explore All Experiences
-                </a>
-            </div>
+    /* Dot indicator animation */
+    @keyframes dotIn {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        60% {
+            transform: scale(1.4);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    .animate-dot-in {
+        animation: dotIn 0.5s ease-out forwards;
+        opacity: 0;
+    }
+</style>
+
+
+
+
+
+<!-- signature  -->
+
+
+<section class="relative py-12 lg:py-28 bg-white overflow-hidden" style="font-family: 'Inter', sans-serif;">
+    
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#003C63]/2 rounded-full blur-3xl -mr-64 -mt-64"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#F27D57]/3 rounded-full blur-3xl -ml-48 -mb-48"></div>
+    </div>
+
+    <div class="absolute inset-0 signature-subtle-pattern"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-8 lg:mb-20">
+            <span class="inline-flex items-center gap-2 text-[#F27D57] font-semibold tracking-widest text-[10px] lg:text-xs uppercase mb-3 lg:mb-4 bg-[#F27D57]/5 px-4 py-1.5 lg:px-5 lg:py-2 rounded-full">
+                <i class="fi fi-rr-star text-xs"></i>
+                Handpicked For You
+            </span>
+            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-[#003C63] leading-tight playfair-heading">
+                Signature <span class="italic text-[#F27D57]">Experiences</span>
+            </h2>
+            <p class="text-gray-500 max-w-xl mx-auto mt-2 lg:mt-3 text-sm lg:text-lg">
+                Our most loved adventures — curated for unforgettable memories
+            </p>
         </div>
-    </section>
 
-    <section class="py-24 bg-gray-50 overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row gap-16 items-center">
-                <div class="w-full lg:w-1/2 relative z-10">
-                    <span class="text-[#FF8A5B] font-bold tracking-widest text-xs uppercase mb-2 block">Guest Stories</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[#003358] mb-10" style="font-family: 'Playfair Display', serif;">
-                        Memories Made <br><span class="italic text-[#FF8A5B]">Forever</span>
-                    </h2>
+        <div class="flex items-center justify-center gap-2 mb-4 lg:hidden" id="swipe-hint">
+            <span class="text-gray-400 text-[11px] font-medium">Swipe to explore</span>
+            <svg class="w-5 h-5 text-gray-400 swipe-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 17l-3 3v-6"/>
+                <path d="M15 3l3 3-3 3"/>
+                <rect x="2" y="6" width="14" height="12" rx="2"/>
+                <path d="M6 10v4"/>
+            </svg>
+        </div>
 
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-[#FF8A5B] mb-8 relative transform transition hover:-translate-y-2 duration-300">
-                        <i class='bx bxs-quote-alt-left absolute top-4 right-6 text-6xl text-gray-100 -z-0'></i>
-                        <div class="relative z-10">
-                            <div class="flex items-center gap-1 text-[#FF8A5B] mb-4">
-                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
-                                <span class="text-gray-400 text-xs ml-2 font-semibold tracking-wide uppercase">Verified Trip</span>
-                            </div>
-                            <p class="text-gray-600 text-lg italic mb-6 leading-relaxed" style="font-family: 'Playfair Display', serif;">
-                                “From the beach tour to the drone video, everything was perfectly organized.”
-                            </p>
-                            <div class="flex items-center gap-4">
-                                <img src="image/Pasport.jpeg" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" alt="Sarah">
-                                <div>
-                                    <h4 class="font-bold text-[#003358] text-sm">Cristal </h4>
-                                    <span class="text-gray-400 text-xs">USA • Videography & Photography Services</span>
-                                </div>
-                            </div>
+        <div class="lg:hidden overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-4 px-4 hide-scrollbar mb-6" id="mobile-scroll">
+            <div class="flex gap-4" style="width: max-content;">
+                <div class="card-slide w-[85vw] flex-shrink-0 snap-center opacity-0 translate-x-8" data-card="0">
+                    <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-full">
+                        <div class="relative w-full h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=800&q=80" alt="Tanzania Safari" class="experience-img absolute inset-0 w-full h-full object-cover" data-images="https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=800&q=80,https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80,https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&q=80">
+                            <span class="absolute top-3 left-3 z-20 bg-[#003C63] text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-xl">Tanzania Safari</span>
+                            <span class="absolute top-3 right-3 z-20 w-6 h-6 rounded-full bg-white/90 backdrop-blur-sm text-[#003C63] text-[11px] font-bold flex items-center justify-center shadow-lg">1</span>
                         </div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-[#003358] relative transform transition hover:-translate-y-2 duration-300">
-                        <i class='bx bxs-quote-alt-left absolute top-4 right-6 text-6xl text-gray-100 -z-0'></i>
-                        <div class="relative z-10">
-                            <div class="flex items-center gap-1 text-[#FF8A5B] mb-4">
-                                <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
-                                <span class="text-gray-400 text-xs ml-2 font-semibold tracking-wide uppercase">Verified Trip</span>
+                        <div class="p-4">
+                            <div class="w-10 h-10 rounded-xl bg-[#003C63]/10 flex items-center justify-center mb-3">
+                                <i class="fi fi-rr-lion text-lg text-[#003C63]"></i>
                             </div>
-                            <p class="text-gray-600 text-lg italic mb-6 leading-relaxed" style="font-family: 'Playfair Display', serif;">
-                                “An unforgettable Zanzibar experience with professional service and stunning visuals.”
-                            </p>
-                            <div class="flex items-center gap-4">
-                                <img src="image/pasport 2.jpeg" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm" alt="David">
-                                <div>
-                                    <h4 class="font-bold text-[#003358] text-sm">Brenda</h4>
-                                    <span class="text-gray-400 text-xs">Uganda • Zanzibar Horse Safaris </span>
-                                </div>
+                            <h3 class="text-base font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Serengeti Migration</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">Witness millions of wildebeest thunder across the Mara River in Africa's greatest wildlife spectacle.</p>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs mb-3">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-gray-400 ml-2 text-[10px] font-medium">4.9 (1.2k reviews)</span>
                             </div>
+                            <a href="#" class="inline-flex items-center gap-1.5 text-[#F27D57] font-bold text-xs">Explore Experience <i class="fi fi-rr-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="w-full lg:w-1/2 relative">
-                    <div class="absolute inset-0 bg-blue-50 rounded-full blur-3xl opacity-60 transform scale-75"></div>
-                    <div class="grid grid-cols-2 gap-4 relative z-10">
-                        <div class="space-y-4 pt-12">
-                            <img src="image/memory2 (1).JPG" 
-                                 class="rounded-2xl shadow-lg w-full h-64 object-cover transform hover:scale-105 transition duration-500" alt="Happy Guests Beach">
-                            <div class="bg-[#003358] p-6 rounded-2xl shadow-xl text-center text-white">
-                                <span class="text-3xl font-bold block mb-1">5.0</span>
-                                <div class="text-[#FF8A5B] text-sm mb-2"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i></div>
-                                <p class="text-xs uppercase tracking-widest text-gray-300">Customer Rating</p>
-                            </div>
+                <div class="card-slide w-[85vw] flex-shrink-0 snap-center opacity-0 translate-x-8" data-card="1">
+                    <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-full">
+                        <div class="relative w-full h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Water Sports" class="experience-img absolute inset-0 w-full h-full object-cover" data-images="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80,https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80,https://images.unsplash.com/photo-1590523278191-7c8b90f28e6c?w=800&q=80">
+                            <span class="absolute top-3 left-3 z-20 bg-[#F27D57] text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-xl">Water Sports</span>
+                            <span class="absolute top-3 right-3 z-20 w-6 h-6 rounded-full bg-white/90 backdrop-blur-sm text-[#003C63] text-[11px] font-bold flex items-center justify-center shadow-lg">2</span>
                         </div>
-                        <div class="space-y-4">
-                            <img src="image/memory2 (2).JPG" 
-                                 class="rounded-2xl shadow-lg w-full h-80 object-cover transform hover:scale-105 transition duration-500" alt="Guests on Safari">
-                            <img src="image/memory2 (3).JPG" 
-                                 class="rounded-2xl shadow-lg w-full h-40 object-cover transform hover:scale-105 transition duration-500" alt="Drone Shot">
+                        <div class="p-4">
+                            <div class="w-10 h-10 rounded-xl bg-[#F27D57]/10 flex items-center justify-center mb-3">
+                                <i class="fi fi-rr-swimmer text-lg text-[#F27D57]"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Jetski Adventure</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">Feel the adrenaline racing across Zanzibar's turquoise waters with breathtaking coastal views.</p>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs mb-3">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-gray-400 ml-2 text-[10px] font-medium">4.9 (890 reviews)</span>
+                            </div>
+                            <a href="#" class="inline-flex items-center gap-1.5 text-[#F27D57] font-bold text-xs">Explore Experience <i class="fi fi-rr-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-full shadow-2xl animate-bounce-slow hidden md:block">
-                        <i class='bx bxs-heart text-4xl text-[#FF8A5B]'></i>
+                </div>
+
+                <div class="card-slide w-[85vw] flex-shrink-0 snap-center opacity-0 translate-x-8" data-card="2">
+                    <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-full">
+                        <div class="relative w-full h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?w=800&q=80" alt="Zanzibar Tours" class="experience-img absolute inset-0 w-full h-full object-cover" data-images="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?w=800&q=80,https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800&q=80,https://images.unsplash.com/photo-1590523278191-7c8b90f28e6c?w=800&q=80">
+                            <span class="absolute top-3 left-3 z-20 bg-green-600 text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-xl">Zanzibar Tour</span>
+                            <span class="absolute top-3 right-3 z-20 w-6 h-6 rounded-full bg-white/90 backdrop-blur-sm text-[#003C63] text-[11px] font-bold flex items-center justify-center shadow-lg">3</span>
+                        </div>
+                        <div class="p-4">
+                            <div class="w-10 h-10 rounded-xl bg-green-600/10 flex items-center justify-center mb-3">
+                                <i class="fi fi-rr-island-tropical text-lg text-green-600"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Mnemba Island</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">Swim with wild dolphins in pristine waters surrounding Zanzibar's most exclusive island paradise.</p>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs mb-3">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-gray-400 ml-2 text-[10px] font-medium">4.9 (1.5k reviews)</span>
+                            </div>
+                            <a href="#" class="inline-flex items-center gap-1.5 text-[#F27D57] font-bold text-xs">Explore Experience <i class="fi fi-rr-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-slide w-[85vw] flex-shrink-0 snap-center opacity-0 translate-x-8" data-card="3">
+                    <div class="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-full">
+                        <div class="relative w-full h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=800&q=80" alt="Trekking" class="experience-img absolute inset-0 w-full h-full object-cover" data-images="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=800&q=80,https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80,https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80">
+                            <span class="absolute top-3 left-3 z-20 bg-purple-600 text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-xl">Trekking</span>
+                            <span class="absolute top-3 right-3 z-20 w-6 h-6 rounded-full bg-white/90 backdrop-blur-sm text-[#003C63] text-[11px] font-bold flex items-center justify-center shadow-lg">4</span>
+                        </div>
+                        <div class="p-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-600/10 flex items-center justify-center mb-3">
+                                <i class="fi fi-rr-mountain text-lg text-purple-600"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Kilimanjaro Trek</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed mb-3 line-clamp-2">Conquer Africa's highest peak — an epic multi-day trek to the roof of Africa.</p>
+                            <div class="flex items-center gap-1 text-yellow-400 text-xs mb-3">
+                                <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                                <span class="text-gray-400 ml-2 text-[10px] font-medium">4.9 (620 reviews)</span>
+                            </div>
+                            <a href="#" class="inline-flex items-center gap-1.5 text-[#F27D57] font-bold text-xs">Explore Experience <i class="fi fi-rr-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <div class="flex items-center justify-center gap-2 mb-8 lg:hidden" id="dot-indicators">
+            <span class="progress-dot w-2.5 h-2.5 rounded-full bg-[#F27D57] shadow-md cursor-pointer scale-110" data-dot="0"></span>
+            <span class="progress-dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-dot="1"></span>
+            <span class="progress-dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-dot="2"></span>
+            <span class="progress-dot w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer" data-dot="3"></span>
+        </div>
+
+        <div class="hidden lg:grid lg:grid-cols-2 gap-8 mb-14">
+            <div class="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border border-gray-100 flex flex-col sm:flex-row">
+                <div class="relative w-full sm:w-[55%] h-64 sm:h-auto overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=800&q=80" alt="Tanzania Safari" class="experience-img absolute inset-0 w-full h-full object-cover" data-images="https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=800&q=80,https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80,https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&q=80">
+                    <span class="absolute top-5 left-5 z-20 bg-[#003C63] text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-xl">Tanzania Safari</span>
+                </div>
+                <div class="w-full sm:w-[45%] p-8 flex flex-col justify-center">
+                    <div class="w-12 h-12 rounded-2xl bg-[#003C63]/10 flex items-center justify-center mb-4 group-hover:bg-[#003C63] transition-all duration-500">
+                        <i class="fi fi-rr-lion text-xl text-[#003C63] group-hover:text-white transition-colors duration-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#003C63] mb-3" style="font-family: 'Playfair Display', serif;">Serengeti Migration</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Witness millions of wildebeest thunder across the Mara River in Africa's greatest wildlife spectacle — an experience that changes you forever.</p>
+                    <div class="flex items-center gap-1 text-yellow-400 text-sm mb-5">
+                        <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                        <span class="text-gray-400 ml-2 text-xs font-medium">4.9 (1.2k reviews)</span>
+                    </div>
+                    <a href="#" class="group/btn inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300 w-fit">
+                        Explore Experience <i class="fi fi-rr-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border border-gray-100 flex flex-col sm:flex-row">
+                <div class="relative w-full sm:w-[55%] h-64 sm:h-auto overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Water Sports" class="experience-img absolute inset-0 w-full h-full object-cover" data-images="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80,https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80,https://images.unsplash.com/photo-1590523278191-7c8b90f28e6c?w=800&q=80">
+                    <span class="absolute top-5 left-5 z-20 bg-[#F27D57] text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-xl">Water Sports</span>
+                </div>
+                <div class="w-full sm:w-[45%] p-8 flex flex-col justify-center">
+                    <div class="w-12 h-12 rounded-2xl bg-[#F27D57]/10 flex items-center justify-center mb-4 group-hover:bg-[#F27D57] transition-all duration-500">
+                        <i class="fi fi-rr-swimmer text-xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#003C63] mb-3" style="font-family: 'Playfair Display', serif;">Jetski Adventure</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Feel the adrenaline racing across Zanzibar's turquoise waters with breathtaking coastal views and pure ocean freedom.</p>
+                    <div class="flex items-center gap-1 text-yellow-400 text-sm mb-5">
+                        <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                        <span class="text-gray-400 ml-2 text-xs font-medium">4.9 (890 reviews)</span>
+                    </div>
+                    <a href="#" class="group/btn inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300 w-fit">
+                        Explore Experience <i class="fi fi-rr-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border border-gray-100 flex flex-col sm:flex-row">
+                <div class="relative w-full sm:w-[55%] h-64 sm:h-auto overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?w=800&q=80" alt="Zanzibar Tours" class="experience-img absolute inset-0 w-full h-full object-cover" data-images="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?w=800&q=80,https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800&q=80,https://images.unsplash.com/photo-1590523278191-7c8b90f28e6c?w=800&q=80">
+                    <span class="absolute top-5 left-5 z-20 bg-[#003C63] text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-xl">Zanzibar Tour</span>
+                </div>
+                <div class="w-full sm:w-[45%] p-8 flex flex-col justify-center">
+                    <div class="w-12 h-12 rounded-2xl bg-[#003C63]/10 flex items-center justify-center mb-4 group-hover:bg-[#003C63] transition-all duration-500">
+                        <i class="fi fi-rr-island-tropical text-xl text-[#003C63] group-hover:text-white transition-colors duration-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#003C63] mb-3" style="font-family: 'Playfair Display', serif;">Mnemba Island</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Swim with wild dolphins in pristine waters surrounding Zanzibar's most exclusive island paradise — pure magic.</p>
+                    <div class="flex items-center gap-1 text-yellow-400 text-sm mb-5">
+                        <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                        <span class="text-gray-400 ml-2 text-xs font-medium">4.9 (1.5k reviews)</span>
+                    </div>
+                    <a href="#" class="group/btn inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300 w-fit">
+                        Explore Experience <i class="fi fi-rr-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border border-gray-100 flex flex-col sm:flex-row">
+                <div class="relative w-full sm:w-[55%] h-64 sm:h-auto overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=800&q=80" alt="Trekking" class="experience-img absolute inset-0 w-full h-full object-cover" data-images="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=800&q=80,https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80,https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80">
+                    <span class="absolute top-5 left-5 z-20 bg-[#003C63] text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-xl">Trekking</span>
+                </div>
+                <div class="w-full sm:w-[45%] p-8 flex flex-col justify-center">
+                    <div class="w-12 h-12 rounded-2xl bg-[#003C63]/10 flex items-center justify-center mb-4 group-hover:bg-[#003C63] transition-all duration-500">
+                        <i class="fi fi-rr-mountain text-xl text-[#003C63] group-hover:text-white transition-colors duration-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#003C63] mb-3" style="font-family: 'Playfair Display', serif;">Kilimanjaro Trek</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">Conquer Africa's highest peak — an epic multi-day trek through five distinct climate zones to the roof of Africa.</p>
+                    <div class="flex items-center gap-1 text-yellow-400 text-sm mb-5">
+                        <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                        <span class="text-gray-400 ml-2 text-xs font-medium">4.9 (620 reviews)</span>
+                    </div>
+                    <a href="#" class="group/btn inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300 w-fit">
+                        Explore Experience <i class="fi fi-rr-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+         </div>
+</section>
+
+<script>
+(function() {
+    // ===== IMAGE ROTATION =====
+    document.querySelectorAll('.experience-img').forEach(img => {
+        const images = img.getAttribute('data-images');
+        if (!images) return;
+        const imageArray = images.split(',');
+        let currentIndex = 0;
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % imageArray.length;
+            img.style.transition = 'opacity 0.5s ease-in-out';
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = imageArray[currentIndex].trim();
+                img.style.opacity = '1';
+            }, 500);
+        }, 4000 + Math.random() * 2000);
+    });
+
+    // ===== MOBILE SCROLL & ANIMATION =====
+    const mobileScroll = document.getElementById('mobile-scroll');
+    if (!mobileScroll || window.innerWidth >= 1024) return;
+    
+    const cards = mobileScroll.querySelectorAll('.card-slide');
+    const dots = document.querySelectorAll('.progress-dot');
+    const swipeHint = document.getElementById('swipe-hint');
+    const section = mobileScroll.closest('section');
+    
+    let animated = false;
+    let autoPlayInterval;
+    let isTouching = false; // Flag to stop auto-scroll when user interacts
+
+    // Trigger initial fade-in animation
+    function runAnimation() {
+        if (animated) return;
+        
+        cards.forEach((card, i) => {
+            setTimeout(() => {
+                card.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out';
+                card.classList.remove('translate-x-8', 'opacity-0');
+            }, i * 150);
+        });
+        
+        animated = true;
+
+        // Start Auto-Scroll Carousel after the entrance animation finishes
+        setTimeout(startAutoPlay, 1000); 
+    }
+
+    // Carousel Auto-Scroll Logic - FIX FOR THE REWIND EFFECT
+    function startAutoPlay() {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(() => {
+            if (isTouching) return; 
+            
+            const cardWidth = cards[0].offsetWidth + 16; // 16px is the flex gap
+            const currentIndex = Math.round(mobileScroll.scrollLeft / cardWidth);
+            
+            if (currentIndex >= cards.length - 1) {
+                // Instantly snap to the first card (removes the visible rewind)
+                mobileScroll.style.scrollBehavior = 'auto';
+                mobileScroll.classList.remove('scroll-smooth');
+                
+                mobileScroll.scrollLeft = 0;
+                
+                // Give the browser a tiny delay to register the instant jump before making it smooth again
+                setTimeout(() => {
+                    mobileScroll.style.scrollBehavior = 'smooth';
+                    mobileScroll.classList.add('scroll-smooth');
+                }, 50);
+            } else {
+                // Proceed normally to the next card
+                mobileScroll.scrollTo({ left: (currentIndex + 1) * cardWidth, behavior: 'smooth' });
+            }
+        }, 3500); 
+    }
+
+    // Pause auto-play when user touches the slider
+    mobileScroll.addEventListener('touchstart', () => isTouching = true, { passive: true });
+    mobileScroll.addEventListener('touchend', () => {
+        isTouching = false;
+        startAutoPlay(); // Reset the timer when they lift their finger
+    }, { passive: true });
+
+    // Intersection Observer to watch when section enters screen
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                runAnimation();
+                sectionObserver.unobserve(entry.target); 
+            }
+        });
+    }, { threshold: 0.15 });
+    
+    if (section) sectionObserver.observe(section);
+
+    // Scroll listener updates dots 
+    mobileScroll.addEventListener('scroll', () => {
+        const cardWidth = cards[0].offsetWidth + 16;
+        const activeIndex = Math.round(mobileScroll.scrollLeft / cardWidth);
+        const clamped = Math.max(0, Math.min(activeIndex, dots.length - 1));
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('bg-[#F27D57]', i === clamped);
+            dot.classList.toggle('shadow-md', i === clamped);
+            dot.classList.toggle('bg-gray-300', i !== clamped);
+            dot.classList.toggle('scale-110', i === clamped);
+        });
+    }, { passive: true });
+
+    // Dot clicks
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            const cardWidth = cards[0].offsetWidth + 16;
+            mobileScroll.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+            
+            // Reset autoplay timer when a dot is clicked
+            isTouching = true; 
+            setTimeout(() => { isTouching = false; startAutoPlay(); }, 500);
+        });
+    });
+
+    // Remove Swipe hint after a few seconds
+    if (swipeHint) {
+        setTimeout(() => {
+            swipeHint.style.transition = 'opacity 0.5s';
+            swipeHint.style.opacity = '0';
+            setTimeout(() => swipeHint.remove(), 500);
+        }, 3500);
+    }
+})();
+</script>
+
+<style>
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @keyframes swipeGesture {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(-10px); }
+    }
+    .swipe-hand { animation: swipeGesture 1.5s ease-in-out infinite; }
+
+    .progress-dot {
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+</style>
+
+
+<!-- testmonial-->
+
+<section class="relative py-16 lg:py-20 bg-[#003C63] overflow-hidden mb-16" >
+    
+    <!-- Abstract Shapes -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-0 right-0 w-[350px] h-[350px] border border-white/5 rounded-full -mr-24 -mt-24"></div>
+        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] border border-white/5 rounded-full -ml-16 -mb-16"></div>
+        <div class="absolute top-1/2 left-1/3 w-[200px] h-[200px] bg-[#F27D57]/8 rounded-full blur-[80px]"></div>
+    </div>
+
+    <!-- Fine Grid -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+    <div class="relative z-10 max-w-2xl mx-auto px-5 sm:px-6 lg:px-8">
+        
+        <!-- Header -->
+        <div class="text-center mb-8 lg:mb-10">
+            <span class="inline-flex items-center gap-3 text-[#F27D57] font-semibold tracking-[0.2em] text-[10px] uppercase mb-3">
+                <span class="w-6 h-[1px] bg-[#F27D57]/40"></span>
+                Testimonials
+                <span class="w-6 h-[1px] bg-[#F27D57]/40"></span>
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-none" style="font-family: 'Playfair Display', serif;">
+                Loved by <span class="italic text-[#F27D57]">Travelers</span>
+            </h2>
+        </div>
+
+        <!-- Single Testimonial Rotator -->
+        <div class="relative min-h-[220px]" id="testimonial-rotator">
+            
+            <!-- Testimonial 1 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out" data-index="0">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"We booked transfers, water sports, tours and accommodation through Morix Beyond. Highly recommended."</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#003C63] flex items-center justify-center text-white font-bold text-sm">C</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">Cristal</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">USA</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out absolute inset-0 opacity-0 pointer-events-none" data-index="1">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"What an amazing experience! Everything was perfectly organized."</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#F27D57] flex items-center justify-center text-white font-bold text-sm">B</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">Brenda</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">Uganda</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out absolute inset-0 opacity-0 pointer-events-none" data-index="2">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"The safari was beyond words. Saw all Big Five in one day! Morix Beyond made it seamless."</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#003C63] flex items-center justify-center text-white font-bold text-sm">J</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">James</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">UK</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out absolute inset-0 opacity-0 pointer-events-none" data-index="3">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"Zanzibar tours were incredible. Mnemba Island was paradise. Thank you Morix!"</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#F27D57] flex items-center justify-center text-white font-bold text-sm">S</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">Sarah</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">Germany</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out absolute inset-0 opacity-0 pointer-events-none" data-index="4">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"Best vacation ever! Water sports were thrilling and the team was super professional."</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#003C63] flex items-center justify-center text-white font-bold text-sm">M</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">Maria</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">Italy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 6 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out absolute inset-0 opacity-0 pointer-events-none" data-index="5">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star text-gray-300"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"Transfers were on time, villa was stunning. Everything we needed in one place."</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#F27D57] flex items-center justify-center text-white font-bold text-sm">D</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">David</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">Canada</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 7 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out absolute inset-0 opacity-0 pointer-events-none" data-index="6">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"Kilimanjaro trek was life-changing. Guides were knowledgeable and supportive."</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#003C63] flex items-center justify-center text-white font-bold text-sm">A</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">Alex</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">Australia</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 8 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out absolute inset-0 opacity-0 pointer-events-none" data-index="7">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"Family of 6 and Morix handled everything perfectly. Kids loved every moment!"</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#F27D57] flex items-center justify-center text-white font-bold text-sm">L</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">Linda</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">South Africa</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 9 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out absolute inset-0 opacity-0 pointer-events-none" data-index="8">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"Honeymoon perfection. Private tours, romantic dinners — Morix made it magical."</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#003C63] flex items-center justify-center text-white font-bold text-sm">R</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">Ravi</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">India</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 10 -->
+            <div class="testimonial-item bg-white rounded-2xl p-6 lg:p-8 shadow-xl text-center transition-all duration-500 ease-in-out absolute inset-0 opacity-0 pointer-events-none" data-index="9">
+                <div class="flex justify-center gap-0.5 mb-4 text-[#F27D57] text-sm">
+                    <i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star"></i><i class="fi fi-rr-star text-gray-300"></i>
+                </div>
+                <p class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6 italic" style="font-family: 'Playfair Display', serif;">"Solo traveler and felt completely safe. Amazing community and experiences."</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#F27D57] flex items-center justify-center text-white font-bold text-sm">E</div>
+                    <div class="text-left">
+                        <p class="text-[#003C63] font-semibold text-sm">Emma</p>
+                        <p class="text-gray-400 text-[11px] uppercase tracking-wider">Netherlands</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dot Navigation -->
+        <div class="flex justify-center gap-2 mt-6">
+            <button class="nav-dot w-2 h-2 rounded-full bg-[#F27D57] transition-all duration-300" data-index="0" aria-label="Show testimonial 1" title="Show testimonial 1"></button>
+            <button class="nav-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-index="1" aria-label="Show testimonial 2" title="Show testimonial 2"></button>
+            <button class="nav-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-index="2" aria-label="Show testimonial 3" title="Show testimonial 3"></button>
+            <button class="nav-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-index="3" aria-label="Show testimonial 4" title="Show testimonial 4"></button>
+            <button class="nav-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-index="4" aria-label="Show testimonial 5" title="Show testimonial 5"></button>
+            <button class="nav-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-index="5" aria-label="Show testimonial 6" title="Show testimonial 6"></button>
+            <button class="nav-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-index="6" aria-label="Show testimonial 7" title="Show testimonial 7"></button>
+            <button class="nav-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-index="7" aria-label="Show testimonial 8" title="Show testimonial 8"></button>
+            <button class="nav-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-index="8" aria-label="Show testimonial 9" title="Show testimonial 9"></button>
+            <button class="nav-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-index="9" aria-label="Show testimonial 10" title="Show testimonial 10"></button>
+        </div>
+
+        <!-- Rating - Below Dots -->
+        <div class="text-center mt-3">
+            <span class="text-white/50 text-sm">4.9 ★ 500+ reviews</span>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    const items = document.querySelectorAll('.testimonial-item');
+    const dots = document.querySelectorAll('.nav-dot');
+    let currentIndex = 0;
+    const totalItems = items.length;
+    let interval;
+    
+    function showItem(index) {
+        items.forEach((item, i) => {
+            if (i === index) {
+                item.style.position = 'relative';
+                item.style.opacity = '1';
+                item.style.pointerEvents = 'auto';
+                item.style.transform = 'translateY(0)';
+            } else {
+                item.style.position = 'absolute';
+                item.style.opacity = '0';
+                item.style.pointerEvents = 'none';
+                item.style.transform = 'translateY(10px)';
+            }
+        });
+        
+        dots.forEach((d, i) => {
+            d.style.backgroundColor = i === index ? '#F27D57' : 'rgba(255,255,255,0.3)';
+            d.style.width = i === index ? '1.5rem' : '0.5rem';
+            d.style.borderRadius = i === index ? '12px' : '50%';
+        });
+        
+        currentIndex = index;
+    }
+    
+    function nextItem() {
+        const next = (currentIndex + 1) % totalItems;
+        showItem(next);
+    }
+    
+    // Initialize
+    showItem(0);
+    interval = setInterval(nextItem, 4000);
+    
+    // Dot clicks
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index'));
+            showItem(index);
+            clearInterval(interval);
+            interval = setInterval(nextItem, 4000);
+        });
+    });
+    
+    // Pause on hover
+    const rotator = document.getElementById('testimonial-rotator');
+    rotator.addEventListener('mouseenter', () => clearInterval(interval));
+    rotator.addEventListener('mouseleave', () => { interval = setInterval(nextItem, 4000); });
+})();
+</script>
+
+
 
     
 
