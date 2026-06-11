@@ -150,7 +150,7 @@ const headerTemplate = `
                           style="background-color: ${branding.colors.orange};"></span>
                 </a>
                 
-                <a href="water-sports.html" 
+                <a href="watersport.html" 
                    class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
                    style="color: ${branding.colors.navy};"
                    onmouseover="this.style.color='${branding.colors.orange}'" 
@@ -160,7 +160,7 @@ const headerTemplate = `
                           style="background-color: ${branding.colors.orange};"></span>
                 </a>
                 
-                <a href="zanzibar-tours.html" 
+                <a href="zanzibar.html" 
                    class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
                    style="color: ${branding.colors.navy};"
                    onmouseover="this.style.color='${branding.colors.orange}'" 
@@ -170,7 +170,7 @@ const headerTemplate = `
                           style="background-color: ${branding.colors.orange};"></span>
                 </a>
                 
-                <a href="transfers.html" 
+                <a href="transfer.html" 
                    class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
                    style="color: ${branding.colors.navy};"
                    onmouseover="this.style.color='${branding.colors.orange}'" 
@@ -180,7 +180,7 @@ const headerTemplate = `
                           style="background-color: ${branding.colors.orange};"></span>
                 </a>
                 
-                <a href="tanzania-safaris.html" 
+                <a href="tanzania.html" 
                    class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
                    style="color: ${branding.colors.navy};"
                    onmouseover="this.style.color='${branding.colors.orange}'" 
@@ -190,7 +190,7 @@ const headerTemplate = `
                           style="background-color: ${branding.colors.orange};"></span>
                 </a>
                 
-                <a href="media-services.html" 
+                <a href="media.html" 
                    class="relative text-sm xl:text-base font-medium transition-all duration-300 pb-1 group"
                    style="color: ${branding.colors.navy};"
                    onmouseover="this.style.color='${branding.colors.orange}'" 
@@ -253,14 +253,14 @@ const headerTemplate = `
                onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
                 Home
             </a>
-            <a href="water-sports.html" 
+            <a href="watersport.html" 
                class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
                style="color: ${branding.colors.navy};"
                onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
                onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
                 Water Sports
             </a>
-            <a href="zanzibar-tours.html" 
+            <a href="zanzibar.html" 
                class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
                style="color: ${branding.colors.navy};"
                onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
@@ -274,14 +274,14 @@ const headerTemplate = `
                onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
                 Transfers
             </a>
-            <a href="tanzania-safaris.html" 
+            <a href="tanzania.html" 
                class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
                style="color: ${branding.colors.navy};"
                onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
                onmouseout="if(!this.classList.contains('active')) { this.style.color='${branding.colors.navy}'; this.style.paddingLeft='20px'; }">
                 Tanzania Safaris
             </a>
-            <a href="media-services.html" 
+            <a href="media.html" 
                class="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:bg-gray-50 whitespace-nowrap"
                style="color: ${branding.colors.navy};"
                onmouseover="this.style.color='${branding.colors.orange}'; this.style.paddingLeft='24px'" 
