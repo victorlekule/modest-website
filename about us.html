@@ -1,299 +1,555 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morix Beyond | Beyond Zanzibar Experiences</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>About Morix Beyond | Where Luxury Meets the Raw Soul of Africa</title>
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
 
-    
-    
-    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+        rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <style>
+        :root {
+            --navy: #003C63;
+            --orange: #F27D57;
+            --orange-dark: #D35400;
+            --cream: #FEF9F0;
+            --light-cream: #FDF3E4;
+            --green: #27AE60;
+            --red: #C0392B;
+            --whatsapp: #25D366;
+            --border: #F0E3D0;
+        }
+
+        .font-body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .bg-navy {
+            background-color: var(--navy);
+        }
+
+        .text-navy {
+            color: var(--navy);
+        }
+
+        .bg-cream {
+            background-color: var(--cream);
+        }
+
+        .bg-light-cream {
+            background-color: var(--light-cream);
+        }
+
+        .bg-orange {
+            background-color: var(--orange);
+        }
+
+        .bg-orange-dark {
+            background-color: var(--orange-dark);
+        }
+
+        .text-orange {
+            color: var(--orange);
+        }
+
+        .text-green {
+            color: var(--green);
+        }
+
+        .text-red {
+            color: var(--red);
+        }
+
+        .bg-green {
+            background-color: var(--green);
+        }
+
+        .bg-green-50 {
+            background-color: rgba(39, 174, 96, 0.1);
+        }
+
+        .bg-red-50 {
+            background-color: rgba(192, 57, 43, 0.1);
+        }
+
+        .bg-whatsapp {
+            background-color: var(--whatsapp);
+        }
+
+        .text-muted {
+            color: #6B7280;
+        }
+
+        .border-border {
+            border-color: var(--border);
+        }
+
+        .border-navy {
+            border-color: var(--navy);
+        }
+
+        .shadow-card {
+            box-shadow: 0 20px 55px -25px rgba(0, 0, 0, 0.25);
+        }
+
+        .shadow-card-lg {
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        .shadow-orange-btn {
+            box-shadow: 0 16px 30px rgba(242, 125, 87, 0.25);
+        }
+
+        .text-cream\/70 {
+            color: rgba(254, 249, 240, 0.7);
+        }
+
+        .hover\:text-orange:hover {
+            color: var(--orange);
+        }
+
+        .hover\:text-navy:hover {
+            color: var(--navy);
+        }
+
+        .hover\:bg-orange-dark:hover {
+            background-color: var(--orange-dark);
+        }
+    </style>
 </head>
 
-<body class="bg-gray-50">
+<body class="font-body text-navy bg-cream min-h-screen flex flex-col overflow-x-hidden">
 
+    <!-- Header placeholder (your script.js fills) -->
     <header id="main-header"></header>
 
+    <!-- ===== ABOUT PAGE CONTENT ===== -->
+    <div id="aboutView">
 
-<section class="relative h-[70vh] pt-32 flex items-center justify-center overflow-hidden bg-[#003C63]">
-        <div class="absolute inset-0 z-0 parallax-wrapper">
-            <img src="https://images.unsplash.com/photo-1534476478164-b15fec4f091c?q=80&w=2000&auto=format&fit=crop" 
-                 alt="Zanzibar Heritage" 
-                 class="w-full h-full object-cover parallax-img opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#003C63]/80 via-[#003C63]/40 to-transparent"></div>
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10 text-center text-white">
-            <h1 class="text-5xl md:text-8xl font-bold mb-6 leading-tight fade-up">
-                About <span class="italic font-serif text-[#F27D57]">Morix Beyond</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto font-light leading-relaxed fade-up mb-12">
-                Crafting unforgettable travel experiences across Zanzibar and Tanzania through local expertise and creative storytelling.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up">
-                <a href="why us.html" class="bg-[#F27D57] hover:bg-[#e06943] text-white px-10 py-5 rounded-full font-bold shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-3">
-                    <i class="fi fi-rr-badge-check text-xl"></i> Why Choose Us
-                </a>
-                
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-white relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div class="fade-up">
-                    <span class="text-[#F27D57] font-bold tracking-widest uppercase text-sm mb-4 block">Our Story</span>
-                    <h2 class="text-4xl font-bold text-[#003C63] mb-8 leading-tight">Going beyond ordinary tours.</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        Morix Beyond Zanzibar was founded with one simple vision: <strong>to create travel experiences that go beyond ordinary tours.</strong>
-                    </p>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-10">
-                        Based in Zanzibar, we specialize in:
-                    </p>
-
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-[#F8FAFC] border border-gray-100">
-                            <i class="fi fi-rr-map-marker text-[#F27D57] text-2xl"></i>
-                            <span class="font-bold text-sm">Zanzibar tours and activities</span>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-[#F8FAFC] border border-gray-100">
-                            <i class="fi fi-rr-paw text-[#F27D57] text-2xl"></i>
-                            <span class="font-bold text-sm">Mainland Tanzania safaris</span>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-[#F8FAFC] border border-gray-100 md:col-span-2 mb-10">
-                            <i class="fi fi-rr-camera-movie text-[#F27D57] text-2xl"></i>
-                            <span class="font-bold text-sm">Professional videography and photography</span>
-                        </div>
-                    </div>
-
-                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                       We combine tourism expertise with creative media to deliver experiences that are personal, authentic, and unforgettable.
-                    </p> 
-
-                    
-                     <h3 class="text-xl font-bold text-[#003C63] mb-4">Why We Started</h3>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                        Zanzibar and Tanzania are among the most beautiful destinations in the world - yet many visitors only see a small part of their magic.
-                        Morix Beyond Zanzibar was created to help travelers explore deeper, travel smarter, and leave with unforgettable stories and memories.
-                    </p> 
-                </div>
-                
-                <div class="relative scale-in">
-                    <div class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
-                        <img src="image/about hist.JPG" alt="Founder Story" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-[#F27D57] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <!-- ========================================= -->
+        <!-- HERO SECTION (full‑width)                  -->
+        <!-- ========================================= -->
+        <section
+            class="relative w-screen left-1/2 -translate-x-1/2 h-[80vh] min-h-[600px] flex items-center justify-center bg-cover bg-center text-white text-center overflow-hidden"
+            style="background-image: linear-gradient(rgba(0,60,99,0.6), rgba(0,60,99,0.7)), url('https://images.unsplash.com/photo-1534476478164-b15fec4f091c?w=1200');">
+            <div class="absolute inset-0 bg-gradient-to-b from-navy/40 to-transparent"></div>
+            <div class="relative z-10 px-6 max-w-5xl mx-auto w-full">
+                <span
+                    class="inline-flex items-center gap-2 text-orange font-semibold tracking-widest text-xs uppercase mb-6 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full">
+                    <i class="fas fa-star"></i> Our Story
+                </span>
+                <h1
+                    class="font-heading text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-2xl">
+                    Where Luxury Meets the <span class="italic text-orange">Raw Soul of Africa</span>
+                </h1>
+                <p class="text-lg md:text-2xl text-white/80 max-w-3xl mx-auto mb-10 font-light">
+                    We didn’t start Morix Beyond to just book tours. We founded it to redefine how the world experiences
+                    the untamed beauty of Tanzania and the exotic rhythms of Zanzibar.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#"
+                        class="inline-flex items-center gap-2 bg-orange text-white font-bold px-8 py-4 rounded-full shadow-orange-btn hover:bg-orange-dark transition transform hover:-translate-y-1">
+                        <i class="fab fa-whatsapp"></i> Chat with Our Founder
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-navy transition">
+                        <i class="far fa-compass"></i> Explore Our Experiences
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-24 bg-[#003C63] text-white">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12">
-                
-                <div class="p-12 rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-md fade-up">
-                    <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center mb-8 shadow-lg shadow-orange-900/20">
-                        <i class="fi fi-rr-target text-[#003C63] text-3xl"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold mb-6">Our Mission</h3>
-                    <p class="text-xl text-gray-300 font-light leading-relaxed">
-                        To provide high-quality, customized travel experiences in Zanzibar and Tanzania while capturing memories through professional visual storytelling.
+        <!-- ========================================= -->
+        <!-- THE GENESIS: BORN FROM PASSION              -->
+        <!-- ========================================= -->
+        <section class="relative w-screen left-1/2 -translate-x-1/2 py-20 lg:py-28 bg-white overflow-hidden">
+            <div class="absolute top-0 left-0 w-[400px] h-[400px] bg-orange/5 rounded-full blur-7xl -ml-20 -mt-20">
+            </div>
+            <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-navy/5 rounded-full blur-7xl -mr-20 -mb-20">
+            </div>
+            <div
+                class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Text -->
+                <div class="text-left">
+                    <span
+                        class="inline-flex items-center gap-2 text-orange font-semibold tracking-widest text-xs uppercase bg-orange/10 px-4 py-1.5 rounded-full mb-6">
+                        <i class="fas fa-fire"></i> The Genesis
+                    </span>
+                    <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-8">
+                        Born from <span class="italic text-orange">Passion</span>
+                    </h2>
+                    <p class="text-lg text-muted leading-relaxed mb-6">
+                        Every great journey starts with a moment of clarity. For Morix Beyond, it was the realization
+                        that international travelers were forced to choose between two extremes: the rugged,
+                        unpredictable nature of local street tours, or the stiff, disconnected luxury of corporate
+                        travel agencies.
+                    </p>
+                    <p class="text-lg text-muted leading-relaxed mb-10">
+                        We asked ourselves: <span class="text-navy font-semibold">Why can’t travel be deeply authentic,
+                            wildly adventurous, and completely effortless all at the same time?</span>
+                    </p>
+                    <p class="text-lg text-muted leading-relaxed mb-6">
+                        Morix Beyond was born to answer that call. Based in the historical, sun‑drenched island of
+                        Zanzibar, we curated a hospitality standard that takes care of every single breath of your
+                        journey. From the moment you step off your international flight to the second you face a pride
+                        of lions in the Serengeti, we are there; managing the details so you can capture the moments.
                     </p>
                 </div>
-
-                <div class="p-12 rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-md fade-up delay-100">
-                    <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center mb-8 shadow-lg">
-                        <i class="fi fi-rr-eye text-[#003C63] text-3xl"></i>
+                <!-- Image -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div
+                        class="relative rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl shadow-navy/20 w-full max-w-md lg:max-w-none">
+                        <img src="https://images.unsplash.com/photo-1516687401795-9d8593a13e9a?w=800"
+                            alt="Zanzibar culture"
+                            class="w-full h-auto object-cover aspect-[4/5] lg:aspect-[3/4] max-h-80 sm:max-h-96 lg:max-h-none lg:h-[550px]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-md rounded-xl px-3 py-2 shadow flex items-center gap-2">
+                            <i class="fas fa-map-pin text-orange text-sm"></i>
+                            <span class="text-navy font-bold text-xs">Zanzibar, Tanzania</span>
+                        </div>
                     </div>
-                    <h3 class="text-3xl font-bold mb-6">Our Vision</h3>
-                    <p class="text-xl text-gray-300 font-light leading-relaxed">
-                        To become a trusted international travel brand known for premium experiences, ethical tourism, and cinematic storytelling.
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- THE "BEYOND" PHILOSOPHY                     -->
+        <!-- ========================================= -->
+        <section class="relative w-screen left-1/2 -translate-x-1/2 py-20 lg:py-28 bg-navy text-white overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-7xl -mr-20 -mt-20"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-7xl -ml-20 -mb-20"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-flex items-center gap-2 text-orange font-semibold tracking-widest text-xs uppercase bg-white/10 px-4 py-1.5 rounded-full mb-6">
+                        <i class="fas fa-quote-right"></i> Philosophy
+                    </span>
+                    <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        "To travel is to live. To travel with Morix is to go <span
+                            class="italic text-orange">beyond</span>."
+                    </h2>
+                    <p class="text-white/70 text-lg max-w-3xl mx-auto">
+                        We chose our name with deep intention. Beyond means we don’t just take you to the beach; we
+                        guide you into ancient limestone caves with crystal‑clear waters. Beyond means we don’t just
+                        drive you through national parks; we track wildlife with top‑tier expert guides who read the
+                        savanna like a book.
                     </p>
                 </div>
 
+                <!-- Three Core Pillars -->
+                <div class="grid md:grid-cols-3 gap-6 lg:gap-10">
+                    <!-- Pillar 1 -->
+                    <div
+                        class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 lg:p-8 hover:bg-white/10 transition">
+                        <div class="w-14 h-14 rounded-2xl bg-orange/20 flex items-center justify-center mb-6">
+                            <i class="fas fa-gem text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold mb-4">Uncompromised Private Luxury</h3>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            No public tour buses, no shared chaotic transfers. Your time in Africa is sacred. We provide
+                            air‑conditioned private vehicles, premium domestic flights, and handpicked boutique lodges.
+                        </p>
+                    </div>
+                    <!-- Pillar 2 -->
+                    <div
+                        class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 lg:p-8 hover:bg-white/10 transition">
+                        <div class="w-14 h-14 rounded-2xl bg-orange/20 flex items-center justify-center mb-6">
+                            <i class="fas fa-earth-africa text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold mb-4">Ethical & Authentic Impact</h3>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            We don’t just look at Africa through a window. We support local communities, work with
+                            certified native guides, and practice sustainable tourism that protects Tanzania's rich
+                            heritage.
+                        </p>
+                    </div>
+                    <!-- Pillar 3 -->
+                    <div
+                        class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 lg:p-8 hover:bg-white/10 transition">
+                        <div class="w-14 h-14 rounded-2xl bg-orange/20 flex items-center justify-center mb-6">
+                            <i class="fas fa-film text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold mb-4">The Creative Edge</h3>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            We understand the modern traveler. Through our specialized Creative Studio, we ensure your
+                            memories are captured with Hollywood‑grade cinema gear and drones, making your African love
+                            story immortal.
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20 fade-up">
-                <h2 class="text-4xl font-bold text-[#003C63] mb-4">What We Do</h2>
-                <p class="text-gray-500 max-w-2xl mx-auto">Every experience is carefully planned to match your interests, time, and travel style.</p>
-            </div>
+        <!-- ========================================= -->
+        <!-- MEET THE TEAM (large images, eye‑catching)  -->
+        <!-- ========================================= -->
+        <section class="relative w-screen left-1/2 -translate-x-1/2 py-20 lg:py-28 bg-white overflow-hidden">
+            <div class="absolute top-0 right-0 w-80 h-80 bg-orange/5 rounded-full blur-7xl -mr-16 -mt-16"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-navy/5 rounded-full blur-7xl -ml-16 -mb-16"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-flex items-center gap-2 text-orange font-semibold tracking-widest text-xs uppercase bg-orange/10 px-4 py-1.5 rounded-full mb-6">
+                        <i class="fas fa-users"></i> Meet the Team
+                    </span>
+                    <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
+                        The <span class="italic text-orange">Visionaries</span> Behind Morix Beyond
+                    </h2>
+                    <p class="text-muted text-lg max-w-3xl mx-auto">
+                        A powerhouse team of passionate explorers, luxury hospitality experts, and cinematic
+                        storytellers. We live here, we work here, and we explore here.
+                    </p>
+                </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-8 rounded-3xl border border-gray-100 hover:border-[#F27D57] transition-colors group fade-up">
-                    <i class="fi fi-rr-umbrella-beach text-3xl text-[#F27D57] mb-6 block"></i>
-                    <h4 class="text-xl font-bold mb-3">Island Experiences</h4>
-                    <p class="text-gray-500 text-sm">Beach and island experiences curated across the Zanzibar archipelago.</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-gray-100 hover:border-[#F27D57] transition-colors group fade-up">
-                    <i class="fi fi-rr-paw text-3xl text-[#F27D57] mb-6 block"></i>
-                    <h4 class="text-xl font-bold mb-3">Wildlife Safaris</h4>
-                    <p class="text-gray-500 text-sm">Designing and operating iconic wildlife safaris across mainland Tanzania.</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-gray-100 hover:border-[#F27D57] transition-colors group fade-up">
-                    <i class="fi fi-rr-heart text-3xl text-[#F27D57] mb-6 block"></i>
-                    <h4 class="text-xl font-bold mb-3">Romantic Packages</h4>
-                    <p class="text-gray-500 text-sm">Honeymoon and romantic setups designed for couples seeking the extraordinary.</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-gray-100 hover:border-[#F27D57] transition-colors group fade-up">
-                    <i class="fi fi-rr-video-camera text-3xl text-[#F27D57] mb-6 block"></i>
-                    <h4 class="text-xl font-bold mb-3">Professional Media</h4>
-                    <p class="text-gray-500 text-sm">High-end photo and video services to capture your journey in cinematic quality.</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-gray-100 hover:border-[#F27D57] transition-colors group fade-up">
-                    <i class="fi fi-rr-settings-sliders text-3xl text-[#F27D57] mb-6 block"></i>
-                    <h4 class="text-xl font-bold mb-3">Custom Itineraries</h4>
-                    <p class="text-gray-500 text-sm">Tailor-made planning for individuals and groups to match your specific style.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="py-24 bg-[#F8FAFC]">
-        <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-24">
-                
-                <div class="fade-up">
-                    <h3 class="text-3xl font-bold text-[#003C63] mb-12">Our Core Values</h3>
-                    <div class="space-y-8">
-                        <div class="flex gap-6">
-                            <i class="fi fi-rr-leaf text-3xl text-[#F27D57]"></i>
-                            <div>
-                                <h4 class="font-bold text-lg">Authentic local experiences</h4>
-                                <p class="text-gray-500 text-sm">We provide meaningful connections to local culture and people.</p>
+                <!-- 8‑member grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+                    <!-- Staff 1 -->
+                    <div
+                        class="bg-cream rounded-2xl shadow-card border border-border flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="relative w-full aspect-[3/4] rounded-t-2xl overflow-hidden">
+                            <img src="staff/ceo.jpeg" alt="Morix |Modest"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             </div>
                         </div>
-                        <div class="flex gap-6">
-                            <i class="fi fi-rr-handshake text-3xl text-[#F27D57]"></i>
-                            <div>
-                                <h4 class="font-bold text-lg">Integrity and transparency</h4>
-                                <p class="text-gray-500 text-sm"> We emphasize clear communication to build trust and ensure reliability.</p>
+                        <div class="p-4 w-full">
+                            <h4 class="font-heading text-lg font-bold text-navy">Morix | Modest</h4>
+                            <p class="text-orange text-sm font-semibold">Founder & CEO</p>
+                            <p class="text-muted text-xs mt-1">Zanzibar native, safari visionary</p>
+                        </div>
+                    </div>
+
+                    <!-- Staff 2 -->
+                    <div
+                        class="bg-cream rounded-2xl shadow-card border border-border flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="relative w-full aspect-[3/4] rounded-t-2xl overflow-hidden">
+                            <img src="staff/ngala.jpeg" alt="ngalla"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             </div>
                         </div>
-                        <div class="flex gap-6">
-                            <i class="fi fi-rr-star text-3xl text-[#F27D57]"></i>
-                            <div>
-                                <h4 class="font-bold text-lg">Quality and professionalism</h4>
-                                <p class="text-gray-500 text-sm">Excellence in service, from guides to equipment.</p>
+                        <div class="p-4 w-full">
+                            <h4 class="font-heading text-lg font-bold text-navy">Ngalla</h4>
+                            <p class="text-orange text-sm font-semibold">Proffesional Driver</p>
+                            <p class="text-muted text-xs mt-1">paragraph</p>
+                        </div>
+                    </div>
+
+                    <!-- Staff 3 -->
+                    <div
+                        class="bg-cream rounded-2xl shadow-card border border-border flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="relative w-full aspect-[3/4] rounded-t-2xl overflow-hidden">
+                            <img src="staff/abdul.jpeg" alt="David Ochieng"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             </div>
                         </div>
-                        <div class="flex gap-6">
-                            <i class="fi fi-rr-camera-movie text-3xl text-[#F27D57]"></i>
-                            <div>
-                                <h4 class="font-bold text-lg">Creativity and innovation</h4>
-                                <p class="text-gray-500 text-sm">Pushing the boundaries of how travel is documented.</p>
+                        <div class="p-4 w-full">
+                            <h4 class="font-heading text-lg font-bold text-navy">Abdul</h4>
+                            <p class="text-orange text-sm font-semibold">Expert Tour Guide</p>
+                            <p class="text-muted text-xs mt-1">paragraph</p>
+                        </div>
+                    </div>
+
+                    <!-- Staff 4 -->
+                    <div
+                        class="bg-cream rounded-2xl shadow-card border border-border flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="relative w-full aspect-[3/4] rounded-t-2xl overflow-hidden">
+                            <img src="staff/majalo.jpeg" alt="majalo"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             </div>
                         </div>
-                        <div class="flex gap-6">
-                            <i class="fi fi-rr-earth-americas text-3xl text-[#F27D57]"></i>
-                            <div>
-                                <h4 class="font-bold text-lg">Responsible tourism</h4>
-                                <p class="text-gray-500 text-sm">Respecting the environment and supporting local communities.</p>
+                        <div class="p-4 w-full">
+                            <h4 class="font-heading text-lg font-bold text-navy">Majalo</h4>
+                            <p class="text-orange text-sm font-semibold">Photographer</p>
+                            <p class="text-muted text-xs mt-1">paragraph</p>
+                        </div>
+                    </div>
+
+                    <!-- Staff 5 -->
+                    <div
+                        class="bg-cream rounded-2xl shadow-card border border-border flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="relative w-full aspect-[3/4] rounded-t-2xl overflow-hidden">
+                            <img src="staff/deking.jpeg" alt="deking"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             </div>
+                        </div>
+                        <div class="p-4 w-full">
+                            <h4 class="font-heading text-lg font-bold text-navy">De King</h4>
+                            <p class="text-orange text-sm font-semibold">Drone Pilot & Visual Editor</p>
+                            <p class="text-muted text-xs mt-1">Paragraph</p>
+                        </div>
+                    </div>
+
+                    <!-- Staff 6 -->
+                    <div
+                        class="bg-cream rounded-2xl shadow-card border border-border flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="relative w-full aspect-[3/4] rounded-t-2xl overflow-hidden">
+                            <img src="staff/victoor.png" alt="victor"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 w-full">
+                            <h4 class="font-heading text-lg font-bold text-navy">Victor Lekule</h4>
+                            <p class="text-orange text-sm font-semibold">IT </p>
+                            <p class="text-muted text-xs mt-1">paragraph</p>
+                        </div>
+                    </div>
+
+                    <!-- Staff 7 -->
+                    <div
+                        class="bg-cream rounded-2xl shadow-card border border-border flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="relative w-full aspect-[3/4] rounded-t-2xl overflow-hidden">
+                            <img src="staff/latifa.jpeg" alt="latifa"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 w-full">
+                            <h4 class="font-heading text-lg font-bold text-navy">Latifa</h4>
+                            <p class="text-orange text-sm font-semibold">Expert Tour Guide</p>
+                            <p class="text-muted text-xs mt-1">paragraph</p>
+                        </div>
+                    </div>
+
+                    <!-- Staff 8 -->
+                    <div
+                        class="bg-cream rounded-2xl shadow-card border border-border flex flex-col items-center text-center hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="relative w-full aspect-[3/4] rounded-t-2xl overflow-hidden">
+                            <img src="staff/bernard.jpeg" alt="bernard"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="p-4 w-full">
+                            <h4 class="font-heading text-lg font-bold text-navy">Bernard</h4>
+                            <p class="text-orange text-sm font-semibold">Graphics Designer</p>
+                            <p class="text-muted text-xs mt-1">paragraph</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="fade-up">
-                    <h3 class="text-3xl font-bold text-[#003C63] mb-12">Who We Work With</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
-                            <i class="fi fi-rr-earth-americas text-[#F27D57]"></i>
-                            <span class="font-medium text-sm">International Travelers</span>
-                        </div>
-                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
-                            <i class="fi fi-rr-heart text-[#F27D57]"></i>
-                            <span class="font-medium text-sm">Couples & Honeymooners</span>
-                        </div>
-                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
-                            <i class="fi fi-rr-users text-[#F27D57]"></i>
-                            <span class="font-medium text-sm">Families & Groups</span>
-                        </div>
-                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
-                            <i class="fi fi-rr-building text-[#F27D57]"></i>
-                            <span class="font-medium text-sm">Hotels & Resorts</span>
-                        </div>
-                        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3 col-span-2">
-                            <i class="fi fi-rr-camera-movie text-[#F27D57]"></i>
-                            <span class="font-medium text-sm">Tourism Brands & Content Creators</span>
-                        </div>
-                    </div>
 
-                    <div class="mt-16 p-10 rounded-[2.5rem] bg-[#003C63] text-white">
-                        <h4 class="text-xl font-bold mb-6">Our Commitment</h4>
-                        <ul class="space-y-4">
-                            <li class="flex items-center gap-3"><i class="fi fi-rr-check-circle text-[#F27D57]"></i> Personalized service</li>
-                            <li class="flex items-center gap-3"><i class="fi fi-rr-check-circle text-[#F27D57]"></i> Professional guides</li>
-                            <li class="flex items-center gap-3"><i class="fi fi-rr-check-circle text-[#F27D57]"></i> Safe and comfortable travel</li>
-                            <li class="flex items-center gap-3"><i class="fi fi-rr-check-circle text-[#F27D57]"></i> Ethical tourism practices</li>
-                            <li class="flex items-center gap-3"><i class="fi fi-rr-check-circle text-[#F27D57]"></i> Outstanding customer care</li>
-                        </ul>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- THE MORIX BEYOND PROMISE                   -->
+        <!-- ========================================= -->
+        <section class="relative w-screen left-1/2 -translate-x-1/2 py-20 lg:py-28 bg-cream overflow-hidden">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-orange/5 rounded-full blur-7xl -ml-20 -mt-20"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-flex items-center gap-2 text-orange font-semibold tracking-widest text-xs uppercase bg-orange/10 px-4 py-1.5 rounded-full mb-6">
+                        <i class="fas fa-clipboard-list"></i> The Promise
+                    </span>
+                    <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-navy leading-tight">
+                        The Morix Beyond <span class="italic text-orange">Promise</span>
+                    </h2>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Promise 1 -->
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-card border-t-4 border-orange flex flex-col items-start">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-search-dollar text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">100% Transparency</h3>
+                        <p class="text-muted text-sm">No hidden booking fees, no shock taxes upon arrival. What we quote
+                            is exactly what you get.</p>
+                    </div>
+                    <!-- Promise 2 -->
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-card border-t-4 border-orange flex flex-col items-start">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-car text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">VIP Ground Logistics</h3>
+                        <p class="text-muted text-sm">From luxury airport transfers to remote bush airstrip meetups, our
+                            network is seamless and private.</p>
+                    </div>
+                    <!-- Promise 3 -->
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-card border-t-4 border-orange flex flex-col items-start">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-shield-alt text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">Safety & Compliance</h3>
+                        <p class="text-muted text-sm">Fully licensed by the government, backed by AMREF Flying Doctors
+                            emergency air‑evacuation.</p>
+                    </div>
+                    <!-- Promise 4 -->
+                    <div
+                        class="bg-white rounded-2xl p-6 shadow-card border-t-4 border-orange flex flex-col items-start">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-paint-brush text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">Tailor‑Made Freedom</h3>
+                        <p class="text-muted text-sm">Every itinerary is a blank canvas. We customize your beach and
+                            bush days to match your exact lifestyle.</p>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-
-
-
-<section class="py-20 bg-white" id="team-section">
-    <div class="container mx-auto px-6 md:px-12">
-        
-        <div class="text-center mb-16 service-pop-up">
-            <span class="text-[#F28E64] font-bold tracking-widest uppercase text-sm">Meet The Team</span>
-            <h2 class="text-2xl md:text-3xl font-serif text-[#0E415E] font-bold mt-2">Meet the Team Behind Your Zanzibar Adventure</h2>
-            <p class="text-1xl md:text-1.5xl font-light text-gray-500 mt-2">
-                Passionate locals, expert guides, and storytellers—at Morix Beyond Zanzibar, we turn every trip into a seamless, safe, and unforgettable adventure.
-            </p>
-        </div>
-
-        <div id="team-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
-
-    </div>
-</section>
-
-    <section class="py-24 text-center">
-        <div class="container mx-auto px-6 max-w-3xl fade-up">
-            <div class="text-[#F27D57] text-6xl font-serif mb-8 opacity-20">“</div>
-            <h3 class="text-3xl italic font-light leading-relaxed mb-8">
-                “Morix Beyond Zanzibar made our trip smooth, exciting, and beautifully captured. We felt truly cared for.”
-            </h3>
-            <div class="flex justify-center gap-1 text-[#F27D57] mb-4">
-                <i class="fi fi-sr-star text-sm"></i><i class="fi fi-sr-star text-sm"></i><i class="fi fi-sr-star text-sm"></i><i class="fi fi-sr-star text-sm"></i><i class="fi fi-sr-star text-sm"></i>
+        <!-- ========================================= -->
+        <!-- FINAL CTA                                   -->
+        <!-- ========================================= -->
+        <section
+            class="relative w-screen left-1/2 -translate-x-1/2 py-20 bg-navy text-white text-center overflow-hidden mb-16">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-7xl -mr-20 -mt-20"></div>
+            <div class="relative z-10 max-w-4xl mx-auto px-6">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-6">Ready to Experience the <span
+                        class="italic text-orange">Beyond</span>?</h2>
+                <p class="text-white/70 text-lg mb-10 max-w-2xl mx-auto">Let us craft your tailor‑made Tanzanian
+                    adventure — from the white sands of Zanzibar to the endless plains of the Serengeti.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#"
+                        class="inline-flex items-center gap-2 bg-orange text-white font-bold px-8 py-4 rounded-full shadow-orange-btn hover:bg-orange-dark transition text-lg">
+                        <i class="far fa-calendar-check"></i> Plan My Journey
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-navy transition text-lg">
+                        <i class="fab fa-whatsapp"></i> Chat Now
+                    </a>
+                </div>
             </div>
-            <p class="font-bold uppercase tracking-widest text-xs opacity-50">Happy Traveler</p>
-        </div>
-    </section>
+        </section>
+
+    </div><!-- end aboutView -->
 
 
-
-    
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="animations.js"></script>
+    <!-- Your scripts (header, etc.) -->
     <script src="script.js"></script>
 </body>
+
 </html>

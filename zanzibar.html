@@ -1,619 +1,1316 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morix Beyond | Beyond Zanzibar Experiences</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-   
-   
-    
-    
-    
-    <link rel="stylesheet" href="styles.css">
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+
+
+
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body class="bg-[#F8FAFC] font-sans text-slate-800 antialiased selection:bg-[#F27D57] selection:text-white">
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-[#F27D57] selection:text-white">
 
-    <header id="main-header" ></header>
-    
-
+    <header id="main-header"></header>
 
 
-<section class="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#003C63]">
-        <div class="absolute inset-0 z-0 parallax-wrapper">
-            <img src="image/header.jpg" 
-                 alt="Zanzibar Ocean" 
-                 class="w-full h-full object-cover parallax-img opacity-60">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/30 to-transparent"></div>
-        </div>
+    <!-- ========== HOME PAGE ========== -->
+    <div id="home-page">
+        <!-- Hero -->
+        <section id="hero" class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+            <!-- Background Image (covers entire section, no gaps) -->
+            <img src="https://images.unsplash.com/photo-1586861632261-62a5b8b3a2f8?q=80&w=2070&auto=format&fit=crop"
+                alt="Zanzibar Ocean" class="absolute inset-0 w-full h-full object-cover object-center">
 
-        <div class="container mx-auto px-6 relative z-10 text-center text-white">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-8 fade-up">
-                <i class="fi fi-rr-gem text-[#F27D57]"></i>
-                <span class="text-xs font-bold tracking-[0.2em] uppercase text-gray-200">Morix Curated Collection</span>
+            <!-- Overlay gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/90 via-[#003C63]/40 to-transparent"></div>
+
+            <!-- Content -->
+            <div class="container mx-auto px-4 sm:px-6 relative z-10 text-center text-white py-20 md:py-0">
+                <!-- Badge -->
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-6 sm:mb-8">
+                    <i class="fas fa-gem text-[#F27D57] text-sm sm:text-base"></i>
+                    <span class="text-xs font-bold tracking-[0.2em] uppercase text-gray-200">
+                        Morix Curated Collection
+                    </span>
+                </div>
+
+                <!-- Heading -->
+                <h1
+                    class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 leading-tight font-heading text-white">
+                    The Spice Island
+                </h1>
+
+                <!-- Paragraph -->
+                <p
+                    class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-2xl md:max-w-4xl mx-auto font-light leading-relaxed mb-8 md:mb-10 px-2">
+                    Exotic Culture, Turquoise Waters &amp; Unforgettable Island Adventures. Dive deep into the heart of
+                    Zanzibar—Stone Town alleys, sea turtles, and sunset dhows.
+                </p>
+
+                <!-- CTA Buttons – always in one row, never wrap or cut -->
+                <div class="flex flex-row flex-nowrap justify-center gap-2 sm:gap-4 mb-10 sm:mb-12">
+                    <a href="#combos-section"
+                        class="bg-[#F27D57] text-white px-3 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-xs sm:text-sm md:text-base hover:bg-orange-500 transition shadow-xl shadow-orange-500/30 inline-flex items-center justify-center gap-1 sm:gap-2 whitespace-nowrap">
+                        <i class="fas fa-compass text-xs sm:text-sm"></i> Explore All Tours
+                    </a>
+                    <a href="#"
+                        class="bg-white/10 backdrop-blur border border-white/30 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-full font-bold text-xs sm:text-sm md:text-base hover:bg-white/20 transition inline-flex items-center justify-center gap-1 sm:gap-2 whitespace-nowrap">
+                        <i class="fab fa-whatsapp text-xs sm:text-sm"></i> Chat on WhatsApp
+                    </a>
+                </div>
+
+                <!-- Trust points -->
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-white/90 text-xs sm:text-sm">
+                    <span class="flex items-center gap-2"><i class="fas fa-car text-[#F27D57]"></i> 100% Private
+                        Logistics</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-leaf text-[#F27D57]"></i> Authentic Local
+                        Guides</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-ship text-[#F27D57]"></i> Bespoke Ocean
+                        Safaris</span>
+                </div>
             </div>
-            
-            <h1 class="text-5xl md:text-8xl font-bold mb-8 leading-tight fade-up">
-                Zanzibar <span class="italic font-serif text-[#F27D57]">Experiences</span>
-            </h1>
-            
-            <p class="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed fade-up mb-12">
-               Discover the best of Zanzibar through curated <strong> Kendwa Beach experiences, island cruises (Safari Blue), Navigator, Botanist and Mariner experiences, romantic couple experiences, and seamless transfer services.</strong>
-            </p>
-            
-           
-        </div>
-    </section>
+        </section>
+
+        <!-- Why Book Section -->
+        <section id="why-book" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-[#003C63] mb-4 font-heading">
+                        Why Book Your Zanzibar Experiences with Morix Beyond?
+                    </h2>
+                    <p class="text-base md:text-lg text-gray-500 max-w-3xl mx-auto">
+                        The Beyond Excellence Standard – seamless, high‑end, and never rushed. We avoid crowds, provide
+                        top‑tier private transport, and partner only with ethical local operators.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-gray-50 p-6 md:p-8 rounded-3xl hover:shadow-xl transition">
+                        <i class="fas fa-user-shield text-3xl md:text-4xl text-[#F27D57] mb-4 md:mb-5"></i>
+                        <h3 class="text-lg md:text-xl font-bold mb-2">Private & Tailored</h3>
+                        <p class="text-gray-600 text-sm md:text-base">No crowded public buses. Your group gets a private
+                            vehicle and dedicated guide.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-gray-50 p-6 md:p-8 rounded-3xl hover:shadow-xl transition">
+                        <i class="fas fa-receipt text-3xl md:text-4xl text-[#F27D57] mb-4 md:mb-5"></i>
+                        <h3 class="text-lg md:text-xl font-bold mb-2">Zero Hidden Fees</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Boat fees, conservation entries, and fresh
+                            tropical fruits are always included.</p>
+                    </div>
+                    <!-- Card 3 (spans full width on mobile if desired, but 2-col grid keeps it neat) -->
+                    <div
+                        class="bg-gray-50 p-6 md:p-8 rounded-3xl hover:shadow-xl transition md:col-span-1 col-span-2 md:col-auto">
+                        <i class="fas fa-clock text-3xl md:text-4xl text-[#F27D57] mb-4 md:mb-5"></i>
+                        <h3 class="text-lg md:text-xl font-bold mb-2">Perfect Timing</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Itineraries designed so you arrive before midday
+                            heat and big tourist crowds.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Combos Section -->
+        <section id="combos-section" class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-[#003C63] font-heading">
+                        <i class="fa-solid fa-bolt text-[#F27D57] mr-3"></i>
+                        The 4 Ultimate Combos
+                    </h2>
+                    <p class="text-gray-500 mt-3">Click any combo to see full details, itinerary, and booking options.
+                    </p>
+                </div>
+                <div id="combo-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        <!-- Why Visit Zanzibar -->
+        <section id="why-visit" class="py-24 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-100 mb-6">
+                        <i class="fas fa-heart text-[#F27D57]"></i>
+                        <span class="text-sm font-bold text-[#003C63] tracking-wide">The Island Paradise</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-bold text-[#003C63] mb-6 font-heading">Why You Should Visit
+                        Zanzibar</h2>
+                    <p class="text-base md:text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                        Zanzibar is more than just a tropical island—it's a sensory journey through centuries of Swahili
+                        culture, spice-scented breezes, and some of the most pristine turquoise waters on Earth. Here's
+                        why this Indian Ocean gem deserves a spot on your bucket list.
+                    </p>
+                </div>
+
+                <!-- Desktop grid layout (hidden on mobile) -->
+                <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-lg transition group border border-gray-100">
+                        <div
+                            class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-[#F27D57]/20 transition">
+                            <i class="fas fa-water text-2xl text-[#F27D57]"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Turquoise Waters & Pristine
+                            Beaches</h3>
+                        <p class="text-gray-600 leading-relaxed">Powdery white sand, crystal‑clear Indian Ocean waters,
+                            and coral reefs teeming with marine life. Zanzibar's beaches—from Nungwi to Kendwa—rank
+                            among the world's most beautiful.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-lg transition group border border-gray-100">
+                        <div
+                            class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-[#F27D57]/20 transition">
+                            <i class="fas fa-landmark text-2xl text-[#F27D57]"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Stone Town – A UNESCO Heritage
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">Wander through narrow labyrinthine alleys, marvel at
+                            intricately carved Zanzibari doors, and explore centuries of Swahili, Arab, Indian, and
+                            European history in this living museum.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-lg transition group border border-gray-100">
+                        <div
+                            class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-[#F27D57]/20 transition">
+                            <i class="fas fa-leaf text-2xl text-[#F27D57]"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">The Spice Island Experience</h3>
+                        <p class="text-gray-600 leading-relaxed">Taste fresh vanilla, cinnamon, cloves, and nutmeg
+                            straight from the source. Zanzibar's spice farms offer an aromatic, hands‑on journey into
+                            the island's fragrant heritage.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-lg transition group border border-gray-100">
+                        <div
+                            class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-[#F27D57]/20 transition">
+                            <i class="fas fa-fish text-2xl text-[#F27D57]"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Extraordinary Marine Life</h3>
+                        <p class="text-gray-600 leading-relaxed">Swim alongside wild dolphins near Mnemba Atoll, snorkel
+                            vibrant coral gardens, and encounter majestic sea turtles in their natural sanctuaries and
+                            hidden cave pools.</p>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-lg transition group border border-gray-100">
+                        <div
+                            class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-[#F27D57]/20 transition">
+                            <i class="fas fa-ship text-2xl text-[#F27D57]"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Romantic Sunset Dhows</h3>
+                        <p class="text-gray-600 leading-relaxed">Sail on a traditional wooden dhow as the sun melts into
+                            the Indian Ocean. With live Swahili music and golden horizons, it's one of Africa's most
+                            romantic experiences.</p>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-lg transition group border border-gray-100">
+                        <div
+                            class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-[#F27D57]/20 transition">
+                            <i class="fas fa-utensils text-2xl text-[#F27D57]"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Rich Swahili Cuisine & Culture
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">From fragrant biryani and fresh seafood BBQs on
+                            sandbanks to tropical fruits picked at sunrise—Zanzibar's food scene is a delicious fusion
+                            of African, Arab, and Indian flavors.</p>
+                    </div>
+                </div>
+
+                <!-- Mobile carousel container (visible only on mobile) -->
+                <div class="relative md:hidden">
+                    <!-- Swipe gesture hint -->
+                    <div id="swipe-hint"
+                        class="absolute top-1/2 right-4 z-10 flex items-center gap-1 text-[#F27D57] bg-white/80 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg transition-opacity duration-500">
+                        <span class="text-xs font-semibold">Swipe</span>
+                        <i class="fas fa-hand-pointer text-lg animate-pulse"></i>
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </div>
+
+                    <!-- Scrollable card wrapper -->
+                    <div id="card-scroll-container"
+                        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 pb-4 -mx-4 px-4 hide-scrollbar"
+                        style="scrollbar-width: none; -ms-overflow-style: none;">
+                        <!-- Card 1 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-slate-50 p-6 rounded-3xl border border-gray-100">
+                            <div class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5">
+                                <i class="fas fa-water text-2xl text-[#F27D57]"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Turquoise Waters & Pristine
+                                Beaches</h3>
+                            <p class="text-gray-600 leading-relaxed">Powdery white sand, crystal‑clear Indian Ocean
+                                waters, and coral reefs teeming with marine life. Zanzibar's beaches—from Nungwi to
+                                Kendwa—rank among the world's most beautiful.</p>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-slate-50 p-6 rounded-3xl border border-gray-100">
+                            <div class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5">
+                                <i class="fas fa-landmark text-2xl text-[#F27D57]"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Stone Town – A UNESCO
+                                Heritage</h3>
+                            <p class="text-gray-600 leading-relaxed">Wander through narrow labyrinthine alleys, marvel
+                                at intricately carved Zanzibari doors, and explore centuries of Swahili, Arab, Indian,
+                                and European history in this living museum.</p>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-slate-50 p-6 rounded-3xl border border-gray-100">
+                            <div class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5">
+                                <i class="fas fa-leaf text-2xl text-[#F27D57]"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">The Spice Island Experience
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed">Taste fresh vanilla, cinnamon, cloves, and nutmeg
+                                straight from the source. Zanzibar's spice farms offer an aromatic, hands‑on journey
+                                into the island's fragrant heritage.</p>
+                        </div>
+                        <!-- Card 4 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-slate-50 p-6 rounded-3xl border border-gray-100">
+                            <div class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5">
+                                <i class="fas fa-fish text-2xl text-[#F27D57]"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Extraordinary Marine Life
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed">Swim alongside wild dolphins near Mnemba Atoll,
+                                snorkel vibrant coral gardens, and encounter majestic sea turtles in their natural
+                                sanctuaries and hidden cave pools.</p>
+                        </div>
+                        <!-- Card 5 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-slate-50 p-6 rounded-3xl border border-gray-100">
+                            <div class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5">
+                                <i class="fas fa-ship text-2xl text-[#F27D57]"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Romantic Sunset Dhows</h3>
+                            <p class="text-gray-600 leading-relaxed">Sail on a traditional wooden dhow as the sun melts
+                                into the Indian Ocean. With live Swahili music and golden horizons, it's one of Africa's
+                                most romantic experiences.</p>
+                        </div>
+                        <!-- Card 6 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-slate-50 p-6 rounded-3xl border border-gray-100">
+                            <div class="w-14 h-14 bg-[#F27D57]/10 rounded-2xl flex items-center justify-center mb-5">
+                                <i class="fas fa-utensils text-2xl text-[#F27D57]"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#003C63] mb-3 font-heading">Rich Swahili Cuisine &
+                                Culture</h3>
+                            <p class="text-gray-600 leading-relaxed">From fragrant biryani and fresh seafood BBQs on
+                                sandbanks to tropical fruits picked at sunrise—Zanzibar's food scene is a delicious
+                                fusion of African, Arab, and Indian flavors.</p>
+                        </div>
+                    </div>
+
+                    <!-- Dot indicators -->
+                    <div class="flex justify-center gap-2 mt-4" id="dot-container">
+                        <span class="dot w-3 h-3 rounded-full bg-[#F27D57] transition-all duration-300"></span>
+                        <span class="dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"></span>
+                        <span class="dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"></span>
+                        <span class="dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"></span>
+                        <span class="dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"></span>
+                        <span class="dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hide scrollbar styles -->
+            <style>
+                .hide-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .hide-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            </style>
+
+            <!-- JavaScript: auto‑scroll, dots, swipe hint -->
+            <script>
+                (function () {
+                    const container = document.getElementById('card-scroll-container');
+                    const dots = document.querySelectorAll('#dot-container .dot');
+                    const swipeHint = document.getElementById('swipe-hint');
+                    let hintHidden = false;
+                    let autoScrollInterval = null;
+                    let currentAutoIndex = 0;   // track index for auto scroll
+                    const totalCards = 6;
+                    const cardGap = 16;        // gap-4 = 16px
+
+                    if (!container) return;
+
+                    // Calculate the exact scroll position for a card index
+                    function getScrollPosForIndex(index) {
+                        const card = container.querySelectorAll('.snap-center')[index];
+                        if (!card) return 0;
+                        const containerWidth = container.clientWidth;
+                        const cardWidth = card.offsetWidth;
+                        // Center the card: scrollLeft = card.offsetLeft - (containerWidth - cardWidth)/2
+                        return card.offsetLeft - (containerWidth - cardWidth) / 2;
+                    }
+
+                    // Smoothly scroll to a card index
+                    function scrollToCard(index) {
+                        container.scrollTo({
+                            left: getScrollPosForIndex(index),
+                            behavior: 'smooth'
+                        });
+                    }
+
+                    // Update active dot based on current scroll position
+                    function updateActiveDot() {
+                        const scrollLeft = container.scrollLeft;
+                        const cardWidth = container.querySelector('.snap-center').offsetWidth + cardGap;
+                        const activeIndex = Math.round(scrollLeft / cardWidth);
+                        dots.forEach((dot, idx) => {
+                            dot.classList.toggle('bg-[#F27D57]', idx === activeIndex);
+                            dot.classList.toggle('bg-gray-300', idx !== activeIndex);
+                        });
+                        // Synchronize auto index with actual position
+                        currentAutoIndex = activeIndex;
+                        // Hide swipe hint
+                        if (!hintHidden && scrollLeft > 10) {
+                            swipeHint.style.opacity = '0';
+                            setTimeout(() => { if (swipeHint) swipeHint.style.display = 'none'; }, 500);
+                            hintHidden = true;
+                        }
+                    }
+
+                    // Start auto‑scroll interval
+                    function startAutoScroll() {
+                        stopAutoScroll(); // clear any existing interval
+                        autoScrollInterval = setInterval(() => {
+                            // Move to next card, loop back to start after last
+                            currentAutoIndex = (currentAutoIndex + 1) % totalCards;
+                            scrollToCard(currentAutoIndex);
+                        }, 3500); // 3.5 seconds per card
+                    }
+
+                    function stopAutoScroll() {
+                        if (autoScrollInterval) {
+                            clearInterval(autoScrollInterval);
+                            autoScrollInterval = null;
+                        }
+                    }
+
+                    // When user touches/scrolls manually, pause auto‑scroll briefly, then resume
+                    let pauseTimeout;
+                    function pauseAutoScroll() {
+                        stopAutoScroll();
+                        clearTimeout(pauseTimeout);
+                        pauseTimeout = setTimeout(() => {
+                            startAutoScroll();
+                        }, 4000); // resume after 4s of inactivity
+                    }
+
+                    container.addEventListener('scroll', () => {
+                        updateActiveDot();
+                        pauseAutoScroll();
+                    });
+
+                    // Also pause on touch start
+                    container.addEventListener('touchstart', () => {
+                        pauseAutoScroll();
+                    });
+
+                    // Initial active dot & start auto
+                    window.addEventListener('load', () => {
+                        updateActiveDot();
+                        startAutoScroll();
+                    });
+
+                    // Hide swipe hint after 4s anyway
+                    setTimeout(() => {
+                        if (!hintHidden && swipeHint) {
+                            swipeHint.style.opacity = '0';
+                            setTimeout(() => { if (swipeHint) swipeHint.style.display = 'none'; }, 500);
+                            hintHidden = true;
+                        }
+                    }, 4000);
+                })();
+            </script>
+        </section>
+
+        <!-- Best Time to Visit Zanzibar -->
+        <section id="best-time" class="py-24 bg-slate-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-100 mb-6">
+                        <i class="fas fa-sun text-[#F27D57]"></i>
+                        <span class="text-sm font-bold text-[#003C63] tracking-wide">Plan Your Journey</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-bold text-[#003C63] mb-6 font-heading">Best Time to Visit
+                        Zanzibar</h2>
+                    <p class="text-base md:text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                        Zanzibar enjoys a warm tropical climate year‑round, but each season offers a distinct
+                        experience. Here's a breakdown to help you choose the perfect time for your adventure.
+                    </p>
+                </div>
+
+                <!-- Desktop grid (unchanged) -->
+                <div class="hidden md:grid md:grid-cols-2 gap-8">
+                    <!-- Card 1: June – October -->
+                    <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 hover:shadow-lg transition">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center"><i
+                                    class="fas fa-cloud-sun text-2xl text-[#003C63]"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#003C63] font-heading">June – October</h3>
+                                <span class="text-sm font-semibold text-[#F27D57]">Cool Dry Season ✦ Peak Season</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed"><strong>What to expect:</strong> Comfortable
+                            temperatures (22–28°C), low humidity, and minimal rainfall. This is Zanzibar's most popular
+                            season—the skies are brilliantly blue, the ocean is calm and crystal‑clear.</p>
+                        <div class="space-y-2 text-sm text-gray-700">
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-check-circle text-[#003C63] mt-1"></i><span><strong>Best for:</strong>
+                                    Snorkeling, diving, beach relaxation, Stone Town tours, and sunset cruises.</span>
+                            </div>
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-check-circle text-[#003C63] mt-1"></i><span><strong>Wildlife:</strong>
+                                    Excellent visibility for dolphin sightings and snorkeling at Mnemba Atoll.</span>
+                            </div>
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-exclamation-circle text-[#003C63] mt-1"></i><span><strong>Note:</strong>
+                                    Book early—this is the busiest period, and premium tours fill up fast.</span></div>
+                        </div>
+                    </div>
+                    <!-- Card 2: December – February -->
+                    <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 hover:shadow-lg transition">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center"><i
+                                    class="fas fa-sun text-2xl text-[#F27D57]"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#003C63] font-heading">December – February</h3>
+                                <span class="text-sm font-semibold text-[#F27D57]">Hot Dry Season ✦ Festive Peak</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed"><strong>What to expect:</strong> Warm to hot
+                            temperatures (25–33°C) with plenty of sunshine. The festive season—Zanzibar buzzes with
+                            energy, beaches are vibrant.</p>
+                        <div class="space-y-2 text-sm text-gray-700">
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-check-circle text-[#F27D57] mt-1"></i><span><strong>Best for:</strong>
+                                    Beach holidays, New Year celebrations, water sports, and sandbank picnics.</span>
+                            </div>
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-check-circle text-[#F27D57] mt-1"></i><span><strong>Marine
+                                        life:</strong> Sea turtles are active, and warm waters attract diverse reef
+                                    fish.</span></div>
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-exclamation-circle text-[#F27D57] mt-1"></i><span><strong>Note:</strong>
+                                    Higher prices and larger crowds around Christmas and New Year.</span></div>
+                        </div>
+                    </div>
+                    <!-- Card 3: March – May -->
+                    <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 hover:shadow-lg transition">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center"><i
+                                    class="fas fa-cloud-rain text-2xl text-[#F27D57]"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#003C63] font-heading">March – May</h3>
+                                <span class="text-sm font-semibold text-[#F27D57]">Long Rain Season ✦ Low Season</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed"><strong>What to expect:</strong> Main rainy
+                            period, higher humidity, frequent tropical showers. The island turns lush and emerald.</p>
+                        <div class="space-y-2 text-sm text-gray-700">
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-check-circle text-[#F27D57] mt-1"></i><span><strong>Best for:</strong>
+                                    Budget travelers, photographers, spice tours (farms at their most fragrant),
+                                    enjoying Zanzibar without crowds.</span></div>
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-check-circle text-[#F27D57] mt-1"></i><span><strong>Spice
+                                        farms:</strong> Rains bring out the richest aromas—ultimate time for spice
+                                    tours.</span></div>
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-exclamation-circle text-[#F27D57] mt-1"></i><span><strong>Note:</strong>
+                                    Some marine activities may be limited due to rough seas.</span></div>
+                        </div>
+                    </div>
+                    <!-- Card 4: November -->
+                    <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 hover:shadow-lg transition">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 bg-[#003C63]/10 rounded-2xl flex items-center justify-center"><i
+                                    class="fas fa-cloud-sun-rain text-2xl text-[#003C63]"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-[#003C63] font-heading">November</h3>
+                                <span class="text-sm font-semibold text-[#F27D57]">Short Rain Season ✦ Shoulder
+                                    Season</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed"><strong>What to expect:</strong> Brief showers
+                            with plenty of sunshine in between. Fewer tourists, lush scenery, pleasant conditions.</p>
+                        <div class="space-y-2 text-sm text-gray-700">
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-check-circle text-[#003C63] mt-1"></i><span><strong>Best for:</strong>
+                                    Spice tours, cultural experiences, Jozani Forest walks, more space and lower
+                                    prices.</span></div>
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-check-circle text-[#003C63] mt-1"></i><span><strong>Wildlife:</strong>
+                                    Red Colobus monkeys are active in the fresh greenery.</span></div>
+                            <div class="flex items-start gap-2"><i
+                                    class="fas fa-exclamation-circle text-[#003C63] mt-1"></i><span><strong>Note:</strong>
+                                    Light rain jacket useful; ocean conditions generally still good for
+                                    snorkeling.</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile carousel (visible only on mobile) -->
+                <div class="relative md:hidden">
+                    <!-- Swipe gesture hint -->
+                    <div id="best-time-swipe-hint"
+                        class="absolute top-1/2 right-4 z-10 flex items-center gap-1 text-[#F27D57] bg-white/80 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg transition-opacity duration-500">
+                        <span class="text-xs font-semibold">Swipe</span>
+                        <i class="fas fa-hand-pointer text-lg animate-pulse"></i>
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </div>
+
+                    <!-- Scrollable cards wrapper -->
+                    <div id="best-time-scroll-container"
+                        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 pb-4 -mx-4 px-4 hide-scrollbar"
+                        style="scrollbar-width: none; -ms-overflow-style: none;">
+                        <!-- Card 1 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-white p-6 rounded-3xl shadow-md border border-gray-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
+                                    <i class="fas fa-cloud-sun text-2xl text-[#003C63]"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#003C63] font-heading">June – October</h3>
+                                    <span class="text-sm font-semibold text-[#F27D57]">Cool Dry Season ✦ Peak</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4 leading-relaxed"><strong>What to expect:</strong> Comfortable
+                                temperatures (22–28°C), low humidity, minimal rainfall. Brilliantly blue skies, calm
+                                crystal‑clear ocean.</p>
+                            <div class="space-y-2 text-sm text-gray-700">
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-check-circle text-[#003C63] mt-1"></i><span><strong>Best
+                                            for:</strong> Snorkeling, diving, beach relaxation, Stone Town tours, sunset
+                                        cruises.</span></div>
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-check-circle text-[#003C63] mt-1"></i><span><strong>Wildlife:</strong>
+                                        Excellent visibility for dolphin sightings.</span></div>
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-exclamation-circle text-[#003C63] mt-1"></i><span><strong>Note:</strong>
+                                        Book early—premium tours fill up fast.</span></div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-white p-6 rounded-3xl shadow-md border border-gray-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center shrink-0">
+                                    <i class="fas fa-sun text-2xl text-[#F27D57]"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#003C63] font-heading">December – February</h3>
+                                    <span class="text-sm font-semibold text-[#F27D57]">Hot Dry Season ✦ Festive</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4 leading-relaxed"><strong>What to expect:</strong> Warm to hot
+                                temperatures (25–33°C), plenty of sunshine, beaches vibrant with energy.</p>
+                            <div class="space-y-2 text-sm text-gray-700">
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-check-circle text-[#F27D57] mt-1"></i><span><strong>Best
+                                            for:</strong> Beach holidays, New Year celebrations, water sports, sandbank
+                                        picnics.</span></div>
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-check-circle text-[#F27D57] mt-1"></i><span><strong>Marine
+                                            life:</strong> Sea turtles active, diverse reef fish.</span></div>
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-exclamation-circle text-[#F27D57] mt-1"></i><span><strong>Note:</strong>
+                                        Higher prices around Christmas/New Year.</span></div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-white p-6 rounded-3xl shadow-md border border-gray-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center shrink-0">
+                                    <i class="fas fa-cloud-rain text-2xl text-[#F27D57]"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#003C63] font-heading">March – May</h3>
+                                    <span class="text-sm font-semibold text-[#F27D57]">Long Rain Season ✦ Low</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4 leading-relaxed"><strong>What to expect:</strong> Main rainy
+                                period, higher humidity, tropical showers. Island turns lush and emerald.</p>
+                            <div class="space-y-2 text-sm text-gray-700">
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-check-circle text-[#F27D57] mt-1"></i><span><strong>Best
+                                            for:</strong> Budget travelers, photographers, spice tours, no
+                                        crowds.</span></div>
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-check-circle text-[#F27D57] mt-1"></i><span><strong>Spice
+                                            farms:</strong> Richest aromas—ultimate time.</span></div>
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-exclamation-circle text-[#F27D57] mt-1"></i><span><strong>Note:</strong>
+                                        Some marine activities may be limited.</span></div>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-white p-6 rounded-3xl shadow-md border border-gray-100">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="w-14 h-14 bg-[#003C63]/10 rounded-2xl flex items-center justify-center shrink-0">
+                                    <i class="fas fa-cloud-sun-rain text-2xl text-[#003C63]"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#003C63] font-heading">November</h3>
+                                    <span class="text-sm font-semibold text-[#F27D57]">Short Rain Season ✦
+                                        Shoulder</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4 leading-relaxed"><strong>What to expect:</strong> Brief
+                                showers, plenty of sunshine in between. Fewer tourists, lush scenery, pleasant
+                                conditions.</p>
+                            <div class="space-y-2 text-sm text-gray-700">
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-check-circle text-[#003C63] mt-1"></i><span><strong>Best
+                                            for:</strong> Spice tours, cultural experiences, lower prices.</span></div>
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-check-circle text-[#003C63] mt-1"></i><span><strong>Wildlife:</strong>
+                                        Red Colobus monkeys active.</span></div>
+                                <div class="flex items-start gap-2"><i
+                                        class="fas fa-exclamation-circle text-[#003C63] mt-1"></i><span><strong>Note:</strong>
+                                        Light rain jacket useful; snorkeling still good.</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Numbered dots -->
+                    <div class="flex justify-center gap-2 mt-4" id="best-time-dot-container">
+                        <span
+                            class="dot-number w-8 h-8 rounded-full bg-[#F27D57] text-white flex items-center justify-center text-xs font-bold transition-all duration-300">1</span>
+                        <span
+                            class="dot-number w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-bold transition-all duration-300">2</span>
+                        <span
+                            class="dot-number w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-bold transition-all duration-300">3</span>
+                        <span
+                            class="dot-number w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center text-xs font-bold transition-all duration-300">4</span>
+                    </div>
+                </div>
+
+                <!-- Recommendation bar (unchanged) -->
+                <div
+                    class="mt-12 bg-gradient-to-r from-[#003C63] to-[#002b4a] text-white p-8 md:p-10 rounded-3xl text-center">
+                    <h3 class="text-2xl font-bold mb-3 font-heading">
+                        <i class="fa-solid fa-star text-[#F27D57] mr-3"></i>
+                        Our Recommendation
+                    </h3>
+                    <p class="text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                        For the <strong>best overall experience</strong>, visit between <strong>June and
+                            October</strong> or <strong>December to February</strong>. For <strong>fewer crowds and lush
+                            scenery</strong>, the shoulder months of November and March offer a more intimate Zanzibar.
+                        Whenever you come, Morix Beyond ensures you experience the island at its absolute best.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Hide scrollbar styles -->
+            <style>
+                .hide-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .hide-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            </style>
+
+            <!-- Auto-scroll, dots, gesture hint script for Best Time section -->
+            <script>
+                (function () {
+                    const container = document.getElementById('best-time-scroll-container');
+                    const dots = document.querySelectorAll('#best-time-dot-container .dot-number');
+                    const swipeHint = document.getElementById('best-time-swipe-hint');
+                    let hintHidden = false;
+                    let autoScrollInterval = null;
+                    let currentAutoIndex = 0;
+                    const totalCards = 4;
+
+                    if (!container) return;
+
+                    function getScrollPosForIndex(index) {
+                        const card = container.querySelectorAll('.snap-center')[index];
+                        if (!card) return 0;
+                        const containerWidth = container.clientWidth;
+                        const cardWidth = card.offsetWidth;
+                        return card.offsetLeft - (containerWidth - cardWidth) / 2;
+                    }
+
+                    function scrollToCard(index) {
+                        container.scrollTo({
+                            left: getScrollPosForIndex(index),
+                            behavior: 'smooth'
+                        });
+                    }
+
+                    function updateActiveDot() {
+                        const scrollLeft = container.scrollLeft;
+                        const cardWidth = container.querySelector('.snap-center').offsetWidth + 16; // gap-4
+                        const activeIndex = Math.min(totalCards - 1, Math.max(0, Math.round(scrollLeft / cardWidth)));
+                        dots.forEach((dot, idx) => {
+                            if (idx === activeIndex) {
+                                dot.classList.add('bg-[#F27D57]', 'text-white');
+                                dot.classList.remove('bg-gray-300', 'text-gray-600');
+                            } else {
+                                dot.classList.remove('bg-[#F27D57]', 'text-white');
+                                dot.classList.add('bg-gray-300', 'text-gray-600');
+                            }
+                        });
+                        currentAutoIndex = activeIndex;
+                        if (!hintHidden && scrollLeft > 10) {
+                            swipeHint.style.opacity = '0';
+                            setTimeout(() => { if (swipeHint) swipeHint.style.display = 'none'; }, 500);
+                            hintHidden = true;
+                        }
+                    }
+
+                    function startAutoScroll() {
+                        stopAutoScroll();
+                        autoScrollInterval = setInterval(() => {
+                            currentAutoIndex = (currentAutoIndex + 1) % totalCards;
+                            scrollToCard(currentAutoIndex);
+                        }, 3500);
+                    }
+
+                    function stopAutoScroll() {
+                        if (autoScrollInterval) {
+                            clearInterval(autoScrollInterval);
+                            autoScrollInterval = null;
+                        }
+                    }
+
+                    let pauseTimeout;
+                    function pauseAutoScroll() {
+                        stopAutoScroll();
+                        clearTimeout(pauseTimeout);
+                        pauseTimeout = setTimeout(() => {
+                            startAutoScroll();
+                        }, 4000);
+                    }
+
+                    container.addEventListener('scroll', () => {
+                        updateActiveDot();
+                        pauseAutoScroll();
+                    });
+
+                    container.addEventListener('touchstart', () => {
+                        pauseAutoScroll();
+                    });
+
+                    window.addEventListener('load', () => {
+                        updateActiveDot();
+                        startAutoScroll();
+                    });
+
+                    setTimeout(() => {
+                        if (!hintHidden && swipeHint) {
+                            swipeHint.style.opacity = '0';
+                            setTimeout(() => { if (swipeHint) swipeHint.style.display = 'none'; }, 500);
+                            hintHidden = true;
+                        }
+                    }, 4000);
+                })();
+            </script>
+        </section>
 
 
-
-
-<section class="py-24 bg-white relative font-sans">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col lg:flex-row gap-16 items-center mb-12">
-            <div class="lg:w-1/2 fade-up">
-                <h2 class="text-4xl font-bold text-[#003C63] mb-6 leading-tight">
-                    A world of turquoise waters, rich culture, transfer and <span class="text-[#F27D57] underline decoration-4 decoration-[#F27D57]/20">unforgettable moments.</span>
+        <!-- Transparency Section -->
+        <section id="transparency" class="py-24 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Heading -->
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003C63] text-center mb-12 font-heading">
+                    <i class="fa-solid fa-clipboard-list text-[#F27D57] mr-3"></i>
+                    The Morix Beyond Transparency
                 </h2>
-                <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                    Morix Beyond Zanzibar offers handpicked experiences designed for couples, honeymooners, explorers, and content creators seeking authentic and premium adventures.
-                </p>
-            </div>
-            
-            <div class="lg:w-1/2 w-full fade-up delay-100">
-                <div class="bg-[#F8FAFC] p-8 rounded-3xl border border-gray-100">
-                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Curate Your Trip</h3>
-                    <div class="flex flex-wrap gap-3" id="filter-container">
-                        <button class="filter-btn active px-6 py-3 rounded-full bg-[#003C63] text-white font-bold shadow-lg shadow-[#003C63]/20 transition-all hover:scale-105" data-filter="all">
-                            All Experiences
+
+                <!-- Desktop grid (unchanged) -->
+                <div class="hidden md:grid md:grid-cols-2 gap-12">
+                    <!-- What's Included -->
+                    <div class="bg-[#003C63]/5 p-8 rounded-3xl border border-[#003C63]/20">
+                        <h3 class="text-xl font-bold text-[#003C63] mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-[#F27D57]"></i>
+                            What's Included (All Combos)
+                        </h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Private VIP Land Transfers</li>
+                            <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> All Site Entry & Conservation Fees
+                            </li>
+                            <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Licensed Private Guides</li>
+                            <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Private/Premium Boat Logistics
+                            </li>
+                            <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Food & Refreshments (as per combo)
+                            </li>
+                            <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Safety Gear (snorkeling equipment,
+                                life jackets)</li>
+                        </ul>
+                    </div>
+                    <!-- What's Not Included -->
+                    <div class="bg-[#F27D57]/5 p-8 rounded-3xl border border-[#F27D57]/20">
+                        <h3 class="text-xl font-bold text-[#F27D57] mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-xmark text-[#003C63]"></i>
+                            What's Not Included
+                        </h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Zanzibar Travel Insurance (~$44,
+                                via ZIC)</li>
+                            <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Resort Infrastructure Tax
+                                ($2‑$5/night)</li>
+                            <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Tips & Gratuities (optional)</li>
+                            <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Alcoholic Beverages (unless
+                                stated)</li>
+                            <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Personal Expenses</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mobile carousel (visible only on mobile) -->
+                <div class="relative md:hidden">
+                    <!-- Swipe gesture hint (small floating pill) -->
+                    <div id="transparency-swipe-hint"
+                        class="absolute top-1/2 right-4 z-10 flex items-center gap-1 text-[#F27D57] bg-white/80 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg transition-opacity duration-500">
+                        <span class="text-xs font-semibold">Swipe</span>
+                        <i class="fas fa-hand-pointer text-lg animate-pulse"></i>
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </div>
+
+                    <!-- Scrollable cards (no overlapping buttons) -->
+                    <div id="transparency-scroll-container"
+                        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 pb-4 -mx-4 px-4 hide-scrollbar"
+                        style="scrollbar-width: none; -ms-overflow-style: none;">
+                        <!-- Card 1: What's Included -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-[#003C63]/5 p-6 rounded-3xl border border-[#003C63]/20">
+                            <h3 class="text-xl font-bold text-[#003C63] mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-[#F27D57]"></i>
+                                What's Included (All Combos)
+                            </h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Private VIP Land Transfers
+                                </li>
+                                <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> All Site Entry & Conservation
+                                    Fees</li>
+                                <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Licensed Private Guides</li>
+                                <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Private/Premium Boat Logistics
+                                </li>
+                                <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Food & Refreshments (as per
+                                    combo)</li>
+                                <li><i class="fa-solid fa-check text-[#F27D57] mr-2"></i> Safety Gear (snorkeling
+                                    equipment, life jackets)</li>
+                            </ul>
+                        </div>
+                        <!-- Card 2: What's Not Included -->
+                        <div
+                            class="snap-center shrink-0 w-[85vw] max-w-sm bg-[#F27D57]/5 p-6 rounded-3xl border border-[#F27D57]/20">
+                            <h3 class="text-xl font-bold text-[#F27D57] mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-xmark text-[#003C63]"></i>
+                                What's Not Included
+                            </h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Zanzibar Travel Insurance
+                                    (~$44, via ZIC)</li>
+                                <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Resort Infrastructure Tax
+                                    ($2‑$5/night)</li>
+                                <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Tips & Gratuities (optional)
+                                </li>
+                                <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Alcoholic Beverages (unless
+                                    stated)</li>
+                                <li><i class="fa-solid fa-xmark text-[#003C63] mr-2"></i> Personal Expenses</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Arrow controls at the bottom (replaces numbered dots) -->
+                    <div class="flex justify-center gap-4 mt-4">
+                        <button id="trans-prev-btn"
+                            class="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center text-[#003C63] hover:bg-[#F27D57] hover:text-white transition"
+                            aria-label="Previous card">
+                            <i class="fas fa-chevron-left"></i>
                         </button>
-                        <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors flex items-center" data-filter="water">
-                            Watersports  & Beach
-                        </button>
-                        <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors flex items-center" data-filter="cruise">
-                            Cruise
-                        </button>
-                        <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors flex items-center" data-filter="culture">
-                            Culture
-                        </button>
-                        <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors flex items-center" data-filter="nature">
-                            Nature
-                        </button>
-                        <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors flex items-center" data-filter="marinelife">
-                            Marinelife
-                        </button>
-                        <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-600 border border-gray-200 font-bold hover:border-[#F27D57] hover:text-[#F27D57] transition-colors flex items-center" data-filter="couples">
-                            Couples
+                        <button id="trans-next-btn"
+                            class="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center text-[#003C63] hover:bg-[#F27D57] hover:text-white transition"
+                            aria-label="Next card">
+                            <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="experiences-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[500px]">
-            </div>
+            <!-- Hide scrollbar -->
+            <style>
+                .hide-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .hide-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            </style>
+
+            <!-- JavaScript for carousel, arrows, auto-scroll, hint -->
+            <script>
+                (function () {
+                    const container = document.getElementById('transparency-scroll-container');
+                    const prevBtn = document.getElementById('trans-prev-btn');
+                    const nextBtn = document.getElementById('trans-next-btn');
+                    const swipeHint = document.getElementById('transparency-swipe-hint');
+                    let hintHidden = false;
+                    let autoScrollInterval = null;
+                    let currentAutoIndex = 0;
+                    const totalCards = 2;
+
+                    if (!container) return;
+
+                    function getScrollPosForIndex(index) {
+                        const card = container.querySelectorAll('.snap-center')[index];
+                        if (!card) return 0;
+                        const containerWidth = container.clientWidth;
+                        const cardWidth = card.offsetWidth;
+                        return card.offsetLeft - (containerWidth - cardWidth) / 2;
+                    }
+
+                    function scrollToCard(index) {
+                        container.scrollTo({
+                            left: getScrollPosForIndex(index),
+                            behavior: 'smooth'
+                        });
+                    }
+
+                    function startAutoScroll() {
+                        stopAutoScroll();
+                        autoScrollInterval = setInterval(() => {
+                            currentAutoIndex = (currentAutoIndex + 1) % totalCards;
+                            scrollToCard(currentAutoIndex);
+                        }, 4000);
+                    }
+
+                    function stopAutoScroll() {
+                        if (autoScrollInterval) {
+                            clearInterval(autoScrollInterval);
+                            autoScrollInterval = null;
+                        }
+                    }
+
+                    let pauseTimeout;
+                    function pauseAutoScroll() {
+                        stopAutoScroll();
+                        clearTimeout(pauseTimeout);
+                        pauseTimeout = setTimeout(() => {
+                            startAutoScroll();
+                        }, 4000);
+                    }
+
+                    container.addEventListener('scroll', () => {
+                        // Update current index based on scroll position
+                        const scrollLeft = container.scrollLeft;
+                        const cardWidth = container.querySelector('.snap-center').offsetWidth + 16; // gap-4
+                        currentAutoIndex = Math.round(scrollLeft / cardWidth);
+                        // Hide hint after any scroll
+                        if (!hintHidden && scrollLeft > 10) {
+                            swipeHint.style.opacity = '0';
+                            setTimeout(() => { if (swipeHint) swipeHint.style.display = 'none'; }, 500);
+                            hintHidden = true;
+                        }
+                        pauseAutoScroll();
+                    });
+                    container.addEventListener('touchstart', pauseAutoScroll);
+
+                    // Arrow button actions
+                    prevBtn.addEventListener('click', () => {
+                        const newIndex = (currentAutoIndex - 1 + totalCards) % totalCards;
+                        scrollToCard(newIndex);
+                        pauseAutoScroll();
+                    });
+                    nextBtn.addEventListener('click', () => {
+                        const newIndex = (currentAutoIndex + 1) % totalCards;
+                        scrollToCard(newIndex);
+                        pauseAutoScroll();
+                    });
+
+                    window.addEventListener('load', () => {
+                        startAutoScroll();
+                    });
+
+                    // Hide swipe hint after 4 seconds if not interacted
+                    setTimeout(() => {
+                        if (!hintHidden && swipeHint) {
+                            swipeHint.style.opacity = '0';
+                            setTimeout(() => { if (swipeHint) swipeHint.style.display = 'none'; }, 500);
+                            hintHidden = true;
+                        }
+                    }, 4000);
+                })();
+            </script>
+        </section>
     </div>
-</section>
 
-<div id="experience-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 font-sans">
-    <div class="absolute inset-0 bg-[#001E33]/90 backdrop-blur-md transition-opacity" id="modal-backdrop"></div>
-
-    <div class="bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl relative overflow-hidden transform scale-90 opacity-0 transition-all flex flex-col md:flex-row h-[90vh]" id="modal-card">
-        
-        <button id="close-modal" class="absolute top-4 right-4 z-50 bg-white/30 backdrop-blur-md text-[#003C63] hover:bg-[#F27D57] hover:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-md">
-            ✕
-        </button>
-
-        <div class="w-full md:w-2/5 h-64 md:h-full relative shrink-0">
-            <img id="modal-img" src="" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-transparent to-transparent opacity-70"></div>
-            <div class="absolute bottom-8 left-8 text-white pr-4">
-                <h3 id="modal-title" class="text-3xl md:text-4xl font-bold mb-2 leading-tight">Experience Title</h3>
-                <span id="modal-badge" class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">Category</span>
+    <!-- ========== COMBO DETAIL PAGE (View Two) – RESPONSIVE FIXES ========== -->
+    <div id="combo-page" class="bg-white" style="display: none;">
+        <!-- Hero with reduced height on mobile -->
+        <section class="relative h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+            <img id="hero-bg" src="" alt="Combo hero" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+            <div class="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-7xl font-bold mb-4 font-heading" id="combo-title"></h1>
+                <p class="text-xl md:text-2xl opacity-90 mb-8" id="combo-subtitle"></p>
+                <div class="flex flex-nowrap justify-center gap-3 sm:gap-4">
+                    <button
+                        onclick="document.getElementById('combo-itinerary-section').scrollIntoView({ behavior: 'smooth' });"
+                        class="bg-[#F27D57] text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-lg hover:bg-orange-500 transition shadow-xl flex items-center gap-2 whitespace-nowrap">
+                        <i class="fas fa-clock"></i> View Itinerary
+                    </button>
+                    <button id="go-back-hero"
+                        class="bg-white/10 backdrop-blur border border-white/30 text-white px-5 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm sm:text-lg hover:bg-white/20 transition flex items-center gap-2 whitespace-nowrap">
+                        <i class="fas fa-arrow-left"></i> Go Back
+                    </button>
+                </div>
             </div>
-        </div>
-
-        <div class="w-full md:w-3/5 p-8 md:p-10 flex flex-col h-full overflow-y-auto bg-gray-50">
-            <div class="mb-8">
-                <h4 id="modal-about-title" class="text-[#003C63] font-bold uppercase text-xs tracking-widest mb-3">About this experience</h4>
-                <p id="modal-desc" class="text-gray-600 text-[15px] leading-relaxed">
-                    Main description goes here...
-                </p>
+        </section>
+        <div class="max-w-7xl mx-auto px-6 py-16 space-y-24">
+            <!-- Section 1: Overview (image always visible on mobile) -->
+            <div class="grid md:grid-cols-2 gap-12 items-stretch">
+                <div class="space-y-10 flex flex-col justify-center order-1">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4"><i
+                                class="fas fa-map-signs text-3xl text-[#F27D57]"></i>
+                            <h2 class="text-3xl font-bold text-[#003C63] font-heading">Experience Overview</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed text-lg" id="combo-purpose"></p>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-3"><i class="fas fa-users text-2xl text-[#F27D57]"></i>
+                            <h3 class="text-2xl font-bold text-[#003C63] font-heading">Who It's For</h3>
+                        </div>
+                        <p class="text-gray-700" id="combo-who"></p>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-3"><i class="fas fa-star text-2xl text-[#F27D57]"></i>
+                            <h3 class="text-2xl font-bold text-[#003C63] font-heading">Why Choose This Combo</h3>
+                        </div>
+                        <p class="text-gray-700" id="combo-why"></p>
+                    </div>
+                </div>
+                <div class="relative order-2 rounded-3xl overflow-hidden shadow-2xl"><img id="overview-img" src=""
+                        alt="Experience visual" class="absolute inset-0 w-full h-full object-cover"></div>
             </div>
-
-            <div class="mb-4 flex items-center justify-between">
-                <h4 class="text-[#003C63] font-bold uppercase text-sm tracking-widest">Available experiences</h4>
-                <div class="h-px bg-gray-200 flex-grow ml-4"></div>
+            <!-- Section 2: Itinerary -->
+            <div id="combo-itinerary-section" class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="order-2 md:order-1 rounded-3xl overflow-hidden shadow-xl h-80"><img id="itinerary-img"
+                        src="" alt="Itinerary" class="w-full h-full object-cover"></div>
+                <div class="order-1 md:order-2">
+                    <div class="flex items-center gap-3 mb-6"><i class="fas fa-clock text-3xl text-[#F27D57]"></i>
+                        <h2 class="text-3xl font-bold text-[#003C63] font-heading">⏱ Hour‑by‑Hour Itinerary</h2>
+                    </div>
+                    <div id="combo-itinerary" class="space-y-4"></div>
+                </div>
             </div>
-
-            <div id="modal-services-list" class="space-y-4 mb-8">
+            <!-- Section 3: Best Time & Highlights -->
+            <div class="grid md:grid-cols-2 gap-12 items-stretch">
+                <div class="space-y-8 flex flex-col justify-center order-1">
+                    <div
+                        class="bg-gradient-to-r from-amber-50 to-white p-8 rounded-3xl border border-orange-100 shadow-md">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-4xl text-[#F27D57]"><i class="fas fa-sun"></i></div>
+                            <h2 class="text-3xl font-bold text-[#003C63] font-heading">Best Time to Enjoy This Combo
+                            </h2>
+                        </div>
+                        <p id="combo-best-time" class="text-gray-700 text-lg leading-relaxed"></p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-4xl text-[#F27D57]"><i class="fas fa-lightbulb"></i></div>
+                            <h2 class="text-3xl font-bold text-[#003C63] font-heading">✨ Highlights</h2>
+                        </div>
+                        <p id="combo-highlights" class="text-gray-700 text-lg leading-relaxed"></p>
+                    </div>
+                </div>
+                <div class="relative order-2 rounded-3xl overflow-hidden shadow-2xl"><img id="best-highlights-img"
+                        src="" alt="Best time and highlights" class="absolute inset-0 w-full h-full object-cover"></div>
             </div>
-            
-            <button id="close-modal-bottom" class="mt-auto w-full py-4 rounded-xl border-2 border-gray-200 text-gray-500 hover:bg-gray-100 hover:text-[#003C63] transition-colors font-bold flex items-center justify-center">
-                Close Details
-            </button>
+            <!-- Section 4: Included / Excluded -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-green-50 p-8 rounded-3xl border border-green-100">
+                    <h4 class="font-bold text-green-800 text-xl mb-4 flex items-center gap-2"><i
+                            class="fas fa-check-circle text-green-600"></i> What's Included</h4>
+                    <ul id="combo-included" class="list-disc list-inside text-gray-700 space-y-2"></ul>
+                </div>
+                <div class="bg-red-50 p-8 rounded-3xl border border-red-100">
+                    <h4 class="font-bold text-red-800 text-xl mb-4 flex items-center gap-2"><i
+                            class="fas fa-times-circle text-red-500"></i> What's Not Included</h4>
+                    <ul id="combo-excluded" class="list-disc list-inside text-gray-700 space-y-2"></ul>
+                </div>
+            </div>
+            <!-- Section 5: CTA with equal button sizes -->
+            <div
+                class="relative bg-gradient-to-br from-[#003C63] to-[#002b4a] text-white rounded-3xl p-10 md:p-14 shadow-2xl overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-[#F27D57] opacity-10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-64 h-64 bg-[#F27D57] opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2">
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                    <div class="text-center md:text-left"><span
+                            class="text-5xl md:text-6xl font-bold block font-heading" id="combo-price"></span>
+                        <p class="text-xl text-gray-300 mt-2" id="combo-duration"></p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
+                        <button
+                            class="bg-[#F27D57] text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-orange-500 transition shadow-xl shadow-orange-500/30 flex items-center justify-center gap-3 flex-1 add-to-booking-btn">
+                            <i class="fas fa-calendar-check"></i> Add to My Booking
+                        </button>
+                        <a href="#"
+                            class="bg-white/10 backdrop-blur border border-white/30 text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white/20 transition flex items-center justify-center gap-3 flex-1">
+                            <i class="fab fa-whatsapp"></i> Custom Itinerary
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center"><button id="go-back-bottom"
+                    class="bg-gray-100 text-gray-700 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition flex items-center gap-2 shadow-sm"><i
+                        class="fas fa-arrow-left"></i> Go Back to Home</button></div>
         </div>
     </div>
-</div>
-
- 
 
 
-<section class="py-20 md:py-32 bg-white relative font-sans" id="transfers-section">
-    <div class="max-w-[95rem] mx-auto px-4 md:px-8">
-        
-        <div class="text-center max-w-4xl mx-auto mb-16">
-            <h2 class="text-4xl md:text-5xl font-black text-[#003C63] mb-6 flex justify-center items-center gap-4">
-                <i class="fi fi-rr-car-side text-[#F27D57]"></i> Transfers
-            </h2>
-            <p class="text-lg text-gray-600 leading-relaxed mb-4">
-           Comfortable and reliable transport designed to make your Zanzibar experience smooth and stress-free, with professional drivers and timely service.
-            </p>
-            <p class="text-xl font-bold text-[#003C63]">Services Include:</p>
-        </div>
+    <!-- ========== JAVASCRIPT (CLEAN & MAINTAINABLE) ========== -->
+    <script>
+        const combos = [
+            { id: 1, title: "COMBO 1: The Historical Heritage Trio", subtitle: "Prison Island, Nakupenda Sandbank, Stone Town", heroImage: "https://images.unsplash.com/photo-1590080669911-3e95b0dceac7?w=1200&auto=format&fit=crop", overviewImage: "https://images.unsplash.com/photo-1544735716-392f1e4b9b1c?w=800&auto=format&fit=crop", itineraryImage: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&auto=format&fit=crop", duration: "Full Day (08:30 AM – 04:30 PM)", price: "$110 per person", purpose: "Zanzibar's ultimate cultural and ocean combo. Explore the dark history of Stone Town, meet the world's oldest tortoises on Prison Island, and finish your afternoon with a seafood buffet on the disappearing Nakupenda Sandbank.", whoFor: "Culture enthusiasts, wildlife lovers, and anyone who wants a mix of history and beach relaxation.", whyChoose: "Exclusive private dhow, no crowds at the sandbank, and a historian guide in Stone Town. The seafood BBQ is legendary.", bestTime: "June to October and December to February offer calm seas and sunny skies. The sandbank is best visited during low tide, which we schedule perfectly.", highlights: "Aldabra Giant Tortoises, Prison ruins, private sandbank relaxation, seafood BBQ, and a Stone Town historical tour.", itinerary: ["08:30 AM – Resort Pickup: Private transfer to Stone Town waterfront.", "09:30 AM – Sail to Prison Island (Changuu Island) on private dhow.", "10:00 AM – Meet Giant Tortoises, feed them, explore quarantine station.", "11:30 AM – Sail to Nakupenda Sandbank.", "12:00 PM – 02:00 PM – Sandbank relaxation, massive seafood BBQ (lobster, prawns, calamari, fish).", "02:30 PM – Return to Stone Town.", "03:00 PM – 04:30 PM – Stone Town guided walk: Slave Market, Sultan's Palace, carved doors.", "04:30 PM – Return transfer to resort."], included: ["Private car & motorized dhow", "Prison Island & Stone Town entry fees", "Seafood BBQ lunch on sandbank", "Licensed guide", "Bottled water"], excluded: ["Travel insurance", "Tips", "Alcoholic drinks"] },
+            { id: 2, title: "COMBO 2: The Island Cruise (Safari Blue)", subtitle: "Premium Safari Blue, Snorkeling, Seafood BBQ", heroImage: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&auto=format&fit=crop", overviewImage: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&auto=format&fit=crop", itineraryImage: "https://images.unsplash.com/photo-1540202404-1b927e27fa8b?w=800&auto=format&fit=crop", duration: "Full Day (08:00 AM – 05:30 PM)", price: "$120 per person", purpose: "Zanzibar's most famous full-day ocean adventure, delivered with premium comfort. Sail on a traditional wooden dhow across Menai Bay, snorkel untouched reefs, and indulge in a massive seafood feast on Kwale Island.", whoFor: "Ocean lovers, foodies, and anyone who dreams of a classic Indian Ocean sailing experience.", whyChoose: "Includes a private transfer to Fumba, a comfortable shared dhow (small group), and the iconic sandbank and mangrove lagoon. The Kwale Island seafood BBQ is a highlight.", bestTime: "The dry seasons (June–October and December–February) offer clear water for snorkeling. The sandbank emerges beautifully during low tide.", highlights: "Sandbank relaxation, reef snorkeling, mangrove lagoon swim, giant seafood BBQ.", itinerary: ["08:00 AM – Morning Pickup: Private transfer to Fumba Village.", "09:00 AM – Set Sail: Traditional dhow with fruits and drinks served.", "09:45 AM – Disappearing sandbank: relax, swim, take photos.", "11:00 AM – Coral reef snorkeling with provided gear.", "01:00 PM – Kwale Island seafood feast: grilled lobster, prawns, fish, Swahili sides.", "03:00 PM – Visit ancient baobab tree, then swim in hidden mangrove lagoon.", "04:30 PM – Sail back to Fumba beach.", "05:30 PM – Resort drop-off."], included: ["Private transfers to Fumba", "Shared premium dhow", "Snorkeling gear", "Unlimited soft drinks", "Seafood BBQ lunch", "Fruits"], excluded: ["Travel insurance", "Tips", "Alcoholic beverages"] },
+            { id: 3, title: "COMBO 3: Nature, Spices & Mystic Caves", subtitle: "Spice Farm, Jozani Forest, Salaam Cave", heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop", overviewImage: "https://images.unsplash.com/photo-1518546305927-5a4bbfe3a78a?w=800&auto=format&fit=crop", itineraryImage: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&auto=format&fit=crop", duration: "Full Day (08:30 AM – 04:30 PM)", price: "$95 per person", purpose: "Explore the green, exotic heart of Zanzibar. Taste organic spices, encounter rare Red Colobus monkeys, and swim with sea turtles in the crystal-clear underground Salaam Cave.", whoFor: "Eco-tourists, nature lovers, and families looking for an authentic, educational adventure away from the beach.", whyChoose: "Unique combination of spice farm, national park, and a hidden cave with turtles. The Salaam Cave offers superior water clarity and a magical atmosphere for photos.", bestTime: "Year-round, but the spice tour is most fragrant after the short rains (November–December). The cave is always clear and refreshing.", highlights: "Rare Red Colobus Monkeys, mangrove boardwalk, organic spice tasting, farm lunch, swimming with turtles in crystal-clear cave.", itinerary: ["08:30 AM – Resort pickup to rural spice plantations.", "09:15 AM – Interactive spice tour: taste vanilla, cinnamon, lemongrass, watch climber scale palm tree. Organic Swahili lunch.", "11:45 AM – Jozani Chwaka Bay National Park: walk with ranger, see Red Colobus monkeys, mangrove boardwalk.", "02:15 PM – Salaam Cave: descend into limestone cave, swim with sea turtles, feed them seaweed.", "03:45 PM – Return transfer."], included: ["Private entry permits", "Forest ranger", "Salaam Cave slots", "Farm lunch", "Guide"], excluded: ["Travel insurance", "Tips", "Souvenirs"] },
+            { id: 4, title: "COMBO 4: The Ultimate Northern Premium", subtitle: "Mnemba Atoll, Baraka Aquarium, Sunset Cruise", heroImage: "https://images.unsplash.com/photo-1583212292454-5d2e28c1a9e9?w=1200&auto=format&fit=crop", overviewImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop", itineraryImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop", duration: "Full Day (08:00 AM – 07:00 PM)", price: "$135 per person", purpose: "Our premier northern package. Snorkel near exclusive Mnemba Atoll (wild dolphins), swim with rescued green turtles at Baraka Aquarium, and toast the sunset on a traditional dhow with live music.", whoFor: "Snorkeling enthusiasts, couples seeking romance, and anyone wanting a luxurious full-day adventure in northern Zanzibar.", whyChoose: "Private boat for Mnemba snorkeling, the chance to swim with wild dolphins, and an atmospheric sunset cruise with live Swahili music. Perfect for honeymooners.", bestTime: "Dolphin sightings are common year-round, but calmest seas and best visibility are June–October and January–February. Sunset cruises are magical any evening.", highlights: "Wild dolphins, premier snorkeling at Mnemba, swimming with green turtles, live music sunset cruise.", itinerary: ["08:00 AM – Pickup to Muyuni Beach / Matemwe.", "09:00 AM – Mnemba Atoll marine safari: spot dolphins, snorkel with reef fish, fresh fruits on boat.", "12:00 PM – Baraka Natural Aquarium: swim with rescued green sea turtles.", "01:30 PM – Lunch & beach rest (own expense) in Nungwi.", "04:30 PM – Traditional sunset dhow cruise with local snacks, drinks, live acoustic Swahili music.", "06:45 PM – Return transfer."], included: ["Mnemba marine fees", "Private snorkeling boat", "Baraka Aquarium entry", "Sunset cruise with refreshments", "Guide"], excluded: ["Lunch (optional)", "Travel insurance", "Tips", "Alcoholic drinks beyond cruise"] }
+        ];
 
-        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-            <button class="transfer-tab active px-8 py-4 rounded-full font-bold text-white bg-[#003C63] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3" data-target="airport-transfers">
-                <i class="fi fi-rr-plane-arrival text-lg"></i> Airport Transfers
-            </button>
-            <button class="transfer-tab px-8 py-4 rounded-full font-bold text-[#003C63] bg-gray-50 border border-gray-200 transition-all hover:bg-gray-100 flex items-center justify-center gap-3" data-target="inter-island-transfers">
-                <i class="fi fi-rr-map-marker text-lg"></i> Inter-Island Transfers
-            </button>
-        </div>
+        const homePage = document.getElementById('home-page');
+        const comboPage = document.getElementById('combo-page');
+        const comboGrid = document.getElementById('combo-grid');
 
-        <div id="airport-transfers" class="transfer-grid block fade-up-anim">
-            
-            <div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
-                <h3 class="text-3xl md:text-4xl font-black text-[#003C63] mb-4 flex items-center justify-center gap-3 w-full">
-                    <i class="fi fi-rr-plane-arrival text-[#F27D57]"></i> Airport Transfers
-                </h3>
-                <p class="text-gray-500 text-lg font-medium leading-relaxed mb-6">
-                    Safe and punctual pick-up and drop-off at Zanzibar International Airport, ensuring a smooth start and end to your journey.
-                </p>
-                <div class="inline-flex items-center justify-center px-6 py-2.5 bg-[#F27D57]/10 text-[#F27D57] border border-[#F27D57]/20 font-black uppercase tracking-[0.2em] rounded-full text-sm shadow-sm">
-                    What’s Included:
-                </div>
-            </div>
+        function createComboCard(combo) {
+            const card = document.createElement('div');
+            card.className = 'bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition cursor-pointer transform hover:-translate-y-1 flex flex-col h-[26rem] md:h-[32rem]';
+            card.innerHTML = `<div class="flex-1 bg-cover bg-center" style="background-image: url('${combo.heroImage}');"></div><div class="p-5 md:p-6"><h3 class="font-bold text-xl md:text-2xl text-[#003C63] mb-2 font-heading">${combo.title}</h3><p class="text-gray-500 text-sm md:text-base mb-3">${combo.subtitle}</p><div class="flex justify-between items-center mt-4"><span class="text-[#F27D57] font-bold text-lg md:text-xl">${combo.price}</span><span class="text-sm md:text-base font-semibold text-[#003C63] hover:underline">View Details →</span></div></div>`;
+            card.addEventListener('click', () => showComboPage(combo.id));
+            return card;
+        }
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        function renderGrid() {
+            comboGrid.innerHTML = '';
+            combos.forEach(combo => comboGrid.appendChild(createComboCard(combo)));
+        }
 
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Airport <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Nungwi & Kendwa
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(North Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Travel in comfort to the island’s most popular beach destinations — <span class="font-bold">Nungwi and Kendwa.</span>  Your driver will take you on a scenic 1.5-hour journey straight from the airport.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 90 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $50 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Airport to Nungwi', '$50')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
+        function showComboPage(comboId) {
+            const combo = combos.find(c => c.id === comboId);
+            if (!combo) return;
+            document.getElementById('hero-bg').src = combo.heroImage;
+            document.getElementById('combo-title').textContent = combo.title;
+            document.getElementById('combo-subtitle').textContent = combo.subtitle;
+            document.getElementById('combo-purpose').textContent = combo.purpose;
+            document.getElementById('overview-img').src = combo.overviewImage;
+            document.getElementById('combo-who').textContent = combo.whoFor;
+            document.getElementById('combo-why').textContent = combo.whyChoose;
+            document.getElementById('combo-best-time').textContent = combo.bestTime;
+            document.getElementById('itinerary-img').src = combo.itineraryImage;
+            document.getElementById('best-highlights-img').src = combo.itineraryImage;
+            document.getElementById('combo-itinerary').innerHTML = combo.itinerary.map(item => `<div class="flex gap-2"><span class="text-[#F27D57] font-bold">•</span><span>${item}</span></div>`).join('');
+            document.getElementById('combo-highlights').textContent = combo.highlights;
+            document.getElementById('combo-included').innerHTML = combo.included.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('combo-excluded').innerHTML = combo.excluded.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('combo-price').textContent = combo.price;
+            document.getElementById('combo-duration').textContent = combo.duration;
+            const addButton = document.querySelector('.add-to-booking-btn');
+            if (addButton) {
+                addButton.setAttribute('data-combo-id', combo.id);
+                addButton.setAttribute('data-booking-name', combo.title);
+                addButton.setAttribute('data-booking-price', combo.price);
+            }
+            homePage.style.display = 'none';
+            comboPage.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Airport <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Matemwe, Kiwengwa & Pongwe
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(North-East Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Enjoy a smooth ride to Zanzibar’s tranquil   <span class="font-bold">North-East Coast,</span> home to Matemwe, Kiwengwa, and Pongwe. Ideal for travellers seeking peace, diving spots, and luxury resorts.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 60-70 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $45 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Airport to Matemwe', '$45')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
+        function goHome() {
+            comboPage.style.display = 'none';
+            homePage.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Airport <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Paje & Jambiani
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(East Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Head straight to the <span class="font-bold">East Coast,</span>  famous for kitesurfing in Paje and laid-back vibes in Jambiani. Your driver will meet you at the airport for a 1-hour coastal drive.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 60-70 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $40 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Airport to Paje', '$40')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
+        document.getElementById('go-back-hero').addEventListener('click', goHome);
+        document.getElementById('go-back-bottom').addEventListener('click', goHome);
 
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Airport <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Kizimkazi
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(South Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Travel directly to Zanzibar’s <span class="font-bold">South Coast village of Kizimkazi,</span> known for dolphin tours and quiet beaches. Your driver will ensure a smooth journey after your flight.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 70-90 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $60 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Airport to Kizimkazi', '$60')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
+        const logoHome = document.getElementById('logo-home');
+        if (logoHome) {
+            logoHome.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (comboPage.style.display === 'block') goHome(); else window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Airport <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Stone town
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Start your Zanzibar trip hassle-free with a quick private transfer to <span class="font-bold"> Stone Town.</span> Your driver will be waiting at the airport with a name sign, ready to take you directly to your hotel.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 15–20 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 Passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $20 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Airport to Stone Town', '$20')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
+        const addToBookingBtn = document.querySelector('.add-to-booking-btn');
+        if (addToBookingBtn) {
+            addToBookingBtn.addEventListener('click', function () {
+                const comboId = this.getAttribute('data-combo-id');
+                const combo = combos.find(c => c.id === parseInt(comboId, 10));
+                if (combo && typeof window.addToBooking === 'function') {
+                    window.addToBooking(combo.title, combo.price);
+                } else {
+                    alert(`Combo ${comboId} added to your booking! (demo)`);
+                }
+            });
+        }
 
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Airport <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Michamvi & Bwejuu
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(South-East Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Enjoy a stress-free transfer to Zanzibar’s quiet <span class="font-bold">South-East Coast,</span>  home to Michamvi and Bwejuu — perfect for honeymooners and couples.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 70 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $45 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Airport to Michamvi', '$45')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('i');
+                answer.classList.toggle('hidden');
+                icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+            });
+        });
 
-            </div>
-        </div>
-
-        <div id="inter-island-transfers" class="transfer-grid hidden">
-            
-            <div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
-                <h3 class="text-3xl md:text-4xl font-black text-[#003C63] mb-4 flex items-center justify-center gap-3 w-full">
-                    <i class="fi fi-rr-map-marker text-[#F27D57]"></i> Inter-Island Transfers
-                </h3>
-                <p class="text-gray-500 text-lg font-medium leading-relaxed mb-6">
-                    Convenient transfers between Zanzibar’s places, making it easy to explore multiple destinations with ease and comfort.
-                </p>
-                <div class="inline-flex items-center justify-center px-6 py-2.5 bg-[#F27D57]/10 text-[#F27D57] border border-[#F27D57]/20 font-black uppercase tracking-[0.2em] rounded-full text-sm shadow-sm">
-                    What’s Included:
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Stone town <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Nungwi & Kendwa
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(North Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Easily move between <span class="font-bold">Historic Stone Town</span>  and the island’s most famous beaches, <span class="font-bold">Nungwi and Kendwa. </span> Your private driver will take you along the scenic coastal road in comfort and style.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 90 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $50 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Stone Town to Nungwi', '$50')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Stone town <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Matemwe & Kiwengwa
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(North-East Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Move seamlessly from <span class="font-bold"> Stone Town </span> to Zanzibar’s <span class="font-bold"> North-East Coast, </span> including Matemwe and Kiwengwa. Perfect for travellers heading to beach resorts, diving spots, or quiet getaways.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 60 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $45 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Stone Town to Matemwe', '$45')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Stone town <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Paje & Jambiani
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(East Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Head from  <span class=" font-bold">Stone Town’s winding alleys</span>  to the <span class="font-bold">kitesurfing beaches of Paje</span>  or the relaxed shores of  <span class="font-bold">Jambiani.</span> This private transfer makes your journey smooth and simple.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 60-70 Minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $40 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Stone Town to Paje', '$40')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Stone town <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Michamvi & Bwejuu
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(South-East Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Travel with ease from <span class="font-bold">Stone Town</span>  to the <span class="font-bold">South-East Coast,</span>  reaching Michamvi and Bwejuu’s peaceful resorts. A private, direct transfer ensures a stress-free journey.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 70 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $45 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Stone Town to Michamvi', '$45')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Stone town <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Kizimkazi
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(South Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Connect <span class="font-bold">Stone Town</span>  with <span class="font-bold">Kizimkazi,</span>  known for dolphin tours and quiet beaches. Your driver ensures a smooth and comfortable ride along the South Coast.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 75 minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $60 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Stone Town to Kizimkazi', '$60')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Nungwi & Kendwa <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Matemwe & Kiwengwa
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(North--North-East Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Easily connect Zanzibar’s <span class="font-bold">North Coast (Nungwi & Kendwa)</span>  with the quieter <span class="font-bold">North-East Coast</span>  resorts of Matemwe and Kiwengwa. A quick, comfortable ride in a private vehicle.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 30-40 Minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $30 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Nungwi to Matemwe', '$30')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Nungwi & Kendwa <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Paje & Jambiani
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(North-East Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Make the most of your time in Zanzibar by exploring both the <span class="font-bold">North Coast (Nungwi & Kendwa)</span>  and the <span class="font-bold">East Coast (Paje & Jambiani).</span>  Your driver will handle the long drive so you can relax and enjoy the changing scenery.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 2-2.5 Hours</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $70 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Nungwi to Paje', '$70')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-[#F27D57] transition-all duration-300 flex flex-col overflow-hidden group">
-                    <div class="p-6 xl:p-8 flex-grow">
-                        <h4 class="text-xl font-black text-[#003C63] mb-4 group-hover:text-[#F27D57] transition-colors leading-tight flex items-center flex-wrap gap-2">
-                            Paje & Jambiani <i class="fi fi-rr-exchange text-[#F27D57] text-lg"></i> Kizimkazi
-                            <span class="block w-full text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">(South-East-South Coast)</span>
-                        </h4>
-                        <p class="text-gray-600 leading-relaxed mb-6 text-sm">Connect the chilled-out beaches of <span class="font-bold">Paje & Jambiani</span>  with the dolphin-watching hub of <span class="font-bold">Kizimkazi.</span>  A private coastal ride that keeps your journey easy and comfortable.</p>
-                        
-                        <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100">
-                            <p class="font-bold text-[#003C63] text-sm mb-3 border-b border-gray-200 pb-2">Additional Info / Trip Details:</p>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-clock-three text-[#F27D57] mt-0.5"></i> Journey time: 40-50 Minutes</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-users text-[#F27D57] mt-0.5"></i> Up to 4 passengers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-snowflake text-[#F27D57] mt-0.5"></i> Private, air-conditioned transfer</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-refresh text-[#F27D57] mt-0.5"></i> Return transfers available</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="p-6 xl:p-8 bg-gray-50 border-t border-gray-100 flex flex-col gap-4 mt-auto">
-                        <div class="text-3xl font-black text-[#003C63] flex items-center justify-between">
-                            $30 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Price (One way)</span>
-                        </div>
-                        <div class="flex gap-2 w-full">
-                            <button onclick="addToBooking('Zanzibar Transfer - Paje to Kizimkazi', '$30')" class="flex-1 py-3.5 bg-[#003C63] text-white font-bold rounded-xl hover:bg-[#F27D57] transition-colors shadow-md text-sm">Add to my booking</button>
-                            <a href="https://wa.me/0746319059" target="_blank" class="w-14 py-3.5 bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd58] transition-colors shadow-md flex items-center justify-center shrink-0"><i class="fi fi-brands-whatsapp text-xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</section>
+        renderGrid();
+    </script>
 
 
 
@@ -623,14 +1320,13 @@
 
 
 
-
-   
 
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="animations.js"></script>
+    <script src="#"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,259 +1,581 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why Choose Us | Morix Beyond Zanzibar</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
-    
-    <link rel="stylesheet" href="style.css">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Why Morix Beyond | The Ultimate Advantage</title>
 
+    <!-- Tailwind CDN (layout utilities) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome (flat icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --navy: #003C63;
+            --orange: #F27D57;
+            --orange-dark: #D35400;
+            --cream: #FEF9F0;
+            --light-cream: #FDF3E4;
+            --green: #27AE60;
+            --red: #C0392B;
+            --whatsapp: #25D366;
+            --border: #F0E3D0;
+            --muted: #6B7280;
+            --black: #000000;
+            --white: #FFFFFF;
+        }
+
+        .font-body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Backgrounds */
+        .bg-navy {
+            background-color: var(--navy);
+        }
+
+        .bg-orange {
+            background-color: var(--orange);
+        }
+
+        .bg-orange-dark {
+            background-color: var(--orange-dark);
+        }
+
+        .bg-cream {
+            background-color: var(--cream);
+        }
+
+        .bg-light-cream {
+            background-color: var(--light-cream);
+        }
+
+        .bg-green {
+            background-color: var(--green);
+        }
+
+        .bg-red {
+            background-color: var(--red);
+        }
+
+        .bg-whatsapp {
+            background-color: var(--whatsapp);
+        }
+
+        .bg-black {
+            background-color: var(--black);
+        }
+
+        .bg-white {
+            background-color: var(--white);
+        }
+
+        /* Text colours */
+        .text-navy {
+            color: var(--navy);
+        }
+
+        .text-orange {
+            color: var(--orange);
+        }
+
+        .text-green {
+            color: var(--green);
+        }
+
+        .text-red {
+            color: var(--red);
+        }
+
+        .text-muted {
+            color: var(--muted);
+        }
+
+        .text-black {
+            color: var(--black);
+        }
+
+        .text-white {
+            color: var(--white);
+        }
+
+        /* Borders */
+        .border-navy {
+            border-color: var(--navy);
+        }
+
+        .border-orange {
+            border-color: var(--orange);
+        }
+
+        .border-border {
+            border-color: var(--border);
+        }
+
+        .border-white {
+            border-color: var(--white);
+        }
+
+        /* Shadows */
+        .shadow-card {
+            box-shadow: 0 20px 55px -25px rgba(0, 0, 0, 0.25);
+        }
+
+        .shadow-card-lg {
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        .shadow-orange-btn {
+            box-shadow: 0 16px 30px rgba(242, 125, 87, 0.25);
+        }
+
+        /* Hover */
+        .hover\:text-orange:hover {
+            color: var(--orange);
+        }
+
+        .hover\:text-navy:hover {
+            color: var(--navy);
+        }
+
+        .hover\:bg-orange-dark:hover {
+            background-color: var(--orange-dark);
+        }
+
+        .hover\:bg-white:hover {
+            background-color: var(--white);
+        }
+
+        .hover\:bg-navy:hover {
+            background-color: var(--navy);
+        }
+
+        /* Opacity helpers */
+        .bg-orange\/10 {
+            background-color: rgba(242, 125, 87, 0.1);
+        }
+
+        .bg-orange\/5 {
+            background-color: rgba(242, 125, 87, 0.05);
+        }
+
+        .bg-navy\/5 {
+            background-color: rgba(0, 60, 99, 0.05);
+        }
+
+        .bg-navy\/10 {
+            background-color: rgba(0, 60, 99, 0.1);
+        }
+
+        .bg-navy\/30 {
+            background-color: rgba(0, 60, 99, 0.3);
+        }
+
+        .bg-navy\/40 {
+            background-color: rgba(0, 60, 99, 0.4);
+        }
+
+        .bg-white\/5 {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .bg-white\/10 {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-white\/20 {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .bg-white\/80 {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .bg-white\/90 {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .text-white\/70 {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .text-white\/80 {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .text-white\/90 {
+            color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
 </head>
 
-<body class="bg-gray-50 font-sans text-slate-800">
+<body class="font-body text-navy bg-white min-h-screen flex flex-col overflow-x-hidden">
 
-    <header id="main-header" class="fixed w-full z-50 bg-white shadow-sm h-20"></header>
+    <!-- Header placeholder -->
+    <header id="main-header"></header>
 
+    <!-- ===== WHY MORIX BEYOND PAGE ===== -->
+    <div id="whyView">
 
-    <section class="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#001E33]">
-        <div class="absolute inset-0 z-0 parallax-wrapper">
-            <img src="image/why choose.JPG" 
-                 alt="Tanzania Safari Landscape" 
-                 class="w-full h-full object-cover parallax-img opacity-50 scale-105">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#001E33]/80 via-[#001E33]/40 to-transparent"></div>
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10 text-center text-white mt-10">
-            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-8 fade-up">
-                <i class="fi fi-sr-star text-[#F27D57]"></i>
-                <span class="text-xs font-bold tracking-[0.2em] uppercase text-gray-200">The Morix Standard</span>
+        <!-- ========== HERO ========== -->
+        <section
+            class="relative w-screen left-1/2 -translate-x-1/2 h-[90vh] min-h-[650px] flex items-center justify-center bg-cover bg-center text-white text-center overflow-hidden"
+            style="background-image: linear-gradient(rgba(0,60,99,0.55), rgba(0,60,99,0.7)), url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200');">
+            <div class="absolute inset-0 bg-gradient-to-b from-navy/40 to-transparent"></div>
+            <div class="relative z-10 px-6 max-w-5xl mx-auto w-full">
+                <span
+                    class="inline-flex items-center gap-2 text-orange font-semibold tracking-widest text-xs uppercase mb-6 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full">
+                    <i class="fas fa-star"></i> The Morix Standard
+                </span>
+                <h1
+                    class="font-heading text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-2xl">
+                    Why Travel with <br><span class="italic text-orange">Morix Beyond?</span>
+                </h1>
+                <p class="text-lg md:text-2xl text-white/80 max-w-3xl mx-auto mb-10 font-light">
+                    Don't Just Visit Africa. Experience It Without Compromise.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#"
+                        class="inline-flex items-center gap-2 bg-orange text-white font-bold px-8 py-4 rounded-full shadow-orange-btn hover:bg-orange-dark transition transform hover:-translate-y-1">
+                        <i class="fas fa-pen-ruler"></i> Start Designing Your Journey
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-navy transition">
+                        <i class="fab fa-whatsapp"></i> Talk to an Island Expert
+                    </a>
+                </div>
             </div>
-            
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] tracking-tight fade-up">
-                Why Travel with <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#F27D57] italic font-serif">Morix Beyond Zanzibar</span>
-            </h1>
-            
-            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed fade-up mb-12">
-                More than tours, we create personalized experiences, unforgettable adventures, and cinematic memories across Zanzibar and Tanzania.
-            </p>
-            
-            </div>
-    </section>
+        </section>
 
-    <section class="py-32 bg-white relative">
-        <div class="container mx-auto px-6">
-            <div class="max-w-5xl mx-auto text-center fade-up">
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#003C63] mb-10 leading-tight">
-                    Choosing the right travel partner makes <span class="text-[#F27D57] underline decoration-4 decoration-[#F27D57]/30">all the difference.</span>
+        <!-- ========== INTRO ========== -->
+        <section class="relative w-screen left-1/2 -translate-x-1/2 py-20 lg:py-28 bg-white text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-8 leading-tight">
+                    Choosing the right travel partner makes <span class="italic text-orange">all the difference.</span>
                 </h2>
-                <p class="text-2xl text-gray-600 leading-relaxed mb-8 font-light">
-                    At Morix Beyond Zanzibar, we combine local expertise, professional service, and creative storytelling to deliver travel experiences that go beyond the ordinary.
+                <p class="text-lg md:text-xl text-muted max-w-3xl mx-auto leading-relaxed">
+                    Planning a trip to Tanzania and Zanzibar is a major lifetime investment. Thousands of travelers
+                    choose Morix Beyond because we don’t offer standardized tour templates—we build seamless, deeply
+                    authentic, and premium end-to-end travel experiences. Here is exactly why we stand far above the
+                    rest.
                 </p>
-                <p class="text-xl text-gray-500 leading-relaxed max-w-3xl mx-auto">
-                    From Zanzibar beaches to mainland safaris and cinematic visuals, we offer a complete and trusted travel solution.
+            </div>
+        </section>
+
+        <!-- ========== THE MORIX ADVANTAGE VS. THE OTHERS ========== -->
+        <!-- ========== THE MORIX ADVANTAGE VS. THE OTHERS ========== -->
+        <section class="relative w-screen left-1/2 -translate-x-1/2 py-20 lg:py-28 bg-cream overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-orange/5 rounded-full blur-7xl -mr-20 -mt-20"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-flex items-center gap-2 text-orange font-semibold tracking-widest text-xs uppercase bg-orange/10 px-4 py-1.5 rounded-full mb-6">
+                        <i class="fas fa-bolt"></i> The Advantage
+                    </span>
+                    <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-navy leading-tight">
+                        The Morix Advantage <span class="italic text-orange">vs. The Others</span>
+                    </h2>
+                    <p class="text-muted mt-4 max-w-2xl mx-auto">See exactly how Morix Beyond protects your vacation
+                        investment compared to standard local street vendors or rigid global corporate agencies.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Privacy & Logistics -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card border border-border flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-shield-alt text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">Privacy & Logistics</h3>
+                        <div class="mt-auto space-y-3">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-navy mt-1"></i>
+                                <p class="text-sm text-muted">Crowded public shuttle buses and shared tour group delays.
+                                </p>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-orange mt-1"></i>
+                                <p class="text-sm font-semibold text-navy">100% Private, air-conditioned VIP vehicles
+                                    and private boats tailored to your pace.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pricing Clarity -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card border border-border flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-search-dollar text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">Pricing Clarity</h3>
+                        <div class="mt-auto space-y-3">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-navy mt-1"></i>
+                                <p class="text-sm text-muted">Hidden park fees, unexpected tourist taxes, and surprise
+                                    surcharges during the trip.</p>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-orange mt-1"></i>
+                                <p class="text-sm font-semibold text-navy">Total transparency upfront. All flights,
+                                    entries, and government taxes are included.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content Creation -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card border border-border flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-camera-retro text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">Content Creation</h3>
+                        <div class="mt-auto space-y-3">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-navy mt-1"></i>
+                                <p class="text-sm text-muted">Shaky smartphone photos taken by busy drivers or other
+                                    tourists.</p>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-orange mt-1"></i>
+                                <p class="text-sm font-semibold text-navy">Elite Creative Studio add-on with
+                                    Hollywood-grade 4K gear and professional drone pilots.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Guide Quality -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card border border-border flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-user-graduate text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">Guide Quality</h3>
+                        <div class="mt-auto space-y-3">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-navy mt-1"></i>
+                                <p class="text-sm text-muted">General uncertified freelance drivers who rush through
+                                    generic routes.</p>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-orange mt-1"></i>
+                                <p class="text-sm font-semibold text-navy">Certified local historians, wildlife
+                                    trackers, and licensed conservation rangers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Emergency Safety -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card border border-border flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-heartbeat text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">Emergency Safety</h3>
+                        <div class="mt-auto space-y-3">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-navy mt-1"></i>
+                                <p class="text-sm text-muted">No baseline health protocols or structured medical
+                                    response plans.</p>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-orange mt-1"></i>
+                                <p class="text-sm font-semibold text-navy">Automatic AMREF Flying Doctors emergency
+                                    air-evacuation insurance included.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Overall Experience -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card border border-border flex flex-col">
+                        <div class="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
+                            <i class="fas fa-trophy text-2xl text-orange"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-navy mb-2">Overall Experience</h3>
+                        <div class="mt-auto space-y-3">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-times-circle text-navy mt-1"></i>
+                                <p class="text-sm text-muted">Disconnected, rigid corporate agencies or risky street
+                                    deals.</p>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-orange mt-1"></i>
+                                <p class="text-sm font-semibold text-navy">Seamless, deeply authentic luxury from beach
+                                    to bush – all under one roof.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== OUR 5 UNBREAKABLE COMMITMENTS ========== -->
+        <section class="relative w-screen left-1/2 -translate-x-1/2 py-20 lg:py-28 bg-white overflow-hidden">
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-navy/5 rounded-full blur-7xl -ml-20 -mb-20"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-flex items-center gap-2 text-orange font-semibold tracking-widest text-xs uppercase bg-orange/10 px-4 py-1.5 rounded-full mb-6">
+                        <i class="fas fa-medal"></i> Our Promise
+                    </span>
+                    <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-navy leading-tight">
+                        Our 5 <span class="italic text-orange">Unbreakable Commitments</span> to You
+                    </h2>
+                </div>
+                <div class="space-y-8">
+                    <!-- 1 -->
+                    <div
+                        class="flex flex-col md:flex-row gap-6 items-start bg-cream rounded-2xl p-6 md:p-8 shadow-card border border-border">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-2xl bg-navy text-white flex items-center justify-center text-2xl font-heading font-bold">
+                            1</div>
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-navy mb-2">Seamless Beach-to-Bush
+                                Transitions</h3>
+                            <p class="text-muted leading-relaxed">We are one of the few luxury operators with fully
+                                integrated networks both in the Zanzibar Archipelago and mainland Tanzania. Wake up on
+                                the turquoise beaches of Kendwa, take a private domestic flight, and track lions in the
+                                Serengeti by lunchtime — all without ever checking in with two different companies. We
+                                handle the entire logistical chain.</p>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div
+                        class="flex flex-col md:flex-row gap-6 items-start bg-cream rounded-2xl p-6 md:p-8 shadow-card border border-border">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-2xl bg-navy text-white flex items-center justify-center text-2xl font-heading font-bold">
+                            2</div>
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-navy mb-2">Time-Optimized Itineraries (No
+                                Crowds)</h3>
+                            <p class="text-muted leading-relaxed">We believe your time is your most valuable asset. Our
+                                itineraries are masterfully timed so you arrive at pristine locations like Nakupenda
+                                Sandbank or Mnemba Atoll before the chaotic midday tourist waves and scorching sun
+                                arrive. We give you Africa in its peaceful, raw element.</p>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div
+                        class="flex flex-col md:flex-row gap-6 items-start bg-cream rounded-2xl p-6 md:p-8 shadow-card border border-border">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-2xl bg-navy text-white flex items-center justify-center text-2xl font-heading font-bold">
+                            3</div>
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-navy mb-2">Absolute Financial & Legal
+                                Security</h3>
+                            <p class="text-muted leading-relaxed">Booking from halfway across the world requires
+                                absolute confidence. Morix Beyond is a fully accredited travel brand licensed by the
+                                Zanzibar Commission for Tourism. We use internationally encrypted, multi-currency
+                                payment gateways. Your transactions are secure, and your deposits are legally protected
+                                under clear, flexible terms.</p>
+                        </div>
+                    </div>
+                    <!-- 4 -->
+                    <div
+                        class="flex flex-col md:flex-row gap-6 items-start bg-cream rounded-2xl p-6 md:p-8 shadow-card border border-border">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-2xl bg-navy text-white flex items-center justify-center text-2xl font-heading font-bold">
+                            4</div>
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-navy mb-2">Direct 24/7 Concierge Support
+                            </h3>
+                            <p class="text-muted leading-relaxed">You will never receive a robotic automated email or
+                                get placed on a long corporate hold. From inquiry to departure, you have a direct line
+                                to a dedicated Guest Relations Specialist on WhatsApp. If you need a restaurant booking
+                                at 9:00 PM or an emergency schedule change, we resolve it within minutes.</p>
+                        </div>
+                    </div>
+                    <!-- 5 -->
+                    <div
+                        class="flex flex-col md:flex-row gap-6 items-start bg-cream rounded-2xl p-6 md:p-8 shadow-card border border-border">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 rounded-2xl bg-navy text-white flex items-center justify-center text-2xl font-heading font-bold">
+                            5</div>
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-navy mb-2">Ethical, Local Impact</h3>
+                            <p class="text-muted leading-relaxed">When you travel with us, your money directly empowers
+                                the communities you visit. We partner exclusively with native Zanzibari boat captains,
+                                work with local spice farmers, and support wildlife conservation efforts across the
+                                national parks. Your luxury holiday directly contributes to sustainable African
+                                hospitality.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TESTIMONIALS ========== -->
+        <section class="relative w-screen left-1/2 -translate-x-1/2 py-20 lg:py-28 bg-navy text-white overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-7xl -mr-20 -mt-20"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-7xl -ml-20 -mb-20"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-flex items-center gap-2 text-orange font-semibold tracking-widest text-xs uppercase bg-white/10 px-4 py-1.5 rounded-full mb-6">
+                        <i class="fas fa-quote-right"></i> Testimonials
+                    </span>
+                    <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                        What Our <span class="italic text-orange">Global Guests</span> Say
+                    </h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 flex flex-col">
+                        <div class="flex gap-1 text-orange mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-white/80 leading-relaxed italic mb-6">"An Absolute Masterclass in Luxury Travel!
+                            We booked the Serengeti fly-in safari and the North Zanzibar combo. From the private
+                            air-conditioned vehicle pickups to the breathtaking drone video we received from their
+                            Creative Studio, Morix Beyond exceeded every expectation. They handled everything, allowing
+                            us to just enjoy our honeymoon."</p>
+                        <p class="mt-auto font-semibold text-white">— Charlotte & Pierre, France</p>
+                    </div>
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 flex flex-col">
+                        <div class="flex gap-1 text-orange mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-white/80 leading-relaxed italic mb-6">"The best decision we made for our trip. I
+                            was skeptical about booking a safari from Zanzibar for just one day, but Morix made it
+                            completely seamless. Mikumi was fantastic, and the pricing was exactly as stated—zero hidden
+                            fees. I will definitely use them again next year."</p>
+                        <p class="mt-auto font-semibold text-white">— David K., United Kingdom</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FINAL CTA ========== -->
+        <section class="relative w-screen left-1/2 -translate-x-1/2 py-20 bg-white text-center overflow-hidden">
+            <div class="absolute top-0 right-0 w-80 h-80 bg-orange/5 rounded-full blur-7xl -mr-16 -mt-16"></div>
+            <div class="relative z-10 max-w-4xl mx-auto px-6">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold text-navy mb-6">
+                    Ready to Experience Travel <span class="italic text-orange">Beyond Ordinary?</span>
+                </h2>
+                <p class="text-muted text-lg mb-10 max-w-2xl mx-auto">
+                    Stop scrolling through endless forums and let our team build your perfect Tanzanian itinerary. Your
+                    private luxury vehicle is waiting.
                 </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-[#F8FAFC]">
-        <div class="container mx-auto px-6">
-            <div class="flex items-center gap-6 mb-20 fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold text-[#003C63] shrink-0">Our Core Strengths</h2>
-                <div class="h-px bg-gray-300 w-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[300px]">
-                
-                <div class="md:col-span-2 md:row-span-2 p-12 rounded-[3rem] bg-white border border-gray-100 shadow-xl hover:shadow-2xl hover:border-[#F27D57]/50 transition-all group fade-up flex flex-col justify-center relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-[#F27D57]/5 rounded-full blur-3xl group-hover:bg-[#F27D57]/10 transition-colors"></div>
-                    <div class="w-20 h-20 rounded-2xl bg-[#003C63] flex items-center justify-center text-white text-3xl mb-8 relative z-10">
-                        <i class="fi fi-rr-earth-americas"></i>
-                    </div>
-                    <h4 class="text-3xl font-bold text-[#003C63] mb-6 relative z-10">Local Expertise & Trusted Network</h4>
-                    <p class="text-gray-600 text-lg leading-relaxed relative z-10 max-w-md">We are based in Zanzibar and work with reliable partners across Tanzania, ensuring safe, smooth, and authentic experiences.</p>
-                </div>
-
-                <div class="md:col-span-2 lg:col-span-2 p-10 rounded-[3rem] bg-white border border-gray-100 shadow-md hover:shadow-xl transition-all group fade-up flex flex-col justify-center">
-                    <div class="flex items-center gap-6 mb-4">
-                        <div class="w-14 h-14 rounded-full bg-[#F27D57]/10 flex items-center justify-center text-[#F27D57] text-2xl">
-                            <i class="fi fi-rr-settings-sliders"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold text-[#003C63]">Customized Experiences</h4>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed mt-2">No fixed packages only - every tour, safari, or shoot can be tailored to your interests, schedule, and budget.</p>
-                </div>
-
-                <div class="md:col-span-1 lg:col-span-2 p-10 rounded-[3rem] bg-[#003C63] text-white shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all group fade-up flex flex-col justify-center">
-                    <div class="flex items-center gap-6 mb-4">
-                        <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-[#F27D57] text-2xl">
-                            <i class="fi fi-rr-paw"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold">Zanzibar to Safari Specialists</h4>
-                    </div>
-                    <p class="text-gray-300 leading-relaxed mt-2">We specialize in seamless connections from Zanzibar to mainland Tanzania safaris, including flights, transfers, and accommodation.</p>
-                </div>
-
-                <div class="md:col-span-2 lg:col-span-2 md:row-span-2 p-12 rounded-[3rem] bg-white border border-gray-100 shadow-lg hover:shadow-2xl transition-all group fade-up flex flex-col justify-center text-center items-center">
-                    <div class="w-24 h-24 rounded-full bg-gray-50 flex items-center justify-center text-[#F27D57] text-4xl mb-8 border border-gray-100 group-hover:scale-110 transition-transform">
-                        <i class="fi fi-rr-camera-movie"></i>
-                    </div>
-                    <h4 class="text-3xl font-bold text-[#003C63] mb-6">Visual Storytelling Advantage</h4>
-                    <p class="text-gray-600 text-lg leading-relaxed max-w-md">We don’t just take you on experiences - we capture them professionally with photography, videography, and drone footage.</p>
-                </div>
-
-                <div class="md:col-span-1 lg:col-span-2 p-10 rounded-[3rem] bg-white border border-gray-100 shadow-md hover:shadow-xl transition-all group fade-up flex flex-col justify-center">
-                    <div class="flex items-center gap-6 mb-4">
-                        <div class="w-14 h-14 rounded-full bg-[#F27D57]/10 flex items-center justify-center text-[#F27D57] text-2xl">
-                            <i class="fi fi-rr-user-headset"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold text-[#003C63]">Professional & Personal Service</h4>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed mt-2">From your first message to the end of your trip, you receive direct communication, honest advice, and dedicated support.</p>
-                </div>
-
-                <div class="md:col-span-1 lg:col-span-2 p-10 rounded-[3rem] bg-[#F27D57] text-white shadow-md hover:shadow-xl transition-all group fade-up flex flex-col justify-center">
-                    <div class="flex items-center gap-6 mb-4">
-                        <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-white text-2xl">
-                            <i class="fi fi-sr-star"></i>
-                        </div>
-                        <h4 class="text-2xl font-bold">Quality & Reliability</h4>
-                    </div>
-                    <p class="text-white/90 leading-relaxed mt-2">We select quality accommodation, licensed guides, and well-maintained vehicles to ensure comfort and safety.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-[#001726] text-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#F27D57] opacity-[0.03] rounded-full blur-[120px] pointer-events-none"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-24 fade-up">
-                <span class="text-[#F27D57] font-bold tracking-widest uppercase text-sm mb-4 block">The Blend</span>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">What Makes Us Different</h2>
-                <p class="text-xl text-gray-400 font-light">Unlike ordinary tour companies, Morix Beyond Zanzibar blends:</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-24">
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl text-center scale-in hover:bg-white/10 transition-colors">
-                    <i class="fi fi-rr-map text-[#F27D57] text-4xl mb-6 block"></i>
-                    <h4 class="text-2xl font-bold">Tourism Expertise</h4>
-                </div>
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl text-center scale-in hover:bg-white/10 transition-colors delay-100">
-                    <i class="fi fi-rr-truck-side text-[#F27D57] text-4xl mb-6 block"></i>
-                    <h4 class="text-2xl font-bold">Safari Logistics</h4>
-                </div>
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl text-center scale-in hover:bg-white/10 transition-colors delay-200">
-                    <i class="fi fi-rr-camera-movie text-[#F27D57] text-4xl mb-6 block"></i>
-                    <h4 class="text-2xl font-bold">Creative Media</h4>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#"
+                        class="inline-flex items-center gap-2 bg-orange text-white font-bold px-8 py-4 rounded-full shadow-orange-btn hover:bg-orange-dark transition text-lg">
+                        <i class="far fa-calendar-check"></i> Get Your Free Custom Quote Today
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center gap-2 border-2 border-navy text-navy font-bold px-8 py-4 rounded-full hover:bg-navy hover:text-white transition text-lg">
+                        <i class="fab fa-whatsapp"></i> Connect on WhatsApp Instantly
+                    </a>
                 </div>
             </div>
+        </section>
 
-            <div class="text-center fade-up">
-                <p class="text-2xl text-gray-400 mb-12">Into one powerful travel experience. You don’t just travel.</p>
-                <div class="space-y-4">
-                    <h3 class="text-6xl md:text-8xl lg:text-[100px] font-black tracking-tighter text-white/10 hover:text-white transition-colors duration-500 cursor-default">YOUR EXPERIENCE.</h3>
-                    <h3 class="text-6xl md:text-8xl lg:text-[100px] font-black tracking-tighter text-white/30 hover:text-[#F27D57] transition-colors duration-500 cursor-default">YOU REMEMBER.</h3>
-                    <h3 class="text-6xl md:text-8xl lg:text-[100px] font-black tracking-tighter text-white hover:text-[#F27D57] transition-colors duration-500 cursor-default">YOU SHARE.</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div><!-- end whyView -->
 
 
-    <section class="py-32 bg-white">
-    <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
-        
-        <div class="fade-up">
-            <h2 class="text-4xl md:text-5xl font-bold text-[#003C63] mb-10">Who We Serve</h2>
-            <div class="flex flex-wrap gap-4">
-                <span class="px-8 py-4 rounded-full border border-gray-200 text-lg font-bold text-gray-700 hover:border-[#F27D57] hover:text-[#F27D57] cursor-default transition-colors shadow-sm flex items-center gap-3">
-                    <i class="fi fi-rr-globe text-[#F27D57]"></i> International travelers
-                </span>
-                <span class="px-8 py-4 rounded-full border border-gray-200 text-lg font-bold text-gray-700 hover:border-[#F27D57] hover:text-[#F27D57] cursor-default transition-colors shadow-sm flex items-center gap-3">
-                    <i class="fi fi-rr-heart text-[#F27D57]"></i> Couples & honeymooners
-                </span>
-                <span class="px-8 py-4 rounded-full border border-gray-200 text-lg font-bold text-gray-700 hover:border-[#F27D57] hover:text-[#F27D57] cursor-default transition-colors shadow-sm flex items-center gap-3">
-                    <i class="fi fi-rr-hiking text-[#F27D57]"></i> Adventure seekers
-                </span>
-                <span class="px-8 py-4 rounded-full border border-gray-200 text-lg font-bold text-gray-700 hover:border-[#F27D57] hover:text-[#F27D57] cursor-default transition-colors shadow-sm flex items-center gap-3">
-                    <i class="fi fi-rr-camera text-[#F27D57]"></i> Content creators
-                </span>
-                <span class="px-8 py-4 rounded-full border border-gray-200 text-lg font-bold text-gray-700 hover:border-[#F27D57] hover:text-[#F27D57] cursor-default transition-colors shadow-sm flex items-center gap-3">
-                    <i class="fi fi-rr-hotel text-[#F27D57]"></i> Hotels & tourism brands
-                </span>
-            </div>
-        </div>
-
-        <div class="bg-[#003C63] rounded-[3rem] p-12 md:p-16 text-white shadow-2xl relative overflow-hidden fade-up">
-            <div class="absolute -bottom-10 -right-10 text-9xl opacity-5"><i class="fi fi-rr-shield-check"></i></div>
-            <h2 class="text-4xl font-bold mb-10">We Promise:</h2>
-            <ul class="space-y-6 relative z-10">
-                <li class="flex items-center gap-5 text-xl font-medium">
-                    <i class="fi fi-rr-check-circle text-[#F27D57] text-2xl"></i> Flexible itineraries
-                </li>
-                <li class="flex items-center gap-5 text-xl font-medium">
-                    <i class="fi fi-rr-check-circle text-[#F27D57] text-2xl"></i> Transparent pricing
-                </li>
-                <li class="flex items-center gap-5 text-xl font-medium">
-                    <i class="fi fi-rr-check-circle text-[#F27D57] text-2xl"></i> Honest communication
-                </li>
-                <li class="flex items-center gap-5 text-xl font-medium">
-                    <i class="fi fi-rr-check-circle text-[#F27D57] text-2xl"></i>  Memorable experiences
-                </li>
-                <li class="flex items-center gap-5 text-xl font-medium">
-                    <i class="fi fi-rr-check-circle text-[#F27D57] text-2xl"></i> Professional coordination
-                </li>
-            </ul>
-        </div>
-
-    </div>
-    </section>
-
-
-
-    <section class="py-32 bg-[#F8FAFC] border-y border-gray-100">
-        <div class="container mx-auto px-6 text-center max-w-4xl fade-up relative">
-            <div class="absolute -top-10 left-1/2 -translate-x-1/2 text-[#F27D57] text-8xl font-serif opacity-20">“</div>
-            <h3 class="text-3xl md:text-5xl italic font-light leading-snug mb-10 text-[#003C63] relative z-10">
-                “Morix Beyond Zanzibar planned everything perfectly from beach tours to our safari and photoshoot. Truly beyond expectations.”
-            </h3>
-            <div class="flex justify-center gap-2 text-[#F27D57] mb-6">
-                <i class="fi fi-sr-star text-xl"></i><i class="fi fi-sr-star text-xl"></i><i class="fi fi-sr-star text-xl"></i><i class="fi fi-sr-star text-xl"></i><i class="fi fi-sr-star text-xl"></i>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="animations.js"></script>
+    <!-- Your scripts (header) -->
     <script src="script.js"></script>
 </body>
+
 </html>

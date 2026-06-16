@@ -1,1631 +1,752 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morix Beyond | Beyond Zanzibar Experiences</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Tanzania Safaris | Bush & Beach Adventures – Morix Beyond</title>
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
-    
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         :root {
             --navy: #003C63;
             --orange: #F27D57;
-            --white: #FFFFFF;
+            --orange-dark: #D35400;
+            --cream: #FEF9F0;
+            --light-cream: #FDF3E4;
+            --green: #27AE60;
+            --red: #C0392B;
+            --whatsapp: #25D366;
+            --border: #F0E3D0;
         }
 
-        body {
+        .font-body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            color: #333;
-            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4,  .font-heading { font-family: 'Playfair Display', serif; }
-        .font-sans-title { font-family: 'Lexend', sans-serif; }
-
-        /* Smooth Hide Scrollbar */
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Card Hover Effects */
-        .tour-card { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease; }
-        .tour-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 60, 99, 0.15); }
-
-        /* Modals - ZERO COLLISION STYLES */
-        .tz-modal-overlay { 
-            backdrop-filter: blur(12px); 
-            background-color: rgba(0, 60, 99, 0.85); 
-            opacity: 0; 
-            visibility: hidden; 
-            transition: all 0.3s ease-in-out; 
-            z-index: 999999 !important; 
-            pointer-events: none; 
-        }
-        .tz-modal-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }
-        .tz-modal-content { transform: scale(0.95) translateY(20px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .tz-modal-overlay.active .tz-modal-content { transform: scale(1) translateY(0); }
-
-        /* Custom Scrollbar for Modal Text */
-        .custom-scroll::-webkit-scrollbar { width: 6px; }
-        .custom-scroll::-webkit-scrollbar-track { background: rgba(0, 60, 99, 0.05); }
-        .custom-scroll::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
-
-        /* Bento Grid Expand Logic */
-        .bento-card { transition: all 0.5s ease; cursor: pointer; }
-        .bento-card .expand-text { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s ease; }
-        .bento-card.expanded { border-color: var(--orange); box-shadow: 0 10px 30px rgba(242, 125, 87, 0.2); }
-        .bento-card.expanded .expand-text { max-height: 200px; opacity: 1; margin-top: 0.75rem; }
-        @media (min-width: 1024px) { .bento-card.expanded { grid-column: span 2; grid-row: span 2; } }
-
-        /* Mobile Carousel Styles */
-        .destination-carousel {
-            display: none;
-            position: relative;
-        }
-        .destination-carousel.active {
-            display: block;
+        .font-heading {
+            font-family: 'Playfair Display', serif;
         }
 
-        .carousel-container {
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            position: relative;
-        }
-        .carousel-container::-webkit-scrollbar { display: none; }
-        .carousel-container { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .carousel-cards {
-            display: flex;
-            gap: 1rem;
-            padding-right: 1rem;
-            width: fit-content;
-        }
-
-        .carousel-card {
-            min-width: 280px;
-            height: 250px;
-            animation: slideInFromRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            flex-shrink: 0;
-        }
-
-        @keyframes slideInFromRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .carousel-controls {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 1rem;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .carousel-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 2px solid var(--orange);
-            background-color: white;
-            color: var(--orange);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-            pointer-events: auto;
-        }
-
-        .carousel-btn:hover {
-            background-color: var(--orange);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .carousel-btn:active {
-            transform: scale(0.95);
-        }
-
-        @media (min-width: 768px) {
-            .destination-carousel { display: none !important; }
-        }
-
-        /* Booking System Styles */
-        .booking-counter {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            background-color: var(--orange);
-            color: white;
-            border-radius: 50%;
-            font-size: 0.75rem;
-            font-weight: bold;
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            min-width: 24px;
-            padding: 0 4px;
-        }
-
-        /* Toast Notification */
-        .toast-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--orange);
-            color: white;
-            padding: 16px 24px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 10000;
-            animation: slideInUp 0.3s ease-out, slideOutDown 0.3s ease-out 2.7s forwards;
-            font-weight: 500;
-            max-width: 300px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        @keyframes slideInUp {
-            from {
-                transform: translateY(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideOutDown {
-            from {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(100px);
-                opacity: 0;
-            }
-        }
-
-        /* Booking Badge Styling (shared with header) */
-        .booking-badge {
+        .bg-navy {
             background-color: var(--navy);
-            color: white;
-            border-radius: 50%;
-            padding: 2px 7px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 24px;
-            position: relative;
-            margin-left: 4px;
+        }
+
+        .text-navy {
+            color: var(--navy);
+        }
+
+        .bg-cream {
+            background-color: var(--cream);
+        }
+
+        .bg-light-cream {
+            background-color: var(--light-cream);
+        }
+
+        .bg-orange {
+            background-color: var(--orange);
+        }
+
+        .bg-orange-dark {
+            background-color: var(--orange-dark);
+        }
+
+        .text-orange {
+            color: var(--orange);
+        }
+
+        .text-green {
+            color: var(--green);
+        }
+
+        .text-red {
+            color: var(--red);
+        }
+
+        .bg-green {
+            background-color: var(--green);
+        }
+
+        .bg-green-50 {
+            background-color: rgba(39, 174, 96, 0.1);
+        }
+
+        .bg-red-50 {
+            background-color: rgba(192, 57, 43, 0.1);
+        }
+
+        .bg-whatsapp {
+            background-color: var(--whatsapp);
+        }
+
+        .text-muted {
+            color: #6B7280;
+        }
+
+        .border-border {
+            border-color: var(--border);
+        }
+
+        .border-navy {
+            border-color: var(--navy);
+        }
+
+        .shadow-card {
+            box-shadow: 0 20px 55px -25px rgba(0, 0, 0, 0.25);
+        }
+
+        .shadow-card-lg {
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        .shadow-orange-btn {
+            box-shadow: 0 16px 30px rgba(242, 125, 87, 0.25);
+        }
+
+        .text-cream\/70 {
+            color: rgba(254, 249, 240, 0.7);
+        }
+
+        .hover\:text-orange:hover {
+            color: var(--orange);
+        }
+
+        .hover\:text-navy:hover {
+            color: var(--navy);
+        }
+
+        .hover\:bg-orange-dark:hover {
+            background-color: var(--orange-dark);
+        }
+
+        .toast-enter {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.35s ease;
+        }
+
+        .toast-enter.show {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 
-<body>
+<body class="font-body text-navy bg-cream min-h-screen flex flex-col overflow-x-hidden">
 
     <header id="main-header"></header>
 
-    <section class="relative h-[70vh] flex items-center pt-20 overflow-hidden bg-[#050914]">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2000&auto=format&fit=crop" 
-                 class="w-full h-full object-cover opacity-60" alt="Tanzania Safari Background">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#003C63]/90 via-[#003C63]/60 to-transparent"></div>
-            <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-gray-50 to-transparent"></div>
-        </div>
+    <!-- ===== HOME VIEW (compact mobile) ===== -->
+    <div id="homeView">
 
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-2 bg-[#F27D57]/20 border border-[#F27D57]/50 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
-                    <i class="fi fi-rr-compass text-[#F27D57] text-sm"></i>
-                    <span class="text-[#F27D57] text-xs font-bold tracking-[0.2em] uppercase font-sans-title">From Zanzibar to the Wild Heart of Africa</span>
-                </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tighter mb-6 leading-tight">
-                    TANZANIA SAFARI <br>
-                    <span class="text-[#F27D57]">ADVENTURES</span>
+        <!-- HERO (unchanged height) -->
+        <section
+            class="relative w-screen left-1/2 -translate-x-1/2 mb-8 md:mb-10 text-white text-center bg-cover bg-center h-[65vh] flex items-center justify-center"
+            style="background-image: linear-gradient(rgba(0,60,99,0.55), rgba(0,60,99,0.65)), url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200');">
+            <div class="px-4 py-6 md:py-12 max-w-4xl mx-auto w-full">
+                <h1
+                    class="font-heading text-3xl md:text-5xl lg:text-6xl font-extrabold mb-3 drop-shadow-lg leading-tight">
+                    Bush & Beach: Zanzibar to Africa's Greatest Wild Adventures
                 </h1>
-                <p class="text-gray-200 text-lg leading-relaxed mb-8 max-w-2xl font-light">
-                    Journey from Zanzibar to Tanzania’s most iconic wildlife destinations with professionally guided safari and trekking experiences — combining comfort, safety, and unforgettable nature encounters.
-                </p>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="py-20 bg-white" id="destinations">
-        <div class="container mx-auto px-6 max-w-[1400px]">
-            <div class="text-center mb-16">
-                <h2 class="text-[#F27D57] font-bold tracking-[0.3em] uppercase text-sm mb-3">The Journey Begins</h2>
-                <h3 class="text-4xl md:text-5xl font-extrabold text-[#003C63] font-heading">Safari and Trekking Destinations</h3>
-            </div>
-
-            <!-- DESKTOP GRID (md and up) -->
-            <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-12 mb-12 auto-rows-[250px]">
-                
-                <div class="bento-card expanded bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/serengeti.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-binoculars text-[#F27D57]"></i>Serengeti National Park</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">World-famous for its endless plains and the Great Migration, the Serengeti delivers extraordinary game drives with chances to see lions, elephants, giraffes, cheetahs, and vast herds of wildebeest and zebra.</p>
-                    </div>
+                <p class="text-base md:text-xl max-w-2xl mx-auto mb-5">Swap white sands for lions – same‑day fly‑in
+                    safaris from Zanzibar.</p>
+                <div class="flex flex-wrap justify-center gap-2 mb-5 text-sm">
+                    <span
+                        class="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full font-semibold flex items-center gap-1.5"><i
+                            class="far fa-paper-plane text-xs"></i> Instant Fly‑In</span>
+                    <span
+                        class="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full font-semibold flex items-center gap-1.5"><i
+                            class="far fa-heart text-xs"></i> Big Five</span>
+                    <span
+                        class="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full font-semibold flex items-center gap-1.5"><i
+                            class="far fa-star text-xs"></i> Pro Guides</span>
                 </div>
-
-                <div class="bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/ngorongoro.JPG" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-binoculars text-[#F27D57]"></i>Ngorongoro Crater</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">A UNESCO World Heritage Site and one of Africa’s most unique safari destinations, Ngorongoro offers one of the best opportunities to spot the Big Five in a single day within a stunning volcanic crater.</p>
-                    </div>
-                </div>
-
-                <div class="bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/tarangire.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-binoculars text-[#F27D57]"></i> Tarangire National Park</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">Renowned for its giant baobab trees and large elephant populations, Tarangire is ideal for short safaris from Zanzibar and provides rich wildlife viewing in a peaceful setting.</p>
-                    </div>
-                </div>
-
-                <div class="bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/manyara.JPG" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-binoculars text-[#F27D57]"></i> Lake Manyara National Park</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">A scenic park famous for tree-climbing lions, flamingos, and lush groundwater forests — perfect for travelers who enjoy diverse landscapes and birdlife.</p>
-                    </div>
-                </div>
-
-                <div class="bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/mikumi.JPG" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-binoculars text-[#F27D57]"></i> Mikumi National Park</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">One of Tanzania’s most accessible parks, Mikumi features wide open savannahs and abundant wildlife including lions, zebras, giraffes, buffalo, and antelope — excellent for first-time safari guests.</p>
-                    </div>
-                </div>
-
-                <div class="bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/kilimanjaro.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-backpack text-[#F27D57]"></i> Mount Kilimanjaro</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">Africa’s highest mountain and one of the world’s most iconic trekking destinations, offering life-changing hiking experiences and breathtaking summit views for adventure seekers.</p>
-                    </div>
-                </div>
-
-                <div class="bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/mero.JPG" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-mountain text-[#F27D57]"></i> Mount Meru</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">A beautiful and less crowded trekking destination near Arusha, Mount Meru provides dramatic scenery, rich wildlife, and an excellent acclimatization climb before Kilimanjaro.</p>
-                    </div>
-                </div>
-                <div class="bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/ruhaa.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-binoculars text-[#F27D57]"></i> Ruaha National Park</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">Known for its vast wilderness, dramatic landscapes, and rich wildlife. Located in the southern safari circuit, the park is famous for large populations of elephants, lions, leopards, buffalo, and many species of antelope.</p>
-                    </div>
-                </div>
-
-
+                <div class="flex flex-wrap justify-center gap-3">
+                    <a href="#packages"
+                        class="inline-flex items-center gap-2 bg-orange text-white font-bold px-6 py-3 rounded-full shadow-orange-btn hover:bg-orange-dark transition transform hover:-translate-y-0.5 text-sm"><i
+                            class="far fa-compass"></i> Safari Packages</a>
+                    <a href="#"
+                        class="inline-flex items-center gap-2 border-2 border-white text-white font-bold px-6 py-3 rounded-full hover:bg-white hover:text-navy transition text-sm"><i
+                            class="fab fa-whatsapp"></i> Chat</a>
                 </div>
             </div>
+        </section>
 
-            <!-- MOBILE CAROUSEL (mobile only) -->
-            <div class="destination-carousel active md:hidden relative">
-                <div class="carousel-container px-6 -mx-6" id="destination-carousel-scroll">
-                    <div class="carousel-cards">
-                
-                <div class="carousel-card bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/serengeti.JPG" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-jeep text-[#F27D57]"></i> Serengeti</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">World-famous for its endless plains and the Great Migration, the Serengeti delivers extraordinary game drives with chances to see lions, elephants, giraffes, cheetahs, and vast herds of wildebeest and zebra.</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/ngorongoro.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-compass text-[#F27D57]"></i> Ngorongoro</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">A UNESCO World Heritage Site and one of Africa's most unique safari destinations, Ngorongoro offers one of the best opportunities to spot the Big Five in a single day within a stunning volcanic crater.</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/tarangire.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-tree-deciduous text-[#F27D57]"></i> Tarangire</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">Renowned for its giant baobab trees and large elephant populations, Tarangire is ideal for short safaris from Zanzibar and provides rich wildlife viewing in a peaceful setting.</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/manyara.JPG" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-binoculars text-[#F27D57]"></i> Lake Manyara</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">A scenic park famous for tree-climbing lions, flamingos, and lush groundwater forests — perfect for travelers who enjoy diverse landscapes and birdlife.</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/mikumi.JPG" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-camera text-[#F27D57]"></i> Mikumi</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">One of Tanzania's most accessible parks, Mikumi features wide open savannahs and abundant wildlife including lions, zebras, giraffes, buffalo, and antelope — excellent for first-time safari guests.</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/kilimanjaro.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-backpack text-[#F27D57]"></i> Kilimanjaro</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">Africa's highest mountain and one of the world's most iconic trekking destinations, offering life-changing hiking experiences and breathtaking summit views for adventure seekers.</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/meru.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-mountain text-[#F27D57]"></i> Mount Meru</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">A beautiful and less crowded trekking destination near Arusha, Mount Meru provides excellent hiking with diverse ecosystems.</p>
-                    </div>
-                </div>
-
-                <div class="carousel-card bento-card bg-[#003C63] rounded-3xl overflow-hidden relative border border-gray-200 group" onclick="toggleTzExpand(this)">
-                    <img src="image/ruha.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#003C63] via-[#003C63]/50 to-transparent p-6 flex flex-col justify-end">
-                        <h4 class="text-2xl font-bold text-white font-sans-title flex items-center gap-2"><i class="fi fi-rr-mountain text-[#F27D57]"></i> Ruaha National Park</h4>
-                        <p class="expand-text text-gray-200 text-sm mt-2">A beautiful national park known for its diverse wildlife and stunning landscapes, offering excellent opportunities for game drives and birdwatching.</p>
-                    </div>
-                </div>
-                    </div>
-                </div>
-
-                <div class="carousel-controls">
-                    <button class="carousel-btn" onclick="slideDestinationCarousel(-1)" aria-label="Previous destination">
-                        <i class="fi fi-rr-angle-left"></i>
-                    </button>
-                    <button class="carousel-btn" onclick="slideDestinationCarousel(1)" aria-label="Next destination">
-                        <i class="fi fi-rr-angle-right"></i>
-                    </button>
-                </div>
+        <!-- WHY SECTION (compressed) -->
+        <section
+            class="relative w-screen left-1/2 -translate-x-1/2 py-12 md:py-20 lg:py-28 bg-white overflow-hidden mb-8 md:mb-12">
+            <div class="absolute top-0 left-0 w-[300px] h-[300px] bg-orange/5 rounded-full blur-7xl -ml-20 -mt-20">
             </div>
-        </div>
-
-    <section class="py-24 px-6 bg-[#003C63]" id="safari-packages">
-        <div class="container mx-auto max-w-[1400px]">
-            <div class="mb-16 border-l-4 border-[#F27D57] pl-6">
-                <h2 class="text-[#F27D57] font-sans-title font-bold tracking-[0.3em] uppercase text-sm mb-2 flex items-center gap-3">
-                    <i class="fi fi-rr-map-marker"></i>  Safari Packages
-                </h2>
-                <h3 class="text-4xl md:text-5xl font-extrabold text-[#FFFFFF] font-heading tracking-tighter">Explore Tanzania</h3>
+            <div class="absolute bottom-0 right-0 w-[300px] h-[300px] bg-navy/5 rounded-full blur-7xl -mr-20 -mb-20">
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="tour-card bg-white rounded-3xl overflow-hidden flex flex-col border-b-4 border-[#F27D57]">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="image/mikumi2.JPG" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 1 Day</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-[#003C63] font-heading mb-3 leading-snug">Mikumi Day Safari from Zanzibar</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 font-light mb-6">Experience a real African safari in just one day — flying directly from Zanzibar to the heart of Tanzania’s wilderness.</p>
-                        <div class="mt-auto border-t border-gray-100 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$500<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-safari-1')" class="bg-[#003C63] text-white hover:bg-[#F27D57] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors shadow-lg">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-<!--
-                <div class="tour-card bg-white rounded-3xl overflow-hidden flex flex-col border-b-4 border-[#F27D57]">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 3 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-[#003C63] font-heading mb-3 leading-snug">Premium Safari — Mikumi National Park</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 font-light mb-6">Embark on an unforgettable 3-day adventure into one of Tanzania’s most scenic and wildlife-rich national parks, featuring a Maasai cultural visit.</p>
-                        <div class="mt-auto border-t border-gray-100 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$1,350<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-safari-2')" class="bg-[#003C63] text-white hover:bg-[#F27D57] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors shadow-lg">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tour-card bg-white rounded-3xl overflow-hidden flex flex-col border-b-4 border-[#F27D57]">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 2 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-[#003C63] font-heading mb-3 leading-snug">Tarangire Elephant Safari</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 font-light mb-6">Escape into the wild on a short yet rewarding safari to Tarangire National Park, famous for its giant baobab trees and elephants.</p>
-                        <div class="mt-auto border-t border-gray-100 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$480<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-safari-3')" class="bg-[#003C63] text-white hover:bg-[#F27D57] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors shadow-lg">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tour-card bg-white rounded-3xl overflow-hidden flex flex-col border-b-4 border-[#F27D57]">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1534143048956-2db1e23ea119?q=80&w=800" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 2 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-[#003C63] font-heading mb-3 leading-snug">Classic Ngorongoro Crater Safari</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 font-light mb-6">Discover one of Africa’s most extraordinary natural wonders on this short yet unforgettable safari to the Ngorongoro Crater.</p>
-                        <div class="mt-auto border-t border-gray-100 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$580<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-safari-4')" class="bg-[#003C63] text-white hover:bg-[#F27D57] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors shadow-lg">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tour-card bg-white rounded-3xl overflow-hidden flex flex-col border-b-4 border-[#F27D57]">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1589553416260-f586c8f1514f?q=80&w=800" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 5 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-[#003C63] font-heading mb-3 leading-snug">Great Migration Adventure — Serengeti</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 font-light mb-6">Experience one of nature’s greatest spectacles on this expertly crafted safari focused on the Great Wildebeest Migration.</p>
-                        <div class="mt-auto border-t border-gray-100 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$2,499<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-safari-5')" class="bg-[#003C63] text-white hover:bg-[#F27D57] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors shadow-lg">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tour-card bg-white rounded-3xl overflow-hidden flex flex-col border-b-4 border-[#F27D57]">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=800" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 3 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-[#003C63] font-heading mb-3 leading-snug">Serengeti Safari and Hot Air Balloon</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 font-light mb-6">This unforgettable three-day safari combines classic Serengeti wildlife adventures with a magical sunrise hot air balloon flight.</p>
-                        <div class="mt-auto border-t border-gray-100 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$3,499<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-safari-6')" class="bg-[#003C63] text-white hover:bg-[#F27D57] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors shadow-lg">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tour-card bg-white rounded-3xl overflow-hidden flex flex-col border-b-4 border-[#F27D57]">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 5 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-[#003C63] font-heading mb-3 leading-snug">Serengeti Migration – Mara River Crossing</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 font-light mb-6">Embark on an extraordinary 5-day safari journey through Serengeti National Park, timed to witness the dramatic Mara River crossings.</p>
-                        <div class="mt-auto border-t border-gray-100 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$5,075<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-safari-7')" class="bg-[#003C63] text-white hover:bg-[#F27D57] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors shadow-lg">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tour-card bg-white rounded-3xl overflow-hidden flex flex-col border-b-4 border-[#F27D57]">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56?q=80&w=800" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 7 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-[#003C63] font-heading mb-3 leading-snug">Luxury Safari Pro — Northern Circuit</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 font-light mb-6">Experience the ultimate Northern Tanzania luxury safari, exploring Tarangire, Lake Manyara, Ngorongoro Crater, and the iconic Serengeti.</p>
-                        <div class="mt-auto border-t border-gray-100 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$4,950<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-safari-8')" class="bg-[#003C63] text-white hover:bg-[#F27D57] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors shadow-lg">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tour-card bg-white rounded-3xl overflow-hidden flex flex-col border-b-4 border-[#F27D57]">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1534143048956-2db1e23ea119?q=80&w=800" class="w-full h-full object-cover">
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 12 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-[#003C63] font-heading mb-3 leading-snug">Tanzania Explorer — Culture and Wildlife</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 font-light mb-6">Discover the true spirit of Tanzania on this immersive journey that blends iconic wildlife safaris, authentic cultural encounters, and breathtaking landscapes.</p>
-                        <div class="mt-auto border-t border-gray-100 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$2,499<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-safari-9')" class="bg-[#003C63] text-white hover:bg-[#F27D57] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors shadow-lg">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
--->
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 px-6 bg-white" id="trekking-packages">
-        <div class="container mx-auto max-w-[1400px]">
-            <div class="mb-16 border-l-4 border-[#003C63] pl-6">
-                <h2 class="text-[#003C63] font-sans-title font-bold tracking-[0.3em] uppercase text-sm mb-2 flex items-center gap-3">
-                    <i class="fi fi-rr-mountain"></i> Conquer The Roof of Africa
-                </h2>
-                <h3 class="text-4xl md:text-5xl font-extrabold text-[#F27D57] font-heading tracking-tighter">Trekking Packages</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="tour-card bg-[#003C63] rounded-3xl overflow-hidden flex flex-col group shadow-lg">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="image/lemosho.JPG" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <span class="absolute top-4 left-4 bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest border border-white/30"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 8 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-white font-heading mb-3 leading-snug">Lemosho Route – Scenic & Less Crowded</h4>
-                        <p class="text-gray-300 text-sm leading-relaxed line-clamp-3 font-light mb-6">The Lemosho Route is widely considered the most scenic and rewarding way to climb Mount Kilimanjaro. Starting on the remote western side of the mountain.</p>
-                        <div class="mt-auto border-t border-white/10 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$2,390<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-trek-1')" class="bg-[#F27D57] text-white hover:bg-white hover:text-[#003C63] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tour-card bg-[#003C63] rounded-3xl overflow-hidden flex flex-col group shadow-lg">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="image/machame.JPG" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <span class="absolute top-4 left-4 bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest border border-white/30"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 7 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-white font-heading mb-3 leading-snug">Machame Route – “Whiskey Route”</h4>
-                        <p class="text-gray-300 text-sm leading-relaxed line-clamp-3 font-light mb-6">The Machame Route, famously known as the “Whiskey Route,” is one of the most popular and scenic trails to the summit of Mount Kilimanjaro.</p>
-                        <div class="mt-auto border-t border-white/10 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$2,050<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-trek-2')" class="bg-[#F27D57] text-white hover:bg-white hover:text-[#003C63] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tour-card bg-[#003C63] rounded-3xl overflow-hidden flex flex-col group shadow-lg">
-                    <div class="h-60 overflow-hidden shrink-0 relative">
-                        <img src="image/marangu.JPG" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <span class="absolute top-4 left-4 bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest border border-white/30"><i class="fi fi-rr-clock mr-1 text-[#F27D57]"></i> 6 Days</span>
-                    </div>
-                    <div class="p-8 flex-grow flex flex-col">
-                        <h4 class="text-2xl font-bold text-white font-heading mb-3 leading-snug">Marangu Route Trek – “Coca-Cola Route”</h4>
-                        <p class="text-gray-300 text-sm leading-relaxed line-clamp-3 font-light mb-6">Climb Africa’s highest mountain via the most established and comfortable trail on Mount Kilimanjaro. The Marangu Route is the only route offering mountain hut accommodation.</p>
-                        <div class="mt-auto border-t border-white/10 pt-6 flex items-center justify-between">
-                            <div><span class="block text-[10px] text-gray-400 uppercase tracking-widest font-bold">Price</span><span class="text-2xl font-bold text-[#F27D57]">$1,790<span class="text-sm text-gray-400 font-normal">/Adult</span></span></div>
-                            <button onclick="openTzModal('modal-trek-3')" class="bg-[#F27D57] text-white hover:bg-white hover:text-[#003C63] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-colors">Itinerary <i class="fi fi-rr-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 bg-gray-50 border-t border-gray-200">
-        <div class="container mx-auto max-w-[1400px] px-6 grid md:grid-cols-2 gap-8 mb-16">
-            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden">
-                <div class="absolute -right-6 -top-6 text-9xl text-gray-50 opacity-50"><i class="fi fi-rr-star"></i></div>
-                <h3 class="text-2xl font-bold text-[#003C63] mb-6 font-heading relative z-10">Why Choose Us</h3>
-                <ul class="space-y-4 text-gray-600 relative z-10">
-                    <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-1"></i> Reliable mainland safari partners</li>
-                    <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-1"></i> Experienced professional guides</li>
-                    <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-1"></i> Custom itineraries from Zanzibar</li>
-                    <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-1"></i> Quality accommodation options</li>
-                    <li class="flex items-start gap-3"><i class="fi fi-rr-check-circle text-[#F27D57] mt-1"></i> Full travel coordination</li>
-                </ul>
-            </div>
-            <div class="bg-[#003C63] text-white p-8 md:p-10 rounded-3xl shadow-xl relative overflow-hidden">
-                <div class="absolute -right-6 -top-6 text-9xl text-[#050914] opacity-30"><i class="fi fi-rr-info"></i></div>
-                <h3 class="text-2xl font-bold text-white mb-6 font-heading relative z-10">Important Information</h3>
-                <ul class="space-y-4 text-gray-200 relative z-10">
-                    <li class="flex items-start gap-3"><i class="fi fi-rr-angle-small-right text-[#F27D57] mt-1 text-lg"></i> Safaris can start directly from Zanzibar</li>
-                    <li class="flex items-start gap-3"><i class="fi fi-rr-angle-small-right text-[#F27D57] mt-1 text-lg"></i> Best travel seasons: June – October & December – March</li>
-                    <li class="flex items-start gap-3"><i class="fi fi-rr-angle-small-right text-[#F27D57] mt-1 text-lg"></i> Private and group safaris available</li>
-                    <li class="flex items-start gap-3"><i class="fi fi-rr-angle-small-right text-[#F27D57] mt-1 text-lg"></i> All safaris can be customized</li>
-                </ul>
-            </div>
-        </div>
-
-        
-    </section>
-
-    <div id="modal-safari-1" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-safari-1')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="image/mikumi2.JPG" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">Mikumi Day Trip <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">from Zanzibar (By Flight)</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">Experience a real African safari in just one day — flying directly from Zanzibar to the heart of Tanzania’s wilderness. Enjoy an unforgettable wildlife adventure in Mikumi National Park, one of Tanzania’s most accessible and wildlife-rich parks. This express safari is perfect for travelers with limited time who still want an authentic big-game experience.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-calendar text-[#F27D57]"></i> Safari Itinerary</h4>
-                            <div class="mb-6">
-                                <h5 class="font-bold text-[#003C63] text-base flex items-center gap-2 mb-3 bg-gray-50 p-3 rounded-lg"><i class="fi fi-rr-plane-departure text-[#F27D57]"></i> Flight Schedule (Approximate)</h5>
-                                <ul class="space-y-3 text-sm text-gray-600 pl-2">
-                                    <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#F27D57] mt-1.5 shrink-0"></span> 07:00 AM – Departure flight from Zanzibar</li>
-                                    <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#F27D57] mt-1.5 shrink-0"></span> 08:00 AM – Arrival at Mikumi National Park airstrip</li>
-                                    <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 rounded-full bg-[#F27D57] mt-1.5 shrink-0"></span> 15:30 PM – Return flight from Mikumi to Zanzibar</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-[#003C63] text-base flex items-center gap-2 mb-3 bg-gray-50 p-3 rounded-lg"><i class="fi fi-rr-paw text-[#F27D57]"></i> Safari Experience</h5>
-                                <p class="text-sm text-gray-600 mb-3 leading-relaxed">Upon arrival, you will begin a guided game drive through Mikumi’s famous wildlife zones, including: Mkata Plains, Kisungura Area, Hippo Pools.
-                                    These regions are known for excellent animal sightings and open savannah landscapes.</p>
-                                <p class="text-sm text-gray-600 mb-3 leading-relaxed"><strong class="text-[#003C63]">You may encounter:</strong> Lions, elephants, giraffes, zebras, buffalo, wildebeest, eland, hartebeest, and hippos — all in their natural habitat.</p>
-                                <p class="text-sm text-gray-600 leading-relaxed">Our professional safari guide uses a radio communication system to coordinate with other guides in the park, increasing your chances of spotting wildlife and ensuring a rich and informative safari experience.
-                                    After your game drive and lunch break, you will be transferred back to the airstrip for your return flight to Zanzibar.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Package Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Return domestic flights (Zanzibar ⇄ Mikumi)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Mikumi National Park entrance fees</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Sharing safari vehicle</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Professional English safari guide</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Lunch inside the park</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Soft drinks (water & soda)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-star text-orange-500 mt-0.5"></i> <strong> Transport to departure point arranged separately or via us</strong></li>
-                            </ul>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-blue-50/50 rounded-2xl p-5 border border-blue-100">
-                                <h4 class="text-sm font-bold font-heading text-[#003C63] flex items-center gap-2 mb-3"><i class="fi fi-rr-globe text-[#F27D57]"></i> Perfect For</h4>
-                                <ul class="space-y-2 text-xs text-gray-600">
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Travelers with limited time</li>
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> First-time safari guests</li>
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Couples & honeymooners</li>
-                                </ul>
-                            </div>
-                            <div class="bg-orange-50/50 rounded-2xl p-5 border border-orange-100">
-                                <h4 class="text-sm font-bold font-heading text-[#003C63] flex items-center gap-2 mb-3"><i class="fi fi-rr-bullseye text-[#F27D57]"></i> Why Choose?</h4>
-                                <ul class="space-y-2 text-xs text-gray-600">
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Fly instead of road travel</li>
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Max wildlife in one day</li>
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Professionally guided</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$500 <span class="text-sm font-normal font-sans-title text-gray-300">/Adult</span></span>
-                            </div>
-                            <button onclick="addToBooking('Mikumi Day Safari from Zanzibar', '$500'); closeTzModal('modal-safari-1');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--
-    <div id="modal-safari-2" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-safari-2')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">3-Day Premium Safari <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">Mikumi National Park</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">Embark on an unforgettable 3-day safari adventure into one of Tanzania’s most scenic and wildlife-rich national parks. This premium experience blends thrilling game drives, breathtaking savannah landscapes, and a unique cultural encounter with a traditional Maasai village. Discover Africa’s iconic wildlife in its natural habitat while enjoying comfort, expert guiding, and immersive local culture.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-calendar text-[#F27D57]"></i> Safari Itinerary</h4>
-                            <div class="mb-6 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-base mb-2">Day 1: Dar es Salaam → Mikumi National Park</h5>
-                                <p class="text-sm text-gray-600 mb-3 leading-relaxed">Your professional driver-guide will collect you from your hotel at 08:00 AM and begin the scenic drive to Mikumi National Park (approx. 5–6 hours). Upon arrival, enjoy your first game drive en route into the park. In the late afternoon, you will visit a nearby Maasai village for an authentic cultural experience.</p>
-                                <div class="bg-gray-50 p-3 rounded-lg text-xs text-gray-600">
-                                    <p class="flex items-center gap-2"><i class="fi fi-rr-bed text-[#F27D57]"></i> Overnight: Vuma Hills Tented Camp (or similar luxury camp)</p>
-                                    <p class="flex items-center gap-2 mt-1"><i class="fi fi-rr-restaurant text-[#F27D57]"></i> Dinner & overnight at the camp</p>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                    <div class="text-left">
+                        <span
+                            class="inline-flex items-center gap-2 text-orange font-semibold text-xs uppercase tracking-widest bg-orange/10 px-3 py-1 rounded-full mb-4">
+                            <i class="fas fa-star text-xs"></i> Smart Travelers Know
+                        </span>
+                        <h2
+                            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy leading-tight font-heading mb-4">
+                            Why Add a Safari to Your Zanzibar Trip?
+                        </h2>
+                        <p class="text-muted text-sm lg:text-base max-w-md mb-6">
+                            Upgrade your beach escape with a once‑in‑a‑lifetime wildlife experience – easier than you
+                            think.
+                        </p>
+                        <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
+                            <div
+                                class="group relative bg-white rounded-2xl p-3 sm:p-4 lg:p-5 shadow-lg border border-border transition hover:-translate-y-1">
+                                <div
+                                    class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-orange/10 flex items-center justify-center mb-2 group-hover:bg-orange transition">
+                                    <i class="fas fa-plane-departure text-base text-orange group-hover:text-white"></i>
                                 </div>
+                                <h3 class="text-sm font-bold text-navy font-heading">Easy Departures</h3>
+                                <p class="text-xs text-muted mt-1">Daily direct flights to park airstrips – max safari
+                                    time.</p>
                             </div>
-                            <div class="mb-6 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-base mb-2">Day 2: Full-Day Game Drive in Mikumi</h5>
-                                <p class="text-sm text-gray-600 mb-3 leading-relaxed">After an early breakfast, depart for a full-day game drive across Mikumi’s famous wildlife areas. Expect sightings of: Elephants, giraffes, buffalo, zebras, hippos, wildebeests. With luck, you may also spot lions and leopards.</p>
-                                <div class="bg-gray-50 p-3 rounded-lg text-xs text-gray-600">
-                                    <p class="flex items-center gap-2"><i class="fi fi-rr-bed text-[#F27D57]"></i> Overnight: Vuma Hills Tented Camp</p>
-                                    <p class="flex items-center gap-2 mt-1"><i class="fi fi-rr-restaurant text-[#F27D57]"></i> Breakfast, Lunch & Dinner included</p>
+                            <div
+                                class="group relative bg-white rounded-2xl p-3 sm:p-4 lg:p-5 shadow-lg border border-border transition hover:-translate-y-1">
+                                <div
+                                    class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-orange/10 flex items-center justify-center mb-2 group-hover:bg-orange transition">
+                                    <i class="fas fa-user-friends text-base text-orange group-hover:text-white"></i>
                                 </div>
+                                <h3 class="text-sm font-bold text-navy font-heading">Tailored for All</h3>
+                                <p class="text-xs text-muted mt-1">Couples, families & solo travellers – custom‑crafted.
+                                </p>
                             </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-base mb-2">Day 3: Mikumi National Park → Dar es Salaam</h5>
-                                <p class="text-sm text-gray-600 leading-relaxed">After breakfast, begin your return journey to Dar es Salaam, passing through Mikumi National Park for final wildlife views along the way. Arrival in late afternoon/evening, with drop-off at your hotel, airport, or harbor.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Package Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Luxury accommodation: Vuma Hills Tented Camp (or similar)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All meals (Breakfast, Lunch & Dinner)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Private 4x4 safari vehicle</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Professional English-speaking driver-guide</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All park entrance fees</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Maasai village cultural visit</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Bottled water during safari</li>
-                            </ul>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-blue-50/50 rounded-2xl p-5 border border-blue-100">
-                                <h4 class="text-sm font-bold font-heading text-[#003C63] flex items-center gap-2 mb-3"><i class="fi fi-rr-globe text-[#F27D57]"></i> Ideal For</h4>
-                                <ul class="space-y-2 text-xs text-gray-600">
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Couples & honeymooners</li>
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> First-time safari travelers</li>
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Luxury short safaris</li>
-                                </ul>
-                            </div>
-                            <div class="bg-orange-50/50 rounded-2xl p-5 border border-orange-100">
-                                <h4 class="text-sm font-bold font-heading text-[#003C63] flex items-center gap-2 mb-3"><i class="fi fi-rr-bullseye text-[#F27D57]"></i> Why Choose?</h4>
-                                <ul class="space-y-2 text-xs text-gray-600">
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Wildlife & culture mix</li>
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Tented lodge experience</li>
-                                    <li class="flex items-start gap-2"><span class="text-[#F27D57]">•</span> Full-day game drives</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$1,350 <span class="text-sm font-normal font-sans-title text-gray-300">/Adult</span></span>
-                            </div>
-                            <button onclick="addToBooking('3-Day Premium Safari - Mikumi National Park', '$1,350'); closeTzModal('modal-safari-2');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-safari-3" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-safari-3')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">2-Day Tarangire <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">Elephant Safari</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">Escape into the wild on a short yet rewarding safari to Tarangire National Park, famous for its giant baobab trees and one of the highest concentrations of elephants in East Africa. This compact safari is perfect for travelers seeking spectacular wildlife, dramatic landscapes, and comfortable lodge accommodation in just two days.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-calendar text-[#F27D57]"></i> Safari Itinerary</h4>
-                            <div class="mb-6 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-base mb-2">Day 1: Arusha → Tarangire National Park</h5>
-                                <p class="text-sm text-gray-600 mb-3 leading-relaxed">Depart Arusha in the morning and drive to Tarangire National Park for a full-day game drive. Explore open savannahs, acacia woodlands, and the life-giving Tarangire River, where wildlife gathers year-round. Expect to see: Large elephant herds, lions, giraffes, zebras, wildebeest, buffalo, and over 500 bird species.</p>
-                                <div class="bg-gray-50 p-3 rounded-lg text-xs text-gray-600">
-                                    <p class="flex items-center gap-2"><i class="fi fi-rr-bed text-[#F27D57]"></i> Overnight: Sangaiwe Tented Lodge (or similar)</p>
-                                    <p class="flex items-center gap-2 mt-1"><i class="fi fi-rr-restaurant text-[#F27D57]"></i> Dinner & overnight at the lodge</p>
+                            <div
+                                class="col-span-2 group relative bg-white rounded-2xl p-3 sm:p-4 lg:p-5 shadow-lg border border-border transition hover:-translate-y-1">
+                                <div
+                                    class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-orange/10 flex items-center justify-center mb-2 group-hover:bg-orange transition">
+                                    <i
+                                        class="fas fa-hand-holding-heart text-base text-orange group-hover:text-white"></i>
                                 </div>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-base mb-2">Day 2: Sunrise Game Drive → Return to Arusha</h5>
-                                <p class="text-sm text-gray-600 leading-relaxed">Start your day with an early sunrise game drive, the best time to spot predators and grazing animals at their most active. After breakfast at the lodge, begin your return journey to Arusha, arriving by early afternoon.</p>
+                                <h3 class="text-sm font-bold text-navy font-heading">All‑Inclusive Peace</h3>
+                                <p class="text-xs text-muted mt-1">Flights, permits, meals & luxury stays – everything
+                                    handled.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Package Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Tarangire National Park entrance fees</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> 1-night full-board accommodation (Breakfast, Lunch & Dinner)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Private 4x4 safari vehicle with pop-up roof</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Professional English-speaking driver-guide</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Bottled drinking water during safari</li>
-                            </ul>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$480 <span class="text-sm font-normal font-sans-title text-gray-300">/Adult</span></span>
+                    <div class="relative flex justify-center lg:justify-end">
+                        <div
+                            class="relative rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl shadow-navy/20 w-full max-w-sm lg:max-w-none">
+                            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1000"
+                                alt="Safari experience"
+                                class="w-full h-auto object-cover aspect-[4/5] lg:aspect-[3/4] max-h-56 sm:max-h-80 lg:max-h-none lg:h-[500px]">
+                            <div
+                                class="absolute top-3 right-3 bg-white/90 backdrop-blur-md rounded-xl px-3 py-1.5 shadow flex items-center gap-2">
+                                <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                <span class="text-navy font-bold text-xs">Expert Guides</span>
                             </div>
-                            <button onclick="addToBooking('2-Day Tarangire Elephant Safari', '$480'); closeTzModal('modal-safari-3');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
+                        </div>
+                        <div
+                            class="absolute -bottom-2 -left-2 bg-orange text-white p-2 rounded-xl shadow-lg transform rotate-6 hover:rotate-0 transition">
+                            <i class="fas fa-compass text-lg"></i>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="modal-safari-4" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-safari-4')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1534143048956-2db1e23ea119?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">2-Day Classic <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">Ngorongoro Crater Safari</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">Discover one of Africa’s most extraordinary natural wonders on this short yet unforgettable safari to the world-famous Ngorongoro Crater. Perfect for travelers with limited time, this journey combines dramatic scenery, rich wildlife encounters, and comfortable lodge stays — all guided by professional safari experts.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-calendar text-[#F27D57]"></i> Safari Itinerary</h4>
-                            <div class="mb-6 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-base mb-2">Day 1: Arusha → Ngorongoro</h5>
-                                <p class="text-sm text-gray-600 mb-3 leading-relaxed">Begin your adventure with a scenic drive from Arusha through lush highlands, coffee plantations, and Maasai villages. Arrive at the crater rim and enjoy breathtaking panoramic views over the caldera before checking in to your lodge.</p>
-                                <div class="bg-gray-50 p-3 rounded-lg text-xs text-gray-600">
-                                    <p class="flex items-center gap-2"><i class="fi fi-rr-bed text-[#F27D57]"></i> Overnight: The Highlands Ngorongoro / Entamanu Camp</p>
-                                </div>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-base mb-2">Day 2: Crater Game Drive → Return to Arusha</h5>
-                                <p class="text-sm text-gray-600 leading-relaxed">After an early breakfast, descend 600 meters into the crater for a half-day game drive on the crater floor. This UNESCO World Heritage Site hosts an exceptional concentration of wildlife, including the rare black rhino. In the afternoon, ascend the crater and return to Arusha.</p>
-                            </div>
-                        </div>
+        <!-- COMPARISON TABLE (tighter) -->
+        <section class="mb-8 md:mb-12">
+            <div class="max-w-6xl mx-auto px-4">
+                <div
+                    class="bg-navy text-white rounded-t-2xl p-4 md:p-5 flex flex-col sm:flex-row sm:items-center gap-2">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-table text-xl text-orange"></i>
+                        <h2 class="font-heading text-xl md:text-2xl">Quick Safari Comparison</h2>
                     </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Package Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Ngorongoro Conservation Area entry fees</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Crater descent permit</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Private 4x4 safari vehicle with pop-up roof</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> 1-night full-board accommodation</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All meals & bottled drinking water</li>
-                            </ul>
+                    <p class="text-white/70 text-xs md:ml-auto">All trips include flights, fees & expert guides</p>
+                </div>
+                <div class="overflow-x-auto rounded-b-2xl shadow-card">
+                    <table class="w-full bg-white min-w-[700px] border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-navy/5 border-b-2 border-navy/10">
+                                <th class="p-3 text-left font-semibold text-navy">Destination</th>
+                                <th class="p-3 text-left font-semibold text-navy">Best For</th>
+                                <th class="p-3 text-left font-semibold text-navy">Flight Time</th>
+                                <th class="p-3 text-left font-semibold text-navy">Accommodation</th>
+                                <th class="p-3 text-left font-semibold text-navy">From (pp)</th>
+                                <th class="p-3 text-left font-semibold text-navy">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-border even:bg-light-cream">
+                                <td class="p-3 font-medium">Mikumi National Park</td>
+                                <td class="p-3">Short Trips</td>
+                                <td class="p-3">45-60 Mins</td>
+                                <td class="p-3">Return same day</td>
+                                <td class="p-3 font-bold text-orange">$350</td>
+                                <td class="p-3"><button onclick="showDetail('mikumi')"
+                                        class="bg-orange text-white font-semibold px-3 py-1.5 rounded-full text-xs hover:bg-orange-dark transition">Book</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-border even:bg-light-cream">
+                                <td class="p-3 font-medium">Tarangire National Park</td>
+                                <td class="p-3">Elephant Herds</td>
+                                <td class="p-3">1.5 Hours</td>
+                                <td class="p-3">Return same day</td>
+                                <td class="p-3 font-bold text-orange">$600</td>
+                                <td class="p-3"><button onclick="showDetail('tarangire')"
+                                        class="bg-orange text-white font-semibold px-3 py-1.5 rounded-full text-xs hover:bg-orange-dark transition">Book</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-border even:bg-light-cream">
+                                <td class="p-3 font-medium">Ngorongoro Crater</td>
+                                <td class="p-3">Big Five in Volcano</td>
+                                <td class="p-3">1.5 Hours</td>
+                                <td class="p-3">1 Night Included</td>
+                                <td class="p-3 font-bold text-orange">$650</td>
+                                <td class="p-3"><button onclick="showDetail('ngorongoro')"
+                                        class="bg-orange text-white font-semibold px-3 py-1.5 rounded-full text-xs hover:bg-orange-dark transition">Book</button>
+                                </td>
+                            </tr>
+                            <tr class="even:bg-light-cream">
+                                <td class="p-3 font-medium">Serengeti National Park</td>
+                                <td class="p-3">Ultimate Migration</td>
+                                <td class="p-3">2 Hours</td>
+                                <td class="p-3">2 Nights Included</td>
+                                <td class="p-3 font-bold text-orange">$950</td>
+                                <td class="p-3"><button onclick="showDetail('serengeti')"
+                                        class="bg-orange text-white font-semibold px-3 py-1.5 rounded-full text-xs hover:bg-orange-dark transition">Book</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- PACKAGES (unchanged, but reduced gap) -->
+        <section id="packages" class="mb-8 md:mb-12">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="relative bg-navy text-white rounded-2xl overflow-hidden p-5 md:p-8 mb-6 shadow-card-lg">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-orange/10 rounded-full blur-3xl -mr-8 -mt-8"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-orange/5 rounded-full blur-3xl -ml-8 -mb-8"></div>
+                    <div class="relative z-10 flex flex-col lg:flex-row lg:items-center gap-4">
+                        <div class="flex-1">
+                            <span
+                                class="inline-flex items-center gap-2 bg-orange text-navy text-xs font-bold uppercase px-3 py-1 rounded-full mb-3">
+                                <i class="fas fa-star"></i> Best Value Guaranteed
+                            </span>
+                            <h2 class="font-heading text-2xl md:text-4xl font-extrabold leading-tight mb-2">Your Safari,
+                                <span class="italic text-orange">Your Way</span>
+                            </h2>
+                            <p class="text-white/80 text-sm md:text-base">Hand‑picked fly‑in packages from Zanzibar.
+                                Instant booking, expert guides, unforgettable encounters.</p>
                         </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
+                        <a href="#"
+                            class="inline-flex items-center gap-2 bg-orange text-white font-bold px-6 py-3 rounded-full shadow-orange-btn hover:bg-orange-dark transition text-sm md:text-base whitespace-nowrap">
+                            <i class="far fa-calendar-check"></i> Book Now
+                        </a>
+                    </div>
+                </div>
+                <div id="packagesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"></div>
+            </div>
+        </section>
+
+        <!-- LODGING (tightened) -->
+        <section class="mb-8 md:mb-12">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="bg-white rounded-2xl p-5 md:p-8 shadow-card">
+                    <h2 class="font-heading text-xl md:text-3xl text-navy mb-3 flex items-center gap-2"><i
+                            class="fas fa-hotel text-orange"></i> Where You'll Stay</h2>
+                    <p class="text-sm text-muted mb-4">Hot showers, flushing toilets, Wi‑Fi, exceptional dining.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="flex items-start gap-3 p-3 bg-cream/50 rounded-xl">
+                            <i class="fas fa-bed text-lg text-orange mt-1"></i>
                             <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$580 <span class="text-sm font-normal font-sans-title text-gray-300">/Adult</span></span>
+                                <h3 class="font-bold text-navy text-sm">Comfort Tier</h3>
+                                <p class="text-xs text-muted">Eileen's Trees Inn, Mikumi Resort, Africa Safari Serengeti
+                                </p>
                             </div>
-                            <button onclick="addToBooking('2-Day Classic Ngorongoro Crater Safari', '$580'); closeTzModal('modal-safari-4');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-cream/50 rounded-xl">
+                            <i class="fas fa-crown text-lg text-orange mt-1"></i>
+                            <div>
+                                <h3 class="font-bold text-navy text-sm">Beyond Luxury Tier</h3>
+                                <p class="text-xs text-muted">Kubukubu Tented Lodge, Kitela Lodge, Tarangire Sopa</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-cream/50 rounded-xl">
+                            <i class="fas fa-gem text-lg text-orange mt-1"></i>
+                            <div>
+                                <h3 class="font-bold text-navy text-sm">Elite Tier</h3>
+                                <p class="text-xs text-muted">Four Seasons, Ngorongoro Crater Lodge, Melia Serengeti</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="modal-safari-5" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-safari-5')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1589553416260-f586c8f1514f?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">5-Day Great Migration <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">Adventure — Serengeti</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">Experience one of nature’s greatest spectacles on this expertly crafted safari focused on the Great Wildebeest Migration. Millions of wildebeest and zebras move across the Serengeti in search of fresh grazing, attracting powerful predators and creating unforgettable wildlife drama.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-calendar text-[#F27D57]"></i> Safari Itinerary</h4>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 1: Arrival → Fly to Serengeti</h5>
-                                <p class="text-sm text-gray-600 mb-2">Arrive at Kilimanjaro Airport, transfer to Arusha Airport for your flight to the Serengeti. Enjoy a game drive en route to your lodge.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 2: Northern Serengeti – Mara River Safari</h5>
-                                <p class="text-sm text-gray-600 mb-2">Spend the day exploring the northern Serengeti, famous for dramatic river crossings between July and October.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 3: Full-Day Migration Tracking</h5>
-                                <p class="text-sm text-gray-600 mb-2">Depart early for a full day of migration tracking across the savannah. Your expert guide will position you in high-activity areas.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 4: Central Serengeti – Seronera region</h5>
-                                <p class="text-sm text-gray-600 mb-2">Travel south toward the wildlife-rich Seronera region, home to resident animals year-round.</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 5: Morning Safari → Return to Arusha</h5>
-                                <p class="text-sm text-gray-600">Enjoy a final morning game drive before your scheduled flight back to Arusha.</p>
-                            </div>
-                        </div>
+        <!-- PHOTOGRAPHY (compact) -->
+        <section class="mb-6 md:mb-8">
+            <div class="max-w-6xl mx-auto px-4">
+                <div
+                    class="bg-white rounded-2xl p-4 md:p-6 shadow-card flex flex-col sm:flex-row items-center gap-4 border-l-4 border-orange">
+                    <div class="w-12 h-12 bg-orange/10 rounded-xl flex items-center justify-center"><i
+                            class="fas fa-camera-retro text-2xl text-orange"></i></div>
+                    <div class="flex-1 text-center sm:text-left">
+                        <h3 class="font-heading text-lg md:text-xl text-navy mb-1">Professional Safari Photography</h3>
+                        <p class="text-muted text-xs md:text-sm">HD photos & 4K cinematic video.</p>
                     </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Safari Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All airport transfers & domestic flights</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> 4 nights in luxury lodges/tented camps</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All meals during the safari (Full Board)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Serengeti park entrance & conservation fees</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Daily guided game drives & Bottled water</li>
-                            </ul>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$2,499</span>
-                            </div>
-                            <button onclick="addToBooking('5-Day Great Migration Adventure - Serengeti', '$2,499'); closeTzModal('modal-safari-5');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
+                    <a href="#"
+                        class="inline-flex items-center gap-2 bg-orange text-white font-semibold px-5 py-2.5 rounded-full shadow-orange-btn hover:bg-orange-dark transition text-sm whitespace-nowrap">
+                        <i class="fas fa-plus-circle"></i> Add to Package
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- INCLUDED / NOT INCLUDED (compact) -->
+        <section class="mb-6 md:mb-10">
+            <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white rounded-2xl p-4 md:p-6 shadow-card border-t-4 border-green">
+                    <h3 class="font-heading text-lg text-green font-bold mb-3 flex items-center gap-2"><i
+                            class="fas fa-check-circle"></i> Included</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green mt-1 text-xs"></i>
+                            Round‑trip flights & transfers</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green mt-1 text-xs"></i>
+                            Professional guide & 4x4</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green mt-1 text-xs"></i>
+                            All park fees & conservation</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green mt-1 text-xs"></i>
+                            Full board meals & water</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green mt-1 text-xs"></i>
+                            AMREF Flying Doctors insurance</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-4 md:p-6 shadow-card border-t-4 border-red">
+                    <h3 class="font-heading text-lg text-red font-bold mb-3 flex items-center gap-2"><i
+                            class="fas fa-times-circle"></i> Not Included</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2"><i class="fas fa-times-circle text-red mt-1 text-xs"></i>
+                            International flights</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-times-circle text-red mt-1 text-xs"></i>
+                            Visa ($50–$100)</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-times-circle text-red mt-1 text-xs"></i>
+                            Zanzibar insurance (~$44)</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-times-circle text-red mt-1 text-xs"></i>
+                            Tips & gratuities</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-times-circle text-red mt-1 text-xs"></i>
+                            Personal expenses</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA (compact) -->
+        <section class="mb-6 md:mb-10">
+            <div class="max-w-6xl mx-auto px-4">
+                <div
+                    class="bg-navy text-white rounded-2xl p-6 md:p-10 text-center shadow-card-lg flex flex-col items-center gap-3">
+                    <h2 class="font-heading text-2xl md:text-4xl font-bold">Ready for the Adventure of a Lifetime?</h2>
+                    <p class="text-white/80 text-sm">Secure your seats – limited availability.</p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <a href="#"
+                            class="bg-white text-navy font-bold px-6 py-3 rounded-full shadow text-sm hover:bg-orange hover:text-white transition flex items-center gap-2"><i
+                                class="far fa-calendar-check"></i> Book Now</a>
+                        <a href="#"
+                            class="border-2 border-white text-white font-bold px-6 py-3 rounded-full text-sm hover:bg-white hover:text-navy transition flex items-center gap-2"><i
+                                class="fab fa-whatsapp"></i> Chat</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="modal-safari-6" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-safari-6')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">3-Day Serengeti Safari <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">& Hot Air Balloon Ride</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">This unforgettable three-day safari combines classic Serengeti wildlife adventures with a magical sunrise hot air balloon flight over Africa’s most famous plains. Designed for travelers who want a luxury safari experience in a short time, this tour offers fly-in convenience, expert-guided game drives, and breathtaking aerial views of wildlife below.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-calendar text-[#F27D57]"></i> Safari Itinerary</h4>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 1: Fly to Serengeti & Afternoon Game Drive</h5>
-                                <p class="text-sm text-gray-600 mb-2">Morning transfer to Arusha Airport for your flight to the Serengeti. Meet your guide and begin your first game drive. Arrive at luxury camp by late afternoon.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 2: Sunrise Hot Air Balloon Ride & Safari</h5>
-                                <p class="text-sm text-gray-600 mb-2">Float silently above the Serengeti at sunrise. Enjoy a champagne bush breakfast, then continue with a full-day game drive.</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 3: Morning Game Drive & Return to Arusha</h5>
-                                <p class="text-sm text-gray-600">Enjoy an early morning sunrise game drive. After breakfast, transfer to the airstrip for your return flight to Arusha.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Safari Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Return domestic flights (Arusha ⇄ Serengeti)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> 2 nights luxury lodge or tented camp accommodation</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Sunrise hot air balloon safari with bush breakfast</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Professional English-speaking safari guide</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> 4x4 safari vehicle & park fees</li>
-                            </ul>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$3,499</span>
-                            </div>
-                            <button onclick="addToBooking('3-Day Serengeti Safari & Hot Air Balloon Ride', '$3,499'); closeTzModal('modal-safari-6');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div><!-- end #homeView -->
 
-    <div id="modal-safari-7" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-safari-7')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">5-Day Serengeti Migration <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">Mara River Crossing</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">Embark on an extraordinary 5-day safari journey through Serengeti National Park, timed to witness one of nature’s greatest spectacles — the Great Wildebeest Migration and the dramatic Mara River crossings. This expertly designed itinerary combines iconic landscapes, predator-filled plains, and prime migration zones.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-calendar text-[#F27D57]"></i> Safari Itinerary</h4>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 1: Arusha → Ngorongoro Crater</h5>
-                                <p class="text-sm text-gray-600 mb-2">Pick up from your hotel in Arusha and drive to the Ngorongoro Conservation Area. Descend 600 meters into the crater floor for a game drive. Ascend in the afternoon to your luxury lodge.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 2: Ngorongoro → Central Serengeti</h5>
-                                <p class="text-sm text-gray-600 mb-2">Drive to Serengeti National Park via the scenic highlands. Enjoy a full-day game drive through the wildlife-rich central Serengeti (Seronera region).</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 3: Central Serengeti → Northern Serengeti (Mara River)</h5>
-                                <p class="text-sm text-gray-600 mb-2">Depart toward the Northern Serengeti near the Mara River. This area becomes a wildlife paradise from August to October.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 4: Full Day Mara River Migration Safari</h5>
-                                <p class="text-sm text-gray-600 mb-2">Spend the entire day tracking the migration along the Mara River. River crossings occur frequently during peak season.</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 5: Serengeti → Arusha → Airport</h5>
-                                <p class="text-sm text-gray-600">Enjoy a final morning game drive before transfer to Kogatende Airstrip for your scheduled flight to Arusha.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Safari Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Luxury accommodation (lodges & tented camps)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Domestic flight (Serengeti → Arusha)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All meals during safari (full board)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Park entrance & conservation fees</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Professional English-speaking safari guide</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Airport transfers in Arusha</li>
-                            </ul>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$5,075 <span class="text-sm font-normal font-sans-title text-gray-300">/Adult</span></span>
-                            </div>
-                            <button onclick="addToBooking('5-Day Serengeti Migration - Mara River Crossing', '$5,075'); closeTzModal('modal-safari-7');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- ===== DETAIL VIEW ===== -->
+    <div id="detailView" class="hidden w-full bg-white"></div>
 
-    <div id="modal-safari-8" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-safari-8')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">7-Day Tanzania Luxury Safari Pro <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">Northern Safari Circuit</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">Experience the ultimate Northern Tanzania luxury safari, exploring Tarangire, Lake Manyara, Ngorongoro Crater, and the iconic Serengeti in style. This all-inclusive, premium safari combines luxury lodges and tented camps, expert-guided game drives, exquisite cuisine, and unforgettable wildlife encounters.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-calendar text-[#F27D57]"></i> Safari Itinerary</h4>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 1: Arrival at Arusha</h5>
-                                <p class="text-sm text-gray-600 mb-2">Welcome to Tanzania! Upon arrival at Kilimanjaro International Airport, meet your safari representative and transfer to your hotel in Arusha.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 2: Tarangire National Park</h5>
-                                <p class="text-sm text-gray-600 mb-2">After breakfast, drive to Tarangire National Park. Highlights include massive elephant herds along the Tarangire River and iconic baobab trees.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 3: Lake Manyara National Park</h5>
-                                <p class="text-sm text-gray-600 mb-2">Explore the compact but diverse Lake Manyara National Park. Look for tree-climbing lions and elephants in thick forests.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 4: Ngorongoro → Serengeti National Park</h5>
-                                <p class="text-sm text-gray-600 mb-2">Drive through the cooler highlands of Ngorongoro with a stop at the Crater rim. Continue to the southern Serengeti.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 5: Serengeti National Park</h5>
-                                <p class="text-sm text-gray-600 mb-2">Full-day game drives across the central Serengeti plains. Encounter lions, leopards, cheetahs, and track the Great Migration.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 6: Serengeti → Ngorongoro Crater → Arusha</h5>
-                                <p class="text-sm text-gray-600 mb-2">Drive back via Ngorongoro Conservation Area for a crater floor game drive. Return to Arusha in the evening.</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 7: Arusha → Kilimanjaro Airport</h5>
-                                <p class="text-sm text-gray-600">Transfer from your hotel to Kilimanjaro International Airport for your departure.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Safari Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Pick-up and drop-off from/to Arusha & airport transfers</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Transportation in private 4x4 safari vehicle</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Luxury accommodation throughout the safari</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All meals (Breakfast, Lunch & Dinner)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Professional English-speaking safari guide</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Park entrance & conservation fees</li>
-                            </ul>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$4,950 <span class="text-sm font-normal font-sans-title text-gray-300">/Adult</span></span>
-                            </div>
-                            <button onclick="addToBooking('7-Day Luxury Safari Pro - Northern Circuit', '$4,950'); closeTzModal('modal-safari-8');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- WhatsApp Float -->
+    <a href="#"
+        class="fixed bottom-6 right-6 bg-whatsapp text-white font-bold px-5 py-3 rounded-full shadow-lg flex items-center gap-2 z-50 hover:bg-green-600 transition text-sm"><i
+            class="fab fa-whatsapp fa-lg"></i> Chat with us</a>
 
-    <div id="modal-safari-9" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-safari-9')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1534143048956-2db1e23ea119?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">12-Day Tanzania Explorer <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">Culture & Wildlife Discovery</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">Discover the true spirit of Tanzania on this immersive journey that blends iconic wildlife safaris, authentic cultural encounters, and breathtaking landscapes. From vibrant towns and ancient tribes to legendary national parks, this itinerary is ideal for travelers who want more than just game drives — it’s the complete Tanzanian experience.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-calendar text-[#F27D57]"></i> Safari Itinerary</h4>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-md mb-1">Day 1-2: Arusha Arrival and Cultural Tour</h5>
-                                <p class="text-sm text-gray-600 mb-2">Arrive at Kilimanjaro Airport. The next day, explore Arusha’s vibrant markets and visit the edge of Arusha National Park for a nature walk or canoe ride.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-md mb-1">Day 3-4: Tarangire & Lake Eyasi</h5>
-                                <p class="text-sm text-gray-600 mb-2">Drive to Tarangire for a safari among giant baobabs. On Day 4, travel to Lake Eyasi to meet the Hadzabe hunter-gatherers and Datoga blacksmiths.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-md mb-1">Day 5-6: Lake Manyara and Ngorongoro Highlands</h5>
-                                <p class="text-sm text-gray-600 mb-2">Explore Lake Manyara National Park, then drive to the scenic Ngorongoro Highlands to visit a traditional Maasai village.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-md mb-1">Day 7-8: Ngorongoro Crater and Olduvai Gorge</h5>
-                                <p class="text-sm text-gray-600 mb-2">Full-day safari inside the Ngorongoro Crater. The next day, travel into the Serengeti via the historic Olduvai Gorge.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-md mb-1">Day 9-10: Full-Day Serengeti Safaris</h5>
-                                <p class="text-sm text-gray-600 mb-2">Spend two full days exploring different regions of the Serengeti, tracking cheetahs, lions, and enjoying bush picnics.</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-md mb-1">Day 11-12: Return & Departure</h5>
-                                <p class="text-sm text-gray-600">Fly back to Arusha for a farewell dinner. Depart from Kilimanjaro Airport on Day 12.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-star text-[#F27D57]"></i> Safari Highlights</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><span class="text-[#F27D57]">•</span> Cultural encounters with Hadzabe & Datoga</li>
-                                <li class="flex items-start gap-3"><span class="text-[#F27D57]">•</span> Maasai village experience</li>
-                                <li class="flex items-start gap-3"><span class="text-[#F27D57]">•</span> Big Five safari in Ngorongoro Crater</li>
-                                <li class="flex items-start gap-3"><span class="text-[#F27D57]">•</span> Multiple game drives in Serengeti</li>
-                                <li class="flex items-start gap-3"><span class="text-[#F27D57]">•</span> Visit to Olduvai Gorge</li>
-                            </ul>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$2,499</span>
-                            </div>
-                            <button onclick="addToBooking('12-Day Tanzania Explorer - Culture & Wildlife', '$2,499'); closeTzModal('modal-safari-9');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
--->
+    <!-- Toast -->
+    <div id="cartToast"
+        class="fixed bottom-24 right-6 bg-green text-white px-5 py-2.5 rounded-full font-semibold shadow-lg z-50 toast-enter pointer-events-none text-sm">
+        ✅ Added to cart!</div>
 
-    <!-- Trekking Modals -->
-    <div id="modal-trek-1" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-trek-1')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="image/lemosho.JPG" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">8-Day Lemosho Route <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">Scenic & Less Crowded Trek</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">The Lemosho Route is widely considered the most scenic and rewarding way to climb Mount Kilimanjaro. Starting on the remote western side of the mountain, this route offers breathtaking landscapes, rich wildlife, and excellent acclimatization before joining the Machame Route for the final ascent. It is ideal for climbers seeking high summit success rates with fewer crowds.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-map-marker-path text-[#F27D57]"></i> Trekking Itinerary</h4>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 1: Arusha – Londorossi Gate – Mti Mkubwa Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 2,100m – 2,650m | Distance: 6km | Time: 3-4 hours</p>
-                                <p class="text-sm text-gray-600 mb-2">Begin your trek through lush rainforest. This area is home to colobus monkeys and unique plant life.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 2: Mti Mkubwa – Shira 1 Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 2,650m – 3,610m | Distance: 8km | Time: 5-6 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 3: Shira 1 – Shira 2 Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 3,610m – 3,850m | Distance: 7km | Time: 3-4 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 4: Shira 2 – Lava Tower – Barranco Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: Up to 4,600m | Distance: 10km | Time: 6-8 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 5: Barranco – Karanga Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 3,960m – 4,035m | Distance: 5km | Time: 4-5 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 6: Karanga – Barafu Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 4,035m – 4,640m | Distance: 4km | Time: 3-4 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 7: Summit Day – Barafu to Uhuru Peak – Mweka Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 4,640m → 5,895m → 3,080m | Distance: 17km | Time: 12-15 hrs</p>
-                                <p class="text-sm text-gray-600 mb-2">Start the ascent around midnight. Reach Stella Point for sunrise, then continue to Uhuru Peak (5,895 m), the highest point in Africa. Celebrate your achievement before descending to Mweka Camp.</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 8: Mweka Camp – Mweka Gate – Arusha</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 3,080m – 1,640m | Distance: 10km | Time: 3-4 hours</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Package Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i>7 nights camping on the mountain (Quality tents)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> 2 nights hotel in Arusha (before & after climb)</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All meals and purified drinking water</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Kilimanjaro National Park & rescue fees</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Professional mountain guide, porters, and cook</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Oxygen, first-aid kits & daily health checks</li>
-                            </ul>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$2,390 <span class="text-sm font-normal font-sans-title text-gray-300">/Adult</span></span>
-                            </div>
-                            <button onclick="addToBooking('8-Day Lemosho Route - Scenic Trek', '$2,390'); closeTzModal('modal-trek-1');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-trek-2" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-trek-2')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="image/machame.JPG" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">7-Day Machame Route <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">The "Whiskey Route"</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">The Machame Route is one of the most popular and scenic trails to the summit of Mount Kilimanjaro. This route is more adventurous and physically demanding than Marangu, offering dramatic landscapes, varied ecosystems, and excellent acclimatization.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-map-marker-path text-[#F27D57]"></i> Trekking Itinerary</h4>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 1: Arusha – Machame Gate – Machame Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 1,640m → 2,835m | Distance: 11km | Time: 5-7 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 2: Machame Camp – Shira Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 2,835m → 3,850m | Distance: 5km | Time: 4-6 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 3: Shira Camp – Lava Tower – Barranco Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: Up to 4,600m | Distance: 10km | Time: 6-8 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 4: Barranco Camp – Karanga Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 3,960m → 4,035m | Distance: 5km | Time: 4-5 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 5: Karanga Camp – Barafu Camp</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 4,035m → 4,640m | Distance: 4km | Time: 3-4 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 6: Summit Day – Kibo to Uhuru Peak to Mweka</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 4,640m → 5,895m → 3,080m | Distance: 17km</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 7: Mweka Camp – Mweka Gate – Arusha</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 3,080m → 1,640m | Distance: 10km | Time: 3-4 hours</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Package Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Kilimanjaro National Park entry and camping fees</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Professional mountain guide, cook, and porters</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> 2 nights hotel in Arusha</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All meals and drinking water during the trek</li>
-                            </ul>
-                        </div>
-                        <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$2,050 <span class="text-sm font-normal font-sans-title text-gray-300">/Adult</span></span>
-                            </div>
-                            <button onclick="addToBooking('7-Day Machame Route - Whiskey Route Trek', '$2,050'); closeTzModal('modal-trek-2');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-trek-3" class="tz-modal-overlay fixed inset-0 flex items-center justify-center p-4 lg:p-8">
-        <div class="tz-modal-content bg-[#FFFFFF] w-full max-w-5xl max-h-[90vh] rounded-3xl flex flex-col overflow-hidden shadow-2xl relative">
-            <button onclick="closeTzModal('modal-trek-3')" class="absolute top-4 right-4 z-20 w-12 h-12 bg-white/20 backdrop-blur-md hover:bg-[#F27D57] text-white rounded-full flex items-center justify-center transition-colors shadow-lg text-xl"><i class="fi fi-rr-cross"></i></button>
-            <div class="w-full h-48 md:h-64 shrink-0 relative">
-                <img src="image/marangu.JPG" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                <h2 class="absolute bottom-6 left-6 md:left-10 text-3xl md:text-4xl font-extrabold font-heading text-white">6-Day Marangu Route <br><span class="text-lg md:text-xl font-sans-title font-normal text-[#F27D57]">The "Coca-Cola Route"</span></h2>
-            </div>
-            <div class="p-6 md:p-10 overflow-y-auto custom-scroll flex-grow bg-[#FFFFFF]">
-                <p class="text-[#003C63]/80 text-base leading-relaxed mb-10 font-light">Climb Africa’s highest mountain via the most established and comfortable trail on Mount Kilimanjaro. The Marangu Route is the only route offering mountain hut accommodation, making it ideal for trekkers who prefer solid shelter, well-defined paths, and a steady ascent profile.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold font-heading text-[#003C63] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4"><i class="fi fi-rr-map-marker-path text-[#F27D57]"></i> Trekking Itinerary</h4>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 1: Arusha – Marangu Gate – Mandara Hut</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 1,860m → 2,700m | Distance: 8km | Time: 4-5 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 2: Mandara Hut – Horombo Hut</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 2,700m → 3,720m | Distance: 12km | Time: 6-8 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 3: Acclimatization Day at Horombo Hut</h5>
-                                <p class="text-sm text-gray-600 mb-2">A crucial day for altitude adaptation. Enjoy a short hike toward Zebra Rocks or Mawenzi Ridge before returning to Horombo Hut.</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 4: Horombo Hut – Kibo Hut</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 3,720m → 4,703m | Distance: 10km | Time: 6-7 hours</p>
-                            </div>
-                            <div class="mb-4 relative pl-6 border-l-2 border-gray-200">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 5: Summit Day – Kibo to Uhuru Peak to Horombo</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 4,703m → 5,895m → 3,720m | Distance: 21km</p>
-                            </div>
-                            <div class="relative pl-6 border-l-2 border-transparent">
-                                <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#F27D57]"></span>
-                                <h5 class="font-bold text-[#003C63] text-sm mb-1">Day 6: Horombo Hut – Marangu Gate – Arusha</h5>
-                                <p class="text-xs text-gray-500 mb-2">Altitude: 3,720m → 1,860m | Distance: 20km | Time: 5-7 hours</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                            <h4 class="text-lg font-bold font-heading text-[#003C63] flex items-center gap-2 mb-4"><i class="fi fi-rr-check-circle text-orange-500"></i> Package Includes</h4>
-                            <ul class="space-y-3 text-sm text-gray-600">
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> 5 nights’ mountain hut accommodation</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> Pre- and post-trek hotel in Arusha</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> All meals during the trek</li>
-                                <li class="flex items-start gap-3"><i class="fi fi-rr-check text-orange-500 mt-0.5"></i> National Park entrance and rescue fees</li>
-                            </ul>
-                        </div>
-                    <div class="bg-[#003C63] text-white rounded-2xl p-6 flex items-center justify-between shadow-xl mt-4">
-                            <div>
-                                <span class="block text-xs uppercase tracking-widest font-bold text-[#F27D57] mb-1">Price</span>
-                                <span class="text-4xl font-extrabold font-heading">$2,050 <span class="text-sm font-normal font-sans-title text-gray-300">/Adult</span></span>
-                            </div>
-                            <button onclick="addToBooking('6-Day Marangu Route - Coca-Cola Route Trek', '$2,050'); closeTzModal('modal-trek-3');" class="bg-[#F27D57] hover:bg-white hover:text-[#003C63] px-6 py-3 rounded-xl font-bold transition-colors flex items-center gap-2 text-sm">
-                                Add to Booking <i class="fi fi-rr-shopping-bag"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+    <!-- ===== SCRIPTS (unchanged except hover fix) ===== -->
     <script>
-        // Use completely unique names for the Tanzania modals so script.js doesn't block them.
-        window.openTzModal = function(id) {
-            const modal = document.getElementById(id);
-            if (modal) {
-                modal.classList.remove('hidden');
-                setTimeout(() => { modal.classList.add('active'); }, 10);
-                document.body.style.overflow = 'hidden'; 
+        const data = {
+            mikumi: {
+                id: 'mikumi', title: 'Mikumi National Park Safari', subtitle: '"The Safari Day Escape" – Perfect for Short Trips',
+                img: 'https://images.unsplash.com/photo-1535083783855-77ae5a3b0d5b?w=800',
+                hero: 'https://images.unsplash.com/photo-1535083783855-77ae5a3b0d5b?w=1000',
+                highlights: ['Lions', 'Elephants', 'Giraffes', 'Zebras', 'Wildebeests', 'Hippos'],
+                duration: '1 Day (Fly‑in & Fly‑out)', flight: '45‑60 mins', accom: 'Return same day', price: '$350', priceNum: 350,
+                desc: 'Mikumi is one of the most accessible safari destinations from Zanzibar, offering a landscape that closely resembles the Serengeti (often called \'Little Serengeti\'). It provides excellent wildlife viewing in a condensed timeframe. Highlights: Lions, Elephants, Giraffes, Zebras, Wildebeests, Hippos.',
+                itinerary: [
+                    {
+                        day: '⏱ The Hour-by-Hour Itinerary', icon: 'far fa-sun', steps: [
+                            { time: '04:00 AM', desc: 'Resort Pickup: Private VIP transfer from your Zanzibar hotel to Zanzibar International Airport (ZNZ).' },
+                            { time: '07:00 AM', desc: 'Flight to the Wild: Board your domestic light aircraft flight to Mikumi Airstrip. Enjoy stunning aerial views of the Indian Ocean coast.' },
+                            { time: '08:15 AM', desc: 'Touchdown & Touch the Wild: Arrive at Mikumi Airstrip. Your Morix Beyond professional safari guide will open the rooftop of your private 4x4 safari vehicle. Game drive begins instantly.' },
+                            { time: '08:30 AM – 12:30 PM', desc: 'Morning Game Drive: Track prides of lions, herds of elephants, and towering giraffes grazing along the Mkata Floodplain.' },
+                            { time: '12:30 PM', desc: 'The Bush Lunch Experience: Enjoy a premium hot lunch or packed gourmet picnic lunch served at a scenic, secure spot inside the park.' },
+                            { time: '01:30 PM – 03:30 PM', desc: 'Afternoon Game Drive: Visit the famous Hippo Pools to see giant hippos wallowing and crocodiles basking in the sun.' },
+                            { time: '03:45 PM', desc: 'Airstrip Transfer: Head back to Mikumi Airstrip for check-in.' },
+                            { time: '04:30 PM', desc: 'Return Flight: Fly back to Zanzibar Island.' },
+                            { time: '05:30 PM', desc: 'Welcome Back: Arrive in Zanzibar; our private driver transfers you back to your beach resort for dinner.' }
+                        ]
+                    }
+                ],
+                gallery: ['https://images.unsplash.com/photo-1535083783855-77ae5a3b0d5b?w=400', 'https://images.unsplash.com/photo-1547970814-0e0a3e8e9f9d?w=400', 'https://images.unsplash.com/photo-1551739440-5b1f3b3e8b7c?w=400']
+            },
+            tarangire: {
+                id: 'tarangire', title: 'Tarangire National Park Safari', subtitle: '"Home of Giant Elephant Herds & Ancient Baobabs"',
+                img: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=800',
+                hero: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=1000',
+                highlights: ['Hundreds of Elephants', 'Baobabs', 'Tree‑climbing Lions', 'Leopards', '500+ Bird Species'],
+                duration: '1 Day (Fly‑in & Fly‑out)', flight: '1.5 Hours', accom: 'Return same day', price: '$600', priceNum: 600,
+                desc: 'Famous for its massive elephant population and the majestic, prehistoric baobab trees that dot the landscape, Tarangire offers a truly dramatic and raw safari atmosphere. Highlights: Hundreds of elephants traveling together, tree-climbing lions, leopards, and over 500 bird species.',
+                itinerary: [
+                    {
+                        day: '⏱ 1-Day Comprehensive Itinerary', icon: 'far fa-sun', steps: [
+                            { time: '05:30 AM', desc: 'Zanzibar Departure: Flight from Zanzibar to Arusha/KIA Airport.' },
+                            { time: '07:45 AM', desc: 'Welcome to Northern Tanzania: Meet your expert guide and board your heavy-duty 4x4 Land Cruiser.' },
+                            { time: '08:30 AM – 01:00 PM', desc: 'The Elephant Trail: Enter Tarangire National Park. Wind through the ancient baobab forests and track the massive elephant families heading toward the Tarangire River.' },
+                            { time: '01:00 PM', desc: 'Luxury Picnic Lunch: Dine overlooking the Tarangire River valley, watching wildlife drink below.' },
+                            { time: '02:00 PM – 04:00 PM', desc: 'Predator Tracking: Look out for leopards resting on tree branches and lions blending into the golden savannah grass.' },
+                            { time: '04:30 PM', desc: 'Return Flight Transfer: Drive back to the airstrip for your flight to Zanzibar.' },
+                            { time: '06:30 PM', desc: 'Back to Beach Resort: Drop off at your hotel in Zanzibar.' }
+                        ]
+                    }
+                ],
+                gallery: ['https://images.unsplash.com/photo-1549366021-9f761d450615?w=400', 'https://images.unsplash.com/photo-1504173010664-32509aeebb62?w=400', 'https://images.unsplash.com/photo-1551739440-5b1f3b3e8b7c?w=400']
+            },
+            ngorongoro: {
+                id: 'ngorongoro', title: 'Ngorongoro Crater Safari', subtitle: '"Africa\'s Natural Wonder & The Garden of Eden"',
+                img: 'https://images.unsplash.com/photo-1589308078059-be3f48b4b7a8?w=800',
+                hero: 'https://images.unsplash.com/photo-1589308078059-be3f48b4b7a8?w=1000',
+                highlights: ['Black Rhino', 'Dense Lion Prides', 'Golden Jackals', 'Thousands of Flamingos', 'Big Five'],
+                duration: '2 Days / 1 Night', flight: '1.5 Hours', accom: '1 Night in Karatu Highlands Lodge', price: 'From $650', priceNum: 650,
+                desc: 'Explore a breathtaking, intact volcanic caldera sheltering over 25,000 large animals. This is your absolute best chance in East Africa to see the endangered Black Rhino in a single afternoon. Highlights: Black Rhino, dense lion prides, golden jackals, thousands of flamingos on Lake Magadi.',
+                itinerary: [
+                    {
+                        day: 'Day 1: Zanzibar to Karatu Highlands', icon: 'far fa-moon', steps: [
+                            { time: 'Morning', desc: 'Fly from Zanzibar to Arusha. Meet your guide and take a scenic drive through cultural Maasai villages up to the lush green Karatu Highlands.' },
+                            { time: 'Afternoon', desc: 'Check-in at your selected partner lodge. Enjoy a sunset dinner overlooking coffee plantations and overnight rest.' }
+                        ]
+                    },
+                    {
+                        day: 'Day 2: Crater Floor & Return', icon: 'far fa-sun', steps: [
+                            { time: '06:00 AM', desc: 'Early breakfast at the lodge.' },
+                            { time: '07:00 AM', desc: 'The Descent: Drive to the rim and descend 600 meters down into the volcanic crater floor.' },
+                            { time: '07:30 AM – 12:30 PM', desc: 'The Ultimate Safari Game Drive: Traverse the crater floor. Witness lions hunting, massive bull elephants, and spot the rare Black Rhino.' },
+                            { time: '12:30 PM', desc: 'Ngoitokitok Springs Lunch: Eat your gourmet lunch by the spring while watching hippos splash in the water.' },
+                            { time: '02:00 PM', desc: 'Ascend the crater and drive back to Arusha Airport.' },
+                            { time: '04:45 PM', desc: 'Flight back to Zanzibar. Arrive and transfer smoothly to your resort.' }
+                        ]
+                    }
+                ],
+                gallery: ['https://images.unsplash.com/photo-1589308078059-be3f48b4b7a8?w=400', 'https://images.unsplash.com/photo-1516687401795-9d8593a13e9a?w=400', 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400']
+            },
+            serengeti: {
+                id: 'serengeti', title: 'Serengeti National Park Safari', subtitle: '"The Ultimate African Safari & Endless Plains"',
+                img: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800',
+                hero: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1000',
+                highlights: ['Great Migration', 'Massive Lion Prides', 'Leopards', 'Cheetahs', 'Dramatic Photography'],
+                duration: '3 Days / 2 Nights', flight: '2 Hours', accom: '2 Nights Luxury Tented Camp', price: 'From $950', priceNum: 950,
+                desc: 'The legendary Serengeti. Home to the Great Wildebeest Migration, the highest concentration of big cats on earth, and sweeping landscapes that define the word "Safari". Highlights: The Great Migration, massive prides of lions, leopards, cheetahs, dramatic wildlife photography.',
+                itinerary: [
+                    {
+                        day: 'Day 1: Welcome to the Serengeti Plains', icon: 'far fa-moon', steps: [
+                            { time: '07:30 AM', desc: 'Board a direct flight from Zanzibar to Seronera Airstrip (Central Serengeti).' },
+                            { time: '10:00 AM', desc: 'Land directly in the heart of the wilderness. Your guide picks you up in a private vehicle and your safari starts immediately.' },
+                            { time: '01:00 PM', desc: 'Check-in and lunch at your selected luxury tented camp inside the park.' },
+                            { time: '03:30 PM', desc: 'Sunset game drive looking for leopards hiding in kopjes (rock formations). Dinner and overnight under the African stars.' }
+                        ]
+                    },
+                    {
+                        day: 'Day 2: Full-Day Migration Tracking', icon: 'far fa-sun', steps: [
+                            { time: '06:00 AM', desc: 'Sunrise game drive (the best time to watch lions and cheetahs hunt).' },
+                            { time: '08:30 AM', desc: 'Bush breakfast out in the wild savanna.' },
+                            { time: '10:00 AM – 03:30 PM', desc: 'Follow the massive herds of the Great Migration (seasonal locations). Spot river hippos and big predators.' },
+                            { time: '04:00 PM', desc: 'Return to camp for sundowner drinks around a roaring campfire.' }
+                        ]
+                    },
+                    {
+                        day: 'Day 3: Final Game Drive & Return', icon: 'far fa-arrow-alt-circle-right', steps: [
+                            { time: '06:30 AM', desc: 'Short morning game drive before breakfast.' },
+                            { time: '10:30 AM', desc: 'Transfer to Seronera Airstrip with a game drive along the way.' },
+                            { time: '11:30 AM', desc: 'Fly directly back to Zanzibar Airport.' },
+                            { time: '01:30 PM', desc: 'Touch down in Zanzibar and transfer back to your beach resort.' }
+                        ]
+                    }
+                ],
+                gallery: ['https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400', 'https://images.unsplash.com/photo-1547970814-0e0a3e8e9f9d?w=400', 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400']
+            }
+        };
+
+        let cart = [];
+        function addToCart(id) {
+            const p = data[id];
+            if (!p) return;
+            if (typeof window.addToBooking === 'function') {
+                window.addToBooking(p.title, p.price);
+            } else {
+                cart.push({ name: p.title, price: p.priceNum, str: p.price });
+                updateCart();
+                showToast();
             }
         }
+        function updateCart() { document.getElementById('cartCount').textContent = cart.length; document.getElementById('cartTotal').textContent = '$' + cart.reduce((s, i) => s + i.price, 0); }
+        function showToast() { const t = document.getElementById('cartToast'); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2000); }
 
-        window.closeTzModal = function(id) {
-            const modal = document.getElementById(id);
-            if (modal) {
-                modal.classList.remove('active');
-                setTimeout(() => { modal.classList.add('hidden'); }, 300);
-                document.body.style.overflow = 'auto'; 
-            }
+        function getCardDesc(fullDesc) {
+            let short = fullDesc.split('.')[0] + '.';
+            if (short.length < 50) short = fullDesc.substring(0, 120) + '…';
+            else if (short.length > 140) short = short.substring(0, 140) + '…';
+            return short;
         }
 
-        // Close when clicking on the blurred background
-        window.addEventListener('click', function(event) {
-            if (event.target.classList.contains('tz-modal-overlay')) {
-                event.target.classList.remove('active');
-                setTimeout(() => { event.target.classList.add('hidden'); }, 300);
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Sliders
-        window.slideTzSlider = function(direction) {
-            const slider = document.getElementById('card-slider');
-            const cardWidth = slider.querySelector('.bento-card').offsetWidth + 24; 
-            slider.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+        function buildCards() {
+            const grid = document.getElementById('packagesGrid');
+            const order = ['mikumi', 'tarangire', 'ngorongoro', 'serengeti'];
+            grid.innerHTML = order.map(id => {
+                const d = data[id];
+                const cardDesc = getCardDesc(d.desc);
+                let badge = '1 Day';
+                if (d.duration.includes('2 Days')) badge = '2 Days';
+                else if (d.duration.includes('3 Days')) badge = '3 Days';
+                return `
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:-translate-y-1 transition flex flex-col border-t-2 border-navy">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="${d.img}" alt="${d.title}" class="w-full h-full object-cover">
+                    <span class="absolute top-3 left-3 bg-orange text-white text-xs font-bold px-3 py-1 rounded-full">${badge}</span>
+                </div>
+                <div class="p-4 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h3 class="text-navy font-heading text-lg font-bold leading-tight">${d.title}</h3>
+                        <p class="italic text-muted text-sm mb-2">${d.subtitle}</p>
+                        <p class="text-xs text-muted mb-3 line-clamp-2">${cardDesc}</p>
+                        <div class="flex flex-wrap gap-1 mb-3">
+                            ${d.highlights.slice(0, 4).map(h => `<span class="bg-light-cream text-navy text-xs px-2 py-0.5 rounded-full">${h}</span>`).join('')}
+                        </div>
+                        <div class="flex justify-between items-center text-sm mb-4">
+                            <span class="font-semibold"><i class="far fa-clock text-orange"></i> ${d.duration}</span>
+                            <span class="text-orange font-extrabold text-xl">${d.price}</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <!-- ✅ FIXED: hover navy + white text -->
+                        <button onclick="showDetail('${d.id}')" class="border-2 border-orange text-orange font-bold px-4 py-2 rounded-full text-xs flex items-center gap-1 hover:bg-navy hover:text-white hover:border-navy transition"><i class="far fa-plus-square"></i> Read More</button>
+                        <button onclick="addToCart('${d.id}')" class="bg-orange text-white font-bold px-4 py-2 rounded-full text-xs flex items-center gap-1 hover:bg-orange-dark transition"><i class="far fa-calendar-check"></i> Add to My Booking</button>
+                    </div>
+                </div>
+            </div>`;
+            }).join('');
         }
 
-        // Destination Carousel Slider
-        window.slideDestinationCarousel = function(direction) {
-            const carousel = document.getElementById('destination-carousel-scroll');
-            if (carousel) {
-                const cardWidth = 280 + 16; // card width + gap
-                carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-            }
+        function showDetail(id) {
+            const p = data[id]; if (!p) return;
+            document.getElementById('homeView').style.display = 'none';
+            const detail = document.getElementById('detailView');
+            detail.style.display = 'block';
+            detail.innerHTML = `
+        <div class="relative w-full h-[70vh] min-h-[450px] bg-cover bg-center flex items-center justify-center text-white" style="background-image: linear-gradient(rgba(0,60,99,0.6), rgba(0,60,99,0.7)), url('${p.hero}');">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="relative z-10 text-center px-6 py-12">
+                <h2 class="font-heading text-4xl md:text-6xl font-extrabold mb-3 drop-shadow-lg">${p.title}</h2>
+                <p class="text-xl italic mb-8 opacity-90">${p.subtitle}</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#itinerary-${p.id}" class="bg-white text-navy font-bold px-8 py-3.5 rounded-full shadow-lg flex items-center gap-2 hover:bg-orange hover:text-white transition"><i class="far fa-calendar-alt"></i> View Itinerary</a>
+                    <button onclick="showHome()" class="border-2 border-white text-white font-bold px-8 py-3.5 rounded-full flex items-center gap-2 hover:bg-white hover:text-navy transition"><i class="far fa-arrow-alt-circle-left"></i> Go Back</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 py-10 md:py-14">
+            <div class="flex flex-col md:flex-row gap-10 items-stretch mb-16">
+                <div class="flex-1">
+                    <h3 class="font-heading text-2xl md:text-3xl text-navy mb-4 pb-2 border-b-2 border-orange flex items-center gap-2"><i class="fas fa-binoculars"></i> Safari Overview</h3>
+                    <p class="text-lg mb-6">${p.desc}</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        ${p.highlights.map(h => `<span class="bg-orange text-white px-4 py-1.5 rounded-full font-semibold text-sm">${h}</span>`).join('')}
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-light-cream text-navy px-5 py-3 rounded-full font-semibold flex items-center gap-2"><i class="far fa-clock text-orange"></i> ${p.duration}</span>
+                        <span class="bg-light-cream text-navy px-5 py-3 rounded-full font-semibold flex items-center gap-2"><i class="far fa-paper-plane text-orange"></i> ${p.flight}</span>
+                        <span class="bg-light-cream text-navy px-5 py-3 rounded-full font-semibold flex items-center gap-2"><i class="far fa-building text-orange"></i> ${p.accom}</span>
+                    </div>
+                </div>
+                <div class="flex-1 rounded-2xl overflow-hidden shadow-card-lg">
+                    <img src="${p.gallery[0]}" alt="${p.title}" class="w-full h-full object-cover min-h-[300px]">
+                </div>
+            </div>
+            <div id="itinerary-${p.id}" class="bg-cream rounded-2xl p-6 md:p-10 mb-16">
+                <h3 class="font-heading text-2xl text-navy mb-8"><i class="far fa-clock text-orange"></i> Day‑by‑Day Itinerary</h3>
+                <div class="relative ml-7">
+                    <div class="absolute left-5 top-0 bottom-0 w-1 bg-orange rounded-full"></div>
+                    ${p.itinerary.map(day => `
+                    <div class="flex gap-4 mb-8">
+                        <div class="relative z-10 w-10 h-10 bg-orange rounded-full flex items-center justify-center text-white shadow-lg flex-shrink-0"><i class="${day.icon}"></i></div>
+                        <div class="bg-white rounded-xl p-4 flex-1 border border-border">
+                            <h5 class="font-bold text-navy mb-2">${day.day}</h5>
+                            ${day.steps.map(s => `<div class="flex gap-2 text-sm mb-1"><i class="far fa-clock text-orange mt-1 w-4"></i><strong>${s.time}</strong> – ${s.desc}</div>`).join('')}
+                        </div>
+                    </div>`).join('')}
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <div class="bg-green-50 rounded-2xl p-6">
+                    <h5 class="font-heading text-green font-bold text-lg mb-3"><i class="far fa-check-circle"></i> Included</h5>
+                    <ul class="list-none space-y-1">
+                        <li>✔ Round‑trip flights & transfers</li><li>✔ Professional guide</li><li>✔ Private 4x4</li><li>✔ All park fees</li><li>✔ Full board meals & water</li><li>✔ AMREF insurance</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 rounded-2xl p-6">
+                    <h5 class="font-heading text-red font-bold text-lg mb-3"><i class="far fa-times-circle"></i> Not Included</h5>
+                    <ul class="list-none space-y-1">
+                        <li>✖ International airfare</li><li>✖ Visa ($50‑$100)</li><li>✖ Zanzibar insurance (~$44)</li><li>✖ Tips & gratuities</li><li>✖ Premium beverages</li><li>✖ Personal expenses</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-navy text-white rounded-2xl p-8 md:p-10 text-center shadow-card-lg mb-10">
+                <h3 class="font-heading text-3xl font-bold mb-2">Secure Your Adventure</h3>
+                <div class="text-orange text-4xl font-extrabold my-4">${p.price} per person</div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="addToCart('${p.id}')" class="bg-white text-navy font-bold px-8 py-3.5 rounded-full shadow flex items-center gap-2 hover:bg-orange hover:text-white transition"><i class="far fa-calendar-check"></i> Add to My Booking</button>
+                    <a href="https://wa.me/?text=I'm%20interested%20in%20the%20${encodeURIComponent(p.title)}%20package" target="_blank" class="border-2 border-white text-white font-bold px-8 py-3.5 rounded-full flex items-center gap-2 hover:bg-white hover:text-navy transition"><i class="fab fa-whatsapp"></i> Customize via WhatsApp</a>
+                </div>
+                <p class="mt-4 text-sm opacity-80">Or email us at <a href="mailto:info@morixbeyond.com" class="text-white underline font-semibold">info@morixbeyond.com</a></p>
+            </div>
+            <div class="text-center">
+                <button onclick="showHome()" class="border-2 border-navy text-navy font-bold px-8 py-3.5 rounded-full flex items-center gap-2 mx-auto hover:bg-navy hover:text-white transition"><i class="far fa-arrow-alt-circle-left"></i> Go Back to Safaris</button>
+            </div>
+        </div>`;
+            window.scrollTo(0, 0);
         }
 
-        // Testimonial Sliders
-        window.slideTestimonials = function(direction) {
-            const slider = document.getElementById('testimonial-slider');
-            if (slider) {
-                const cardWidth = slider.querySelector('.testimonial-card').offsetWidth + 24; 
-                slider.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-            }
+        function showHome() {
+            document.getElementById('homeView').style.display = 'block';
+            document.getElementById('detailView').style.display = 'none';
+            window.scrollTo(0, 0);
         }
 
-        // Expand logic for Bento Grid
-        window.toggleTzExpand = function(clickedCard) {
-            const currentlyExpanded = document.querySelector('.bento-card.expanded');
-            if (clickedCard === currentlyExpanded) {
-                currentlyExpanded.classList.remove('expanded');
-                return; 
-            }
-            if (currentlyExpanded) {
-                currentlyExpanded.classList.remove('expanded');
-            }
-            clickedCard.classList.add('expanded');
-            setTimeout(() => {
-                clickedCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            }, 300);
-        }
-
-        // Booking System Functions
-        window.bookingItems = JSON.parse(localStorage.getItem('morixBookingItems')) || [];
-
-        window.addToBooking = function(itemName, itemPrice) {
-            // Add item to booking
-            window.bookingItems.push({ name: itemName, price: itemPrice });
-            localStorage.setItem('morixBookingItems', JSON.stringify(window.bookingItems));
-            
-            // Update counter in header
-            updateBookingCounter();
-            
-            // Show notification
-            showBookingNotification(itemName);
-        }
-
-        window.updateBookingCounter = function() {
-            const mobileCounter = document.querySelector('.mobile-booking-count');
-            const desktopCounter = document.querySelector('.desktop-booking-count');
-            const count = window.bookingItems.length;
-            
-            if (mobileCounter) {
-                mobileCounter.textContent = count;
-            }
-            if (desktopCounter) {
-                desktopCounter.textContent = count;
-            }
-        }
-
-        window.showBookingNotification = function(itemName) {
-            const existingToast = document.querySelector('.toast-notification');
-            if (existingToast) {
-                existingToast.remove();
-            }
-
-            const toast = document.createElement('div');
-            toast.className = 'toast-notification';
-            toast.innerHTML = `<i class="fi fi-rr-check-circle" style="margin-right: 8px;"></i> Added "${itemName}" to your booking!`;
-            document.body.appendChild(toast);
-
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
-        }
-
-        // Initialize counter on page load
-        window.addEventListener('load', function() {
-            updateBookingCounter();
-        });
+        buildCards();
+        updateCart();
     </script>
 
     <script src="script.js"></script>
-
 </body>
+
 </html>

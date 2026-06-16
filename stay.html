@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Stays | Malaika Villa Zanzibar – Morix Beyond</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        :root {
+            --navy: #003C63;
+            --orange: #F27D57;
+        }
+
+        .btn-primary {
+            background-color: var(--orange);
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(242, 125, 87, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #e6603a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(242, 125, 87, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--navy);
+        }
+
+        .villa-card {
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .villa-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 60, 99, 0.03);
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-[#F27D57] selection:text-white">
+
+    <!-- Header (populated by your script) -->
+    <header id="main-header"></header>
+
+    <!-- Hero -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-[#003C63] overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#003C63] via-[#00233a] to-[#003C63]"></div>
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F27D57] opacity-10 rounded-full blur-3xl translate-x-20 -translate-y-20">
+        </div>
+        <div class="absolute bottom-10 left-10 w-[300px] h-[300px] bg-[#F27D57] opacity-5 rounded-full blur-2xl"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span
+                class="inline-block py-1 px-4 border border-[#F27D57] rounded-full text-[#F27D57] font-bold tracking-widest uppercase text-xs mb-6 bg-white/5 backdrop-blur-sm">
+                <i class="fa-solid fa-crown mr-2"></i> LUXURY STAYS | MALAIKA VILLA ZANZIBAR
+            </span>
+            <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 font-heading leading-tight">
+                Your Private Sanctuary<br>of Peace and <span class="text-[#F27D57] italic">Luxury</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light">
+                Experience premium island living at Malaika Villa. Perfectly curated for discerning international
+                travelers, families, and private groups, our compound features two distinct, detached luxury villas
+                located within the same secure, tropical estate. Enjoy 100% private spaces, modern-Swahili architecture,
+                and world-class hospitality tailored just for you.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" data-booking-name="Malaika Villa Availability Check" data-booking-price=""
+                    class="btn-primary"><i class="fa-solid fa-calendar-check"></i> Check Availability &
+                    Rates</a>
+                <a href="https://wa.me/yourwhatsappnumber" target="_blank" class="btn-outline"><i
+                        class="fa-brands fa-whatsapp"></i> Book via WhatsApp Instantly</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Configuration -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold text-[#003C63] mb-6 font-heading">
+                <i class="fa-solid fa-house-chimney text-[#F27D57] mr-3"></i> The Property Configuration
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+                Malaika Villa offers the ultimate balance between group togetherness and independent privacy. Each villa
+                is fully self-contained, detached, and equipped with its own private entrance, premium amenities, and
+                independent living spaces.
+            </p>
+            <div class="bg-[#003C63]/5 border border-[#003C63]/20 p-6 rounded-2xl inline-block">
+                <p class="text-gray-700 font-semibold">
+                    <i class="fa-solid fa-users text-[#F27D57] mr-2"></i> Traveling as a large group of up to 10 guests?
+                    <span class="text-[#003C63]">You can book both villas together to secure the entire private compound
+                        exclusively for your party!</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Villa 1: The Grand Sanctuary -->
+    <section class="py-20 bg-[#F8FAFC]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="villa-card p-8 md:p-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-crown text-3xl text-[#F27D57]"></i>
+                        <h3 class="text-3xl font-bold text-[#003C63] font-heading">Villa 1: The Grand Sanctuary</h3>
+                    </div>
+                    <p class="text-lg text-gray-500 mb-2 font-semibold">3 Bedrooms | Fully Private Luxury Villa</p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        The 3-bedroom Malaika Villa is a masterpiece of space and coastal elegance. Designed with modern
+                        style, open-plan living, and premium finishes, it offers an expansive haven for families or
+                        groups of friends who refuse to compromise on comfort.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-bed text-[#F27D57] mt-1"></i>
+                            <span><strong class="text-[#003C63]">Elite Comfort:</strong> 3 generous bedrooms with
+                                king-sized orthopedic beds, en-suite bathrooms, and independent whisper-quiet air
+                                conditioning.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-tv text-[#F27D57] mt-1"></i>
+                            <span><strong class="text-[#003C63]">Living & Entertainment:</strong> Spacious living room
+                                with hand-carved furniture, Smart TV, and high-speed fiber Wi-Fi.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-kitchen-set text-[#F27D57] mt-1"></i>
+                            <span><strong class="text-[#003C63]">Gourmet Kitchen:</strong> Fully equipped, ultra-modern
+                                chef’s kitchen – ideal for self-catering or private in‑house dining.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-sun text-[#F27D57] mt-1"></i>
+                            <span><strong class="text-[#003C63]">The Sales Highlight:</strong> Seamless indoor‑outdoor
+                                flow to a private veranda, perfect for morning espresso or sunset cocktails.</span>
+                        </li>
+                    </ul>
+                    <a href="#" data-booking-name="Villa 1: The Grand Sanctuary" data-booking-price=""
+                        class="btn-primary"><i class="fa-solid fa-images"></i> View Gallery & Book Villa 1</a>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-2xl h-80 md:h-full">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800"
+                        alt="Luxury villa interior" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Villa 2: The Elegant Escape -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="rounded-2xl overflow-hidden shadow-2xl h-80 md:h-full order-2 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800"
+                        alt="Elegant villa bedroom" class="w-full h-full object-cover">
+                </div>
+                <div class="villa-card p-8 md:p-10 order-1 md:order-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-leaf text-3xl text-[#F27D57]"></i>
+                        <h3 class="text-3xl font-bold text-[#003C63] font-heading">Villa 2: The Elegant Escape</h3>
+                    </div>
+                    <p class="text-lg text-gray-500 mb-2 font-semibold">2 Bedrooms | Fully Detached Luxury Villa</p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Located nearly the same as Villa 1, our 2-bedroom villa is a premium sanctuary designed for
+                        smaller families, couples, or high-end digital nomads who value peaceful isolation.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-door-open text-[#F27D57] mt-1"></i>
+                            <span><strong class="text-[#003C63]">The Layout:</strong> 2 independent, beautifully styled
+                                bedrooms with premium en-suite bathrooms and dedicated workspace zones.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-house-lock text-[#F27D57] mt-1"></i>
+                            <span><strong class="text-[#003C63]">Complete Autonomy:</strong> Its own private entrance,
+                                cozy living room, and fully functional modern kitchen.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-shield-haltered text-[#F27D57] mt-1"></i>
+                            <span><strong class="text-[#003C63]">The Privacy Advantage:</strong> Zero shared walls. You
+                                get the full luxury villa experience with complete independence.</span>
+                        </li>
+                    </ul>
+                    <a href="#" data-booking-name="Villa 2: The Elegant Escape" data-booking-price=""
+                        class="btn-primary"><i class="fa-solid fa-images"></i> View Gallery & Book Villa 2</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature VIP Services -->
+    <section class="py-20 bg-[#003C63] text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 font-heading">
+                <i class="fa-solid fa-sparkles text-[#F27D57] mr-3"></i> The Malaika Signature VIP Services
+            </h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="service-item flex-col items-center text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                    <i class="fa-solid fa-shield-virus text-4xl text-[#F27D57] mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">24/7 Gated Security</h4>
+                    <p class="text-gray-300 text-sm">Peace of mind is luxury. Fully secure compound with constant
+                        surveillance.</p>
+                </div>
+                <div
+                    class="service-item flex-col items-center text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                    <i class="fa-solid fa-wifi text-4xl text-[#F27D57] mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Blazing Fast Connectivity</h4>
+                    <p class="text-gray-300 text-sm">High‑speed fiber‑optic Wi‑Fi covering both villas for seamless
+                        remote work or 4K streaming.</p>
+                </div>
+                <div
+                    class="service-item flex-col items-center text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                    <i class="fa-solid fa-broom text-4xl text-[#F27D57] mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Daily Housekeeping</h4>
+                    <p class="text-gray-300 text-sm">Complimentary professional cleaning and fresh premium linen changes
+                        every two days.</p>
+                </div>
+                <div
+                    class="service-item flex-col items-center text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                    <i class="fa-solid fa-car-side text-4xl text-[#F27D57] mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Morix VIP Transfers</h4>
+                    <p class="text-gray-300 text-sm">Seamless private airport (ZNZ) or seaport pickups in our executive,
+                        air‑conditioned fleet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold text-[#003C63] mb-6 font-heading">
+                <i class="fa-solid fa-hourglass-half text-[#F27D57] mr-3"></i> Secure Your Island Home Today
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+                Due to our high privacy standards and premium location, Malaika Villa experiences extremely high demand.
+                Booking 3 to 6 months in advance is highly recommended to secure your preferred dates.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" data-booking-name="Direct Booking Inquiry" data-booking-price="" class="btn-primary"><i
+                        class="fa-solid fa-envelope"></i> Inquire About Direct Booking
+                    Rates</a>
+                <a href="https://wa.me/yourwhatsappnumber" target="_blank"
+                    class="bg-white/10 backdrop-blur border border-[#003C63]/30 text-[#003C63] hover:bg-[#003C63] hover:text-white font-semibold px-8 py-4 rounded-full transition flex items-center gap-2 shadow">
+                    <i class="fa-brands fa-whatsapp"></i> Chat Directly with the Villa Manager
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer scripts (keep your existing ones) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="animations.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Simple fade-up animation (if not already in your scripts) -->
+    <script>
+        const fadeEls = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.2 });
+        fadeEls.forEach(el => observer.observe(el));
+    </script>
+    <style>
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</body>
+
+</html>
