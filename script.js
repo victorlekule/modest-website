@@ -1387,19 +1387,24 @@ document.addEventListener("DOMContentLoaded", () => {
             </div> <!-- end grid -->
 
             <!-- Bottom bar -->
-            <div class="pt-8 mt-8 border-t border-white/10">
-                <div class="flex flex-col lg:flex-row items-center justify-between gap-4 text-sm text-gray-300">
-                    <p class="w-full lg:w-auto text-center lg:text-left">
-                        © ${new Date().getFullYear()} MORIX BEYOND ZANZIBAR. All rights reserved.
-                    </p>
-                    <a href="terms.html" class="w-full lg:w-auto text-center text-gray-300 hover:text-[#F27D57] transition-colors">
+           <div class="pt-8 mt-8 border-t border-white/10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4 text-sm text-gray-300">
+                <p class="w-full lg:w-auto text-center lg:text-left">
+                    © ${new Date().getFullYear()} MORIX BEYOND ZANZIBAR. All rights reserved.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="privacy.html" class="text-gray-300 hover:text-[#F27D57] transition-colors">
+                        Privacy Policy
+                    </a>
+                     <a href="terms.html" class="text-gray-300 hover:text-[#F27D57] transition-colors">
                         Terms & Conditions
                     </a>
-                    <p class="w-full lg:w-auto text-center lg:text-right">
-                        Powered by <span class="text-[#F27D57] font-medium">Africana Tech</span>
-                    </p>
                 </div>
+                <p class="w-full lg:w-auto text-center lg:text-right">
+                    Powered by <span class="text-[#F27D57] font-medium">Africana Tech Ltd</span>
+                </p>
             </div>
+        </div>
 
         </div>
     `;

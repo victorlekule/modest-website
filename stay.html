@@ -4,15 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Stays | Malaika Villa Zanzibar – Morix Beyond</title>
+    <title>Luxury Stays | Malaika Villa Zanzibar – Zanzibar Pirates</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@500;600;700;800;900&display=swap"
         rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Header script -->
+    <script src="header.js"></script>
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
         body {
@@ -22,313 +34,719 @@
         h1,
         h2,
         h3,
+        h4,
         .font-heading {
             font-family: 'Playfair Display', serif;
         }
 
-        :root {
-            --navy: #003C63;
-            --orange: #F27D57;
-        }
-
-        .btn-primary {
-            background-color: var(--orange);
+        .btn-luxury {
+            background: linear-gradient(135deg, #F27D57 0%, #e6603a 100%);
             color: white;
             font-weight: 600;
-            padding: 0.75rem 2rem;
+            padding: 0.85rem 2.2rem;
             border-radius: 9999px;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(242, 125, 87, 0.3);
+            gap: 0.6rem;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(242, 125, 87, 0.3);
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
         }
 
-        .btn-primary:hover {
-            background-color: #e6603a;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(242, 125, 87, 0.4);
+        .btn-luxury:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(242, 125, 87, 0.4);
         }
 
-        .btn-outline {
+        .btn-outline-luxury {
             background: transparent;
             border: 2px solid white;
             color: white;
             font-weight: 600;
-            padding: 0.75rem 2rem;
+            padding: 0.85rem 2.2rem;
             border-radius: 9999px;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s;
+            gap: 0.6rem;
+            transition: all 0.35s;
+            font-size: 0.95rem;
         }
 
-        .btn-outline:hover {
+        .btn-outline-luxury:hover {
             background: white;
-            color: var(--navy);
+            color: #003C63;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .villa-card {
             background: white;
             border-radius: 2rem;
-            overflow: hidden;
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 60, 99, 0.06);
         }
 
         .villa-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.12);
+            transform: translateY(-6px);
+            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.1);
         }
 
-        .service-item {
+        .amenity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(242, 125, 87, 0.08);
+            border: 1px solid rgba(242, 125, 87, 0.15);
+            border-radius: 9999px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #003C63;
+            transition: all 0.3s;
+        }
+
+        .amenity-badge:hover {
+            background: rgba(242, 125, 87, 0.15);
+            border-color: rgba(242, 125, 87, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Lightbox - fixed above everything */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(0, 60, 99, 0.03);
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .lightbox-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-img {
+            max-height: 85vh;
+            max-width: 90vw;
+            object-fit: contain;
             border-radius: 1rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-btn {
+            position: absolute;
+            color: white;
+            font-size: 2.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+            line-height: 1;
+        }
+
+        .lightbox-btn:hover {
+            background: rgba(242, 125, 87, 0.9);
+            color: white;
+        }
+
+        .btn-close-lightbox {
+            top: 20px;
+            right: 20px;
+        }
+
+        .btn-prev-lightbox {
+            left: 20px;
+        }
+
+        .btn-next-lightbox {
+            right: 20px;
+        }
+
+        /* Toast notification */
+        .toast {
+            transition: all 0.4s ease;
+            transform: translateY(100px);
+            opacity: 0;
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            z-index: 100;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
 
-<body class="bg-[#F8FAFC] text-slate-800 antialiased selection:bg-[#F27D57] selection:text-white">
+<body class="bg-[#F8FAFC] text-slate-700 antialiased">
 
-    <!-- Header (populated by your script) -->
-    <header id="main-header"></header>
+    <!-- ========== HEADER INJECTION POINT ========== -->
+    <div id="main-header"></div>
 
-    <!-- Hero -->
-    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-[#003C63] overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-[#003C63] via-[#00233a] to-[#003C63]"></div>
+    <!-- ========== MAIN PAGE HERO (View 1) ========== -->
+    <section id="mainHero" class="relative pt-36 pb-24 md:pt-44 md:pb-32 bg-[#003C63] overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#003C63] via-[#001f33] to-[#003C63]"></div>
         <div
-            class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F27D57] opacity-10 rounded-full blur-3xl translate-x-20 -translate-y-20">
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#F27D57] opacity-8 rounded-full blur-3xl translate-x-20 -translate-y-20">
         </div>
-        <div class="absolute bottom-10 left-10 w-[300px] h-[300px] bg-[#F27D57] opacity-5 rounded-full blur-2xl"></div>
-        <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#F27D57] opacity-5 rounded-full blur-2xl"></div>
+        <div class="absolute inset-0 opacity-5"
+            style="background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0); background-size: 50px 50px;">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-5xl">
             <span
-                class="inline-block py-1 px-4 border border-[#F27D57] rounded-full text-[#F27D57] font-bold tracking-widest uppercase text-xs mb-6 bg-white/5 backdrop-blur-sm">
-                <i class="fa-solid fa-crown mr-2"></i> LUXURY STAYS | MALAIKA VILLA ZANZIBAR
+                class="inline-flex items-center gap-2 py-1.5 px-5 border border-[#F27D57]/50 rounded-full text-[#F27D57] font-semibold tracking-widest uppercase text-xs mb-6 bg-white/5 backdrop-blur-sm">
+                <i class="fa-solid fa-crown"></i> Luxury Stays • Malaika Villa Zanzibar
             </span>
-            <h1 class="text-4xl md:text-7xl font-bold text-white mb-6 font-heading leading-tight">
-                Your Private Sanctuary<br>of Peace and <span class="text-[#F27D57] italic">Luxury</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-heading leading-tight">
+                Your Private Sanctuary<br>of Peace & <span class="text-[#F27D57] italic">Luxury</span>
             </h1>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light">
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
                 Experience premium island living at Malaika Villa. Perfectly curated for discerning international
-                travelers, families, and private groups, our compound features two distinct, detached luxury villas
-                located within the same secure, tropical estate. Enjoy 100% private spaces, modern-Swahili architecture,
-                and world-class hospitality tailored just for you.
+                travelers, families, and private groups.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#" data-booking-name="Malaika Villa Availability Check" data-booking-price=""
-                    class="btn-primary"><i class="fa-solid fa-calendar-check"></i> Check Availability &
-                    Rates</a>
-                <a href="https://wa.me/yourwhatsappnumber" target="_blank" class="btn-outline"><i
-                        class="fa-brands fa-whatsapp"></i> Book via WhatsApp Instantly</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Property Configuration -->
-    <section class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold text-[#003C63] mb-6 font-heading">
-                <i class="fa-solid fa-house-chimney text-[#F27D57] mr-3"></i> The Property Configuration
-            </h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-                Malaika Villa offers the ultimate balance between group togetherness and independent privacy. Each villa
-                is fully self-contained, detached, and equipped with its own private entrance, premium amenities, and
-                independent living spaces.
-            </p>
-            <div class="bg-[#003C63]/5 border border-[#003C63]/20 p-6 rounded-2xl inline-block">
-                <p class="text-gray-700 font-semibold">
-                    <i class="fa-solid fa-users text-[#F27D57] mr-2"></i> Traveling as a large group of up to 10 guests?
-                    <span class="text-[#003C63]">You can book both villas together to secure the entire private compound
-                        exclusively for your party!</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Villa 1: The Grand Sanctuary -->
-    <section class="py-20 bg-[#F8FAFC]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="villa-card p-8 md:p-10">
-                    <div class="flex items-center gap-3 mb-4">
-                        <i class="fa-solid fa-crown text-3xl text-[#F27D57]"></i>
-                        <h3 class="text-3xl font-bold text-[#003C63] font-heading">Villa 1: The Grand Sanctuary</h3>
-                    </div>
-                    <p class="text-lg text-gray-500 mb-2 font-semibold">3 Bedrooms | Fully Private Luxury Villa</p>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        The 3-bedroom Malaika Villa is a masterpiece of space and coastal elegance. Designed with modern
-                        style, open-plan living, and premium finishes, it offers an expansive haven for families or
-                        groups of friends who refuse to compromise on comfort.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-bed text-[#F27D57] mt-1"></i>
-                            <span><strong class="text-[#003C63]">Elite Comfort:</strong> 3 generous bedrooms with
-                                king-sized orthopedic beds, en-suite bathrooms, and independent whisper-quiet air
-                                conditioning.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-tv text-[#F27D57] mt-1"></i>
-                            <span><strong class="text-[#003C63]">Living & Entertainment:</strong> Spacious living room
-                                with hand-carved furniture, Smart TV, and high-speed fiber Wi-Fi.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-kitchen-set text-[#F27D57] mt-1"></i>
-                            <span><strong class="text-[#003C63]">Gourmet Kitchen:</strong> Fully equipped, ultra-modern
-                                chef’s kitchen – ideal for self-catering or private in‑house dining.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-sun text-[#F27D57] mt-1"></i>
-                            <span><strong class="text-[#003C63]">The Sales Highlight:</strong> Seamless indoor‑outdoor
-                                flow to a private veranda, perfect for morning espresso or sunset cocktails.</span>
-                        </li>
-                    </ul>
-                    <a href="#" data-booking-name="Villa 1: The Grand Sanctuary" data-booking-price=""
-                        class="btn-primary"><i class="fa-solid fa-images"></i> View Gallery & Book Villa 1</a>
-                </div>
-                <div class="rounded-2xl overflow-hidden shadow-2xl h-80 md:h-full">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800"
-                        alt="Luxury villa interior" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Villa 2: The Elegant Escape -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="rounded-2xl overflow-hidden shadow-2xl h-80 md:h-full order-2 md:order-1">
-                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800"
-                        alt="Elegant villa bedroom" class="w-full h-full object-cover">
-                </div>
-                <div class="villa-card p-8 md:p-10 order-1 md:order-2">
-                    <div class="flex items-center gap-3 mb-4">
-                        <i class="fa-solid fa-leaf text-3xl text-[#F27D57]"></i>
-                        <h3 class="text-3xl font-bold text-[#003C63] font-heading">Villa 2: The Elegant Escape</h3>
-                    </div>
-                    <p class="text-lg text-gray-500 mb-2 font-semibold">2 Bedrooms | Fully Detached Luxury Villa</p>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Located nearly the same as Villa 1, our 2-bedroom villa is a premium sanctuary designed for
-                        smaller families, couples, or high-end digital nomads who value peaceful isolation.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-door-open text-[#F27D57] mt-1"></i>
-                            <span><strong class="text-[#003C63]">The Layout:</strong> 2 independent, beautifully styled
-                                bedrooms with premium en-suite bathrooms and dedicated workspace zones.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-house-lock text-[#F27D57] mt-1"></i>
-                            <span><strong class="text-[#003C63]">Complete Autonomy:</strong> Its own private entrance,
-                                cozy living room, and fully functional modern kitchen.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-shield-haltered text-[#F27D57] mt-1"></i>
-                            <span><strong class="text-[#003C63]">The Privacy Advantage:</strong> Zero shared walls. You
-                                get the full luxury villa experience with complete independence.</span>
-                        </li>
-                    </ul>
-                    <a href="#" data-booking-name="Villa 2: The Elegant Escape" data-booking-price=""
-                        class="btn-primary"><i class="fa-solid fa-images"></i> View Gallery & Book Villa 2</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Signature VIP Services -->
-    <section class="py-20 bg-[#003C63] text-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 font-heading">
-                <i class="fa-solid fa-sparkles text-[#F27D57] mr-3"></i> The Malaika Signature VIP Services
-            </h2>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div
-                    class="service-item flex-col items-center text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                    <i class="fa-solid fa-shield-virus text-4xl text-[#F27D57] mb-4"></i>
-                    <h4 class="font-bold text-lg mb-2">24/7 Gated Security</h4>
-                    <p class="text-gray-300 text-sm">Peace of mind is luxury. Fully secure compound with constant
-                        surveillance.</p>
-                </div>
-                <div
-                    class="service-item flex-col items-center text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                    <i class="fa-solid fa-wifi text-4xl text-[#F27D57] mb-4"></i>
-                    <h4 class="font-bold text-lg mb-2">Blazing Fast Connectivity</h4>
-                    <p class="text-gray-300 text-sm">High‑speed fiber‑optic Wi‑Fi covering both villas for seamless
-                        remote work or 4K streaming.</p>
-                </div>
-                <div
-                    class="service-item flex-col items-center text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                    <i class="fa-solid fa-broom text-4xl text-[#F27D57] mb-4"></i>
-                    <h4 class="font-bold text-lg mb-2">Daily Housekeeping</h4>
-                    <p class="text-gray-300 text-sm">Complimentary professional cleaning and fresh premium linen changes
-                        every two days.</p>
-                </div>
-                <div
-                    class="service-item flex-col items-center text-center bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                    <i class="fa-solid fa-car-side text-4xl text-[#F27D57] mb-4"></i>
-                    <h4 class="font-bold text-lg mb-2">Morix VIP Transfers</h4>
-                    <p class="text-gray-300 text-sm">Seamless private airport (ZNZ) or seaport pickups in our executive,
-                        air‑conditioned fleet.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold text-[#003C63] mb-6 font-heading">
-                <i class="fa-solid fa-hourglass-half text-[#F27D57] mr-3"></i> Secure Your Island Home Today
-            </h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                Due to our high privacy standards and premium location, Malaika Villa experiences extremely high demand.
-                Booking 3 to 6 months in advance is highly recommended to secure your preferred dates.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#" data-booking-name="Direct Booking Inquiry" data-booking-price="" class="btn-primary"><i
-                        class="fa-solid fa-envelope"></i> Inquire About Direct Booking
-                    Rates</a>
-                <a href="https://wa.me/yourwhatsappnumber" target="_blank"
-                    class="bg-white/10 backdrop-blur border border-[#003C63]/30 text-[#003C63] hover:bg-[#003C63] hover:text-white font-semibold px-8 py-4 rounded-full transition flex items-center gap-2 shadow">
-                    <i class="fa-brands fa-whatsapp"></i> Chat Directly with the Villa Manager
+                <a href="#villas-section" class="btn-luxury">
+                    <i class="fa-solid fa-calendar-check"></i> Check Availability & Rates
+                </a>
+                <a href="https://wa.me/255777000000" target="_blank" class="btn-outline-luxury">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Book via WhatsApp Instantly
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer scripts (keep your existing ones) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="animations.js"></script>
+    <!-- ========== VIEW 1: PROPERTY CONFIGURATION + VILLA CARDS ========== -->
+    <section id="villas-section" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <span class="text-[#F27D57] font-semibold tracking-widest text-xs uppercase">The Estate</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-[#003C63] mt-3 mb-6 font-heading">
+                <i class="fa-solid fa-house-chimney text-[#F27D57] mr-3"></i> The Property Configuration
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+                Malaika Villa offers the ultimate balance between group togetherness and independent privacy.
+            </p>
+        </div>
+        <div class="max-w-7xl mx-auto px-6" id="villaCardsContainer">
+            <!-- Dynamically generated villa cards injected here -->
+        </div>
+    </section>
+
+    <!-- ========== VIEW 2: VILLA DETAIL (hidden initially) ========== -->
+    <div id="villaDetailView" class="hidden">
+        <div id="detailContent"></div>
+    </div>
+
+    <!-- ========== SIGNATURE VIP SERVICES (View 1) ========== -->
+    <section id="vipServices" class="py-24 bg-[#003C63] text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5"
+            style="background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0); background-size: 50px 50px;">
+        </div>
+        <div class="relative max-w-6xl mx-auto px-6 z-10">
+            <div class="text-center mb-14">
+                <span class="text-[#F27D57] font-semibold tracking-widest text-xs uppercase">The Morix Beyond
+                    Standard</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mt-3 mb-4 font-heading">
+                    <i class="fa-solid fa-sparkles text-[#F27D57] mr-3"></i> Signature VIP Services
+                </h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Every guest at Malaika Villa receives the elite hospitality
+                    standard automatically built into their stay.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition">
+                    <i class="fa-solid fa-shield-virus text-4xl text-[#F27D57] mb-4"></i>
+                    <h4 class="font-bold text-lg mb-3">24/7 Gated Security</h4>
+                    <p class="text-gray-300 text-sm leading-relaxed">Peace of mind is luxury. Fully secure compound with
+                        constant surveillance.</p>
+                </div>
+                <div
+                    class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition">
+                    <i class="fa-solid fa-wifi text-4xl text-[#F27D57] mb-4"></i>
+                    <h4 class="font-bold text-lg mb-3">Blazing Fast Wi‑Fi</h4>
+                    <p class="text-gray-300 text-sm leading-relaxed">High‑speed fiber‑optic connectivity covering both
+                        villas.</p>
+                </div>
+                <div
+                    class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition">
+                    <i class="fa-solid fa-broom text-4xl text-[#F27D57] mb-4"></i>
+                    <h4 class="font-bold text-lg mb-3">Daily Housekeeping</h4>
+                    <p class="text-gray-300 text-sm leading-relaxed">Complimentary professional cleaning and fresh linen
+                        changes.</p>
+                </div>
+                <div
+                    class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition">
+                    <i class="fa-solid fa-car-side text-4xl text-[#F27D57] mb-4"></i>
+                    <h4 class="font-bold text-lg mb-3">VIP Airport Transfers</h4>
+                    <p class="text-gray-300 text-sm leading-relaxed">Seamless private airport (ZNZ) or seaport pickups.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHY CHOOSE MORIX (View 1) ========== -->
+    <section id="whyChooseMorix" class="py-24 bg-[#F8FAFC]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-[#F27D57] font-semibold tracking-widest text-xs uppercase">The Morix Difference</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-[#003C63] mt-3 mb-4 font-heading">
+                    Why Choose <span class="text-[#F27D57]">Morix</span> for Your Stay
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    Morix Beyond elevates your villa experience with a carefully curated blend of privacy, service, and
+                    local insight.
+                </p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center group" data-aos="fade-up">
+                    <div
+                        class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-[#003C63]/5 flex items-center justify-center group-hover:bg-[#003C63]/10 transition">
+                        <i class="fa-solid fa-user-shield text-4xl text-[#F27D57]"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-[#003C63] mb-2">Curated Privacy</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Every villa is a standalone sanctuary with zero
+                        shared walls.</p>
+                </div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-[#003C63]/5 flex items-center justify-center group-hover:bg-[#003C63]/10 transition">
+                        <i class="fa-solid fa-spa text-4xl text-[#F27D57]"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-[#003C63] mb-2">Local Concierge</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Insider access to hidden beaches, private chefs,
+                        and authentic experiences.</p>
+                </div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-[#003C63]/5 flex items-center justify-center group-hover:bg-[#003C63]/10 transition">
+                        <i class="fa-solid fa-bolt text-4xl text-[#F27D57]"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-[#003C63] mb-2">Seamless Connectivity</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Blazing‑fast fiber Wi‑Fi, smart TVs, and dedicated
+                        workspaces.</p>
+                </div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="w-20 h-20 mx-auto mb-5 rounded-2xl bg-[#003C63]/5 flex items-center justify-center group-hover:bg-[#003C63]/10 transition">
+                        <i class="fa-solid fa-heart-pulse text-4xl text-[#F27D57]"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-[#003C63] mb-2">Effortless Care</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">Daily housekeeping, gated security, and on‑call
+                        villa management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FINAL POWERFUL CTA (View 1) ========== -->
+    <section id="finalCTA" class="relative py-24 bg-[#003C63] overflow-hidden mb-16">
+        <div class="absolute inset-0 opacity-10"
+            style="background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0); background-size: 40px 40px;">
+        </div>
+        <div
+            class="absolute top-0 left-0 w-[500px] h-[500px] bg-[#F27D57] opacity-10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#F27D57] opacity-5 rounded-full blur-2xl translate-x-1/3 translate-y-1/3">
+        </div>
+        <div class="relative max-w-5xl mx-auto px-6 text-center text-white z-10">
+            <span
+                class="inline-block text-[#F27D57] font-semibold tracking-widest text-xs uppercase bg-white/5 backdrop-blur-sm px-4 py-1 rounded-full mb-6"
+                data-aos="fade-down">
+                <i class="fa-solid fa-hourglass-half mr-2"></i> Limited Availability
+            </span>
+            <h2 class="font-heading text-4xl md:text-6xl font-extrabold mb-6" data-aos="fade-up">
+                Your Island Sanctuary <br> <span class="text-[#F27D57]">Awaits Your Arrival</span>
+            </h2>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed" data-aos="fade-up"
+                data-aos-delay="100">
+                Secure the privacy and elegance you deserve. Spots for the season are filling fast — lock in your
+                preferred dates with a single click.
+            </p>
+            <div class="flex flex-wrap justify-center gap-5" data-aos="fade-up" data-aos-delay="200">
+                <a href="#"
+                    class="bg-[#F27D57] hover:bg-[#e6603a] text-white font-bold px-10 py-4 rounded-full text-lg inline-flex items-center gap-2 transition-all shadow-2xl shadow-[#F27D57]/30 transform hover:-translate-y-1">
+                    <i class="fa-solid fa-calendar-check"></i> Book Your Stay Now
+                </a>
+                <a href="https://wa.me/255777000000" target="_blank"
+                    class="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-semibold px-10 py-4 rounded-full text-lg inline-flex items-center gap-2 hover:bg-white hover:text-[#003C63] transition-all">
+                    <i class="fa-brands fa-whatsapp"></i> Instant WhatsApp Booking
+                </a>
+            </div>
+            <p class="mt-8 text-white/50 text-sm" data-aos="fade-up" data-aos-delay="300">
+                <i class="fa-solid fa-lock mr-1"></i> No prepayment required — Free cancellation up to 48 hours before
+                check‑in
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== LIGHTBOX MODAL (fixed, above everything, blurred background) ========== -->
+    <div id="lightbox" class="lightbox-overlay hidden">
+        <button id="closeLightbox" class="lightbox-btn btn-close-lightbox">&times;</button>
+        <button id="prevImg" class="lightbox-btn btn-prev-lightbox"><i class="fa-solid fa-chevron-left"></i></button>
+        <button id="nextImg" class="lightbox-btn btn-next-lightbox"><i class="fa-solid fa-chevron-right"></i></button>
+        <img id="lightboxImg" src="" alt="" class="lightbox-img">
+    </div>
+
+    <!-- Toast notification -->
+    <div id="toast"
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#003C63] text-white px-6 py-3 rounded-full shadow-lg toast z-50 flex items-center gap-2">
+        <i class="fas fa-check-circle text-[#F27D57]"></i>
+        <span id="toastMessage">Added to My Booking!</span>
+    </div>
+
+    <!-- ========== FOOTER INJECTION POINT ========== -->
+    <div id="zanzibar-footer"></div>
     <script src="script.js"></script>
 
-    <!-- Simple fade-up animation (if not already in your scripts) -->
+    <!-- ========== SCRIPTS ========== -->
     <script>
-        const fadeEls = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+        // Villa data with comprehensive info, 10 images each, and suitableFor
+        const villaData = {
+            villa1: {
+                title: "Villa 1: The Grand Sanctuary",
+                shortDesc: "3 Bedrooms • Fully Private Luxury Villa",
+                price: 350,
+                longDesc: "The 3-bedroom Malaika Villa is a masterpiece of space and coastal elegance. Designed with modern style, open-plan living, and premium finishes, it offers an expansive haven for families or groups of friends who refuse to compromise on comfort.",
+                heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1598928506311-c55e91cb1f37?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                included: ["3 King-sized bedrooms", "En-suite bathrooms", "Smart TV with Netflix", "Fiber Wi‑Fi", "Gourmet kitchen", "Private veranda", "Daily housekeeping"],
+                excluded: ["Airport transfers (available separately)", "Private chef (on request)", "Laundry service"],
+                amenities: ["Rainfall Shower", "Luxury En-Suite", "Quiet AC", "Fiber Wi‑Fi", "Private Veranda"],
+                suitableFor: [
+                    { icon: "fa-users", label: "Families", reason: "Three spacious bedrooms and open-plan living give everyone room to relax together while maintaining privacy." },
+                    { icon: "fa-people-group", label: "Groups of Friends", reason: "With a gourmet kitchen and expansive veranda, it's built for shared meals, sunset cocktails, and unforgettable gatherings." },
+                    { icon: "fa-crown", label: "Luxury Seekers", reason: "Premium finishes, Egyptian cotton linens, and bespoke design details deliver a five‑star experience." }
+                ]
+            },
+            villa2: {
+                title: "Villa 2: The Elegant Escape",
+                shortDesc: "2 Bedrooms • Fully Detached Luxury Villa",
+                price: 280,
+                longDesc: "Located opposite Villa 1, our 2-bedroom villa is a premium sanctuary designed for smaller families, couples, or high-end digital nomads who value peaceful isolation. Enjoy complete autonomy with zero shared living spaces.",
+                heroImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1598928506311-c55e91cb1f37?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                ],
+                included: ["2 King-sized bedrooms", "En-suite bathrooms", "Smart TV", "Fiber Wi‑Fi", "Kitchenette with stovetop", "Private patio", "Daily housekeeping"],
+                excluded: ["Airport transfers", "Private chef (on request)", "Laundry service"],
+                amenities: ["Kitchenette", "Modern Stovetop", "Quiet AC", "Fiber Wi‑Fi", "Private Patio"],
+                suitableFor: [
+                    { icon: "fa-heart", label: "Couples", reason: "Intimate, romantic, and completely private — perfect for honeymoons or anniversary escapes." },
+                    { icon: "fa-laptop", label: "Digital Nomads", reason: "Dedicated workspace zones, blazing Wi‑Fi, and a serene patio create the ideal remote‑work haven." },
+                    { icon: "fa-leaf", label: "Peace Seekers", reason: "Zero shared walls and a secluded terrace guarantee the quiet isolation you crave." }
+                ]
+            }
+        };
+
+        // Build villa cards (View 1)
+        const villaCardsContainer = document.getElementById('villaCardsContainer');
+        function buildCards() {
+            villaCardsContainer.innerHTML = '';
+            Object.keys(villaData).forEach((id, index) => {
+                const v = villaData[id];
+                const card = document.createElement('div');
+                card.className = `villa-card p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center mb-10`;
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', (index * 100).toString());
+                card.innerHTML = `
+                    <div class="w-full md:w-2/5 rounded-2xl overflow-hidden shadow-lg">
+                        <img src="${v.heroImage}" alt="${v.title}" class="w-full h-64 md:h-80 object-cover">
+                    </div>
+                    <div class="w-full md:w-3/5">
+                        <h3 class="text-3xl font-bold text-[#003C63] font-heading mb-2">${v.title}</h3>
+                        <p class="text-[#F27D57] font-semibold mb-3">${v.shortDesc}</p>
+                        <p class="text-gray-600 mb-4 line-clamp-3">${v.longDesc}</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            ${v.amenities.slice(0, 4).map(a => `<span class="amenity-badge">${a}</span>`).join('')}
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-[#003C63]">$${v.price}<span class="text-sm font-normal text-gray-500">/night</span></span>
+                            <button class="btn-luxury view-details-btn" data-villa="${id}">
+                                <i class="fa-solid fa-magnifying-glass"></i> View Details & Book
+                            </button>
+                        </div>
+                    </div>
+                `;
+                villaCardsContainer.appendChild(card);
             });
-        }, { threshold: 0.2 });
-        fadeEls.forEach(el => observer.observe(el));
-    </script>
-    <style>
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+
+            document.querySelectorAll('.view-details-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const villaId = this.getAttribute('data-villa');
+                    showDetailView(villaId);
+                });
+            });
         }
 
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        // View toggle elements
+        const mainHero = document.getElementById('mainHero');
+        const villasSection = document.getElementById('villas-section');
+        const vipServices = document.getElementById('vipServices');
+        const whyChooseMorix = document.getElementById('whyChooseMorix');
+        const finalCTA = document.getElementById('finalCTA');
+        const detailView = document.getElementById('villaDetailView');
+        const detailContent = document.getElementById('detailContent');
+        const zanzibarFooter = document.getElementById('zanzibar-footer');
+
+        function showDetailView(villaId) {
+            const data = villaData[villaId];
+            if (!data) return;
+
+            // Hide view 1 elements
+            mainHero.classList.add('hidden');
+            villasSection.classList.add('hidden');
+            vipServices.classList.add('hidden');
+            whyChooseMorix.classList.add('hidden');
+            finalCTA.classList.add('hidden');
+            if (zanzibarFooter) zanzibarFooter.classList.add('hidden');
+            detailView.classList.remove('hidden');
+
+            // Store current gallery images globally for lightbox navigation
+            window._currentGallery = data.images;
+
+            const html = `
+                <!-- Detail Hero -->
+                <div class="relative h-[60vh] md:h-[70vh] flex items-center">
+                    <img src="${data.heroImage}" alt="${data.title}" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#001f33]/90 via-[#001f33]/40 to-transparent"></div>
+                    <div class="relative z-10 p-6 md:p-12 w-full text-white max-w-5xl mx-auto text-center">
+                        <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4">${data.title}</h1>
+                        <p class="text-white/80 text-lg md:text-xl max-w-3xl mx-auto">${data.shortDesc}</p>
+                    </div>
+                </div>
+
+                <!-- Gallery (10 clickable images) -->
+                <div class="max-w-7xl mx-auto px-4 py-12">
+                    <h2 class="font-heading text-3xl font-bold text-[#003C63] text-center mb-8">Gallery</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                        ${data.images.map((img, i) => `
+                            <div class="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition transform hover:scale-105 cursor-pointer" onclick="openLightbox(${i})">
+                                <img src="${img}" alt="" class="w-full h-36 md:h-44 object-cover">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- About & Details -->
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-[#003C63] mb-4">About This Villa</h3>
+                            <p class="text-gray-600 leading-relaxed">${data.longDesc}</p>
+                            <h4 class="font-bold text-[#003C63] mt-6 mb-3">Premium Amenities</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${data.amenities.map(a => `<span class="amenity-badge">${a}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-2xl font-bold text-[#003C63] mb-4">Included</h3>
+                            <ul class="space-y-2">
+                                ${data.included.map(item => `<li class="flex items-center gap-2 text-gray-600"><i class="fa-solid fa-check text-[#F27D57]"></i> ${item}</li>`).join('')}
+                            </ul>
+                            <h3 class="font-heading text-2xl font-bold text-[#003C63] mt-6 mb-4">Not Included</h3>
+                            <ul class="space-y-2">
+                                ${data.excluded.map(item => `<li class="flex items-center gap-2 text-gray-600"><i class="fa-solid fa-xmark text-red-400"></i> ${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suitable For -->
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+                    <h3 class="font-heading text-2xl font-bold text-[#003C63] text-center mb-6">
+                        <i class="fa-solid fa-users text-[#F27D57] mr-2"></i> Who Is This Villa Suitable For?
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        ${data.suitableFor.map(s => `
+                            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center hover:shadow-md transition">
+                                <div class="w-14 h-14 bg-[#F27D57]/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fa-solid ${s.icon} text-2xl text-[#F27D57]"></i>
+                                </div>
+                                <h4 class="font-bold text-lg text-[#003C63] mb-2">${s.label}</h4>
+                                <p class="text-gray-500 text-sm leading-relaxed">${s.reason}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Price & Add to My Booking -->
+                <div class="max-w-3xl mx-auto px-4 pb-16">
+                    <div class="bg-[#003C63] rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10 text-center text-white">
+                        <h3 class="font-heading text-3xl md:text-4xl font-bold mb-4">Ready to Experience ${data.title}?</h3>
+                        <p class="text-white/70 text-lg max-w-2xl mx-auto mb-8">Secure your reservation with the best rate guarantee.</p>
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                            <div class="text-center md:text-left">
+                                <span class="text-white/50 text-sm uppercase tracking-wider">Price per night</span>
+                                <p class="font-heading text-5xl font-bold text-[#F27D57]">$${data.price}</p>
+                            </div>
+                            <button id="addToBookingBtn" class="bg-[#F27D57] hover:bg-[#e6603a] text-white font-bold px-10 py-5 rounded-full text-lg inline-flex items-center gap-3 transition-all shadow-xl shadow-[#F27D57]/30 transform hover:-translate-y-1">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to My Booking
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section (Go Back, WhatsApp, Contact Us) -->
+                <div class="max-w-3xl mx-auto px-4 pb-16">
+                    <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-100 text-center">
+                        <h3 class="font-heading text-3xl md:text-4xl font-bold text-[#003C63] mb-4">Have Questions or Ready to Book?</h3>
+                        <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-8">Our villa manager is here to help.</p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <button id="goBackBtn" class="bg-white border-2 border-[#003C63] text-[#003C63] font-semibold px-8 py-4 rounded-full hover:bg-[#003C63] hover:text-white transition-all">
+                                <i class="fa-solid fa-arrow-left mr-2"></i> Go Back
+                            </button>
+                            <a href="https://wa.me/255777000000" target="_blank" class="bg-[#F27D57] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#e6603a] transition-all inline-flex items-center gap-2">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp Booking
+                            </a>
+                            <a href="/contact" class="bg-[#003C63] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#001f33] transition-all inline-flex items-center gap-2">
+                                <i class="fa-solid fa-envelope"></i> Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            detailContent.innerHTML = html;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            document.getElementById('addToBookingBtn').addEventListener('click', () => addToBooking(villaId, data));
+            document.getElementById('goBackBtn').addEventListener('click', goBackToList);
         }
-    </style>
+
+        function goBackToList() {
+            mainHero.classList.remove('hidden');
+            villasSection.classList.remove('hidden');
+            vipServices.classList.remove('hidden');
+            whyChooseMorix.classList.remove('hidden');
+            finalCTA.classList.remove('hidden');
+            if (zanzibarFooter) zanzibarFooter.classList.remove('hidden');
+            detailView.classList.add('hidden');
+            window.scrollTo({ top: villasSection.offsetTop - 120, behavior: 'smooth' });
+        }
+
+        function addToBooking(villaId, data) {
+            let bookings = JSON.parse(localStorage.getItem('zanzibarPiratesBookings') || '[]');
+            const existing = bookings.find(b => b.id === villaId);
+            if (existing) {
+                existing.quantity = (existing.quantity || 1) + 1;
+            } else {
+                bookings.push({
+                    id: villaId,
+                    title: data.title,
+                    price: data.price,
+                    image: data.heroImage,
+                    quantity: 1
+                });
+            }
+            localStorage.setItem('zanzibarPiratesBookings', JSON.stringify(bookings));
+            showToast(`"${data.title}" added to My Booking!`);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ========== LIGHTBOX LOGIC ==========
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeLightboxBtn = document.getElementById('closeLightbox');
+        const prevImgBtn = document.getElementById('prevImg');
+        const nextImgBtn = document.getElementById('nextImg');
+        let currentLightboxIndex = 0;
+        let currentGallery = [];
+
+        window.openLightbox = function (index) {
+            currentGallery = window._currentGallery || [];
+            currentLightboxIndex = index;
+            updateLightboxImage();
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('visible');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+        };
+
+        function updateLightboxImage() {
+            if (currentGallery.length > 0) {
+                lightboxImg.src = currentGallery[currentLightboxIndex];
+            }
+        }
+
+        function navigateLightbox(direction) {
+            if (currentGallery.length === 0) return;
+            currentLightboxIndex = (currentLightboxIndex + direction + currentGallery.length) % currentGallery.length;
+            updateLightboxImage();
+        }
+
+        function closeLightboxModal() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('visible');
+            document.body.style.overflow = ''; // re-enable scrolling
+        }
+
+        closeLightboxBtn.addEventListener('click', closeLightboxModal);
+        prevImgBtn.addEventListener('click', () => navigateLightbox(-1));
+        nextImgBtn.addEventListener('click', () => navigateLightbox(1));
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) closeLightboxModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (lightbox.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeLightboxModal();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // Initialize
+        buildCards();
+        AOS.init({ duration: 800, once: true });
+    </script>
 </body>
 
 </html>
