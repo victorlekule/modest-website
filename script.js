@@ -99,7 +99,7 @@ const headerTemplate = `
                           style="background-color: ${branding.colors.orange};"></span>
                 </a>
                 
-                <a href="fqs.html" 
+                <a href="faqs.html" 
                    class="relative text-white text-xs xl:text-sm font-medium uppercase tracking-wide transition-all duration-300 pb-1 group"
                    onmouseover="this.style.color='${branding.colors.orange}'" 
                    onmouseout="if(!this.classList.contains('active')) this.style.color='white'">
@@ -138,7 +138,7 @@ const headerTemplate = `
         <div class="flex justify-between items-center py-2 lg:py-3">
             <!-- LEFT: Logo -->
             <a href="index.html" class="flex-shrink-0">
-                <img src="/image/MORIX WEB SECOND-01.png.png" 
+                <img src="pic/new logo.jpeg" 
                      alt="Morix Beyond" 
                      class="h-7 sm:h-10 lg:h-12 xl:h-14 w-auto" 
                      onerror="this.src='image/MORIX WEB-01.png';">

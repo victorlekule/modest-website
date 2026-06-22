@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morix Beyond | Frequently Asked Questions</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        /* ========================================
+           MORIX BEYOND – GLOBAL STYLES
+           Colors: navy #003C63, orange #F27D57
+           Fonts: Playfair Display (headings), Inter (body)
+           ======================================== */
+
+        /* ---- FONT FAMILIES ---- */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* ---- COLORS ---- */
+        :root {
+            --navy: #003C63;
+            --orange: #F27D57;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #128C7E;
+        }
+
+        /* ---- FADE UP ANIMATION ---- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- HERO BADGE ---- */
+        .badge-pill {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--orange);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        /* ---- SIDEBAR NAVIGATION ---- */
+        .nav-link {
+            transition: all 0.25s ease;
+            border-left: 3px solid transparent;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-link:hover {
+            color: var(--navy);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .nav-link.active {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            color: var(--navy);
+            font-weight: 600;
+            border-left: 3px solid var(--orange);
+        }
+
+        /* ---- FAQ ACCORDION CARDS (PROPER ORANGE TINT) ---- */
+        .faq-card {
+            background: rgba(242, 125, 87, 0.08);
+            /* subtle orange tint */
+            border-radius: 16px;
+            border: 1px solid rgba(242, 125, 87, 0.15);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .faq-card:hover {
+            background: rgba(242, 125, 87, 0.13);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border-color: rgba(242, 125, 87, 0.3);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 32px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            text-align: left;
+            transition: color 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .faq-trigger:hover {
+            color: var(--navy);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 32px;
+            color: #475569;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .faq-card.active .faq-content {
+            max-height: 1200px;
+            padding: 0 32px 28px 32px;
+        }
+
+        /* ---- TYPOGRAPHY WITHIN FAQ ANSWERS ---- */
+        .prose strong {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .prose ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin: 0.75rem 0;
+        }
+
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+
+        .prose .highlight-portal {
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        /* ---- SECTION HEADINGS (PLAYFAIR) ---- */
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        /* ---- SCROLL BEHAVIOR ---- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .scroll-section {
+            scroll-margin-top: 120px;
+        }
+
+        /* ---- SELECTION COLOR ---- */
+        ::selection {
+            background: var(--orange);
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8FAFC] text-slate-800 antialiased">
+
+    <!-- Fixed header – populated by script.js -->
+    <header id="main-header"></header>
+
+
+    <!-- hero section -->
+    <section class="relative min-h-[65vh] flex items-center bg-[#003C63] overflow-hidden">
+        <!-- Animated gradient background -->
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-[#003C63] via-[#002B4F] to-[#003C63] animate-gradient-shift">
+        </div>
+
+        <!-- Large orange glow orbs -->
+        <div
+            class="absolute top-0 -right-20 w-[700px] h-[700px] bg-[#F27D57] opacity-10 rounded-full blur-3xl mix-blend-screen">
+        </div>
+        <div class="absolute -bottom-32 -left-20 w-[500px] h-[500px] bg-[#F27D57] opacity-5 rounded-full blur-2xl">
+        </div>
+
+        <!-- Subtle diagonal lines pattern (safari map feel) -->
+        <div class="absolute inset-0 opacity-[0.03] bg-repeat"
+            style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+        </div>
+
+        <!-- Bottom curved divider -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+            <svg class="relative block w-[calc(100%+1.3px)] h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,120 C300,70 900,70 1200,120 L1200,0 L0,0 Z" fill="#F8FAFC" />
+            </svg>
+        </div>
+
+        <!-- Content -->
+        <div class="container mx-auto px-6 relative z-20 text-center">
+            <!-- Decorative top accent -->
+            <div class="flex justify-center mb-8">
+                <div class="w-12 h-1 bg-[#F27D57] rounded-full opacity-80"></div>
+            </div>
+
+            <!-- Badge -->
+            <span
+                class="inline-flex items-center gap-2 py-2 px-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 text-[#F27D57] font-bold text-xs tracking-[0.2em] uppercase mb-8 fade-up">
+                <i class='bx bx-compass text-sm'></i>
+                FREQUENTLY ASKED QUESTIONS | MORIX BEYOND
+            </span>
+
+            <!-- Heading with coral highlight on second line -->
+            <h1
+                class="text-4xl md:text-7xl font-bold text-white mb-8 fade-up font-heading leading-[1.1] [text-shadow:0_4px_20px_rgba(0,0,0,0.3)]">
+                Everything You Need to Know<br>
+                <span class="text-[#F27D57]">Before You Pack Your Bags</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 fade-up font-light leading-relaxed">
+                Got questions about your upcoming Tanzanian safari or Zanzibar beach holiday? We have compiled direct,
+                honest, and expert answers to the most common questions our global guests ask.
+            </p>
+
+            <!-- Optional scroll indicator -->
+            <div class="fade-up">
+                <a href="#general"
+                    class="inline-block text-white/50 hover:text-[#F27D57] transition-colors animate-bounce">
+                    <i class='bx bx-chevron-down text-3xl'></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animate-gradient-shift {
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+        }
+    </style>
+
+
+
+    <!-- FAQ section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12 xl:gap-20">
+
+                <!-- Sidebar navigation -->
+                <aside class="hidden lg:block w-1/4 relative">
+                    <div class="sticky top-32 space-y-1">
+                        <h4 class="text-xs font-bold text-navy uppercase tracking-widest mb-4 px-4">Categories</h4>
+
+                        <a href="#general"
+                            class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 transition-all">
+                            <i class='bx bx-info-circle text-lg'></i>
+                            <span class="font-medium">General</span>
+                        </a>
+                        <a href="#visa"
+                            class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 transition-all">
+                            <i class='bx bx-id-card text-lg'></i>
+                            <span class="font-medium">Visa, Insurance & Entry</span>
+                        </a>
+                        <a href="#safari-logistics"
+                            class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 transition-all">
+                            <i class='fas fa-plane-departure text-lg'></i>
+                            <span class="font-medium">Safari & Bush Logistics</span>
+                        </a>
+                        <a href="#zanzibar-life"
+                            class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 transition-all">
+                            <i class='fa-solid fa-umbrella-beach text-lg'></i>
+                            <span class="font-medium">Zanzibar Island Life</span>
+                        </a>
+                        <a href="#bookings"
+                            class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 transition-all">
+                            <i class='bx bx-check-shield text-lg'></i>
+                            <span class="font-medium">Bookings & Safety</span>
+                        </a>
+                        <a href="#media"
+                            class="nav-link group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 transition-all">
+                            <i class='bx bx-camera text-lg'></i>
+                            <span class="font-medium">Photography & Media</span>
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- Main FAQ panels -->
+                <div class="w-full lg:w-3/4 space-y-20">
+
+                    <!-- GENERAL -->
+                    <div id="general" class="scroll-section fade-up">
+                        <h2
+                            class="text-2xl font-bold mb-8 flex items-center gap-3 pb-4 border-b border-gray-200 section-heading">
+                            <span class="w-10 h-10 rounded-lg section-heading-icon flex items-center justify-center">
+                                <i class='bx bx-info-circle'></i>
+                            </span>
+                            General Questions
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Where are you based?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">We are based in Zanzibar, Tanzania, and operate tours and safaris
+                                        across Zanzibar and mainland Tanzania.</div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Do you organize safaris from
+                                        Zanzibar?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">Yes. We specialize in safaris starting directly from Zanzibar,
+                                        including flights, transfers, accommodation, and guided game drives.</div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Are your tours private or group
+                                        tours?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">We offer both private and small-group tours. Most of our
+                                        experiences can be customized as private tours.</div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Can I customize my itinerary?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">Absolutely. All our tours, safaris, and photoshoots can be
+                                        tailored to your schedule, interests, and budget.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VISA, INSURANCE & ENTRY -->
+                    <div id="visa" class="scroll-section fade-up">
+                        <h2
+                            class="text-2xl font-bold mb-8 flex items-center gap-3 pb-4 border-b border-gray-200 section-heading">
+                            <span class="w-10 h-10 rounded-lg section-heading-icon flex items-center justify-center">
+                                <i class='bx bx-id-card'></i>
+                            </span>
+                            Visa, Insurance & Entry Requirements
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Do I need a visa to enter Tanzania
+                                        and Zanzibar?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">
+                                        Yes, most international passport holders require a tourist visa. You can easily
+                                        get a <strong>Visa on Arrival</strong> at the airport or apply in advance via
+                                        the official Tanzania eVisa online portal.
+                                        <ul class="mt-2">
+                                            <li><strong>Cost:</strong> $50 USD for most nationalities ($100 USD strictly
+                                                for US Citizens due to a bilateral agreement).</li>
+                                            <li><strong>Requirement:</strong> Your passport must be valid for at least 6
+                                                months from your arrival date with at least 2 blank pages.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Is the Zanzibar Inbound Travel
+                                        Insurance really mandatory?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">
+                                        Yes, absolutely. As of official government regulations, all international
+                                        visitors entering the island <strong>must</strong> purchase the official
+                                        insurance managed by the Zanzibar Insurance Corporation (ZIC). It costs
+                                        <strong>$44 USD per person</strong> and is valid for 92 days.
+                                        <br><br>
+                                        You must secure this QR-coded certificate online via the official portal (<span
+                                            class="highlight-portal">inbound.visitzanzibar.go.tz</span>) before boarding
+                                        your flight, even if you have global premium insurance.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">What are the mandatory health and
+                                        vaccine requirements?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">
+                                        <strong>🟡 Yellow Fever:</strong> A Yellow Fever vaccination certificate is
+                                        strictly required <strong>only</strong> if you are arriving from or transiting
+                                        for more than 12 hours through a country with a risk of Yellow Fever
+                                        transmission (e.g., Kenya, Ethiopia). If you are flying directly from Europe or
+                                        the US without a long African transit, it is <strong>not mandatory</strong>.
+                                        <br><br>
+                                        <strong>🦟 Malaria:</strong> Zanzibar and safari parks are malaria-risk zones.
+                                        We highly advise consulting your travel doctor at home regarding recommended
+                                        anti-malarial prophylactics and packing a high-DEET insect repellent.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SAFARI & BUSH LOGISTICS -->
+                    <div id="safari-logistics" class="scroll-section fade-up">
+                        <h2
+                            class="text-2xl font-bold mb-8 flex items-center gap-3 pb-4 border-b border-gray-200 section-heading">
+                            <span class="w-10 h-10 rounded-lg section-heading-icon flex items-center justify-center">
+                                <i class='fas fa-plane-departure'></i>
+                            </span>
+                            Safari & Bush Logistics
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">How do we get from Zanzibar to the
+                                        Safari Parks?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">
+                                        We value your holiday time, so we bypass long overland road journeys. Morix
+                                        Beyond uses <strong>Fly-In Safaris</strong>. We pick you up privately from your
+                                        beach resort, take you to Zanzibar Airport (ZNZ), and place you on a light
+                                        aircraft that flies directly into the safari park airstrips (Serengeti,
+                                        Ngorongoro, or Mikumi) within <strong>1.5 to 2 hours</strong>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">What are the luggage restrictions for
+                                        internal safari flights?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">
+                                        Light aircraft used for bush flights have strict weight and space limits for
+                                        safety.
+                                        <ul>
+                                            <li><strong>🎒 The Rule:</strong> Maximum <strong>15 kg (33 lbs)</strong>
+                                                per person, packed strictly in <strong>soft-sided duffel bags or
+                                                    backpacks</strong>. Hard-shell suitcases with wheels cannot fit in
+                                                the plane’s luggage pods.</li>
+                                            <li><strong>🧳 Morix Service:</strong> You can safely leave your heavy
+                                                hard-shell bags at your Zanzibar hotel.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ZANZIBAR ISLAND LIFE & CULTURE -->
+                    <div id="zanzibar-life" class="scroll-section fade-up">
+                        <h2
+                            class="text-2xl font-bold mb-8 flex items-center gap-3 pb-4 border-b border-gray-200 section-heading">
+                            <span class="w-10 h-10 rounded-lg section-heading-icon flex items-center justify-center">
+                                <i class='fa-solid fa-umbrella-beach'></i>
+                            </span>
+                            Zanzibar Island Life & Culture
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">What is the local dress code in
+                                        Zanzibar?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">
+                                        Zanzibar is a predominantly Islamic island with rich cultural traditions. While
+                                        <strong>bikinis and swimsuits are completely fine</strong> at hotel pools and
+                                        beaches, you must dress modestly when entering public areas like Stone Town,
+                                        local spice farms, and villages. <strong>Loose linen clothing</strong> is highly
+                                        recommended for the tropical climate.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Can I pay with Credit Cards
+                                        everywhere
+                                        on the island?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">
+                                        No. While luxury resorts and established companies like Morix Beyond accept
+                                        secure online card payments, Zanzibar is still a <strong>cash-based
+                                            economy</strong>. Local beach bars, souvenir shops, and tipping require
+                                        cash.
+                                        <br><br>
+                                        <strong>💵 Pro Tip:</strong> Bring <strong>US Dollars (USD) printed after
+                                            2013</strong>. Older bills are strictly rejected by local banks and shops
+                                        due to counterfeit regulations. ATMs are readily available in Stone Town but
+                                        very rare in remote beach villages.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BOOKINGS, CANCELLATIONS & SAFETY -->
+                    <div id="bookings" class="scroll-section fade-up">
+                        <h2
+                            class="text-2xl font-bold mb-8 flex items-center gap-3 pb-4 border-b border-gray-200 section-heading">
+                            <span class="w-10 h-10 rounded-lg section-heading-icon flex items-center justify-center">
+                                <i class='bx bx-check-shield'></i>
+                            </span>
+                            Bookings, Cancellations & Safety
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">How far in advance should I book my
+                                        Morix experience?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">
+                                        For peak seasons (July to October & December to February), we recommend booking
+                                        <strong>3 to 6 months in advance</strong>. Premium safari lodges, direct
+                                        domestic flight seats, and sunset time-slots for our Creative Studio drone teams
+                                        book out very quickly.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Is my booking legally and financially
+                                        secure?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">
+                                        Absolutely. All online transactions are processed through <strong>legally
+                                            encrypted payment gateways</strong>, ensuring your card data is safe. Our
+                                        bookings are backed by transparent, flexible rescheduling terms if your
+                                        international flight patterns change.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PHOTOGRAPHY & MEDIA -->
+                    <div id="media" class="scroll-section fade-up">
+                        <h2
+                            class="text-2xl font-bold mb-8 flex items-center gap-3 pb-4 border-b border-gray-200 section-heading">
+                            <span class="w-10 h-10 rounded-lg section-heading-icon flex items-center justify-center">
+                                <i class='bx bx-camera'></i>
+                            </span>
+                            Photography & Videography
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Do you offer drone services?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">Yes, we provide professional drone photography and videography,
+                                        subject to local regulations and weather conditions.</div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">How long does it take to receive
+                                        edited photos?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">Delivery time is usually 4 - 7 days, depending on the package.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq-card group">
+                                <button class="faq-trigger">
+                                    <span class="text-lg font-bold text-slate-700">Can you shoot hotels and tourism
+                                        businesses?</span>
+                                    <i class='bx bx-chevron-down arrow-icon'></i>
+                                </button>
+                                <div class="faq-content">
+                                    <div class="prose">Yes. We offer professional media services for hotels, resorts,
+                                        and tourism brands.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REVAMPED CTA SECTION – EYE‑CATCHING & PROFESSIONAL -->
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ========== STANDALONE CTA SECTION ========== -->
+    <section class="morix-cta-section" style="
+    background: linear-gradient(135deg, #003C63 0%, #001f3f 100%);
+    border-radius: 30px;
+    padding: 4rem 2rem;
+    margin: 4rem auto;
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.1);
+">
+        <!-- Decorative blur orbs -->
+        <div style="
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 200px;
+        height: 200px;
+        background: rgba(242,125,87,0.2);
+        border-radius: 50%;
+        filter: blur(40px);
+        pointer-events: none;
+    "></div>
+        <div style="
+        position: absolute;
+        bottom: -30px;
+        left: -30px;
+        width: 150px;
+        height: 150px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 50%;
+        filter: blur(35px);
+        pointer-events: none;
+    "></div>
+        <!-- Subtle compass icon (transparent) -->
+        <div style="
+        position: absolute;
+        right: 2rem;
+        bottom: 1.5rem;
+        font-size: 6rem;
+        color: rgba(255,255,255,0.06);
+        pointer-events: none;
+        line-height: 1;
+    ">
+            <i class='bx bxs-compass'></i>
+        </div>
+
+        <!-- Content -->
+        <div style="position: relative; z-index: 2;">
+            <h3 style="
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        ">
+                Still Have a Question?
+            </h3>
+            <p style="
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.85);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        ">
+                Our travel architects are online right now to clear up any doubts.
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+                <!-- WhatsApp Button -->
+                <a href="https://wa.me/yourwhatsappnumber" target="_blank" style="
+                   display: inline-flex;
+                   align-items: center;
+                   gap: 10px;
+                   background-color: #25D366;
+                   color: #ffffff;
+                   font-family: 'Inter', sans-serif;
+                   font-weight: 600;
+                   font-size: 1rem;
+                   padding: 14px 28px;
+                   border-radius: 50px;
+                   text-decoration: none;
+                   box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+                   transition: transform 0.3s, box-shadow 0.3s;
+                   border: 1px solid rgba(255,255,255,0.2);
+               " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 18px 35px rgba(37,211,102,0.5)'"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 25px rgba(37,211,102,0.4)'">
+                    <i class='bx bxl-whatsapp' style="font-size: 1.4rem;"></i>
+                    Send us a Message on WhatsApp
+                </a>
+
+                <!-- Email Button -->
+                <a href="mailto:hello@morixbeyond.com" style="
+                   display: inline-flex;
+                   align-items: center;
+                   gap: 10px;
+                   background-color: #ffffff;
+                   color: #003C63;
+                   font-family: 'Inter', sans-serif;
+                   font-weight: 600;
+                   font-size: 1rem;
+                   padding: 14px 28px;
+                   border-radius: 50px;
+                   text-decoration: none;
+                   box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+                   transition: transform 0.3s, box-shadow 0.3s;
+                   border: 1px solid rgba(255,255,255,0.4);
+               " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 18px 35px rgba(255,255,255,0.5)'"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 25px rgba(255,255,255,0.3)'">
+                    <i class='bx bx-envelope' style="font-size: 1.4rem;"></i>
+                    Email Our Concierge Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========== END CTA ========== -->
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
+    </script>
+
+    <!-- Original script files (header, animations) -->
+    <script src="animations.js">
+    </script>
+    <script src="script.js">
+    </script>
+
+    <!-- FAQ accordion & sidebar scroll spy -->
+    <script>
+        (function () {
+            window.addEventListener('load', function () {
+                // ---------- ACCORDION ----------
+                const faqCards = document.querySelectorAll('.faq-card');
+                faqCards.forEach(card => {
+                    const trigger = card.querySelector('.faq-trigger');
+                    if (!trigger) return;
+                    trigger.addEventListener('click', () => {
+                        faqCards.forEach(c => {
+                            if (c !== card) c.classList.remove('active');
+                        });
+                        card.classList.toggle('active');
+                    });
+                });
+
+                // ---------- SIDEBAR ACTIVE STATE ----------
+                const sections = document.querySelectorAll('.scroll-section');
+                const navLinks = document.querySelectorAll('.nav-link');
+                const onScroll = () => {
+                    let current = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop - 150;
+                        if (window.pageYOffset >= sectionTop) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + current) {
+                            link.classList.add('active');
+                        }
+                    });
+                };
+                window.addEventListener('scroll', onScroll);
+
+                // Smooth scroll for sidebar links
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const target = document.getElementById(targetId);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                // Trigger scroll spy immediately
+                onScroll();
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

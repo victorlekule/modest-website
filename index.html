@@ -464,6 +464,8 @@
 
     <!-- water activity -->
     <!-- WATER SPORTS SECTION - Rotating Images with Push Animation -->
+    <!-- water activity -->
+    <!-- WATER SPORTS SECTION - Rotating Images with Push Animation -->
     <section class="relative py-24 lg:py-32 overflow-hidden"
         style="font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #003C63 0%, #002240 100%);">
 
@@ -519,14 +521,14 @@
                         id="water-sports-image-container">
 
                         <!-- Current visible image (slides out to left) -->
-                        <img id="water-sports-img-current" src="pic/water (1).jpg" alt="Jetski Adventure"
-                            class="absolute inset-0 w-full h-full object-cover object-bottom transition-transform duration-700 ease-in-out"
-                            style="transform: translateX(0); z-index: 2;">
+                        <img id="water-sports-img-current" src="pic/water (1).webp" alt="Jetski Adventure"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out"
+                            style="transform: translateX(0); z-index: 2; object-position: center bottom;">
 
                         <!-- Next image (slides in from right) -->
-                        <img id="water-sports-img-next" src="pic/water (1).jpg" alt=""
-                            class="absolute inset-0 w-full h-full object-cover object-bottom transition-transform duration-700 ease-in-out"
-                            style="transform: translateX(100%); z-index: 1;">
+                        <img id="water-sports-img-next" src="pic/water (4).webp" alt=""
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out"
+                            style="transform: translateX(100%); z-index: 1; object-position: center bottom;">
 
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10 pointer-events-none">
@@ -698,37 +700,42 @@
     </style>
 
     <script>
-        // Water Sports Data (now using FlatIcon classes)
+        // Water Sports Data - objectPos defines the focal point of the image
         const waterSports = [
             {
                 name: 'Jetski Adventure',
                 badge: 'Most Popular',
-                image: 'pic/water (1).jpg',
-                icon: 'fi fi-rr-water'
+                image: 'pic/water (1).webp',
+                icon: 'fi fi-rr-water',
+                objectPos: 'center bottom'
             },
             {
                 name: 'Clear Kayak',
                 badge: 'Unique Experience',
                 image: 'pic/water (3).jpg',
-                icon: 'fi fi-rr-kayak'
+                icon: 'fi fi-rr-kayak',
+                objectPos: 'center bottom'
             },
             {
                 name: 'Jetcar Experience',
                 badge: 'Thrill Ride',
-                image: 'pic/water (4).JPG',
-                icon: 'fi fi-rr-car-side'
+                image: 'pic/water (4).webp',
+                icon: 'fi fi-rr-car-side',
+                objectPos: 'center top'      // 🔝 Jetcar image aligned to the top
             },
             {
                 name: 'Snorkeling',
                 badge: 'Family Favorite',
                 image: 'pic/water (5).jpg',
-                icon: 'fi fi-rr-diving-snorkel'
+                icon: 'fi fi-rr-diving-snorkel',
+                objectPos: 'center bottom'
             },
             {
                 name: 'Parasailing',
                 badge: 'Sky High',
                 image: 'pic/water (2).jpg',
-                icon: 'fi fi-rr-parachute-box'
+                icon: 'fi fi-rr-parachute-box',
+                objectPos: 'center bottom'
             }
         ];
 
@@ -756,9 +763,11 @@
             const nextSport = waterSports[index];
             const currentSport = waterSports[currentWSIndex];
 
-            // Prepare next image: set source and ensure it's offscreen right
+            // Prepare next image: set source, alt, and correct object-position
             imgNext.src = nextSport.image;
             imgNext.alt = nextSport.name;
+            imgNext.style.objectPosition = nextSport.objectPos;  // 🎯 dynamic focal point
+
             imgNext.style.transition = 'none';
             imgNext.style.transform = 'translateX(100%)';
             // Force reflow
@@ -848,13 +857,17 @@
             wsDots = document.querySelectorAll('.ws-dot');
             floatIcon = document.getElementById('ws-float-icon');
 
-            // Set initial text and icon class
+            // Set initial text, icon, and object-position
             const initial = waterSports[0];
             wsTitle.textContent = initial.name;
             wsBadge.textContent = initial.badge;
             if (floatIcon) {
                 floatIcon.className = initial.icon + ' text-2xl text-green-600';
             }
+
+            // Apply the correct focal point to both images from the start
+            imgCurrent.style.objectPosition = initial.objectPos;
+            imgNext.style.objectPosition = initial.objectPos;
 
             // Prepare next image offscreen with the first image (just in case)
             imgNext.src = initial.image;
