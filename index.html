@@ -466,6 +466,8 @@
     <!-- WATER SPORTS SECTION - Rotating Images with Push Animation -->
     <!-- water activity -->
     <!-- WATER SPORTS SECTION - Rotating Images with Push Animation -->
+
+    <!-- WATER SPORTS HERO SECTION (images in HTML, smooth right‑to‑left animation) -->
     <section class="relative py-24 lg:py-32 overflow-hidden"
         style="font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #003C63 0%, #002240 100%);">
 
@@ -515,26 +517,43 @@
             <!-- Main Content Grid -->
             <div class="grid lg:grid-cols-5 gap-8 lg:gap-10 items-center">
 
-                <!-- LEFT: Rotating Feature Image (with push animation) -->
+                <!-- LEFT: Rotating Feature Image (all images in HTML) -->
                 <div class="lg:col-span-3 relative">
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 h-80 sm:h-96 lg:h-[500px]"
                         id="water-sports-image-container">
 
-                        <!-- Current visible image (slides out to left) -->
-                        <img id="water-sports-img-current" src="pic/water (1).webp" alt="Jetski Adventure"
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out"
-                            style="transform: translateX(0); z-index: 2; object-position: center bottom;">
+                        <!-- ALL 5 IMAGES IN HTML -->
+                        <img src="jesk/jesk5.jpg" alt="Jetski Adventure"
+                            class="ws-slide-img absolute inset-0 w-full h-full object-cover"
+                            style="transform: translateX(0); z-index: 2;" data-name="Jetski Adventure"
+                            data-badge="Most Popular" data-icon="fi fi-rr-water">
 
-                        <!-- Next image (slides in from right) -->
-                        <img id="water-sports-img-next" src="pic/water (4).webp" alt=""
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out"
-                            style="transform: translateX(100%); z-index: 1; object-position: center bottom;">
+                        <img src="clear/clear4.jpg" alt="Clear Kayak"
+                            class="ws-slide-img absolute inset-0 w-full h-full object-cover"
+                            style="transform: translateX(100%); z-index: 1;" data-name="Clear Kayak"
+                            data-badge="Unique Experience" data-icon="fi fi-rr-kayak">
 
+                        <img src="jetcar/hero.jpg" alt="Jetcar Experience"
+                            class="ws-slide-img absolute inset-0 w-full h-full object-cover"
+                            style="transform: translateX(100%); z-index: 1;" data-name="Jetcar Experience"
+                            data-badge="Thrill Ride" data-icon="fi fi-rr-car-side">
+
+                        <img src="snok/11.jpg" alt="Snorkeling"
+                            class="ws-slide-img absolute inset-0 w-full h-full object-cover"
+                            style="transform: translateX(100%); z-index: 1;" data-name="Snorkeling"
+                            data-badge="Family Favorite" data-icon="fi fi-rr-diving-snorkel">
+
+                        <img src="p/p8.jpg" alt="Parasailing"
+                            class="ws-slide-img absolute inset-0 w-full h-full object-cover"
+                            style="transform: translateX(100%); z-index: 1;" data-name="Parasailing"
+                            data-badge="Sky High" data-icon="fi fi-rr-parachute-box">
+
+                        <!-- Gradient overlay -->
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10 pointer-events-none">
                         </div>
 
-                        <!-- Dynamic Image Overlay Content -->
+                        <!-- Dynamic Overlay Text -->
                         <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8 z-20">
                             <div class="flex items-center gap-2 mb-2">
                                 <span id="water-sports-badge"
@@ -549,7 +568,7 @@
                             </h3>
                         </div>
 
-                        <!-- Dot Indicators on Image -->
+                        <!-- Dot Indicators -->
                         <div class="absolute top-4 right-4 flex gap-1.5 z-20">
                             <button class="ws-dot w-2.5 h-2.5 rounded-full bg-white transition-all duration-300"
                                 data-index="0"></button>
@@ -564,7 +583,7 @@
                         </div>
                     </div>
 
-                    <!-- Floating Review Card (FlatIcon instead of emoji) -->
+                    <!-- Floating Review Card -->
                     <div
                         class="absolute -top-6 -right-4 lg:-right-8 bg-white rounded-2xl shadow-2xl p-4 z-20 hidden sm:block">
                         <div class="flex items-center gap-3">
@@ -586,7 +605,7 @@
                     </div>
                 </div>
 
-                <!-- RIGHT: Content & Activities (unchanged) -->
+                <!-- RIGHT: Content & Activities -->
                 <div class="lg:col-span-2 space-y-6">
 
                     <!-- Description Card -->
@@ -606,25 +625,25 @@
                             Safe, fun, and unforgettable sea adventures.
                         </p>
 
-                        <!-- Activity Tags - Clickable to change image -->
+                        <!-- Activity Tags -->
                         <div class="flex flex-wrap gap-2">
-                            <button onclick="changeWaterSport(1)"
+                            <button onclick="changeWaterSport(0)"
                                 class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
                                 <i class="fi fi-rr-water"></i> Jetski
                             </button>
-                            <button onclick="changeWaterSport(2)"
+                            <button onclick="changeWaterSport(1)"
                                 class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
                                 <i class="fi fi-rr-kayak"></i> Clear Kayak
                             </button>
-                            <button onclick="changeWaterSport(3)"
+                            <button onclick="changeWaterSport(2)"
                                 class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
                                 <i class="fi fi-rr-car-side"></i> Jetcar
                             </button>
-                            <button onclick="changeWaterSport(4)"
+                            <button onclick="changeWaterSport(3)"
                                 class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
                                 <i class="fi fi-rr-diving-snorkel"></i> Snorkeling
                             </button>
-                            <button onclick="changeWaterSport(5)"
+                            <button onclick="changeWaterSport(4)"
                                 class="ws-tag inline-flex items-center gap-1.5 bg-[#F27D57]/10 text-[#F27D57] text-xs font-medium px-3 py-1.5 rounded-full border border-[#F27D57]/20 hover:bg-[#F27D57] hover:text-white transition-all duration-300">
                                 <i class="fi fi-rr-parachute-box"></i> Parasailing
                             </button>
@@ -677,6 +696,7 @@
         </div>
     </section>
 
+    <!-- ANIMATION STYLES -->
     <style>
         @keyframes float {
 
@@ -699,197 +719,190 @@
         }
     </style>
 
+    <!-- BULLETPROOF SLIDER SCRIPT -->
     <script>
-        // Water Sports Data - objectPos defines the focal point of the image
-        const waterSports = [
-            {
-                name: 'Jetski Adventure',
-                badge: 'Most Popular',
-                image: 'pic/water (1).webp',
-                icon: 'fi fi-rr-water',
-                objectPos: 'center bottom'
-            },
-            {
-                name: 'Clear Kayak',
-                badge: 'Unique Experience',
-                image: 'pic/water (3).jpg',
-                icon: 'fi fi-rr-kayak',
-                objectPos: 'center bottom'
-            },
-            {
-                name: 'Jetcar Experience',
-                badge: 'Thrill Ride',
-                image: 'pic/water (4).webp',
-                icon: 'fi fi-rr-car-side',
-                objectPos: 'center top'      // 🔝 Jetcar image aligned to the top
-            },
-            {
-                name: 'Snorkeling',
-                badge: 'Family Favorite',
-                image: 'pic/water (5).jpg',
-                icon: 'fi fi-rr-diving-snorkel',
-                objectPos: 'center bottom'
-            },
-            {
-                name: 'Parasailing',
-                badge: 'Sky High',
-                image: 'pic/water (2).jpg',
-                icon: 'fi fi-rr-parachute-box',
-                objectPos: 'center bottom'
-            }
-        ];
+        (function () {
+            // ---------- DOM ELEMENTS ----------
+            const container = document.getElementById('water-sports-image-container');
+            const slides = Array.from(container.querySelectorAll('.ws-slide-img'));
+            const titleEl = document.getElementById('water-sports-title');
+            const badgeEl = document.getElementById('water-sports-badge');
+            const floatIcon = document.getElementById('ws-float-icon');
+            const dots = document.querySelectorAll('.ws-dot');
 
-        let currentWSIndex = 0;         // currently displayed sport index
-        let isWSAnimating = false;     // lock to prevent overlapping transitions
-        let wsPendingIndex = null;     // queued index if a change is requested during animation
-        let wsInterval;
+            if (slides.length < 2) return;
 
-        // DOM elements (cached after DOM ready)
-        let imgCurrent, imgNext, wsTitle, wsBadge, wsDots, floatIcon;
+            // Extract data from each image
+            const sportsData = slides.map(img => ({
+                el: img,
+                name: img.getAttribute('data-name'),
+                badge: img.getAttribute('data-badge'),
+                iconClass: img.getAttribute('data-icon')
+            }));
 
-        function changeWaterSport(index) {
-            // If same sport or already animating, queue it
-            if (index === currentWSIndex) return;
-            if (isWSAnimating) {
-                wsPendingIndex = index;
-                return;
-            }
-            performSlide(index);
-            resetWSAutoplay();
-        }
+            let currentIndex = 0;
+            let isAnimating = false;
+            let pendingIndex = null;
+            let autoplayTimer;
+            let sliderReady = false;
 
-        function performSlide(index) {
-            isWSAnimating = true;
-            const nextSport = waterSports[index];
-            const currentSport = waterSports[currentWSIndex];
+            let frontEl = sportsData[0].el;
+            let backEl = sportsData[1].el;
 
-            // Prepare next image: set source, alt, and correct object-position
-            imgNext.src = nextSport.image;
-            imgNext.alt = nextSport.name;
-            imgNext.style.objectPosition = nextSport.objectPos;  // 🎯 dynamic focal point
-
-            imgNext.style.transition = 'none';
-            imgNext.style.transform = 'translateX(100%)';
-            // Force reflow
-            void imgNext.offsetWidth;
-            imgNext.style.transition = 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-
-            // Fade out overlay text
-            wsTitle.style.opacity = '0';
-            wsBadge.style.opacity = '0';
-
-            // After a short delay to let the fade start, begin the slide
-            setTimeout(() => {
-                // Slide current out to left, next in from right
-                imgCurrent.style.transition = 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                imgCurrent.style.transform = 'translateX(-100%)';
-                imgNext.style.transform = 'translateX(0)';
-
-                // Update overlay content halfway through the slide
-                setTimeout(() => {
-                    wsTitle.textContent = nextSport.name;
-                    wsBadge.textContent = nextSport.badge;
-                    // Update Floating Review Card icon class
-                    if (floatIcon) {
-                        floatIcon.className = nextSport.icon + ' text-2xl text-green-600';
+            // ---------- PRELOAD & DECODE ALL IMAGES ----------
+            const decodePromises = sportsData.map(sport => {
+                return new Promise(resolve => {
+                    if (sport.el.complete) {
+                        sport.el.decode().then(resolve).catch(resolve);
+                    } else {
+                        sport.el.onload = () => sport.el.decode().then(resolve).catch(resolve);
+                        sport.el.onerror = resolve;
                     }
-
-                    // Fade in
-                    wsTitle.style.opacity = '1';
-                    wsBadge.style.opacity = '1';
-                }, 350); // half of the 700ms slide
-            }, 50); // tiny delay after opacity change to see fade-out
-
-            // After slide completes, swap roles and update dots
-            const onTransitionEnd = () => {
-                imgCurrent.removeEventListener('transitionend', onTransitionEnd);
-                // Swap image elements: the next is now the current, old current moves offscreen right for reuse
-                const oldCurrent = imgCurrent;
-                oldCurrent.style.transition = 'none';
-                oldCurrent.style.transform = 'translateX(100%)';
-                // Now the roles: imgNext becomes the new current, oldCurrent becomes the new next
-                imgCurrent = imgNext;
-                imgNext = oldCurrent;
-
-                // Update index
-                currentWSIndex = index;
-
-                // Update dots
-                updateWSDots();
-
-                // Unlock animation
-                isWSAnimating = false;
-
-                // Process any queued change
-                if (wsPendingIndex !== null) {
-                    const pending = wsPendingIndex;
-                    wsPendingIndex = null;
-                    changeWaterSport(pending);
-                }
-            };
-
-            imgCurrent.addEventListener('transitionend', onTransitionEnd, { once: true });
-        }
-
-        function updateWSDots() {
-            wsDots.forEach((dot, i) => {
-                const active = i === currentWSIndex;
-                dot.style.backgroundColor = active ? 'white' : 'rgba(255,255,255,0.4)';
-                dot.style.width = active ? '1.5rem' : '0.625rem';
-                dot.style.borderRadius = active ? '12px' : '50%';
-            });
-        }
-
-        function resetWSAutoplay() {
-            clearInterval(wsInterval);
-            wsInterval = setInterval(() => {
-                const nextIndex = (currentWSIndex + 1) % waterSports.length;
-                changeWaterSport(nextIndex);
-            }, 4000);
-        }
-
-        // Initialize on DOM ready
-        document.addEventListener('DOMContentLoaded', () => {
-            imgCurrent = document.getElementById('water-sports-img-current');
-            imgNext = document.getElementById('water-sports-img-next');
-            wsTitle = document.getElementById('water-sports-title');
-            wsBadge = document.getElementById('water-sports-badge');
-            wsDots = document.querySelectorAll('.ws-dot');
-            floatIcon = document.getElementById('ws-float-icon');
-
-            // Set initial text, icon, and object-position
-            const initial = waterSports[0];
-            wsTitle.textContent = initial.name;
-            wsBadge.textContent = initial.badge;
-            if (floatIcon) {
-                floatIcon.className = initial.icon + ' text-2xl text-green-600';
-            }
-
-            // Apply the correct focal point to both images from the start
-            imgCurrent.style.objectPosition = initial.objectPos;
-            imgNext.style.objectPosition = initial.objectPos;
-
-            // Prepare next image offscreen with the first image (just in case)
-            imgNext.src = initial.image;
-            imgNext.style.transform = 'translateX(100%)';
-
-            updateWSDots();
-
-            // Autoplay
-            wsInterval = setInterval(() => {
-                const nextIndex = (currentWSIndex + 1) % waterSports.length;
-                changeWaterSport(nextIndex);
-            }, 4000);
-
-            // Dot click handlers
-            wsDots.forEach(dot => {
-                dot.addEventListener('click', () => {
-                    const index = parseInt(dot.getAttribute('data-index'));
-                    changeWaterSport(index);
                 });
             });
-        });
+
+            Promise.all(decodePromises).then(() => {
+                // --- INITIAL STATE ---
+                frontEl.style.transform = 'translateX(0)';
+                frontEl.style.zIndex = '2';
+                frontEl.style.transition = 'none';
+
+                // All other images offscreen right
+                sportsData.forEach((sport, i) => {
+                    if (i > 0) {
+                        sport.el.style.transform = 'translateX(100%)';
+                        sport.el.style.zIndex = '1';
+                        sport.el.style.transition = 'none';
+                    }
+                });
+
+                // Set overlay text and icon
+                const initial = sportsData[0];
+                titleEl.textContent = initial.name;
+                badgeEl.textContent = initial.badge;
+                if (floatIcon) floatIcon.className = initial.iconClass + ' text-2xl text-green-600';
+
+                updateDots();
+                sliderReady = true;
+
+                // Start autoplay
+                resetAutoplay();
+            });
+
+            // ---------- FUNCTIONS ----------
+            function updateDots() {
+                dots.forEach((dot, i) => {
+                    const active = i === currentIndex;
+                    dot.style.backgroundColor = active ? 'white' : 'rgba(255,255,255,0.4)';
+                    dot.style.width = active ? '1.5rem' : '0.625rem';
+                    dot.style.borderRadius = active ? '12px' : '50%';
+                });
+            }
+
+            window.changeWaterSport = function (index) {
+                if (!sliderReady || index === currentIndex) return;
+                if (isAnimating) {
+                    pendingIndex = index;
+                    return;
+                }
+                performSlide(index);
+                resetAutoplay();
+            };
+
+            async function performSlide(index) {
+                if (!sliderReady || isAnimating) return;
+                isAnimating = true;
+
+                const nextSport = sportsData[index];
+                const nextEl = nextSport.el;
+
+                // Fade out overlay text
+                titleEl.style.opacity = '0';
+                badgeEl.style.opacity = '0';
+
+                // Position next element offscreen right with no transition
+                nextEl.style.transition = 'none';
+                nextEl.style.transform = 'translateX(100%)';
+                nextEl.style.zIndex = '1';
+
+                // Force reflow so the starting position is registered
+                void nextEl.offsetWidth;
+
+                // Start the animation
+                frontEl.style.transition = 'transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)';
+                frontEl.style.transform = 'translateX(-100%)';
+
+                nextEl.style.transition = 'transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)';
+                nextEl.style.transform = 'translateX(0)';
+
+                // Update overlay text mid‑animation
+                setTimeout(() => {
+                    titleEl.textContent = nextSport.name;
+                    badgeEl.textContent = nextSport.badge;
+                    if (floatIcon) floatIcon.className = nextSport.iconClass + ' text-2xl text-green-600';
+                    titleEl.style.opacity = '1';
+                    badgeEl.style.opacity = '1';
+                }, 350);
+
+                // Wait for transition end or fallback (800ms)
+                await Promise.race([
+                    new Promise(resolve => {
+                        function onEnd(e) {
+                            if (e.propertyName === 'transform') {
+                                frontEl.removeEventListener('transitionend', onEnd);
+                                resolve();
+                            }
+                        }
+                        frontEl.addEventListener('transitionend', onEnd);
+                    }),
+                    new Promise(resolve => setTimeout(resolve, 800))
+                ]);
+
+                // Cleanup after slide
+                frontEl.style.transition = 'none';
+                frontEl.style.transform = 'translateX(100%)';
+                frontEl.style.zIndex = '1';
+
+                nextEl.style.transition = 'none';
+                nextEl.style.zIndex = '2';
+
+                // Swap references
+                const temp = frontEl;
+                frontEl = nextEl;
+                backEl = temp;
+
+                currentIndex = index;
+                updateDots();
+                isAnimating = false;
+
+                // Process any queued change
+                if (pendingIndex !== null) {
+                    const pending = pendingIndex;
+                    pendingIndex = null;
+                    window.changeWaterSport(pending);
+                }
+            }
+
+            function resetAutoplay() {
+                clearInterval(autoplayTimer);
+                autoplayTimer = setInterval(() => {
+                    const nextIndex = (currentIndex + 1) % sportsData.length;
+                    window.changeWaterSport(nextIndex);
+                }, 4000);
+            }
+
+            // Dot click handlers
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    window.changeWaterSport(index);
+                });
+            });
+        })();
     </script>
+
+
+
 
 
     <!--zanzibar tours-->

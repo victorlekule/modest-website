@@ -34,9 +34,10 @@
 
 
 
-  <!-- WATER SPORTS HERO – Compact, with background image + color overlay -->
+  <!-- WATER SPORTS HERO – with image slider & correct pill layout -->
+  <!-- WATER SPORTS HERO – with image slider (images in HTML) & clickable pills -->
   <section class="relative flex items-center overflow-hidden"
-    style="min-height: 85vh; background: linear-gradient(135deg, rgba(0,60,99,0.88), rgba(0,34,64,0.92)), url('pic/jeski\ \(1\).JPG') center / cover no-repeat;">
+    style="min-height: 85vh; background: linear-gradient(135deg, rgba(0,60,99,0.88), rgba(0,34,64,0.92)), url('pic/jeski%20(1).JPG') center / cover no-repeat;">
 
     <!-- Subtle animated blobs -->
     <div class="absolute top-10 left-10 w-80 h-80 bg-[#F27D57]/15 rounded-full blur-3xl"></div>
@@ -45,7 +46,7 @@
     <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
       <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
-        <!-- LEFT: TEXT CONTENT (always visible) -->
+        <!-- LEFT: TEXT CONTENT -->
         <div class="text-center lg:text-left">
           <!-- Trust badge -->
           <div
@@ -69,31 +70,31 @@
             Ride, fly, explore, and capture unforgettable moments on Zanzibar’s crystal-clear waters.
           </p>
 
-          <!-- Activity pills (all with icons) -->
-          <div class="flex flex-wrap justify-center lg:justify-start gap-2.5 mb-8">
-            <span
-              class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300 cursor-default">
+          <!-- Activity pills – now clickable links to each section -->
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-2.5 mb-8 max-w-md mx-auto lg:mx-0">
+            <a href="jetSkiAdventure.html"
+              class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
               <i class="fi fi-rr-water text-[#F27D57]"></i> Jet Ski
-            </span>
-            <span
-              class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300 cursor-default">
+            </a>
+            <a href="jet car.html"
+              class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
               <i class="fi fi-rr-car-side text-[#F27D57]"></i> Jet Car
-            </span>
-            <span
-              class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300 cursor-default">
+            </a>
+            <a href="clear.html"
+              class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
               <i class="fi fi-rr-kayak text-[#F27D57]"></i> Clear Kayak
-            </span>
-            <span
-              class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300 cursor-default">
+            </a>
+            <a href="parraelling.html"
+              class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
               <i class="fi fi-rr-parachute-box text-[#F27D57]"></i> Parasailing
-            </span>
-            <span
-              class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300 cursor-default">
+            </a>
+            <a href="snokling.html"
+              class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
               <i class="fi fi-rr-diving-snorkel text-[#F27D57]"></i> Snorkeling
-            </span>
+            </a>
           </div>
 
-          <!-- CTA Buttons – now forced single line, with smaller text on mobile -->
+          <!-- CTA Buttons -->
           <div class="flex flex-nowrap items-center justify-center lg:justify-start gap-4">
             <a href="#packages"
               class="group relative inline-flex items-center gap-2 bg-[#F27D57] text-white font-bold text-sm sm:text-lg px-6 sm:px-8 py-3 rounded-full overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#F27D57]/50 hover:-translate-y-1 whitespace-nowrap">
@@ -112,15 +113,37 @@
           </div>
         </div>
 
-        <!-- RIGHT: FEATURE IMAGE – hidden on mobile, shown on large screens -->
+        <!-- RIGHT: ANIMATED IMAGE SLIDER – FIXED HEIGHT ADDED -->
         <div class="hidden lg:flex relative justify-center lg:justify-end">
           <div
-            class="relative rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl shadow-[#003C63]/40 w-full max-w-lg lg:max-w-none">
-            <img src="pic/jeski (1).JPG" alt="Water Sports Zanzibar"
-              class="w-full h-auto object-cover aspect-[4/5] lg:aspect-auto lg:h-[550px]">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/50 via-transparent to-transparent"></div>
+            class="relative rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl shadow-[#003C63]/40 w-full max-w-lg lg:max-w-none h-80 sm:h-96 lg:h-[550px]"
+            id="hero-slider-container">
+
+            <!-- ALL 5 IMAGES ARE HERE IN THE HTML -->
+            <img src="jesk/jesk12.jpg" alt="Jet Ski" data-name="Jet Ski"
+              class="absolute inset-0 w-full h-full object-cover slider-image"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="jetcar/11.jpg" alt="Jet Car" data-name="Jet Car"
+              class="absolute inset-0 w-full h-full object-cover slider-image"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="clear/clear2.jpg" alt="Clear Kayak" data-name="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover slider-image"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="p/p4.jpg" alt="Parasailing" data-name="Parasailing"
+              class="absolute inset-0 w-full h-full object-cover slider-image"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="snok/12.jpg" alt="Snorkeling" data-name="Snorkeling"
+              class="absolute inset-0 w-full h-full object-cover slider-image"
+              style="transform: translateX(100%); z-index: 1;">
+
+            <!-- Gradient overlay -->
             <div
-              class="absolute top-4 right-4 lg:top-6 lg:right-6 bg-white/90 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg flex items-center gap-3">
+              class="absolute inset-0 bg-gradient-to-t from-[#003C63]/50 via-transparent to-transparent z-10 pointer-events-none">
+            </div>
+
+            <!-- Static rating badge -->
+            <div
+              class="absolute top-4 right-4 lg:top-6 lg:right-6 bg-white/90 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg z-20 flex items-center gap-3">
               <div class="flex text-yellow-400 text-xs">
                 <i class="fi fi-rr-star"></i>
                 <i class="fi fi-rr-star"></i>
@@ -130,9 +153,17 @@
               </div>
               <span class="text-[#003C63] font-bold text-sm">4.9/5</span>
             </div>
+
+            <!-- Activity name caption -->
+            <div id="hero-slider-caption"
+              class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-md text-white text-lg font-bold px-6 py-2 rounded-full z-20 text-center whitespace-nowrap">
+              Jet Ski
+            </div>
           </div>
+
+          <!-- Decorative element -->
           <div
-            class="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-[#F27D57] text-white p-3 lg:p-4 rounded-2xl shadow-xl transform rotate-6 hover:rotate-0 transition-transform duration-300">
+            class="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-[#F27D57] text-white p-3 lg:p-4 rounded-2xl shadow-xl transform rotate-6 hover:rotate-0 transition-transform duration-300 z-30">
             <i class="fi fi-rr-water text-2xl lg:text-3xl"></i>
           </div>
         </div>
@@ -147,6 +178,126 @@
       </svg>
     </div>
   </section>
+
+  <script>
+    (function () {
+      // ---------- GRAB ALL SLIDER IMAGES FROM HTML ----------
+      const imageEls = document.querySelectorAll('#hero-slider-container .slider-image');
+      if (imageEls.length < 2) {
+        console.error('Hero slider: need at least 2 images in HTML');
+        return;
+      }
+
+      const caption = document.getElementById('hero-slider-caption');
+      if (!caption) return;
+
+      // Build an array of objects from the DOM images
+      const slides = Array.from(imageEls).map(img => ({
+        el: img,
+        name: img.getAttribute('data-name') || img.alt || 'Activity'
+      }));
+
+      // ---------- STATE ----------
+      let currentIndex = 0;          // index of the currently visible image
+      let isAnimating = false;
+      let sliderReady = false;
+
+      // We keep two references: front (visible) and back (hidden right)
+      let frontEl = slides[0].el;
+      let backEl = slides[1].el;
+
+      // ---------- PRELOAD ALL IMAGES (decode each) ----------
+      const decodePromises = slides.map(slide => {
+        return new Promise(resolve => {
+          if (slide.el.complete) {
+            // Already loaded
+            slide.el.decode().then(resolve).catch(resolve);
+          } else {
+            slide.el.onload = () => slide.el.decode().then(resolve).catch(resolve);
+            slide.el.onerror = resolve; // still proceed if broken
+          }
+        });
+      });
+
+      Promise.all(decodePromises).then(() => {
+        console.log('Hero slider: all images ready.');
+
+        // Set initial positions (already set in HTML, but just to be safe)
+        frontEl.style.transform = 'translateX(0)';
+        frontEl.style.zIndex = '2';
+        frontEl.style.transition = 'none';
+
+        backEl.style.transform = 'translateX(100%)';
+        backEl.style.zIndex = '1';
+        backEl.style.transition = 'none';
+
+        caption.textContent = slides[0].name;
+        currentIndex = 0;
+        sliderReady = true;
+
+        // Start auto‑sliding
+        setInterval(slideNext, 4000);
+      });
+
+      // ---------- SLIDE FUNCTION ----------
+      async function slideNext() {
+        if (!sliderReady || isAnimating) return;
+        isAnimating = true;
+
+        const nextIndex = (currentIndex + 1) % slides.length;
+        const nextEl = slides[nextIndex].el;
+
+        // Move the next element offscreen right (no transition)
+        nextEl.style.transition = 'none';
+        nextEl.style.transform = 'translateX(100%)';
+        nextEl.style.zIndex = '1';   // behind the current
+
+        // Force a reflow
+        void nextEl.offsetWidth;
+
+        // Animate current out to the left, next in from the right
+        frontEl.style.transition = 'transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)';
+        frontEl.style.transform = 'translateX(-100%)';
+
+        nextEl.style.transition = 'transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)';
+        nextEl.style.transform = 'translateX(0)';
+
+        // Wait for the transition to finish (or fallback)
+        await Promise.race([
+          new Promise(resolve => {
+            function onEnd(e) {
+              if (e.propertyName === 'transform') {
+                frontEl.removeEventListener('transitionend', onEnd);
+                resolve();
+              }
+            }
+            frontEl.addEventListener('transitionend', onEnd);
+          }),
+          new Promise(resolve => setTimeout(resolve, 800))
+        ]);
+
+        // Cleanup after slide
+        // Move the old front element offscreen right (instant)
+        frontEl.style.transition = 'none';
+        frontEl.style.transform = 'translateX(100%)';
+        frontEl.style.zIndex = '1';
+
+        // The new front element is already at translateX(0) – remove its transition
+        nextEl.style.transition = 'none';
+        nextEl.style.zIndex = '2';
+
+        // Swap references
+        const temp = frontEl;
+        frontEl = nextEl;
+        backEl = temp;
+
+        // Update index and caption
+        currentIndex = nextIndex;
+        caption.textContent = slides[currentIndex].name;
+        isAnimating = false;
+      }
+    })();
+  </script>
 
 
   <!-- WHY JUST CHOOSE ONE SECTION – Mobile-fixed (2 cards side-by-side, smaller image) -->
@@ -261,7 +412,7 @@
   </section>
 
 
-  <!-- WATER SPORTS ACTIVITIES SECTION (navy background) -->
+  <!-- WATER SPORTS ACTIVITIES SECTION -->
   <section class="relative py-20 lg:py-28 bg-[#003C63] overflow-hidden">
 
     <!-- Background blobs -->
@@ -271,7 +422,7 @@
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section Header -->
-      <div class="text-center mb-10 lg:mb-20">
+      <div class="text-center mb-12 lg:mb-20">
         <span
           class="inline-flex items-center gap-2 text-[#F27D57] font-semibold tracking-widest text-xs uppercase mb-4 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
           <i class="fi fi-rr-water text-xs"></i>
@@ -288,18 +439,32 @@
 
       <!-- Desktop Grid (hidden on mobile) -->
       <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        <!-- 1. Jet Ski Adventure -->
+
+        <!-- Card 1: Jet Ski -->
         <div
-          class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2">
-          <div class="relative h-56 sm:h-64 overflow-hidden">
-            <img src="pic/jet-ski.jpg" alt="Jet Ski Adventure"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4">
-              <span
-                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most
-                Popular</span>
+          class="group relative bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-white/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="relative h-56 sm:h-64 overflow-hidden card-slider" id="card-slider-1" data-offset="0">
+            <img src="jesk/jesk1.jpg" alt="Jet Ski" data-name="Jet Ski"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="jesk/jesk2.jpg" alt="Jet Ski" data-name="Jet Ski"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jesk/jesk3.jpg" alt="Jet Ski" data-name="Jet Ski"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jesk/jesk4.jpg" alt="Jet Ski" data-name="Jet Ski"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jesk/jesk5.jpg" alt="Jet Ski" data-name="Jet Ski"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent pointer-events-none">
             </div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Most Popular</div>
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Jet Ski
@@ -307,25 +472,37 @@
             <p class="text-gray-500 text-sm leading-relaxed mb-5">Feel the adrenaline as you race across crystal‑clear
               waters with Zanzibar’s coastline as your backdrop.</p>
             <a href="jetSkiAdventure.html"
-              class="group/btn inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300">
-              Explore Activity <i
-                class="fi fi-rr-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all duration-300 shadow-md hover:shadow-lg">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
             </a>
           </div>
         </div>
 
-        <!-- 2. Jet Car Experience -->
+        <!-- Card 2: Jet Car -->
         <div
-          class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2">
-          <div class="relative h-56 sm:h-64 overflow-hidden">
-            <img src="pic/jet-car.jpg" alt="Jet Car Experience"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4">
-              <span
-                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Thrill
-                Ride</span>
+          class="group relative bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-white/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="relative h-56 sm:h-64 overflow-hidden card-slider" id="card-slider-2" data-offset="1500">
+            <img src="jetcar/1.jpg" alt="Jet Car" data-name="Jet Car"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="jetcar/2.jpg" alt="Jet Car" data-name="Jet Car"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jetcar/3.jpg" alt="Jet Car" data-name="Jet Car"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jetcar/4.jpg" alt="Jet Car" data-name="Jet Car"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jetcar/5.jpg" alt="Jet Car" data-name="Jet Car"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent pointer-events-none">
             </div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Thrill Ride</div>
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Jet Car
@@ -333,24 +510,37 @@
             <p class="text-gray-500 text-sm leading-relaxed mb-5">Drive a futuristic water craft that combines speed and
               style — a truly unique way to explore the ocean.</p>
             <a href="jet car.html"
-              class="group/btn inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300">
-              Explore Activity <i
-                class="fi fi-rr-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all duration-300 shadow-md hover:shadow-lg">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
             </a>
           </div>
         </div>
 
-        <!-- 3. Clear Kayak Experience -->
+        <!-- Card 3: Clear Kayak -->
         <div
-          class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2">
-          <div class="relative h-56 sm:h-64 overflow-hidden">
-            <img src="pic/clear-kayak.jpg" alt="Clear Kayak Experience"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4">
-              <span
-                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Unique</span>
+          class="group relative bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-white/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="relative h-56 sm:h-64 overflow-hidden card-slider" id="card-slider-3" data-offset="3000">
+            <img src="clear/clear1.jpeg" alt="Clear Kayak" data-name="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="clear/clear2.jpg" alt="Clear Kayak" data-name="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="clear/clear3.jpg" alt="Clear Kayak" data-name="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="clear/clear4.jpg" alt="Clear Kayak" data-name="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="clear/clear5.jpg" alt="Clear Kayak" data-name="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent pointer-events-none">
             </div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Unique</div>
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Clear
@@ -358,25 +548,37 @@
             <p class="text-gray-500 text-sm leading-relaxed mb-5">Paddle in a transparent kayak and marvel at the
               vibrant marine life directly beneath your feet.</p>
             <a href="clear.html"
-              class="group/btn inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300">
-              Explore Activity <i
-                class="fi fi-rr-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all duration-300 shadow-md hover:shadow-lg">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
             </a>
           </div>
         </div>
 
-        <!-- 4. Parasailing Experience -->
+        <!-- Card 4: Parasailing -->
         <div
-          class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2">
-          <div class="relative h-56 sm:h-64 overflow-hidden">
-            <img src="pic/parasailing.jpg" alt="Parasailing Experience"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4">
-              <span
-                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Sky
-                High</span>
+          class="group relative bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-white/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="relative h-56 sm:h-64 overflow-hidden card-slider" id="card-slider-4" data-offset="4500">
+            <img src="p/p1.jpg" alt="Parasailing" data-name="Parasailing"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="p/p2.jpg" alt="Parasailing" data-name="Parasailing"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="p/p4.jpg" alt="Parasailing" data-name="Parasailing"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="p/p5.jpg" alt="Parasailing" data-name="Parasailing"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="p/p6.jpg" alt="Parasailing" data-name="Parasailing"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent pointer-events-none">
             </div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Sky High</div>
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">
@@ -384,25 +586,37 @@
             <p class="text-gray-500 text-sm leading-relaxed mb-5">Soar above the Indian Ocean and soak in breathtaking
               panoramic views of Zanzibar's coast.</p>
             <a href="parraelling.html"
-              class="group/btn inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300">
-              Explore Activity <i
-                class="fi fi-rr-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all duration-300 shadow-md hover:shadow-lg">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
             </a>
           </div>
         </div>
 
-        <!-- 5. Snorkeling Experience -->
+        <!-- Card 5: Snorkeling -->
         <div
-          class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2">
-          <div class="relative h-56 sm:h-64 overflow-hidden">
-            <img src="pic/snorkeling.jpg" alt="Snorkeling Experience"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-4 left-4">
-              <span
-                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Family
-                Favorite</span>
+          class="group relative bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-white/30 transition-all duration-500 hover:-translate-y-2">
+          <div class="relative h-56 sm:h-64 overflow-hidden card-slider" id="card-slider-5" data-offset="6000">
+            <img src="snok/1.jpg" alt="Snorkeling" data-name="Snorkeling"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="snok/2.jpg" alt="Snorkeling" data-name="Snorkeling"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="snok/4.jpg" alt="Snorkeling" data-name="Snorkeling"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="snok/5.jpg" alt="Snorkeling" data-name="Snorkeling"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="snok/6.jpg" alt="Snorkeling" data-name="Snorkeling"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent pointer-events-none">
             </div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Family Favorite</div>
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Snorkeling
@@ -410,269 +624,433 @@
             <p class="text-gray-500 text-sm leading-relaxed mb-5">Swim among colorful coral reefs and tropical fish in
               Zanzibar’s clearest, warmest waters.</p>
             <a href="snokling.html"
-              class="group/btn inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300">
-              Explore Activity <i
-                class="fi fi-rr-arrow-right group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all duration-300 shadow-md hover:shadow-lg">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Mobile Horizontal Slider (visible only below sm) -->
-      <div class="sm:hidden relative" id="mobile-slider-container">
-        <!-- Swipe hint -->
-        <div class="flex items-center justify-center gap-2 mb-3" id="swipe-hint">
-          <span class="text-white/60 text-xs">Swipe to explore</span>
-          <svg class="w-5 h-5 text-white/60 swipe-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 17l-3 3v-6" />
-            <path d="M15 3l3 3-3 3" />
-            <rect x="2" y="6" width="14" height="12" rx="2" />
-            <path d="M6 10v4" />
-          </svg>
-        </div>
-
-        <!-- Track -->
-        <div class="overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar -mx-4 px-4 pb-4"
-          id="mobile-slider">
-          <div class="flex gap-4" id="mobile-slides" style="width: max-content;">
-            <!-- Cards injected by JS -->
+      <!-- Mobile Vertical Layout with 5‑image sliders (only visible on small screens) -->
+      <div class="sm:hidden flex flex-col gap-6">
+        <!-- Mobile Card 1: Jet Ski -->
+        <div class="bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl border border-white/30">
+          <div class="relative h-56 overflow-hidden card-slider" id="mobile-card-slider-1" data-offset="0">
+            <img src="jesk/jesk1.jpg" alt="Jet Ski" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="jesk/jesk2.jpg" alt="Jet Ski" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jesk/jesk3.jpg" alt="Jet Ski" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jesk/jesk4.jpg" alt="Jet Ski" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jesk/jesk5.jpg" alt="Jet Ski" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Most Popular</div>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-[#003C63] mb-1" style="font-family: 'Playfair Display', serif;">Jet Ski
+              Adventure</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">Feel the adrenaline as you race across crystal‑clear
+              waters.</p>
+            <a href="jetSkiAdventure.html"
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all shadow-md">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Numbered dots -->
-        <div class="flex items-center justify-center gap-2 mt-5" id="mobile-dots">
-          <!-- injected by JS -->
+        <!-- Mobile Card 2: Jet Car -->
+        <div class="bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl border border-white/30">
+          <div class="relative h-56 overflow-hidden card-slider" id="mobile-card-slider-2" data-offset="0">
+            <img src="jetcar/1.jpg" alt="Jet Car" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="jetcar/2.jpg" alt="Jet Car" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jetcar/3.jpg" alt="Jet Car" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jetcar/4.jpg" alt="Jet Car" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="jetcar/5.jpg" alt="Jet Car" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Thrill Ride</div>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-[#003C63] mb-1" style="font-family: 'Playfair Display', serif;">Jet Car
+              Experience</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">Drive a futuristic water craft that combines speed and
+              style.</p>
+            <a href="jet car.html"
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all shadow-md">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Card 3: Clear Kayak -->
+        <div class="bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl border border-white/30">
+          <div class="relative h-56 overflow-hidden card-slider" id="mobile-card-slider-3" data-offset="0">
+            <img src="clear/clear1.jpeg" alt="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="clear/clear2.jpg" alt="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="clear/clear3.jpg" alt="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="clear/clear4.jpg" alt="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="clear/clear5.jpg" alt="Clear Kayak"
+              class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Unique</div>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-[#003C63] mb-1" style="font-family: 'Playfair Display', serif;">Clear
+              Kayak</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">Paddle in a transparent kayak and marvel at the marine
+              life.</p>
+            <a href="clear.html"
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all shadow-md">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Card 4: Parasailing -->
+        <div class="bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl border border-white/30">
+          <div class="relative h-56 overflow-hidden card-slider" id="mobile-card-slider-4" data-offset="0">
+            <img src="p/p1.jpg" alt="Parasailing" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="p/p2.jpg" alt="Parasailing" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="p/p4.jpg" alt="Parasailing" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="p/p5.jpg" alt="Parasailing" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="p/p6.jpg" alt="Parasailing" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Sky High</div>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-[#003C63] mb-1" style="font-family: 'Playfair Display', serif;">
+              Parasailing</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">Soar above the Indian Ocean and soak in panoramic
+              views.</p>
+            <a href="parraelling.html"
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all shadow-md">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Card 5: Snorkeling -->
+        <div class="bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl border border-white/30">
+          <div class="relative h-56 overflow-hidden card-slider" id="mobile-card-slider-5" data-offset="0">
+            <img src="snok/1.jpg" alt="Snorkeling" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(0); z-index: 2;">
+            <img src="snok/2.jpg" alt="Snorkeling" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="snok/4.jpg" alt="Snorkeling" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="snok/5.jpg" alt="Snorkeling" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <img src="snok/6.jpg" alt="Snorkeling" class="absolute inset-0 w-full h-full object-cover card-slider-img"
+              style="transform: translateX(100%); z-index: 1;">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
+            <div
+              class="absolute top-3 left-3 bg-white/90 text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+              Family Favorite</div>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-[#003C63] mb-1" style="font-family: 'Playfair Display', serif;">Snorkeling
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-4">Swim among colorful coral reefs and tropical fish.</p>
+            <a href="snokling.html"
+              class="inline-flex items-center gap-2 bg-[#003C63] text-white font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#002a4d] transition-all shadow-md">
+              Explore Activity <i class="fi fi-rr-arrow-right"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- SCRIPT (same as before, works for all .card-slider elements) -->
   <script>
     (function () {
-      if (window.innerWidth >= 640) return; // only mobile
+      const cardSliders = document.querySelectorAll('.card-slider');
+      cardSliders.forEach(container => {
+        const images = container.querySelectorAll('.card-slider-img');
+        if (images.length < 2) return;
 
-      const slider = document.getElementById('mobile-slider');
-      const slidesContainer = document.getElementById('mobile-slides');
-      const dotsContainer = document.getElementById('mobile-dots');
-      const swipeHint = document.getElementById('swipe-hint');
+        const slides = Array.from(images).map(img => ({
+          el: img,
+          name: img.getAttribute('data-name') || img.alt || ''
+        }));
 
-      // Card data (same as desktop, without the extra div wrappers)
-      const cardsData = [
-        {
-          img: 'pic/jet-ski.jpg',
-          badge: 'Most Popular',
-          title: 'Jet Ski Adventure',
-          desc: 'Feel the adrenaline as you race across crystal‑clear waters with Zanzibar’s coastline as your backdrop.',
-          link: 'jet-ski.html'
-        }, {
-          img: 'pic/jet-car.jpg',
-          badge: 'Thrill Ride',
-          title: 'Jet Car Experience',
-          desc: 'Drive a futuristic water craft that combines speed and style — a truly unique way to explore the ocean.',
-          link: 'jet-car.html'
-        }, {
-          img: 'pic/clear-kayak.jpg',
-          badge: 'Unique',
-          title: 'Clear Kayak Experience',
-          desc: 'Paddle in a transparent kayak and marvel at the vibrant marine life directly beneath your feet.',
-          link: 'clear-kayak.html'
-        }, {
-          img: 'pic/parasailing.jpg',
-          badge: 'Sky High',
-          title: 'Parasailing Experience',
-          desc: 'Soar above the Indian Ocean and soak in breathtaking panoramic views of Zanzibar\'s coast.',
-          link: 'parasailing.html'
-        }, {
-          img: 'pic/snorkeling.jpg',
-          badge: 'Family Favorite',
-          title: 'Snorkeling Experience',
-          desc: 'Swim among colorful coral reefs and tropical fish in Zanzibar’s clearest, warmest waters.',
-          link: 'snorkeling.html'
+        let currentIndex = 0;
+        let isAnimating = false;
+        let sliderReady = false;
+        let frontEl = slides[0].el;
+        let backEl = slides[1].el;
+
+        const offset = parseInt(container.getAttribute('data-offset')) || 0;
+
+        const decodePromises = slides.map(slide => {
+          return new Promise(resolve => {
+            if (slide.el.complete) {
+              slide.el.decode().then(resolve).catch(resolve);
+            } else {
+              slide.el.onload = () => slide.el.decode().then(resolve).catch(resolve);
+              slide.el.onerror = resolve;
+            }
+          });
+        });
+
+        Promise.all(decodePromises).then(() => {
+          frontEl.style.transform = 'translateX(0)';
+          frontEl.style.zIndex = '2';
+          frontEl.style.transition = 'none';
+          backEl.style.transform = 'translateX(100%)';
+          backEl.style.zIndex = '1';
+          backEl.style.transition = 'none';
+          sliderReady = true;
+
+          setTimeout(() => {
+            setInterval(slideNext, 4000);
+            slideNext();
+          }, offset);
+        });
+
+        async function slideNext() {
+          if (!sliderReady || isAnimating) return;
+          isAnimating = true;
+          const nextIndex = (currentIndex + 1) % slides.length;
+          const nextEl = slides[nextIndex].el;
+
+          nextEl.style.transition = 'none';
+          nextEl.style.transform = 'translateX(100%)';
+          nextEl.style.zIndex = '1';
+          void nextEl.offsetWidth;
+
+          frontEl.style.transition = 'transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)';
+          frontEl.style.transform = 'translateX(-100%)';
+          nextEl.style.transition = 'transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)';
+          nextEl.style.transform = 'translateX(0)';
+
+          await Promise.race([
+            new Promise(resolve => {
+              function onEnd(e) {
+                if (e.propertyName === 'transform') {
+                  frontEl.removeEventListener('transitionend', onEnd);
+                  resolve();
+                }
+              }
+              frontEl.addEventListener('transitionend', onEnd);
+            }),
+            new Promise(resolve => setTimeout(resolve, 800))
+          ]);
+
+          frontEl.style.transition = 'none';
+          frontEl.style.transform = 'translateX(100%)';
+          frontEl.style.zIndex = '1';
+          nextEl.style.transition = 'none';
+          nextEl.style.zIndex = '2';
+
+          const temp = frontEl;
+          frontEl = nextEl;
+          backEl = temp;
+          currentIndex = nextIndex;
+          isAnimating = false;
         }
-      ];
-
-      // Create card elements
-      function createCard(data) {
-        const div = document.createElement('div');
-        div.className = 'card-slide w-[85vw] flex-shrink-0 snap-center';
-        div.innerHTML = `
-      <div class="group relative bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 h-full">
-        <div class="relative h-48 overflow-hidden">
-          <img src="${data.img}" alt="${data.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
-          <div class="absolute bottom-3 left-3">
-            <span class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${data.badge}</span>
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-lg font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">${data.title}</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">${data.desc}</p>
-          <a href="${data.link}" class="inline-flex items-center gap-2 text-[#F27D57] font-bold text-sm hover:text-[#003C63] transition-colors duration-300">
-            Explore Activity <i class="fi fi-rr-arrow-right translate-x-0 transition-transform duration-300"></i>
-          </a>
-        </div>
-      </div>
-    `;
-        return div;
-      }
-
-      // Append original cards + duplicate first card at end for seamless loop
-      cardsData.forEach((data, i) => {
-        slidesContainer.appendChild(createCard(data));
       });
-      // Clone first card and append at end
-      const firstClone = createCard(cardsData[0]);
-      firstClone.classList.add('clone');
-      slidesContainer.appendChild(firstClone);
-
-      const totalRealSlides = cardsData.length;
-      const totalSlides = totalRealSlides + 1; // includes clone
-      const cardElements = slidesContainer.querySelectorAll('.card-slide');
-
-      // Create numbered dots (1..5)
-      for (let i = 0; i < totalRealSlides; i++) {
-        const dot = document.createElement('span');
-        dot.className = 'w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold cursor-pointer transition-all duration-300 bg-white/20 text-white';
-        dot.textContent = i + 1;
-        dot.dataset.index = i;
-        dotsContainer.appendChild(dot);
-        dot.addEventListener('click', () => {
-          goToSlide(i);
-          resetAutoplay();
-        });
-      }
-      const dotElements = dotsContainer.querySelectorAll('span');
-
-      // Update active dot
-      function updateDots(activeIndex) {
-        dotElements.forEach((dot, i) => {
-          if (i === activeIndex) {
-            dot.classList.add('bg-[#F27D57]', 'text-white');
-            dot.classList.remove('bg-white/20', 'text-white');
-          } else {
-            dot.classList.add('bg-white/20', 'text-white');
-            dot.classList.remove('bg-[#F27D57]');
-          }
-        });
-      }
-
-      // Scroll to a specific slide (real index)
-      function goToSlide(index) {
-        const cardWidth = cardElements[0].offsetWidth + 16; // 16px gap
-        slider.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
-      }
-
-      // Auto-scrolling with infinite loop
-      let autoScroll;
-      let currentIndex = 0;
-
-      function startAutoplay() {
-        clearInterval(autoScroll);
-        autoScroll = setInterval(() => {
-          currentIndex++;
-          const cardWidth = cardElements[0].offsetWidth + 16;
-
-          if (currentIndex >= totalRealSlides) {
-            // We're at the clone (index 5)
-            slider.scrollTo({ left: currentIndex * cardWidth, behavior: 'smooth' });
-            // After transition, silently jump back to real first
-            setTimeout(() => {
-              slider.style.scrollBehavior = 'auto';
-              slider.scrollLeft = 0;
-              currentIndex = 0;
-              updateDots(0);
-              setTimeout(() => {
-                slider.style.scrollBehavior = 'smooth';
-              }, 50);
-            }, 600); // match transition duration
-          } else {
-            slider.scrollTo({ left: currentIndex * cardWidth, behavior: 'smooth' });
-            updateDots(currentIndex);
-          }
-        }, 3500);
-      }
-
-      // Touch handling pause
-      let isTouching = false;
-      slider.addEventListener('touchstart', () => { isTouching = true; clearInterval(autoScroll); }, { passive: true });
-      slider.addEventListener('touchend', () => {
-        isTouching = false;
-        // Recalculate current index based on scroll position
-        const cardWidth = cardElements[0].offsetWidth + 16;
-        const rawIndex = Math.round(slider.scrollLeft / cardWidth);
-        currentIndex = rawIndex >= totalRealSlides ? 0 : rawIndex;
-        updateDots(currentIndex);
-        startAutoplay();
-      });
-
-      // Update dots on scroll (debounced for smooth)
-      let scrollTimeout;
-      slider.addEventListener('scroll', () => {
-        if (isTouching) return;
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          const cardWidth = cardElements[0].offsetWidth + 16;
-          const rawIndex = Math.round(slider.scrollLeft / cardWidth);
-          if (rawIndex >= totalRealSlides) {
-            // If we scrolled to clone, instantly jump back (without animation)
-            slider.style.scrollBehavior = 'auto';
-            slider.scrollLeft = 0;
-            currentIndex = 0;
-            updateDots(0);
-            setTimeout(() => { slider.style.scrollBehavior = 'smooth'; }, 50);
-          } else {
-            currentIndex = rawIndex;
-            updateDots(currentIndex);
-          }
-        }, 50);
-      }, { passive: true });
-
-      // Hide swipe hint after few seconds
-      if (swipeHint) {
-        setTimeout(() => {
-          swipeHint.style.transition = 'opacity 0.5s';
-          swipeHint.style.opacity = '0';
-          setTimeout(() => swipeHint.remove(), 500);
-        }, 4000);
-      }
-
-      // Initial state
-      updateDots(0);
-      startAutoplay();
-
     })();
   </script>
 
-  <style>
-    .hide-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .hide-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    @keyframes swipeGesture {
-
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      50% {
-        transform: translateX(-10px);
-      }
-    }
-
-    .swipe-hand {
-      animation: swipeGesture 1.5s ease-in-out infinite;
-    }
-  </style>
 
 
   <!-- BEST-SELLING COMBO PACKAGES SECTION (with images) -->
+  <!-- <section class="relative py-20 lg:py-28 bg-white overflow-hidden">
+
+    - Soft background blobs --
+    <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-[#F27D57]/5 rounded-full blur-7xl -ml-32 -mt-32"></div>
+    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#003C63]/3 rounded-full blur-7xl -mr-32 -mb-32"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header --
+      <div class="text-center mb-14 lg:mb-20">
+        <span
+          class="inline-flex items-center gap-2 text-[#F27D57] font-semibold tracking-widest text-xs uppercase mb-4 bg-[#F27D57]/5 px-4 py-1.5 rounded-full">
+          <i class="fi fi-rr-star text-xs"></i>
+          Best-Selling Combos
+        </span>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#003C63] leading-tight"
+          style="font-family: 'Playfair Display', serif;">
+          Best-Selling <span class="italic text-[#F27D57]">Combo Packages</span>
+        </h2>
+        <p class="text-gray-500 max-w-xl mx-auto mt-3 text-base lg:text-lg">
+          Save money and experience more by booking our top‑rated adventure combos.
+        </p>
+      </div>
+
+      <!-- Packages Grid --
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
+
+        <!-- Package 1: Ocean Adventure Combo --
+        <div
+          class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 flex flex-col">
+          <!-- Image --
+          <div class="relative h-56 overflow-hidden">
+            <img src="pic/ocean-adventure-combo.jpg" alt="Ocean Adventure Combo"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-4">
+              <span
+                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Thrill
+                + Relax</span>
+            </div>
+          </div>
+          <!-- Content --
+          <div class="p-6 flex flex-col flex-1">
+            <div
+              class="w-12 h-12 rounded-xl bg-[#F27D57]/10 flex items-center justify-center mb-4 group-hover:bg-[#F27D57] transition-all duration-500">
+              <i
+                class="fi fi-rr-water text-xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Ocean
+              Adventure Combo</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">Perfect mix of thrill and relaxation — the
+              ideal way to experience Zanzibar's water sports.</p>
+            <!-- Price --
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="text-3xl font-bold text-[#003C63]">$150</span>
+              <span class="text-gray-400 text-sm">/ person</span>
+            </div>
+            <!-- Button --
+            <a href="oceanadventure.html"
+              class="group/btn w-full inline-flex items-center justify-center gap-2 bg-[#F27D57] text-white font-bold text-sm py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#F27D57]/50 hover:-translate-y-1">
+              <span class="relative z-10">Explore Package</span>
+              <i
+                class="fi fi-rr-arrow-right relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-orange-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500">
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Package 2: Content Creator Combo (Featured) --
+        <div
+          class="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border-2 border-[#F27D57] transition-all duration-500 hover:-translate-y-3 flex flex-col">
+          <!-- Popular Badge --
+          <div
+            class="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-[#F27D57] text-white text-xs font-bold px-5 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+            Most Popular
+          </div>
+          <!-- Image --
+          <div class="relative h-56 overflow-hidden">
+            <img src="pic/content-creator-combo.jpg" alt="Content Creator Combo"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-4">
+              <span
+                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Ultimate
+                Viral</span>
+            </div>
+          </div>
+          <!-- Content --
+          <div class="p-6 flex flex-col flex-1">
+            <div
+              class="w-12 h-12 rounded-xl bg-[#F27D57]/10 flex items-center justify-center mb-4 group-hover:bg-[#F27D57] transition-all duration-500">
+              <i
+                class="fi fi-rr-camera-movie text-xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Content
+              Creator Combo</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">Our ultimate viral package. Everything you need
+              for the perfect social media feed — drone shots, clear kayak, and more.</p>
+            <!-- Price --
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="text-3xl font-bold text-[#003C63]">$285</span>
+              <span class="text-gray-400 text-sm">/ person</span>
+            </div>
+            <!-- Button --
+            <a href="content creator.html"
+              class="group/btn w-full inline-flex items-center justify-center gap-2 bg-[#F27D57] text-white font-bold text-sm py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#F27D57]/50 hover:-translate-y-1">
+              <span class="relative z-10">Explore Package</span>
+              <i
+                class="fi fi-rr-arrow-right relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-orange-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500">
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Package 3: Ultimate Water Sports Package --
+        <div
+          class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 flex flex-col">
+          <!-- Image --
+          <div class="relative h-56 overflow-hidden">
+            <img src="pic/ultimate-package.jpg" alt="Ultimate Water Sports Package"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-4">
+              <span
+                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">All-Inclusive</span>
+            </div>
+          </div>
+          <!-- Content --
+          <div class="p-6 flex flex-col flex-1">
+            <div
+              class="w-12 h-12 rounded-xl bg-[#F27D57]/10 flex items-center justify-center mb-4 group-hover:bg-[#F27D57] transition-all duration-500">
+              <i
+                class="fi fi-rr-shield-check text-xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
+            </div>
+            <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Ultimate
+              Water Sports Package</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">The ultimate full‑day at Kendwa/Nungwi Beach.
+              Experience every single activity we offer at an unbeatable price!</p>
+            <!-- Price --
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="text-3xl font-bold text-[#003C63]">$430</span>
+              <span class="text-gray-400 text-sm">/ person</span>
+            </div>
+            <!-- Button --
+            <a href="ultimatecombo.html"
+              class="group/btn w-full inline-flex items-center justify-center gap-2 bg-[#F27D57] text-white font-bold text-sm py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#F27D57]/50 hover:-translate-y-1">
+              <span class="relative z-10">Explore Package</span>
+              <i
+                class="fi fi-rr-arrow-right relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300"></i>
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-orange-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500">
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>-->
+
+
+
+  <!-- BEST-SELLING COMBO PACKAGES SECTION (no images, premium) -->
   <section class="relative py-20 lg:py-28 bg-white overflow-hidden">
 
     <!-- Soft background blobs -->
@@ -703,24 +1081,19 @@
         <!-- Package 1: Ocean Adventure Combo -->
         <div
           class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 flex flex-col">
-          <!-- Image -->
-          <div class="relative h-56 overflow-hidden">
-            <img src="pic/ocean-adventure-combo.jpg" alt="Ocean Adventure Combo"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-3 left-4">
-              <span
-                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Thrill
-                + Relax</span>
-            </div>
-          </div>
-          <!-- Content -->
+          <!-- Colored top strip (replaces image) -->
+          <div class="relative h-3 bg-gradient-to-r from-[#003C63] to-[#F27D57]"></div>
           <div class="p-6 flex flex-col flex-1">
+            <!-- Icon -->
             <div
-              class="w-12 h-12 rounded-xl bg-[#F27D57]/10 flex items-center justify-center mb-4 group-hover:bg-[#F27D57] transition-all duration-500">
+              class="w-14 h-14 rounded-2xl bg-[#F27D57]/10 flex items-center justify-center mb-5 group-hover:bg-[#F27D57] transition-all duration-500">
               <i
-                class="fi fi-rr-water text-xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
+                class="fi fi-rr-water text-2xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
             </div>
+            <!-- Tag -->
+            <span
+              class="inline-block bg-[#003C63]/5 text-[#003C63] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-3 self-start">Thrill
+              + Relax</span>
             <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Ocean
               Adventure Combo</h3>
             <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">Perfect mix of thrill and relaxation — the
@@ -732,13 +1105,10 @@
             </div>
             <!-- Button -->
             <a href="oceanadventure.html"
-              class="group/btn w-full inline-flex items-center justify-center gap-2 bg-[#F27D57] text-white font-bold text-sm py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#F27D57]/50 hover:-translate-y-1">
+              class="group/btn w-full inline-flex items-center justify-center gap-2 bg-[#003C63] text-white font-bold text-sm py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:bg-[#002a4d] hover:shadow-2xl hover:shadow-[#003C63]/30 hover:-translate-y-1">
               <span class="relative z-10">Explore Package</span>
               <i
                 class="fi fi-rr-arrow-right relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300"></i>
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-orange-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500">
-              </div>
             </a>
           </div>
         </div>
@@ -746,35 +1116,30 @@
         <!-- Package 2: Content Creator Combo (Featured) -->
         <div
           class="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border-2 border-[#F27D57] transition-all duration-500 hover:-translate-y-3 flex flex-col">
+          <!-- Colored top strip -->
+          <div class="relative h-3 bg-gradient-to-r from-[#F27D57] to-orange-400"></div>
           <!-- Popular Badge -->
           <div
-            class="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-[#F27D57] text-white text-xs font-bold px-5 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+            class="absolute top-5 left-1/2 -translate-x-1/2 z-10 bg-[#F27D57] text-white text-xs font-bold px-5 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
             Most Popular
           </div>
-          <!-- Image -->
-          <div class="relative h-56 overflow-hidden">
-            <img src="pic/content-creator-combo.jpg" alt="Content Creator Combo"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-3 left-4">
-              <span
-                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Ultimate
-                Viral</span>
-            </div>
-          </div>
-          <!-- Content -->
-          <div class="p-6 flex flex-col flex-1">
+          <div class="p-6 flex flex-col flex-1 pt-10">
+            <!-- Icon -->
             <div
-              class="w-12 h-12 rounded-xl bg-[#F27D57]/10 flex items-center justify-center mb-4 group-hover:bg-[#F27D57] transition-all duration-500">
+              class="w-14 h-14 rounded-2xl bg-[#F27D57]/10 flex items-center justify-center mb-5 group-hover:bg-[#F27D57] transition-all duration-500 mx-auto">
               <i
-                class="fi fi-rr-camera-movie text-xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
+                class="fi fi-rr-camera-movie text-2xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
             </div>
-            <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Content
-              Creator Combo</h3>
-            <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">Our ultimate viral package. Everything you need
-              for the perfect social media feed — drone shots, clear kayak, and more.</p>
+            <!-- Tag -->
+            <span
+              class="inline-block bg-[#F27D57]/10 text-[#F27D57] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-3 self-center">Ultimate
+              Viral</span>
+            <h3 class="text-xl font-bold text-[#003C63] mb-2 text-center"
+              style="font-family: 'Playfair Display', serif;">Content Creator Combo</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1 text-center">Our ultimate viral package.
+              Everything you need for the perfect social media feed — drone shots, clear kayak, and more.</p>
             <!-- Price -->
-            <div class="flex items-baseline gap-1 mb-6">
+            <div class="flex items-baseline justify-center gap-1 mb-6">
               <span class="text-3xl font-bold text-[#003C63]">$285</span>
               <span class="text-gray-400 text-sm">/ person</span>
             </div>
@@ -784,9 +1149,6 @@
               <span class="relative z-10">Explore Package</span>
               <i
                 class="fi fi-rr-arrow-right relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300"></i>
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-orange-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500">
-              </div>
             </a>
           </div>
         </div>
@@ -794,23 +1156,18 @@
         <!-- Package 3: Ultimate Water Sports Package -->
         <div
           class="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 flex flex-col">
-          <!-- Image -->
-          <div class="relative h-56 overflow-hidden">
-            <img src="pic/ultimate-package.jpg" alt="Ultimate Water Sports Package"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#003C63]/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-3 left-4">
-              <span
-                class="bg-white/90 backdrop-blur-sm text-[#003C63] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">All-Inclusive</span>
-            </div>
-          </div>
-          <!-- Content -->
+          <!-- Colored top strip -->
+          <div class="relative h-3 bg-gradient-to-r from-[#003C63] to-[#F27D57]"></div>
           <div class="p-6 flex flex-col flex-1">
+            <!-- Icon -->
             <div
-              class="w-12 h-12 rounded-xl bg-[#F27D57]/10 flex items-center justify-center mb-4 group-hover:bg-[#F27D57] transition-all duration-500">
+              class="w-14 h-14 rounded-2xl bg-[#F27D57]/10 flex items-center justify-center mb-5 group-hover:bg-[#F27D57] transition-all duration-500">
               <i
-                class="fi fi-rr-shield-check text-xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
+                class="fi fi-rr-shield-check text-2xl text-[#F27D57] group-hover:text-white transition-colors duration-500"></i>
             </div>
+            <!-- Tag -->
+            <span
+              class="inline-block bg-[#003C63]/5 text-[#003C63] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-3 self-start">All-Inclusive</span>
             <h3 class="text-xl font-bold text-[#003C63] mb-2" style="font-family: 'Playfair Display', serif;">Ultimate
               Water Sports Package</h3>
             <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">The ultimate full‑day at Kendwa/Nungwi Beach.
@@ -822,13 +1179,10 @@
             </div>
             <!-- Button -->
             <a href="ultimatecombo.html"
-              class="group/btn w-full inline-flex items-center justify-center gap-2 bg-[#F27D57] text-white font-bold text-sm py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#F27D57]/50 hover:-translate-y-1">
+              class="group/btn w-full inline-flex items-center justify-center gap-2 bg-[#003C63] text-white font-bold text-sm py-3.5 rounded-full overflow-hidden transition-all duration-500 hover:bg-[#002a4d] hover:shadow-2xl hover:shadow-[#003C63]/30 hover:-translate-y-1">
               <span class="relative z-10">Explore Package</span>
               <i
                 class="fi fi-rr-arrow-right relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300"></i>
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-[#F27D57] to-orange-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500">
-              </div>
             </a>
           </div>
         </div>
